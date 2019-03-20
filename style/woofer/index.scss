@@ -1,0 +1,20 @@
+.sub-page-menu{
+    cursor: pointer;
+    position: relative;
+    &:after{
+        content: ' ';
+        position: absolute;
+        width:100%;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        border-top: 1px solid transparent;
+        transition: border-color 0.5s;
+    }
+    &.active{
+        &:after{
+            border-color: #4adaaf;
+        }
+
+    }
+}

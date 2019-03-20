@@ -1,0 +1,44 @@
+@import '../style/variables';
+@import '../style/grid';
+@import 'form';
+
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: $background-color;
+    padding: 0;
+    margin: 0;
+}
+
+.main > .container{
+    padding-top: 110px;
+}
+
+header {
+
+}
+
+.container{
+    max-width:1200px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.row:after{
+
+}
+
+
+input.input{
+    /* width: 100%; */
+    min-height: 44px;
+    line-height: 44px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f2f3f3;
+    -webkit-appearance: none;
+    padding: 0 24px;
+    font-size: 14px;
+}

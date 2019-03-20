@@ -1,0 +1,11 @@
+.playlists{
+    background-color: white;
+    min-height: 50px;
+    border: 1px solid #E8EBED;
+    .playlist{
+        padding: 20px;
+        &+ .playlist{
+            border-top: 1px solid #E8EBED;
+        }
+    }
+}
