@@ -36,22 +36,31 @@ class Modal extends Component<IProps, any> {
         // state to Modal and only render the children when Modal
         // is inserted in the DOM tree.
         this.modalRoot.appendChild(this.el);
+        document.body.style['overflow-y'] = 'hidden';
+        // document.body.style['transform'] = `translateY(-${window.pageYOffset}px)`;
     }
 
     componentWillUnmount() {
         this.modalRoot.removeChild(this.el);
+        document.body.style['overflow-y'] = null;
     }
 
-    closeModal = () => {
-        console.log("!", this.props.closeModal)
+    closeModal = (e) => {
         this.props.closeModal();
     }
 
+    prevent = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
     render() {
-        console.log("!")
+
         return ReactDOM.createPortal(
             <div id={'modal-blur'} onClick={this.closeModal}>
-                <div id="modal-main">{this.props.children}</div>
+                <div id="modal-wrapper">
+                    <div id="modal-main" onClick={this.prevent}>{this.props.children}</div>
+                </div>
             </div>,
             this.el,
         );
