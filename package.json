@@ -16,8 +16,6 @@
   "dependencies": {
     "axios": "^0.18.0",
     "concurrently": "^4.1.0",
-    "firebase": "^5.8.2",
-    "firebase-admin": "^7.0.0",
     "fork-ts-checker-webpack-plugin": "^0.5.2",
     "js-cookie": "^2.2.0",
     "jwt-decode": "^2.2.0",
