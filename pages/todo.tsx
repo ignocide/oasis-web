@@ -54,8 +54,7 @@ class TodoPage extends React.Component<IProps, IState> {
   render() {
     return (
       <div className="main">
-        <Header>
-        </Header>
+        <Header/>
         <aside id={"sidebar"}>
           <BoardList />
         </aside>

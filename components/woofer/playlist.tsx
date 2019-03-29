@@ -1,9 +1,8 @@
-
 import { Component } from 'react';
-import { inject, observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 import PlayerStore from "../../store/player";
 
-import '../../style/woofer/playlist.scss'
+import '../../style/woofer/playlist.scss';
 
 interface IProps {
   player?: PlayerStore
@@ -20,13 +19,13 @@ class Playlist extends Component<IProps, IState> {
   state = {};
 
   setPlayer = (index) => {
-    const { player: playerStore } = this.props;
-    playerStore.setCurrentIndex(index)
-  }
+    const {player: playerStore} = this.props;
+    playerStore.setCurrentIndex(index);
+  };
 
   render() {
-    const { player: playerStore } = this.props;
-    const { list } = playerStore;
+    const {player: playerStore} = this.props;
+    const {list} = playerStore;
     return <div className="playlist">
       {list.map((playlist, index) => {
         return <div className="video" key={playlist.item_id} onClick={() => this.setPlayer(index)}>
@@ -41,10 +40,10 @@ class Playlist extends Component<IProps, IState> {
           <div className="video-function">
 
           </div>
-        </div>
+        </div>;
       })}
-    </div>
+    </div>;
   }
 }
 
-export default Playlist
+export default Playlist;

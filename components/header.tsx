@@ -1,8 +1,8 @@
 import Link from "next/link";
-import '../style/header.scss'
+import '../style/header.scss';
 
 
-const Header = ({sub}) => (
+const Header = ({sub = null}) => (
   <header id={'gnb'}>
     <div className="gnb-main">
       <div className="gnb-main-wrapper container">
@@ -18,6 +18,6 @@ const Header = ({sub}) => (
       </div>
     </div>
   </header>
-)
+);
 
-export default Header
+export default Header;

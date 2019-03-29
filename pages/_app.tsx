@@ -1,11 +1,6 @@
-import App, { Container } from 'next/app'
-import React from 'react'
-import { Provider } from "mobx-react";
-import { initializeStores } from '../store/index'
-import cookieUtil, { COOKIE_KEYS } from "../lib/cookies";
-import AuthStore from '../store/auth'
-import * as authApi from "../api/server/auth/index";
-import { setToken } from '../api/server/oasis';
+import App, { Container } from 'next/app';
+import React from 'react';
+
 interface IProps {
   Component: any,
   pageProps: any,
@@ -38,6 +33,22 @@ interface DecodedToken {
 class OasisApp extends App<IProps> {
   state: any;
   clazz: any[];
+
+  constructor(props) {
+    super(props);
+    // console.log("이게 먼저??")
+    // const isServer = typeof window === 'undefined'
+    // // let storeMap = props.stores
+    // const stores = isServer
+    //   ? props.stores
+    //   : initializeStores(props.stores);
+    // const accessToken = cookieUtil.get(COOKIE_KEYS.ACCESS_TOKEN)
+    // setToken(accessToken)
+
+    // this.state = {
+    //   stores: stores
+    // }
+  }
 
   static async getInitialProps(appContext) {
     // const { ctx } = appContext;
@@ -76,7 +87,7 @@ class OasisApp extends App<IProps> {
     //   setToken(token);
     // }
     // const props = await App.getInitialProps(appContext)
-    const props: any = await App.getInitialProps(appContext)
+    const props: any = await App.getInitialProps(appContext);
 
     // initializeStores();
     return {
@@ -84,23 +95,7 @@ class OasisApp extends App<IProps> {
       // stores: {
       //   ...stores
       // }
-    }
-  }
-
-  constructor(props) {
-    super();
-    // console.log("이게 먼저??")
-    // const isServer = typeof window === 'undefined'
-    // // let storeMap = props.stores
-    // const stores = isServer
-    //   ? props.stores
-    //   : initializeStores(props.stores);
-    // const accessToken = cookieUtil.get(COOKIE_KEYS.ACCESS_TOKEN)
-    // setToken(accessToken)
-
-    // this.state = {
-    //   stores: stores
-    // }
+    };
   }
 
   // static getDerivedStateFromProps(nextProps, prevState) {
@@ -119,7 +114,7 @@ class OasisApp extends App<IProps> {
   // }
 
   render() {
-    const { Component, pageProps, ...props } = this.props
+    const {Component, pageProps, ...props} = this.props;
     // const { stores } = this.state;
     // console.log('in render stores', stores)
     return (
@@ -127,8 +122,8 @@ class OasisApp extends App<IProps> {
         <Component  {...pageProps} />
         <div id="modal-container" />
       </Container>
-    )
+    );
   }
 }
 
-export default OasisApp
+export default OasisApp;

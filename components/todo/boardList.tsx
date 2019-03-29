@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { inject, observer } from 'mobx-react'
-import BoardItem from './boardItem'
-import BoardListStore from '../../store/boardListStore'
+import { inject, observer } from 'mobx-react';
+import BoardItem from './boardItem';
+import BoardListStore from '../../store/boardListStore';
 import BoardCreateModal from './boardCreateModal';
 
 import '../../style/todo/board-list.scss';
@@ -20,31 +20,31 @@ interface IState {
 
 @inject('boardListStore')
 @observer
-class BoardList extends Component<IProps, IState> {
+class BoardList extends React.Component<IProps, IState> {
 
   constructor(props) {
     super(props);
     this.state = {
       createBoardModal: false
-    }
+    };
 
   }
 
   onClickRequestCreateBoardButton = () => {
     this.setState({
       createBoardModal: true
-    })
+    });
   };
-
   closeCreateBoardModal = () => {
     this.setState({
       createBoardModal: false
-    })
+    });
   };
+
 
   render() {
     const {boardListStore} = this.props;
-    const {boards} = boardListStore
+    const {boards} = boardListStore;
     const {createBoardModal} = this.state;
     return (
       <div className="board-list">
@@ -58,8 +58,8 @@ class BoardList extends Component<IProps, IState> {
           <BoardCreateModal requestClose={this.closeCreateBoardModal} />
         </Modal>}
       </div>
-    )
+    );
   }
 }
 
-export default BoardList
+export default BoardList;

@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import YouTube from 'react-youtube';
-import { inject, observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
 import Playlist from "./playlist";
 import PlayerStore from "../../store/player";
 
-import '../../style/woofer/player.scss'
+import '../../style/woofer/player.scss';
 
 
 interface IProps {
@@ -40,10 +40,11 @@ class PlayerComponent extends Component<IProps, IState> {
     };
 
   }
+
   render() {
 
     let content = null;
-    const { player: playerStore } = this.props;
+    const {player: playerStore} = this.props;
     const current = playerStore.getCurrent();
     if (current) {
       content = (<YouTube className='woofer-player' opts={this.opts} videoId={current.video_id} />);

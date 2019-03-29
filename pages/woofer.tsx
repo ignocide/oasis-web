@@ -1,20 +1,17 @@
-import Link from 'next/link'
-import { Component } from 'react';
+import React from 'react';
+import Link from 'next/link';
 import Playlists from "../components/woofer/playlists";
 import { Col, Row } from "../components/layout/grid";
 import Player from "../components/woofer/player";
 // import withAuth from '../components/hoc/withAuth'
 import withStore from '../components/hoc/withStore';
-import { inject, observer } from 'mobx-react'
-import * as wooferApi from '../api/server/woofer/playlist';
-import PlaylistsStore from '../store/playlists'
-import PlayerStore from '../store/player'
+import { inject, observer } from 'mobx-react';
+import PlaylistsStore from '../store/playlists';
+import PlayerStore from '../store/player';
 
-import '../style/header.scss'
-import '../style/index.scss'
-import '../style/woofer/index.scss'
-import { getStore } from "../store/index";
-import Playlist from 'vo/woofer/playlist';
+import '../style/header.scss';
+import '../style/index.scss';
+import '../style/woofer/index.scss';
 
 interface IProps {
   playlists: PlaylistsStore
@@ -35,8 +32,8 @@ enum PAGES {
   playlists: PlaylistsStore,
   player: PlayerStore
 })
-class WooferPage extends Component<IProps, IState> {
-  static getInitialProps = async function ({ req, res, ...etc }) {
+class WooferPage extends React.Component<IProps, IState> {
+  static getInitialProps = async function ({req, res, ...etc}) {
     if (req) {
       // let result: any = await wooferApi.fetchPlaylists()
       // const { playlists } = result;
@@ -51,37 +48,35 @@ class WooferPage extends Component<IProps, IState> {
       // playerStore.setList(list);
     }
 
-    return {}
-  }
-
-  constructor(props) {
-    super(props)
-    this.state = {
-      subPage: PAGES.PLAYLISTS
-    }
-
-  }
-
+    return {};
+  };
   setSubPage = (subPage) => {
     this.setState({
       subPage
-    })
-  }
-
+    });
+  };
   renderSubPage = () => {
-    const { subPage } = this.state;
+    const {subPage} = this.state;
     let content = null;
     if (subPage === PAGES.PLAYLISTS) {
-      content = <Playlists />
+      content = <Playlists />;
     } else if (subPage === PAGES.SEARCH) {
 
     }
 
-    return content
+    return content;
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      subPage: PAGES.PLAYLISTS
+    };
+
   }
 
   render() {
-    const { subPage } = this.state;
+    const {subPage} = this.state;
     return (
       <div className="main">
         <nav id={'gnb'}>
@@ -109,7 +104,7 @@ class WooferPage extends Component<IProps, IState> {
           </div>
         </nav>
         <div className="container">
-          <Row style={{ paddingTop: 50 }}>
+          <Row style={{paddingTop: 50}}>
             <Col size={6} layout={true}>
               <div>
                 <Player />
@@ -121,7 +116,7 @@ class WooferPage extends Component<IProps, IState> {
           </Row>
         </div>
       </div>
-    )
+    );
   }
 
 }

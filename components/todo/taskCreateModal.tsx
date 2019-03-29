@@ -1,6 +1,6 @@
 import React from "react";
-import { inject, observer } from 'mobx-react'
-import BoardStore, { ITaskCreateForm } from '../../store/boardStore'
+import { inject, observer } from 'mobx-react';
+import BoardStore, { ITaskCreateForm } from '../../store/boardStore';
 import '../../style/todo/task-detail-modal.scss';
 import { FieldInput, FieldTextArea } from "../form/field";
 import { Button } from "../form";
@@ -29,7 +29,7 @@ class TaskCreateModal extends React.Component<IProps, IState> {
     e.stopPropagation();
 
     if (!this.isValidation()) {
-      return
+      return;
     }
 
     const {taskCreateForm} = this.state;
@@ -38,7 +38,7 @@ class TaskCreateModal extends React.Component<IProps, IState> {
     boardStore.createTask(taskCreateForm);
     this.initCrateForm();
     closeModal();
-  }
+  };
 
   initCrateForm = () => {
     this.setState({
@@ -46,14 +46,14 @@ class TaskCreateModal extends React.Component<IProps, IState> {
         name: '',
         detail: '',
       }
-    })
-  }
+    });
+  };
 
   isValidation = () => {
-    const {taskCreateForm} = this.state
+    const {taskCreateForm} = this.state;
 
-    return !!taskCreateForm.name
-  }
+    return !!taskCreateForm.name;
+  };
 
   onChangeValue = (e) => {
     this.setState({
@@ -61,8 +61,8 @@ class TaskCreateModal extends React.Component<IProps, IState> {
         ...this.state.taskCreateForm,
         [e.target.name]: e.target.value,
       }
-    })
-  }
+    });
+  };
 
   render() {
     const {taskCreateForm} = this.state;
@@ -83,8 +83,8 @@ class TaskCreateModal extends React.Component<IProps, IState> {
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
-export default TaskCreateModal
+export default TaskCreateModal;

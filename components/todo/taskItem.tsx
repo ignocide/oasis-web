@@ -1,36 +1,36 @@
 import React, { Component } from "react";
-import { inject, observer } from 'mobx-react'
-import BoardStore from '../../store/boardStore'
+import { inject, observer } from 'mobx-react';
+import BoardStore from '../../store/boardStore';
 import Task from "../../vo/todo/task";
 
 import '../../style/todo/task-item.scss';
-import Modal from "../common/modal";
 
 interface IProps {
-    boardStore: BoardStore,
-    task: Task
+  boardStore: BoardStore,
+  task: Task
 }
 
 @inject('boardStore')
 @observer
 class BoardItem extends Component<IProps> {
 
-    static defaultProps = {
-        onClickTask: function () { }
+  static defaultProps = {
+    onClickTask: function () {
     }
+  };
 
-    onClickTask = () => {
-        this.props.onClickTask();
-    }
+  onClickTask = () => {
+    this.props.onClickTask();
+  };
 
-    render() {
-        const { task } = this.props;
-        return (
-            <li className="task-item" onClick={this.onClickTask}>
-                {task.name}
-            </li>
-        )
-    }
+  render() {
+    const {task} = this.props;
+    return (
+      <li className="task-item" onClick={this.onClickTask}>
+        {task.name}
+      </li>
+    );
+  }
 }
 
-export default BoardItem
+export default BoardItem;

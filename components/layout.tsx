@@ -1,5 +1,5 @@
 import Header from "./header";
-import '../style/index.scss'
+import '../style/index.scss';
 
 const Layout = ({children}) => (
   <div className="main">
@@ -8,6 +8,6 @@ const Layout = ({children}) => (
       {children}
     </div>
   </div>
-)
+);
 
-export default Layout
+export default Layout;

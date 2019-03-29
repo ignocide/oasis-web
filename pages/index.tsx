@@ -1,37 +1,31 @@
-import Link from 'next/link'
-import axios from 'axios'
-import Layout from '../components/layout'
-import { Component } from 'react';
-import withAuth from '../components/hoc/withAuth'
-import withStore from '../components/hoc/withStore';
-import { inject, observer } from 'mobx-react'
+import Layout from '../components/layout';
+import React from 'react';
+import { inject, observer } from 'mobx-react';
 
 interface PI {
   shows: any
 }
 
-// @withStore()
-// @withAuth
 @inject('auth')
 @observer
-class Index extends Component<PI, null> {
+class Index extends React.Component<PI, any> {
   static getInitialProps = async function () {
 
 
-    return {
-    }
-  }
+    return {};
+  };
 
   render() {
     return (
       <Layout>
-        <h1>Batman TV Shows</h1>
+        <h1>{'Batman TV Shows'}</h1>
         <ul>
 
         </ul>
       </Layout>
-    )
+    );
   }
 
 }
-export default Index
+
+export default Index;

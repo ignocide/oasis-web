@@ -1,44 +1,41 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import propTypes from 'prop-types';
 
-import '../../style/modal.scss'
-import { toJS } from 'mobx';
-
+import '../../style/modal.scss';
 
 
 interface IProps {
-    children: any,
-    closeModal: void,
-    className?: string
+  children: any,
+  closeModal: void,
+  className?: string
 }
+
 class ModalForm extends Component<IProps, any> {
 
-    get className() {
-        const { className } = this.props;
-        const classNameList = ['modal']
+  get className() {
+    const {className} = this.props;
+    const classNameList = ['modal'];
 
-        classNameList.push(className)
+    classNameList.push(className);
 
-        return classNameList.join(' ')
-    }
+    return classNameList.join(' ');
+  }
 
-    render() {
+  render() {
 
-        const { header, children, footer, className, ...props } = this.props
-        return <div className={'modal'}>
-            <div className={'modal-header'}>
-                <h1>{header}</h1>
-            </div>
-            <div className={'modal-body'}>
+    const {header, children, footer, className, ...props} = this.props;
+    return <div className={'modal'}>
+      <div className={'modal-header'}>
+        <h1>{header}</h1>
+      </div>
+      <div className={'modal-body'}>
 
-            </div>
-            <div className='modal-footer'>
+      </div>
+      <div className='modal-footer'>
 
-            </div>
+      </div>
 
-        </div>
-    }
+    </div>;
+  }
 }
 
-export default ModalForm
+export default ModalForm;

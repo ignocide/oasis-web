@@ -1,6 +1,6 @@
 import React from "react";
-import { inject, observer } from 'mobx-react'
-import BoardStore from '../../store/boardStore'
+import { inject, observer } from 'mobx-react';
+import BoardStore from '../../store/boardStore';
 import '../../style/todo/board-list.scss';
 import Task from "../../vo/todo/task";
 import Modal from '../common/modal';
@@ -25,17 +25,17 @@ class TaskList extends React.Component<IProps> {
     selectedTask: null,
     taskCreateModal: false
   };
-
-  constructor(props) {
-    super(props);
-  }
-
+  onClickTask = (task: Task) => {
+    this.setState({
+      selectedTask: task
+    });
+  };
   format = [
     {
       label: ' ',
       width: 60,
       render: (task) => {
-        return <TaskCheckBox />
+        return <TaskCheckBox />;
       }
     },
     {
@@ -48,26 +48,22 @@ class TaskList extends React.Component<IProps> {
       render: (task: Task) => (
         <IconButton shape={'span'} onClick={() => this.onClickTask(task)} name={'create'} hoverText={'수정하기'}> </IconButton>)
     }
-  ]
-
-  onClickTask = (task: Task) => {
-    this.setState({
-      selectedTask: task
-    })
-  }
-
+  ];
   closeModal: void = () => {
     this.setState({
       selectedTask: null,
       taskCreateModal: false
-    })
+    });
   };
-
   onClickOpenCreateFormButton = () => {
     this.setState({
       selectedTask: null,
       taskCreateModal: true
-    })
+    });
+  };
+
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -101,7 +97,7 @@ class TaskList extends React.Component<IProps> {
           }
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -119,7 +115,7 @@ const TaskCheckBox = () => {
       </svg>
       {/* <div class="todo__text">Not so important task</div> */}
     </label>
-  )
-}
+  );
+};
 
-export default TaskList
+export default TaskList;

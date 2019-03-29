@@ -1,11 +1,11 @@
-import Link from 'next/link'
+import Link from 'next/link';
 import { Component } from 'react';
 import { Col, Row } from "../components/layout/grid";
 import LoginForm from "../components/loginForm";
-// import firebase from 'firebase';
+import '../style/index.scss';
+import '../style/header.scss';
 
-import '../style/index.scss'
-import '../style/header.scss'
+// import firebase from 'firebase';
 
 interface IProps {
   url?: {
@@ -83,16 +83,16 @@ class LoginPage extends Component<IProps, IState> {
           </div>
         </nav>
         <div className="container">
-          <Row style={{ paddingTop: 50, textAlign: 'center' }}>
+          <Row style={{paddingTop: 50, textAlign: 'center'}}>
             <Col size={6}>
               <LoginForm />
             </Col>
           </Row>
         </div>
       </div>
-    )
+    );
   }
 
 }
 
-export default LoginPage
+export default LoginPage;

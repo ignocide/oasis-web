@@ -1,7 +1,7 @@
-import {Component} from 'react';
-import {inject, observer} from 'mobx-react'
+import { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 
-import '../../style/woofer/playlists.scss'
+import '../../style/woofer/playlists.scss';
 import PlaylistsStore from "../../store/playlists";
 
 interface IProps {
@@ -27,11 +27,11 @@ class Playlists extends Component<IProps, IState> {
         {playlists.map(playlist => {
           return <div className="playlist" key={playlist.id}>
             {playlist.name}
-          </div>
+          </div>;
         })}
       </div>
-    </div>
+    </div>;
   }
 }
 
-export default Playlists
+export default Playlists;

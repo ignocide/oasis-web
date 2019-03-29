@@ -1,9 +1,9 @@
 import { Component } from 'react';
-import { inject, observer } from 'mobx-react'
+import { inject, observer } from 'mobx-react';
 
-import '../../style/woofer/playlists.scss'
+import '../../style/woofer/playlists.scss';
 import SearchStore from "../../store/playlists";
-import PlaylistsStore from '../../store/playlists';
+import PlaylistsStore from "../../store/playlists";
 import Playlist from 'vo/woofer/playlist';
 
 interface IProps {
@@ -22,19 +22,19 @@ class Search extends Component<IProps, IState> {
   state = {};
 
   render() {
-    const { playlists: playlistsStore } = this.props;
+    const {playlists: playlistsStore} = this.props;
 
-    const { playlists } = playlistsStore;
+    const {playlists} = playlistsStore;
     return <div className="playlists">
       <div>
         {playlists.map((playlist: Playlist) => {
           return <div className="playlist" key={playlist.id}>
             {playlist.name}
-          </div>
+          </div>;
         })}
       </div>
-    </div>
+    </div>;
   }
 }
 
-export default Search
+export default Search;
