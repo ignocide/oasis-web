@@ -1,6 +1,6 @@
 @import '../style/variables';
 
-nav#gnb {
+header#gnb {
     background-color: white;
     position: fixed;
     top: 0;
@@ -10,7 +10,6 @@ nav#gnb {
     height: auto;
     z-index:1;
     $nav-main-height: 60px;
-    $nav-sub-height: 50px;
     .gnb-main{
         height: 60px;
         border-bottom-color: #E8EBED;
@@ -35,34 +34,6 @@ nav#gnb {
                 flex:1 auto;
             }
 
-        }
-    }
-    .gnb-sub{
-        height: $nav-sub-height;
-        border-bottom-color: #E8EBED;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
-        a{
-            display: inline-block;
-            height: 100%;
-            padding: 0 20px;
-            line-height: $nav-sub-height;
-            text-decoration: none;
-            color: black;
-            font-size: 15px;
-            letter-spacing: 1px;
-        }
-        a + a{
-            margin-left: 20px;
-        }
-        .gnb-sub-wrapper{
-            display: flex;
-            .gnb-sub-right,.gnb-sub-left{
-                display: inline-block;
-            }
-            .gnb-sub-center{
-                flex:1 auto;
-            }
         }
     }
 }

@@ -2,6 +2,9 @@
 @import '../style/grid';
 @import 'form';
 
+ul{
+    padding: 0;
+}
 *{
     box-sizing: border-box;
 }
@@ -12,22 +15,35 @@ body{
     font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
 }
 
+
+// header {
+
+// }
+
+
+$header-size: 60px;
+aside#sidebar{
+    position: fixed;
+    left: 0;
+    top: $header-size;
+    bottom: 0;
+    width: 280px;
+    background-color: white;
+
+    & + #main-container{
+        padding-left: 280px + 80px;
+    }
+
+}
+
 .main > .container{
-    padding-top: 110px;
+    padding-top: $header-size;
 }
 
-header {
-
-}
-
-.container{
-    max-width:1200px;
-    margin-left: auto;
-    margin-right: auto;
+#main-container{
+    // @media (max-width: 1200px){
+        padding-left: 280px + 80px;
+        padding-right: 80px;
+    // }
     text-align: left;
 }
-
-.row:after{
-
-}
-

@@ -2,8 +2,8 @@ import Link from "next/link";
 import '../style/header.scss'
 
 
-const Header = ({ sub }) => (
-  <nav id={'gnb'}>
+const Header = ({sub}) => (
+  <header id={'gnb'}>
     <div className="gnb-main">
       <div className="gnb-main-wrapper container">
         <div className="gnb-main-left">
@@ -17,14 +17,7 @@ const Header = ({ sub }) => (
         </div>
       </div>
     </div>
-    <div className="gnb-sub">
-      <div className="gnb-sub-wrapper container">
-        <div className="gnb-sub-left">
-          {sub}
-        </div>
-      </div>
-    </div>
-  </nav>
+  </header>
 )
 
 export default Header

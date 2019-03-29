@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx'
 import Playlist from '../vo/woofer/playlist';
-import Board from '../vo/todo/board';
+import Board, { IBoard } from '../vo/todo/board';
 import boardRepository from '../api/server/todo/boardRepository'
 
 class BoardListStore {
@@ -19,6 +19,11 @@ class BoardListStore {
     @action
     concatBoards = (boards: Board[]) => {
         this.boards = this.boards.concat(boards.map((board) => new Board(board)));
+    }
+
+    @action
+    addBoard = (board: IBoard) => {
+        this.boards = [...this.boards, new Board(board)];
     }
 
     @action

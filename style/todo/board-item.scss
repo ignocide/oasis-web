@@ -1,15 +1,28 @@
 .board-item{
     background-color: white;
     border-radius: 4px;
-    padding: 20px;
+    padding: 15px 20px 15px 20px;
     font-size: 16px;
-    & + .board-item{
-        margin-top: 10px;
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     &:hover{
-        font-weight: bold;
-        padding: 19px;
-        border: 1px solid #eee;
+        background-color: #fafafa;
+    }
+
+
+    &.board-create-form{
+        padding: 9px 20px;
+        input.input{
+            width: 100%;
+            border: 1px solid transparent;
+            border-radius: 0;
+            background-color: transparent;
+            &:focus{
+                outline: none;
+                border-color: #eee;
+            }
+        }
     }
 }
 

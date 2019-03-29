@@ -4,6 +4,7 @@ import BoardStore from '../../store/board'
 import Board from "../../vo/todo/board";
 
 import '../../style/todo/board-item.scss';
+import { IconButton } from "../../components/form";
 
 interface IProps {
     boardStore: BoardStore,
@@ -21,9 +22,12 @@ class BoardItem extends Component<IProps> {
     render() {
         const { board } = this.props
         return (
-            <div className="board-item" onClick={this.onClickBoard}>
-                {board.name}
-            </div>
+            <li className="board-item" >
+                <div onClick={this.onClickBoard}>
+                    {board.name}
+                </div>
+                <IconButton name={'more'} shape={'span'} />
+            </li>
         )
     }
 }
