@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import { Component } from 'react';
-import { Col, Row } from "../components/layout/grid";
+import React from 'react';
+import { Row } from "../components/layout/grid";
 import LoginForm from "../components/loginForm";
 import '../style/index.scss';
 import '../style/header.scss';
+import Header from "../components/header";
 
 // import firebase from 'firebase';
 
@@ -18,7 +18,7 @@ interface IProps {
 interface IState {
 }
 
-class LoginPage extends Component<IProps, IState> {
+class LoginPage extends React.Component<IProps, IState> {
 
   componentDidMount() {
     // this.initFirebase();
@@ -59,36 +59,42 @@ class LoginPage extends Component<IProps, IState> {
 
     return (
       <div className="main">
-        <nav id={'gnb'}>
-          <div className="gnb-main">
-            <div className="gnb-main-wrapper container">
-              <div className="gnb-main-left">
-                <Link href={'/'}>{"WOOFER"}</Link>
-              </div>
-              <div className="gnb-main-center">
+        <Header />
+        {/*<nav id={'gnb'}>*/}
+        {/*<div className="gnb-main">*/}
+        {/*<div className="gnb-main-wrapper container">*/}
+        {/*<div className="gnb-main-left">*/}
+        {/*<Link href={'/'}>{"WOOFER"}</Link>*/}
+        {/*</div>*/}
+        {/*<div className="gnb-main-center">*/}
 
-              </div>
-              <div className="gnb-main-right">
-                <Link href={'/'}>{"로그인"}</Link>
-              </div>
-            </div>
-          </div>
-          <div className="gnb-sub">
-            <div className="gnb-sub-wrapper container">
-              <div className="gnb-sub-left">
-                <Link href={'/'}>{'재생목록'}</Link>
-                <Link href={'/'}>{'검색'}</Link>
-              </div>
-            </div>
-          </div>
-        </nav>
-        <div className="container">
+        {/*</div>*/}
+        {/*<div className="gnb-main-right">*/}
+        {/*<Link href={'/'}>{"로그인"}</Link>*/}
+        {/*</div>*/}
+        {/*</div>*/}
+        {/*</div>*/}
+        {/*<div className="gnb-sub">*/}
+        {/*<div className="gnb-sub-wrapper container">*/}
+        {/*<div className="gnb-sub-left">*/}
+        {/*<Link href={'/'}>{'재생목록'}</Link>*/}
+        {/*<Link href={'/'}>{'검색'}</Link>*/}
+        {/*</div>*/}
+        {/*</div>*/}
+        {/*</div>*/}
+        {/*</nav>*/}
+        <div id={'main-container'} className="container">
           <Row style={{paddingTop: 50, textAlign: 'center'}}>
-            <Col size={6}>
-              <LoginForm />
-            </Col>
+            <LoginForm />
           </Row>
         </div>
+        {/*<div className="container">*/}
+        {/*<Row style={{paddingTop: 50, textAlign: 'center'}}>*/}
+        {/*<Col size={6}>*/}
+        {/*<LoginForm />*/}
+        {/*</Col>*/}
+        {/*</Row>*/}
+        {/*</div>*/}
       </div>
     );
   }

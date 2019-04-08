@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../store/boardStore';
-import '../../style/todo/task-detail-modal.scss';
 import Task from "../../vo/todo/task";
-import { FieldInput, FieldTextArea } from "../form/field";
+import { FieldInput, FieldTextArea } from "../form/Field";
 import { Button } from "../form";
+import '../../style/todo/task-detail-modal.scss';
 
 interface IProps {
   boardStore: BoardStore,
@@ -17,7 +17,7 @@ interface IState {
 
 @inject('boardStore')
 @observer
-class TaskDetailModal extends Component<IProps> {
+class TaskDetailModal extends React.Component<IProps> {
 
   static defaultProps = {
     task: {},
@@ -72,10 +72,8 @@ class TaskDetailModal extends Component<IProps> {
 
     return (
       <div className="task-detail-modal modal">
-        {/* <form> */}
-        {/* <form id={"task-update-form"} onSubmit={this.onSubmit}> */}
         <form>
-          <div className={'modal-header'}>{'Tasl 싱세'}</div>
+          <div className={'modal-header'}>{'Task 상세'}</div>
           <div className={'modal-body'}>
             <FieldInput name={'name'} label={'제목'} value={taskForm.name || ''} onChange={this.onChangeValue} />
             <FieldTextArea name={'detail'} label={'상세내용'} value={taskForm.detail || ''} onChange={this.onChangeValue} rows={7} />
@@ -86,7 +84,6 @@ class TaskDetailModal extends Component<IProps> {
             <Button shape={'text'} onClick={this.onClickDelete}>{'삭제'}</Button>
           </div>
         </form>
-        {/* </form> */}
       </div>
     );
   }

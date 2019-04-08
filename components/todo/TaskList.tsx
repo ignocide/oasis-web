@@ -3,11 +3,11 @@ import { inject, observer } from 'mobx-react';
 import BoardStore from '../../store/boardStore';
 import '../../style/todo/board-list.scss';
 import Task from "../../vo/todo/task";
-import Modal from '../common/modal';
-import TaskDetailModal from "./taskDetailModal";
-import Panel, { PanelHeader, PanelTable } from "../common/panel";
+import Modal from '../common/Modal';
+import TaskDetailModal from "./TaskDetailModal";
+import Panel, { PanelHeader, PanelTable } from "../common/Panel";
 import { IconButton } from "../form";
-import TaskCreateModal from "./taskCreateModal";
+import TaskCreateModal from "./TaskCreateModal";
 
 interface IProps {
   boardStore: BoardStore
@@ -87,11 +87,11 @@ class TaskList extends React.Component<IProps> {
         </Panel>
 
         <div>
-          {selectedTask && <Modal closeModal={this.closeModal}>
+          {selectedTask && <Modal requestClose={this.closeModal}>
             <TaskDetailModal task={selectedTask} requestClose={this.closeModal} />
           </Modal>}
           {
-            taskCreateModal && <Modal closeModal={this.closeModal}>
+            taskCreateModal && <Modal requestClose={this.closeModal}>
               <TaskCreateModal closeModal={this.closeModal} />
             </Modal>
           }

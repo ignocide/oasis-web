@@ -1,7 +1,8 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore, { ITaskCreateForm } from '../../store/boardStore';
-import { ButtonGroup, FieldInput } from "../form/field";
+import { CSSTransition } from "react-transition-group";
+import { ButtonGroup, FieldInput } from "../form/Field";
 import { Button } from "../form";
 
 import '../../style/todo/board-item.scss';

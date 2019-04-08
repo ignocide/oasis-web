@@ -1,9 +1,13 @@
-import { Component } from 'react';
-import '../style/login-form.scss';
+import React from 'react';
 import * as authApi from "../api/server/auth/index";
 import { COOKIE_KEYS, default as cookieUtil } from "../lib/cookies";
 import { setToken } from "../api/server/oasis";
 import Router from 'next/router';
+
+import '../style/login-form.scss';
+import Panel, { PanelBody, PanelFooter, PanelHeader } from "./common/panel";
+import { ButtonGroup, FieldInput } from "./form/field";
+import { Button } from "./form/index";
 
 interface IProps {
 }
@@ -15,7 +19,7 @@ interface IState {
   }
 }
 
-class LoginForm extends Component<IProps, IState> {
+class LoginForm extends React.Component<IProps, IState> {
   state = {
     loginForm: {
       username: '',
@@ -65,16 +69,22 @@ class LoginForm extends Component<IProps, IState> {
     const {username, password} = this.state.loginForm;
 
     return (
-      <form id='Login' onSubmit={this.requestLogin}>
-        <div className='SocialHeader'>
-          로그인
-        </div>
-        <div className='SocialBody'>
-          <input value={username} type={'text'} onChange={this.onChangeLoginFormValue} name={'username'} /><br />
-          <input value={password} type={'password'} onChange={this.onChangeLoginFormValue} name={'password'} /><br />
-          <button className='btn btn-social google' onClick={this.validate}>로그인</button>
-        </div>
-      </form>
+      <Panel>
+        <form id='Login' onSubmit={this.requestLogin}>
+          <PanelHeader>
+            {'로그인'}
+          </PanelHeader>
+          <PanelBody>
+            <FieldInput label={'email'} value={username} type={'text'} onChange={this.onChangeLoginFormValue} name={'username'} />
+            <FieldInput label={'password'} value={password} type={'password'} onChange={this.onChangeLoginFormValue} name={'password'} />
+          </PanelBody>
+          <PanelFooter>
+            <ButtonGroup>
+              <Button shape={'fill'} onClick={this.validate}>{'로그인'}</Button>
+            </ButtonGroup>
+          </PanelFooter>
+        </form>
+      </Panel>
     );
   }
 }

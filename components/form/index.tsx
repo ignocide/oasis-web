@@ -1,4 +1,4 @@
-import Icon from "../common/icon";
+import Icon from "../common/Icon";
 
 const Button = ({className = '', shape = '', color = '', type = 'text', children = null, ...props}) => {
 

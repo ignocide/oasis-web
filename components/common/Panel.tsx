@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import '../../style/panel.scss';
 
@@ -7,7 +7,11 @@ interface IProps {
   children: any,
 }
 
-class Panel extends Component<IProps, any> {
+class Panel extends React.Component<IProps, any> {
+
+  constructor(props){
+    super(props)
+  }
 
   render() {
 
@@ -31,7 +35,13 @@ export const PanelFooter = ({children, right = null}) => {
   </div>;
 };
 
-// class PanelTable extends Component {
+export const PanelBody = ({children, right = null}) => {
+  return <div className={'panel-body'}>
+    {children}{right}
+  </div>;
+};
+
+// class PanelTable extends React.Component {
 
 
 //     render() {
@@ -91,9 +101,7 @@ export const PanelTable = ({format, data, row = null, className = null, ...props
       <table className={`u-full-width${className ? ' ' + className : ''}`} {...props}>
         <thead>
         <tr>
-          {
-            labels
-          }
+          {labels}
         </tr>
         </thead>
         <tbody>

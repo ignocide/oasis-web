@@ -5,8 +5,8 @@ import { inject, observer } from 'mobx-react';
 
 import { getStore } from "../store/index";
 import Header from '../components/header';
-import BoardList from '../components/todo/boardList';
-import TaskList from '../components/todo/taskList';
+import BoardList from '../components/todo/BoardList';
+import TaskList from '../components/todo/TaskList';
 import withStore from '../components/hoc/withStore';
 import BoardListStore from '../store/boardListStore';
 import BoardStore from '../store/boardStore';

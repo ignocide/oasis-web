@@ -2,7 +2,7 @@ import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore, { ITaskCreateForm } from '../../store/boardStore';
 import '../../style/todo/task-detail-modal.scss';
-import { FieldInput, FieldTextArea } from "../form/field";
+import { FieldInput, FieldTextArea } from "../form/Field";
 import { Button } from "../form";
 
 interface IProps {

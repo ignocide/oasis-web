@@ -4,7 +4,9 @@ import BoardStore from '../../store/boardStore';
 import Board from "../../vo/todo/board";
 
 import '../../style/todo/board-item.scss';
-import { IconButton } from "../../components/form";
+import { IconButton } from "../../components/form/index";
+import DropBox from "../common/Dropbox";
+import { Menu, MenuItem } from "../common/MenuForm";
 
 interface IProps {
   boardStore: BoardStore,
@@ -31,9 +33,24 @@ class BoardItem extends React.Component<IProps, any> {
         <div onClick={this.onClickBoard}>
           {board.name}
         </div>
-        <IconButton name={'more'} shape={'span'} />
+        <DropBox box={<BoardMenu/>}><IconButton name={'more'} shape={'span'} /></DropBox>
       </li>
     );
+  }
+}
+
+class BoardMenu extends React.Component<any, any> {
+
+  render() {
+    const {BoardMenu} = this.props;
+
+    return (
+      <Menu>
+        <MenuItem>{'수정'}</MenuItem>
+        <MenuItem>{'삭제'}</MenuItem>
+      </Menu>
+    );
+
   }
 }
 

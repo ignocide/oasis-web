@@ -1,3 +1,5 @@
+import React from 'react';
+
 const FieldInput = ({className = null, name, label, autoComplete = 'off', ...props}) => {
   return <div className={["form-field", className].join(" ")}>
     {label && <label className={'form-label'} htmlFor={name}>{label}</label>}

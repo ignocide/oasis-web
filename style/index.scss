@@ -2,27 +2,27 @@
 @import '../style/grid';
 @import 'form';
 
-ul{
+ul {
     padding: 0;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: $background-color;
     padding: 0;
     margin: 0;
-    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
-
 
 // header {
 
 // }
 
-
 $header-size: 60px;
-aside#sidebar{
+aside#sidebar {
     position: fixed;
     left: 0;
     top: $header-size;
@@ -30,20 +30,107 @@ aside#sidebar{
     width: 280px;
     background-color: white;
 
-    & + #main-container{
+    & + #main-container {
         padding-left: 280px + 80px;
     }
 
 }
 
-.main > .container{
+.main > .container {
     padding-top: $header-size;
 }
 
-#main-container{
+#main-container {
     // @media (max-width: 1200px){
-        padding-left: 280px + 80px;
-        padding-right: 80px;
+    padding-left: 80px;
+    padding-right: 80px;
     // }
     text-align: left;
+}
+
+#floater-container {
+    .floater-blur {
+        background-color: transparent;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .floater {
+        position: fixed;
+    }
+}
+
+.menu-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    transform: scale(0);
+    transition: transform 1s;
+    .menu {
+        padding: 10px 15px;
+        & + .menu {
+            border-top: 1px solid #eee;
+        }
+    }
+
+    &-open {
+        transform: scale(1);
+    }
+
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    li {
+        list-style: none;
+    }
+}
+
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+
+.popup-enter {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.popup-enter.popup-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+
+.popup-exit {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.popup-exit.popup-exit-active {
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
