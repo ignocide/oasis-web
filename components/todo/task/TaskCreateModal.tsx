@@ -1,9 +1,10 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
-import BoardStore, { ITaskCreateForm } from '../../store/boardStore';
-import '../../style/todo/task-detail-modal.scss';
-import { FieldInput, FieldTextArea } from "../form/Field";
-import { Button } from "../form";
+import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
+import '../../../style/todo/task-detail-modal.scss';
+import { FieldInput, FieldTextArea } from "../../form/Field";
+import { Button } from "../../form";
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../common/ModalForm";
 
 interface IProps {
   boardStore: BoardStore,
@@ -32,8 +33,8 @@ class TaskCreateModal extends React.Component<IProps, IState> {
       return;
     }
 
-    const {taskCreateForm} = this.state;
-    const {boardStore, closeModal} = this.props;
+    const { taskCreateForm } = this.state;
+    const { boardStore, closeModal } = this.props;
 
     boardStore.createTask(taskCreateForm);
     this.initCrateForm();
@@ -50,7 +51,7 @@ class TaskCreateModal extends React.Component<IProps, IState> {
   };
 
   isValidation = () => {
-    const {taskCreateForm} = this.state;
+    const { taskCreateForm } = this.state;
 
     return !!taskCreateForm.name;
   };
@@ -65,24 +66,22 @@ class TaskCreateModal extends React.Component<IProps, IState> {
   };
 
   render() {
-    const {taskCreateForm} = this.state;
-    const {closeModal} = this.props;
+    const { taskCreateForm } = this.state;
+    const { closeModal } = this.props;
     return (
-      <div className={'task-create-modal modal'}>
+      <ModalForm>
         <form>
-          <div className={'modal-header'}>
-            {'Task 추가'}
-          </div>
-          <div className={'modal-body'}>
+          <ModalHeader>{'할일 추가'}</ModalHeader>
+          <ModalBody>
             <FieldInput name={'name'} label={'제목'} value={taskCreateForm.name || ''} onChange={this.onChangeValue} />
             <FieldTextArea name={'detail'} label={'상세내용'} value={taskCreateForm.detail || ''} onChange={this.onChangeValue} rows={7} />
-          </div>
-          <div className={'modal-footer'}>
+          </ModalBody>
+          <ModalFooter>
             <Button type={'submit'} shape={'text'} onClick={this.createTask}>{'추가'}</Button>
             <Button shape={'text'} onClick={closeModal}>{'취소'}</Button>
-          </div>
+          </ModalFooter>
         </form>
-      </div>
+      </ModalForm>
     );
   }
 }

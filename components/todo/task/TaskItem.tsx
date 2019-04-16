@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { inject, observer } from 'mobx-react';
-import BoardStore from '../../store/boardStore';
-import Task from "../../vo/todo/task";
+import BoardStore from '../../../store/boardStore';
+import Task from "../../../vo/todo/task";
 
-import '../../style/todo/task-item.scss';
+import '../../../style/todo/task-item.scss';
 
 interface IProps {
   boardStore: BoardStore,

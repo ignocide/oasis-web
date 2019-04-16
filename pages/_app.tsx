@@ -1,5 +1,6 @@
 import App, { Container } from 'next/app';
 import React from 'react';
+import { ModalProvider } from "../components/context/Modal";
 
 interface IProps {
   Component: any,
@@ -114,13 +115,15 @@ class OasisApp extends App<IProps> {
   // }
 
   render() {
-    const {Component, pageProps, ...props} = this.props;
+    const { Component, pageProps, ...props } = this.props;
     // const { stores } = this.state;
     // console.log('in render stores', stores)
     return (
       <Container>
-        <Component  {...pageProps} />
-        <div id="modal-container" />
+        <ModalProvider>
+          <Component  {...pageProps} />
+          <div id="modal-container" />
+        </ModalProvider>
       </Container>
     );
   }

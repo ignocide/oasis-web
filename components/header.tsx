@@ -1,24 +1,32 @@
 import React from 'react';
 import Link from "next/link";
+import { inject, observer } from "mobx-react";
+
 import '../style/header.scss';
 
+@inject('auth')
+@observer
+class Header extends React.Component<any, any> {
 
-const Header = ({sub = null}) => (
-  <header id={'gnb'}>
-    <div className="gnb-main">
-      <div className="gnb-main-wrapper container">
-        <div className="gnb-main-left">
-          <Link href={'/'}>{"OASIS"}</Link>
+  render() {
+    const { sub, auth } = this.props;
+    return (
+      <header id={'gnb'}>
+        <div className="gnb-main">
+          <div className="gnb-main-wrapper container">
+            <div className="gnb-main-left">
+              <Link href={'/'}>{"OASIS"}</Link>
+            </div>
+            <div className="gnb-main-center">
+            </div>
+            <div className="gnb-main-right">
+              {!auth.user && <Link href={'/'}>{"로그인"}</Link>}
+            </div>
+          </div>
         </div>
-        <div className="gnb-main-center">
-
-        </div>
-        <div className="gnb-main-right">
-          <Link href={'/'}>{"로그인"}</Link>
-        </div>
-      </div>
-    </div>
-  </header>
-);
+      </header>
+    );
+  }
+}
 
 export default Header;

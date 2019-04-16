@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React from 'react';
 import { stackStore } from '../../store/index';
 import withStore from './withStore';
 import AuthStore from '../../store/auth';
@@ -13,14 +13,14 @@ interface IProps {
   auth: AuthStore
 }
 
-function withAuth(WrappedComponent) {
+function withAuth(WrappedComponent: any) {
   // ...and returns another component...
   @inject('auth')
-  class _withAuth extends Component<IProps, any> {
+  class _withAuth extends React.Component<IProps, any> {
     constructor(props) {
       super(props);
-      const {auth, withAuthProps} = props;
-      const {user, token} = withAuthProps;
+      const { auth, withAuthProps } = props;
+      const { user, token } = withAuthProps;
       if (user) {
         auth.setUser(user);
         auth.setToken(token);
@@ -30,7 +30,7 @@ function withAuth(WrappedComponent) {
 
     static async getInitialProps(ctx) {
       // const { user } = ctx.req.session
-      const {req} = ctx;
+      const { req } = ctx;
 
       let user = null;
       let token = null;

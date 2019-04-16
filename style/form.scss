@@ -126,13 +126,6 @@ button.button{
             line-height: 32px;
             min-height: 32px;
     }
-    
-
-    &.icon-button{
-        height: 24px;
-        min-width: 24px;
-        text-align: center;
-    }
 
 
     &.btn-text{
@@ -143,6 +136,12 @@ button.button{
         outline: 0; 
         &:active{
             background-color: #eee;
+        }
+        &.red {
+            color: $error-color;
+        }
+        &.primary{
+            color: $primary-color;
         }
     }
 
@@ -157,6 +156,12 @@ button.button{
         color: initial;
     }
 
+    &.btn-icon{
+        @extend button.button.btn-span;
+        height: 24px;
+        min-width: 24px;
+        text-align: center;
+    }
 }
 
 

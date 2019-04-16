@@ -1,5 +1,6 @@
 @import '../style/variables';
 @import '../style/grid';
+@import 'animation';
 @import 'form';
 
 ul {
@@ -14,6 +15,7 @@ body {
     background-color: $background-color;
     padding: 0;
     margin: 0;
+    font-size: 14px;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
@@ -65,72 +67,10 @@ aside#sidebar {
     }
 }
 
-.menu-container {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background-color: white;
-    border-radius: 4px;
-    border: 1px solid #eee;
-    transform: scale(0);
-    transition: transform 1s;
-    .menu {
-        padding: 10px 15px;
-        & + .menu {
-            border-top: 1px solid #eee;
-        }
-    }
-
-    &-open {
-        transform: scale(1);
-    }
-
-}
-
 ul {
     margin: 0;
     padding: 0;
     li {
         list-style: none;
     }
-}
-
-.fade-enter {
-    opacity: 0;
-}
-
-.fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-
-.fade-exit {
-    opacity: 1;
-}
-
-.fade-exit.fade-exit-active {
-    opacity: 0;
-    transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-
-
-.popup-enter {
-    opacity: 0;
-    transform: scale(0);
-}
-
-.popup-enter.popup-enter-active {
-    opacity: 1;
-    transform: scale(1);
-    transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-}
-
-.popup-exit {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.popup-exit.popup-exit-active {
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }

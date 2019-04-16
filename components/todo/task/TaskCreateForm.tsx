@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import { inject, observer } from 'mobx-react';
-import BoardStore, { ITaskCreateForm } from '../../store/boardStore';
-import Task from "../../vo/todo/task";
+import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
+import Task from "../../../vo/todo/task";
 
-import '../../style/todo/task-item.scss';
+import '../../../style/todo/task-item.scss';
 
 interface IProps {
   boardStore: BoardStore,
@@ -16,7 +16,7 @@ interface IState {
 
 @inject('boardStore')
 @observer
-class BoardItem extends Component<IProps, IState> {
+class BoardItem extends React.Component<IProps, IState> {
   state = {
     taskCreateForm: {
       name: ''
@@ -30,8 +30,8 @@ class BoardItem extends Component<IProps, IState> {
       return;
     }
 
-    const {taskCreateForm} = this.state;
-    const {boardStore} = this.props;
+    const { taskCreateForm } = this.state;
+    const { boardStore } = this.props;
 
     boardStore.createTask(taskCreateForm);
     this.initCrateForm();
@@ -40,13 +40,14 @@ class BoardItem extends Component<IProps, IState> {
   initCrateForm = () => {
     this.setState({
       taskCreateForm: {
-        name: ''
+        name: '',
+        detail: ''
       }
     });
   };
 
   isValidation = () => {
-    const {taskCreateForm} = this.state;
+    const { taskCreateForm } = this.state;
 
     return !!taskCreateForm.name;
   };
@@ -55,14 +56,15 @@ class BoardItem extends Component<IProps, IState> {
     const name = e.target.value;
     this.setState({
       taskCreateForm: {
-        name
+        name,
+        detail: ''
       }
     });
   };
 
   render() {
-    const {task} = this.props;
-    const {taskCreateForm} = this.state;
+    const { task } = this.props;
+    const { taskCreateForm } = this.state;
     return (
       <li className="task-item task-create-form">
         <form onSubmit={this.createTask}>

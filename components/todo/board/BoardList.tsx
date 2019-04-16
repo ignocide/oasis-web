@@ -1,14 +1,15 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
-import BoardItem from './BoardItem';
+import BoardListItem from './BoardListItem';
 import BoardCreateModal from './BoardCreateModal';
-import BoardListStore from '../../store/boardListStore';
+import BoardListStore from '../../../store/boardListStore';
 
-import Icon from "../common/Icon";
-import Modal from '../common/Modal';
-import { Button } from "../form";
+import Icon from "../../common/Icon";
+import Modal from '../../common/Modal';
+import { Button } from "../../form";
 
-import '../../style/todo/board-list.scss';
+import '../../../style/todo/board-list.scss';
+import { ModalConsumer } from "../../context/Modal";
 
 interface IProps {
   boardListStore: BoardListStore
@@ -53,7 +54,7 @@ class BoardList extends React.Component<IProps, IState> {
           {'프로젝트'}<Button className={'board-add-btn'} shape={'span'} onClick={this.onClickRequestCreateBoardButton}><Icon name={'add'} /></Button>
         </div>
         <ul>
-          {boards.map((board) => <BoardItem key={board.id} board={board} />)}
+          {boards.map((board) => <BoardListItem key={board.id} board={board} />)}
         </ul>
         {createBoardModal && <Modal requestClose={this.closeCreateBoardModal}>
           <BoardCreateModal requestClose={this.closeCreateBoardModal} />

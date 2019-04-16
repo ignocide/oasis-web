@@ -1,11 +1,11 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
-import BoardStore, { ITaskCreateForm } from '../../store/boardStore';
-import { CSSTransition } from "react-transition-group";
-import { ButtonGroup, FieldInput } from "../form/Field";
-import { Button } from "../form";
+import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
+import { FieldInput } from "../../form/Field";
+import { Button } from "../../form";
 
-import '../../style/todo/board-item.scss';
+import '../../../style/todo/board-item.scss';
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../common/ModalForm";
 
 interface IProps {
   boardStore: BoardStore,
@@ -22,7 +22,8 @@ class BoardItem extends React.Component<IProps, IState> {
   state = {
     boardCreateForm: {
       name: ''
-    }
+    },
+    modalOpen: false
   };
 
   constructor(props) {
@@ -38,7 +39,7 @@ class BoardItem extends React.Component<IProps, IState> {
   };
 
   isValidation = () => {
-    const {boardCreateForm} = this.state;
+    const { boardCreateForm } = this.state;
 
     return !!boardCreateForm.name;
   };
@@ -59,8 +60,8 @@ class BoardItem extends React.Component<IProps, IState> {
       return;
     }
 
-    const {boardCreateForm} = this.state;
-    const {boardStore, requestClose} = this.props;
+    const { boardCreateForm } = this.state;
+    const { boardStore, requestClose } = this.props;
 
     boardStore.createBoard(boardCreateForm).then(() => {
       requestClose();
@@ -68,8 +69,8 @@ class BoardItem extends React.Component<IProps, IState> {
   };
 
   onChangeValue = (e) => {
-    let {name, value} = e.target;
-    let {boardCreateForm} = this.state;
+    let { name, value } = e.target;
+    let { boardCreateForm } = this.state;
     boardCreateForm[name] = value;
     this.setState({
       boardCreateForm
@@ -77,16 +78,18 @@ class BoardItem extends React.Component<IProps, IState> {
   };
 
   render() {
-    const {task} = this.props;
-    const {boardCreateForm} = this.state;
+    const { task } = this.props;
+    const { boardCreateForm, modalOpen } = this.state;
     return (
-      <div className="task-detail-modal modal">
-        <h2>{"프로젝트 추가"}</h2>
-        <FieldInput name={'name'} label={'프로젝트명'} value={boardCreateForm.name || ''} onChange={this.onChangeValue} />
-        <ButtonGroup>
-          <Button type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
-        </ButtonGroup>
-      </div>
+      <ModalForm>
+        <ModalHeader>{'프로젝트 추가'}</ModalHeader>
+        <ModalBody>
+          <FieldInput name={'name'} label={'프로젝트명'} value={boardCreateForm.name || ''} onChange={this.onChangeValue} />
+        </ModalBody>
+        <ModalFooter>
+          <Button shape={'text'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
+        </ModalFooter>
+      </ModalForm>
     );
   }
 }

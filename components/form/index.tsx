@@ -1,6 +1,7 @@
+import React from 'react';
 import Icon from "../common/Icon";
 
-const Button = ({className = '', shape = '', color = '', type = 'text', children = null, ...props}) => {
+const Button = ({ className = '', shape = '', color = '', type = 'text', children = null, ...props }) => {
 
   const classNameList = ['button'];
 
@@ -15,20 +16,42 @@ const Button = ({className = '', shape = '', color = '', type = 'text', children
   }
   return <button className={classNameList.join(' ')} type={type} {...props}>{children}</button>;
 };
+//
+// const IconButton = ({ className = '', type = 'text', shape = '', color = '', name, children = null, ...props }) => {
+//   const classNameList = ['button btn-icon'];
+//
+//   if (className) {
+//     classNameList.push(className);
+//   }
+//   if (shape) {
+//     classNameList.push(`btn-${shape}`);
+//   }
+//   if (color) {
+//     classNameList.push(`btn-${color}`);
+//   }
+//   return <button className={classNameList.join(" ")} type={type} {...props}><Icon name={name} /></button>;
+// };
 
-const IconButton = ({className = '', type = 'text', shape = '', color = '', name, children = null, ...props}) => {
-  const classNameList = ['button icon-button'];
+class IconButton extends React.Component<any, any> {
 
-  if (className) {
-    classNameList.push(className);
-  }
-  if (shape) {
-    classNameList.push(`btn-${shape}`);
-  }
-  if (color) {
-    classNameList.push(`btn-${color}`);
-  }
-  return <button className={classNameList.join(" ")} type={type} {...props}><Icon name={name} /></button>;
-};
+  render() {
+
+    const { className = '', type = 'text', shape = '', color = '', name, children = null, ...props } = this.props;
+    console.log(props)
+    const classNameList = ['button btn-icon'];
+
+    if (className) {
+      classNameList.push(className);
+    }
+    if (shape) {
+      classNameList.push(`btn-${shape}`);
+    }
+    if (color) {
+      classNameList.push(`btn-${color}`);
+    }
+    return <button className={classNameList.join(" ")} type={type} {...props}><Icon name={name} /></button>;
+  };
+
+}
 
 export { Button, IconButton };

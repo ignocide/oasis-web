@@ -5,8 +5,8 @@ import { inject, observer } from 'mobx-react';
 
 import { getStore } from "../store/index";
 import Header from '../components/header';
-import BoardList from '../components/todo/BoardList';
-import TaskList from '../components/todo/TaskList';
+import BoardList from '../components/todo/board/BoardList';
+import TaskList from '../components/todo/task/TaskList';
 import withStore from '../components/hoc/withStore';
 import BoardListStore from '../store/boardListStore';
 import BoardStore from '../store/boardStore';
@@ -35,10 +35,10 @@ enum PAGES {
   boardStore: BoardStore
 })
 class TodoPage extends React.Component<IProps, IState> {
-  static getInitialProps = async function ({req, res, ...etc}) {
+  static getInitialProps = async function ({ req, res, ...etc }) {
 
     const boardListStore: BoardListStore = getStore('boardListStore');
-    const {boards} = boardListStore;
+    const { boards } = boardListStore;
     if (!boards.length) {
       await boardListStore.fetchBoards();
     }
@@ -54,7 +54,7 @@ class TodoPage extends React.Component<IProps, IState> {
   render() {
     return (
       <div className="main">
-        <Header/>
+        <Header />
         <aside id={"sidebar"}>
           <BoardList />
         </aside>

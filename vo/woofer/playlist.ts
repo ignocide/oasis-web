@@ -7,11 +7,11 @@ interface IPlaylist {
 }
 
 class Playlist implements IPlaylist {
-  id: number
-  name: string
-  isDefault: boolean
-  createdAt?: Date
-  updatedAt?: Date
+  id: number;
+  name: string;
+  isDefault: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
 
   constructor(playlist: IPlaylist) {
     this.id = playlist.id;
@@ -22,5 +22,5 @@ class Playlist implements IPlaylist {
   }
 }
 
-export { IPlaylist }
-export default Playlist
+export { IPlaylist };
+export default Playlist;

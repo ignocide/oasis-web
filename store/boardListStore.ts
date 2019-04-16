@@ -31,6 +31,14 @@ class BoardListStore {
     const list: any[] = result.list;
     this.setBoards(list);
   }
+
+  @action
+  async removeBoard(boardId: number) {
+    await boardRepository.removeBoard(boardId);
+    this.boards = this.boards.filter((board) => {
+      return board.id !== boardId;
+    });
+  }
 }
 
 export default BoardListStore;

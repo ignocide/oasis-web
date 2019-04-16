@@ -1,4 +1,4 @@
-import { action, observable } from 'mobx'
+import { action, observable } from 'mobx';
 
 interface IUser {
   username: string,
@@ -7,16 +7,16 @@ interface IUser {
 }
 
 class Auth {
-    @observable user: IUser = null;
+  @observable user: IUser = null;
 
-    constructor(isServer: boolean, initialData: any) {
-        this.user = initialData.user;
-        this.token = initialData.token;
-    }
+  constructor(isServer: boolean, initialData: any) {
+    this.user = initialData.user;
+  }
 
-    @action
-    setUser = (user:IUser) => {
-        this.user = user
-    }
+  @action
+  setUser = (user: IUser) => {
+    this.user = user;
+  };
 }
+
 export default Auth;

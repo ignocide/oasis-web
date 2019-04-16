@@ -1,12 +1,12 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
-import BoardStore from '../../store/boardStore';
-import '../../style/todo/board-list.scss';
-import Task from "../../vo/todo/task";
-import Modal from '../common/Modal';
+import BoardStore from '../../../store/boardStore';
+import '../../../style/todo/board-list.scss';
+import Task, { STEP } from "../../../vo/todo/task";
+import Modal from '../../common/Modal';
 import TaskDetailModal from "./TaskDetailModal";
-import Panel, { PanelHeader, PanelTable } from "../common/Panel";
-import { IconButton } from "../form";
+import Panel, { PanelHeader, PanelTable } from "../../common/Panel";
+import { IconButton } from "../../form";
 import TaskCreateModal from "./TaskCreateModal";
 
 interface IProps {
@@ -25,17 +25,27 @@ class TaskList extends React.Component<IProps> {
     selectedTask: null,
     taskCreateModal: false
   };
+
   onClickTask = (task: Task) => {
     this.setState({
       selectedTask: task
     });
+  };
+
+  onChangeTaskState = (e, task) => {
+    const isChecked = e.target.checked;
+    const { boardStore } = this.props;
+    boardStore.updateTaskStep(task, {
+      step: isChecked ? STEP.DONE : STEP.TODO
+    });
+
   };
   format = [
     {
       label: ' ',
       width: 60,
       render: (task) => {
-        return <TaskCheckBox />;
+        return <TaskCheckBox onChange={(e) => this.onChangeTaskState(e, task)} checked={task.step !== 'TODO'} />;
       }
     },
     {
@@ -46,7 +56,7 @@ class TaskList extends React.Component<IProps> {
       label: ' ',
       width: 60,
       render: (task: Task) => (
-        <IconButton shape={'span'} onClick={() => this.onClickTask(task)} name={'create'} hoverText={'수정하기'}> </IconButton>)
+        <IconButton onClick={() => this.onClickTask(task)} name={'create'} hoverText={'수정하기'}> </IconButton>)
     }
   ];
   closeModal: void = () => {
@@ -67,9 +77,9 @@ class TaskList extends React.Component<IProps> {
   }
 
   render() {
-    const {boardStore} = this.props;
-    const {tasks, board} = boardStore;
-    const {taskCreateModal, selectedTask} = this.state;
+    const { boardStore } = this.props;
+    const { tasks, board } = boardStore;
+    const { taskCreateModal, selectedTask } = this.state;
     if (!board) {
       return null;
     }
@@ -77,7 +87,7 @@ class TaskList extends React.Component<IProps> {
       <div>
         <Panel>
           <PanelHeader right={
-            <IconButton shape={'span'} onClick={this.onClickOpenCreateFormButton} name={'add'}> </IconButton>
+            <IconButton onClick={this.onClickOpenCreateFormButton} name={'add'}> </IconButton>
           }>{board.name}</PanelHeader>
           <PanelTable
             format={this.format}
@@ -92,7 +102,7 @@ class TaskList extends React.Component<IProps> {
           </Modal>}
           {
             taskCreateModal && <Modal requestClose={this.closeModal}>
-              <TaskCreateModal closeModal={this.closeModal} />
+              <TaskCreateModal requestClose={this.closeModal} />
             </Modal>
           }
         </div>
@@ -102,10 +112,10 @@ class TaskList extends React.Component<IProps> {
 }
 
 
-const TaskCheckBox = () => {
+const TaskCheckBox = ({ ...props }) => {
   return (
     <label className="task-checkbox">
-      <input className="task-checkbox-input" type="checkbox" />
+      <input className="task-checkbox-input" type="checkbox" {...props} />
 
       <svg xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink" className="task-checkbox-icon" viewBox="0 0 25 25">
         {/* <path className="todo__box" d="M21 12.7v5c0 1.3-1 2.3-2.3 2.3H8.3C7 20 6 19 6 17.7V7.3C6 6 7 5 8.3 5h10.4C20 5 21 6 21 7.3v5.4"></path> */}

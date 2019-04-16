@@ -1,41 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import '../../style/modal.scss';
 
+export const ModalForm = ({ children, ...props }) => {
+  return <div className={'modal'} {...props}>
+    {children}
+  </div>;
+};
 
-interface IProps {
-  children: any,
-  closeModal: void,
-  className?: string
-}
+export const ModalHeader = ({ children, right = null, ...props }) => {
+  return <div className={'modal-header'} {...props}>
+    {children}{right}
+  </div>;
+};
 
-class ModalForm extends Component<IProps, any> {
+export const ModalBody = ({ children, ...props }) => {
+  return <div className={'modal-body'} {...props}>
+    {children}
+  </div>;
+};
 
-  get className() {
-    const {className} = this.props;
-    const classNameList = ['modal'];
-
-    classNameList.push(className);
-
-    return classNameList.join(' ');
-  }
-
-  render() {
-
-    const {header, children, footer, className, ...props} = this.props;
-    return <div className={'modal'}>
-      <div className={'modal-header'}>
-        <h1>{header}</h1>
-      </div>
-      <div className={'modal-body'}>
-
-      </div>
-      <div className='modal-footer'>
-
-      </div>
-
-    </div>;
-  }
-}
-
-export default ModalForm;
+export const ModalFooter = ({ children, ...props }) => {
+  return <div className={'modal-footer'} {...props}>
+    {children}
+  </div>;
+};
