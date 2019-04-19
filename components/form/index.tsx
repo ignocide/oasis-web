@@ -37,7 +37,7 @@ class IconButton extends React.Component<any, any> {
   render() {
 
     const { className = '', type = 'text', shape = '', color = '', name, children = null, ...props } = this.props;
-    console.log(props)
+
     const classNameList = ['button btn-icon'];
 
     if (className) {

@@ -33,7 +33,6 @@ class TaskDetailModal extends React.Component<IProps> {
   constructor(props) {
     super(props);
     modalController(this, 'deleteConfirm');
-    console.log(this, this.state);
   }
 
   initForm = () => {
