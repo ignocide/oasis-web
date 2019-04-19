@@ -1,6 +1,6 @@
 interface IVideo {
-  item_id: number,
-  video_id: string,
+  id: number,
+  videoId: string,
   name: string,
   thumbnail: string,
   description: string,
@@ -9,8 +9,8 @@ interface IVideo {
 }
 
 class Video<IVideo> {
-  item_id: number;
-  video_id: string;
+  id: number;
+  videoId: string;
   name: string;
   thumbnail: string;
   description: string;
@@ -18,8 +18,8 @@ class Video<IVideo> {
   utime: Date;
 
   constructor(video: IVideo) {
-    this.item_id = video.item_id;
-    this.video_id = video.video_id;
+    this.id = video.id;
+    this.videoId = video.videoId;
     this.name = video.name;
     this.thumbnail = video.thumbnail;
     this.description = video.description;

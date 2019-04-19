@@ -1,11 +1,12 @@
-import { Component } from 'react';
+import React from 'react';
 import { inject, observer } from 'mobx-react';
-import PlayerStore from "../../store/player";
+
+import PlaylistStore from '../../store/playlistStore';
 
 import '../../style/woofer/playlist.scss';
 
 interface IProps {
-  player?: PlayerStore
+  playlistStore?: PlaylistStore
 }
 
 
@@ -13,29 +14,23 @@ interface IState {
 
 }
 
-@inject('player')
+@inject('playlistStore')
 @observer
-class Playlist extends Component<IProps, IState> {
-  state = {};
-
-  setPlayer = (index) => {
-    const {player: playerStore} = this.props;
-    playerStore.setCurrentIndex(index);
-  };
+class Playlist extends React.Component<IProps, IState> {
 
   render() {
-    const {player: playerStore} = this.props;
-    const {list} = playerStore;
+    const { playlistStore } = this.props;
+    const { items } = playlistStore.playlist;
     return <div className="playlist">
-      {list.map((playlist, index) => {
-        return <div className="video" key={playlist.item_id} onClick={() => this.setPlayer(index)}>
+      {items.map((video, index) => {
+        return <div className="video" key={video.id} onClick={() => this.setPlayer(index)}>
           <div className="video-thumbnail">
-            <img src={playlist.thumbnail} />
+            <img src={video.thumbnail} />
 
           </div>
           <div className="video-info">
-            <p className="video-name">{playlist.name}</p>
-            <div className="video-description">{playlist.description}</div>
+            <p className="video-name">{video.name}</p>
+            <div className="video-description">{video.description}</div>
           </div>
           <div className="video-function">
 

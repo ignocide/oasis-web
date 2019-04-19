@@ -1,15 +1,19 @@
+import Video from "./video";
+
 interface IPlaylist {
   id: number,
   name: string,
   isDefault: boolean,
   createdAt?: Date,
   updatedAt?: Date,
+  items: Video[],
 }
 
 class Playlist implements IPlaylist {
   id: number;
   name: string;
   isDefault: boolean;
+  items: Video[] = [];
   createdAt?: Date;
   updatedAt?: Date;
 
@@ -19,6 +23,10 @@ class Playlist implements IPlaylist {
     this.isDefault = playlist.isDefault;
     this.createdAt = playlist.createdAt;
     this.updatedAt = playlist.updatedAt;
+
+    if(playlist.items){
+      this.items =playlist.items.map((video) => new Video(video))
+    }
   }
 }
 

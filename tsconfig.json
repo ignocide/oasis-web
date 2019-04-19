@@ -20,14 +20,5 @@
       "es2016",
       "dom"
     ]
-  },
-  "include": [
-    "components/**/*",
-    "config/**/*",
-    "server/**/*",
-    "pages/**/*",
-    "vo/**/*",
-    "style/**/*",
-    "api/**/*"
-  ]
+  }
 }

@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
-import Playlist from '../vo/woofer/playlist';
-import playlistsRepository, { IPlaylistCreateForm } from '../api/server/woofer/playlistRepository';
+import Playlist from '../../vo/woofer/playlist';
+import playlistsRepository, { IPlaylistCreateForm } from '../../api/server/woofer/playlistRepository';
 
 
 class Playlists {
@@ -26,14 +26,14 @@ class Playlists {
   // }
   @action
   async fetchPlaylists() {
-    let response:any = await playlistsRepository.fetchList();
-    this.playlists = response.playlists.map((playlist) => new Playlist(playlist))
+    let response: any = await playlistsRepository.fetchList();
+    this.playlists = response.playlists.map((playlist) => new Playlist(playlist));
   }
 
   @action
   async create(form: IPlaylistCreateForm) {
-    let response:any = await playlistsRepository.create(form);
-    this.playlists = [...this.playlists,new Playlist(response)]
+    let response: any = await playlistsRepository.create(form);
+    this.playlists = [...this.playlists, new Playlist(response)]
   }
 
   @action

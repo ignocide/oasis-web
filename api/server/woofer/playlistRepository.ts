@@ -25,16 +25,20 @@ class PlaylistRepository {
     this.axios = instance;
   }
 
+  fetch(playlistId: number) {
+    return this.axios.get(`/woofer/playlists/${playlistId}`);
+  }
+
   fetchList() {
-    return instance.get('/woofer/playlists');
+    return this.axios.get('/woofer/playlists');
   }
 
   create(form: IPlaylistCreateForm) {
-    return instance.post('/woofer/playlists',form);
+    return this.axios.post('/woofer/playlists',form);
   }
 
   remove(playlistId: number) {
-    return instance.delete(`/woofer/playlists/${playlistId}`);
+    return this.axios.delete(`/woofer/playlists/${playlistId}`);
   }
 }
 

@@ -1,16 +1,17 @@
 import React from 'react';
-import PlaylistList from "../components/woofer/PlaylistList";
-// import withAuth from '../components/hoc/withAuth'
-import withStore from '../components/hoc/withStore';
+import PlaylistList from '../../components/woofer/sidebar/PlaylistList';
+// import withAuth from '../../components/hoc/withAuth'
+import withStore from '../../components/hoc/withStore';
 import { inject, observer } from 'mobx-react';
-import PlaylistsStore from '../store/playlistsStore';
-import PlayerStore from '../store/playerStore';
-import Header from "../components/header";
-import { getStore } from "../store/index";
+import PlaylistsStore from '../../store/playlistsStore';
+import PlayerStore from '../../store/playerStore';
+import Header from "../../components/header";
+import { getStore } from "../../store/index";
 
-import '../style/header.scss';
-import '../style/index.scss';
-import '../style/woofer/index.scss';
+import '../../style/header.scss';
+import '../../style/index.scss';
+import '../../style/woofer/index.scss';
+import PlaylistStore from '../../store/playlistStore';
 
 interface IProps {
   playlists: PlaylistsStore
@@ -29,6 +30,7 @@ enum PAGES {
 
 @withStore({
   playlistsStore: PlaylistsStore,
+  playlistStore: PlaylistStore,
   playerStore: PlayerStore
 })
 class WooferPage extends React.Component<IProps, IState> {

@@ -9,7 +9,7 @@ import '../style/header.scss';
 class Header extends React.Component<any, any> {
 
   render() {
-    const { sub, auth } = this.props;
+    const { children = null, auth = null } = this.props;
     return (
       <header id={'gnb'}>
         <div className="gnb-main">
@@ -18,6 +18,7 @@ class Header extends React.Component<any, any> {
               <Link href={'/'}>{"OASIS"}</Link>
             </div>
             <div className="gnb-main-center">
+              {children}
             </div>
             <div className="gnb-main-right">
               {!auth.user && <Link href={'/'}>{"로그인"}</Link>}

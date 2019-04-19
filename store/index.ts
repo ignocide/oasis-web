@@ -1,11 +1,10 @@
-import { useStaticRendering } from 'mobx-react'
+import { useStaticRendering } from 'mobx-react';
 
 import AuthStore from './auth';
 
 
-const isServer = typeof window === 'undefined'
-useStaticRendering(isServer)
-
+const isServer = typeof window === 'undefined';
+useStaticRendering(isServer);
 
 
 let storeClasses = {
@@ -13,17 +12,16 @@ let storeClasses = {
 
 };
 
-let storeInstances = {
-
-}
+let storeInstances = {};
 
 function getStoreClass(key: string) {
-  return storeClasses[key]
+  return storeClasses[key];
 }
 
 export function getStore(key: string) {
   return storeInstances[key] || null;
 }
+
 export function initializeStore(key: string, initialData: any = {}) {
   // Always make a new store if server, otherwise state is shared between requests
   let storeClass = getStoreClass(key);
@@ -37,23 +35,23 @@ export function initializeStore(key: string, initialData: any = {}) {
     storeInstances[key] = store;
   }
   if (!storeInstances[key]) {
-    store = new storeClass(isServer, initialData)
+    store = new storeClass(isServer, initialData);
     storeInstances[key] = store;
   }
-  return store
+  return store;
 }
 
 export function initializeStores(storeInitalValues: any = {}): any {
   Object.keys(storeClasses).forEach(key => {
     initializeStore(key, storeInitalValues[key] || {});
-  })
+  });
 
   return getStores();
 }
 
 export function insertStores(stores: any = {}): any {
   Object.keys(stores).forEach((key) => {
-    let storeClass = stores[key]
+    let storeClass = stores[key];
     let store = null;
     if (isServer) {
       // @ts-ignore
@@ -62,33 +60,33 @@ export function insertStores(stores: any = {}): any {
     }
     if (!storeInstances[key]) {
       // @ts-ignore
-      store = new storeClass(isServer, {})
+      store = new storeClass(isServer, {});
       storeInstances[key] = store;
     }
-    storeClasses[key] = stores[key]
-  })
+    storeClasses[key] = stores[key];
+  });
 
   return getStores();
 }
 
 export function insertClasses(stores: any = {}): any {
   Object.keys(stores).forEach((key) => {
-    storeClasses[key] = stores[key]
+    storeClasses[key] = stores[key];
   });
 }
 
 export function setStore(key: string, storeClass: { new(...args: any[]) }) {
   // Always make a new store if server, otherwise state is shared between requests
-  let store = null
+  let store = null;
   if (isServer) {
     store = new storeClass(isServer, {});
     storeInstances[key] = store;
   }
   if (!storeInstances[key]) {
-    store = new storeClass(isServer, {})
+    store = new storeClass(isServer, {});
     storeInstances[key] = store;
   }
-  return store
+  return store;
 }
 
 

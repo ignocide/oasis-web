@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx'
-import Video, { IVideo } from "../vo/woofer/video";
+import Video, { IVideo } from "../../vo/woofer/video";
 
 
 class Player {
