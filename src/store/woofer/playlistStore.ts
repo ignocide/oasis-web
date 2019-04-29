@@ -7,7 +7,6 @@ class PlaylistStore {
   @observable playlist?: Playlist = null;
 
   constructor(isServer: boolean, initialData: any = {}) {
-    console.log(initialData)
     this.playlist = initialData.playlist ? new Playlist(initialData.playlist) : null;
   }
 
@@ -15,7 +14,6 @@ class PlaylistStore {
   async fetch(playlistId: number) {
     let response: any = await playlistsRepository.fetch(playlistId);
     this.playlist = new Playlist(response);
-    console.log(response)
     // this.playlist = response.playlists.map((playlist) => new Playlist(playlist))
   }
 }

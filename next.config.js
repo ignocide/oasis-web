@@ -3,13 +3,13 @@ const withTypescript = require('@zeit/next-typescript');
 const config = require('./config.json');
 const webpack = require('webpack');
 
-function bindEnv(envs) {
-  Object.keys(envs).forEach((key) => {
-    process.env[key] = envs[key];
-  });
-}
-
-bindEnv(config);
+// function bindEnv(envs) {
+//   Object.keys(envs).forEach((key) => {
+//     process.env[key] = envs[key];
+//   });
+// }
+//
+// bindEnv(config);
 
 const nextConfig = withTypescript(withSass({
   webpack(config, options) {
@@ -32,4 +32,6 @@ const nextConfig = withTypescript(withSass({
 
 
 nextConfig.distDir = '../.next';
+nextConfig.publicRuntimeConfig = config;
+
 module.exports = nextConfig;

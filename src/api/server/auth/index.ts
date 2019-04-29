@@ -1,7 +1,9 @@
+import getConfig from 'next/config';
 import axios, { setToken, isInvalidError, basicAuthOption } from '../oasis'
 import primaryAxios from 'axios'
 import qs from 'querystring'
 import cookieUtil, { COOKIE_KEYS } from "../../../lib/cookies";
+const { publicRuntimeConfig } = getConfig();
 
 interface ISignUpForm {
   username: string,
@@ -40,7 +42,7 @@ interface ICheckTokenForm {
 }
 
 export const checkToken = (checkTokenForm: ICheckTokenForm) => {
-  return primaryAxios.post(`${process.env.serverUrl}/uua/oauth/check_token`, qs.stringify({
+  return primaryAxios.post(`${publicRuntimeConfig.serverUrl}/uua/oauth/check_token`, qs.stringify({
     ...checkTokenForm
   }), basicAuthOption).then(response => {
     return response.data
@@ -55,7 +57,7 @@ export const checkToken = (checkTokenForm: ICheckTokenForm) => {
         setToken(access_token)
         cookieUtil.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
         cookieUtil.set(COOKIE_KEYS.REFRESH_TOKEN, refresh_token);
-        return primaryAxios.post(`${process.env.serverUrl}/uua/oauth/check_token`, qs.stringify({
+        return primaryAxios.post(`${publicRuntimeConfig.serverUrl}/uua/oauth/check_token`, qs.stringify({
           ...checkTokenForm
         }), basicAuthOption)
       })

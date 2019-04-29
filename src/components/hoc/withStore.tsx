@@ -47,17 +47,17 @@ function withStore(additionalStores: any = {}) {
 
         cookieUtil.setCtx(ctx);
         const accessToken = cookieUtil.get(COOKIE_KEYS.ACCESS_TOKEN);
-        console.log(accessToken)
         if (req && accessToken) {
           try {
             const decodedToken = await authApi.checkToken({ token: accessToken });
             const authStore: AuthStore = stores.auth;
-            console.log(decodedToken)
+
             authStore.setUser({
               username: decodedToken.user_name,
               authorities: decodedToken.authorities,
               id: decodedToken.id,
             });
+
             setToken(accessToken);
           } catch (e) {
             console.error(e);

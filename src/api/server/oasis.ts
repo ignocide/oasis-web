@@ -1,6 +1,9 @@
-import axios from 'axios'
+import getConfig from 'next/config';
+import axios from 'axios';
 import cookieUtil, { COOKIE_KEYS } from "../../lib/cookies";
 import qs from 'querystring';
+
+const { publicRuntimeConfig } = getConfig();
 
 interface ITokenResponseForm {
   access_token: string
@@ -13,53 +16,53 @@ interface ITokenResponseForm {
 }
 
 const instance = axios.create({
-  baseURL: process.env.serverUrl
+  baseURL: publicRuntimeConfig.serverUrl
 });
 
 export const basicAuthOption = {
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     Accept: 'application/json',
-    Authorization: `Basic ${process.env.basicToken}`
+    Authorization: `Basic ${publicRuntimeConfig.basicToken}`
   }
-}
+};
 
 export const isInvalidError = function (statusCode: any, e: any) {
   if (statusCode === 400 && e.error === 'invalid_token' && e.error_description === 'Token has expired') {
-    return true
+    return true;
   }
   else {
-    return false
+    return false;
   }
-}
+};
 instance.interceptors.response.use(
   response => {
-    return response.data
+    return response.data;
   },
   (error) => {
     const status = error.status || (error.response ? error.response.status : null);
     const data = error.response ? error.response.data : null;
-    const config = error.config
+    const config = error.config;
     return new Promise((res, rej) => {
       if (isInvalidError(status, data)) {
-        const refreshToken = cookieUtil.get(COOKIE_KEYS.REFRESH_TOKEN)
+        const refreshToken = cookieUtil.get(COOKIE_KEYS.REFRESH_TOKEN);
         instance.post('/uua/oauth/token', qs.stringify({
           refresh_token: refreshToken,
           grant_type: 'refresh_token'
         }), basicAuthOption).then((response: any) => {
-          const { access_token, refresh_token } = response
-          setToken(access_token)
+          const { access_token, refresh_token } = response;
+          setToken(access_token);
           cookieUtil.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
           cookieUtil.set(COOKIE_KEYS.REFRESH_TOKEN, refresh_token);
           config.headers.Authorization = `Bearer ${access_token}`;
-          return instance.request(config)
-        })
+          return instance.request(config);
+        });
       }
       else {
         const err = { status, data };
         return rej(err);
       }
-    })
+    });
   },
 );
 
@@ -68,7 +71,7 @@ export const setToken = (accessToken?: string) => {
     instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
   }
   else {
-    instance.defaults.headers.common['Authorization'] = `Basic ${process.env.basicToken}`;
+    instance.defaults.headers.common['Authorization'] = `Basic ${publicRuntimeConfig.basicToken}`;
   }
 };
 const urlReg = new RegExp('(:.+?((?=\\/)|$))', 'g');
@@ -88,4 +91,4 @@ export const urlBuilder = function (url, params = {}) {
   return url;
 };
 
-export default instance
+export default instance;

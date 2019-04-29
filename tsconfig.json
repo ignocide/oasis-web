@@ -19,11 +19,13 @@
     "lib": [
       "es2016",
       "dom"
-    ]
+    ],
+    "types": ["node"]
   },
   "include": [
     "src/**/*",
-    "server/**/*"
+    "server/**/*",
+    "script/**/*"
   ],
   "exclude": [
     ".next",
