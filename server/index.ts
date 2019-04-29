@@ -1,20 +1,16 @@
 import * as Koa from 'koa';
 import * as next from 'next';
 import * as Router from 'koa-router';
-import { IncomingMessage } from 'http';
 import * as bodyParser from 'koa-bodyparser';
 
-type Req = IncomingMessage & {
-  session: any;
-}
-const port = parseInt(process.env.PORT, 10) || 4000;
+const port = parseInt(process.env.PORT || '', 10) || 4000;
 const dev = process.env.NODE_ENV !== 'production';
-const app = next({ dev });
+const app = next({ dev, dir: './src' });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-  const server = new Koa();
-  const router = new Router();
+  const server: any = new Koa();
+  const router: any = new Router();
   // server.keys = ['key', 'keySid'];
 
   // server.use(session({
@@ -23,7 +19,7 @@ app.prepare().then(() => {
   //   })
   // }));
 
-  router.get('/woofer/playlists/:playlistId', async ctx => {
+  router.get('/woofer/playlists/:playlistId', async (ctx: any) => {
     await app.render(ctx.req, ctx.res, '/woofer/playlists', ctx.params);
   });
 
@@ -63,19 +59,19 @@ app.prepare().then(() => {
   //   res.body = 'OK'
   // })
 
-  router.get('*', async ctx => {
+  router.get('*', async (ctx: any) => {
     await handle(ctx.req, ctx.res);
     ctx.respond = false;
   });
 
 
-  server.use(async (ctx, next) => {
+  server.use(async (ctx: any, next:any) => {
     //@ts-ignore
     ctx.req.session = ctx.session;
     await next();
   });
 
-  server.use(async (ctx, next) => {
+  server.use(async (ctx: any, next:any) => {
     const { req, res, session } = ctx;
 
     ctx.res.statusCode = 200;

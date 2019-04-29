@@ -11,12 +11,25 @@ function bindEnv(envs) {
 
 bindEnv(config);
 
-module.exports = withTypescript(withSass({
+const nextConfig = withTypescript(withSass({
   webpack(config, options) {
-    config.plugins.push(new webpack.EnvironmentPlugin(process.env));
+    // config.plugins.push(new webpack.EnvironmentPlugin(process.env));
     // // Do not run type checking twice:
     // if (options.isServer) config.plugins.push(new ForkTsCheckerWebpackPlugin());
     //
+    config.module.rules.push({
+      test: /\.(png|jpg|gif|svg|eot|otf|ttf|woff|woff2)$/,
+      use: {
+        loader: 'url-loader',
+        options: {
+          limit: 100000,
+        },
+      },
+    });
     return config;
   },
 }));
+
+
+nextConfig.distDir = '../.next';
+module.exports = nextConfig;

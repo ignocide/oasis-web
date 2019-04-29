@@ -1,0 +1,48 @@
+.playlist {
+    background-color: white;
+    border: 1px solid #E8EBED;
+    .video {
+        padding: 10px 60px 10px 70px;
+        position: relative;
+        &-thumbnail {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            margin-top: -23px;
+            //height:60px;
+
+            width: 60px;
+            flex: none;
+            img {
+                width: 100%;
+            }
+        ;
+        }
+        &-info {
+            padding: 0 15px;
+            flex: auto;
+            p {
+                margin: 0;
+                font-size: 14px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                //width:200;
+                flex: 1;
+                width: 100%;
+
+            }
+            .video-description {
+                font-size: 12px;
+            }
+        }
+
+        &-function {
+            position: absolute;
+            right: 16px;
+            width: 50px;
+            height: 100%;
+        }
+
+    }
+}
