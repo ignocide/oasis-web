@@ -2,11 +2,23 @@ import React from 'react';
 import Link from "next/link";
 import { inject, observer } from "mobx-react";
 
-import '../style/header.scss';
+import { IconButton } from "../form/index";
+import AppStore from "../../store/common/appStore";
 
-@inject('auth')
+import '../../style/header.scss';
+
+interface IProps {
+  appStore: AppStore
+}
+
+@inject('auth', 'appStore')
 @observer
-class Header extends React.Component<any, any> {
+class Header extends React.Component<IProps, any> {
+
+  toggleSidebar = () => {
+    const { appStore } = this.props;
+    appStore.toggleSidebar()
+  };
 
   render() {
     const { children = null, auth = null } = this.props;
@@ -15,6 +27,7 @@ class Header extends React.Component<any, any> {
         <div className="gnb-main">
           <div className="gnb-main-wrapper container">
             <div className="gnb-main-left">
+              <IconButton name={'menu'} id={'menu-icon'} onClick={this.toggleSidebar}/>
               <Link href={'/'}>{"OASIS"}</Link>
             </div>
             <div className="gnb-main-center">

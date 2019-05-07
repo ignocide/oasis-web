@@ -4,7 +4,7 @@ import { getStores, initializeStores, insertClasses, insertStores } from '../../
 
 import * as authApi from "../../api/server/auth/index";
 import { setToken } from '../../api/server/oasis';
-import cookieUtil, { COOKIE_KEYS } from '../../lib/cookies';
+import cookieUtil, { COOKIE_KEYS } from '../../lib/Cookies';
 import AuthStore from '../../store/auth';
 
 interface IState {

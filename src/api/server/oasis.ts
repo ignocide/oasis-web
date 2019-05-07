@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 import axios from 'axios';
-import cookieUtil, { COOKIE_KEYS } from "../../lib/cookies";
+import cookieUtil, { COOKIE_KEYS } from "../../lib/Cookies";
 import qs from 'querystring';
 
 const { publicRuntimeConfig } = getConfig();
@@ -28,12 +28,7 @@ export const basicAuthOption = {
 };
 
 export const isInvalidError = function (statusCode: any, e: any) {
-  if (statusCode === 400 && e.error === 'invalid_token' && e.error_description === 'Token has expired') {
-    return true;
-  }
-  else {
-    return false;
-  }
+  return statusCode === 400 && e.error === 'invalid_token' && e.error_description === 'Token has expired';
 };
 instance.interceptors.response.use(
   response => {
@@ -76,7 +71,7 @@ export const setToken = (accessToken?: string) => {
 };
 const urlReg = new RegExp('(:.+?((?=\\/)|$))', 'g');
 
-export const urlBuilder = function (url, params = {}) {
+export const urlBuilder = function (url: string, params: any = {}) {
   const matches = url.match(urlReg);
   if (matches) {
     for (const match of matches) {

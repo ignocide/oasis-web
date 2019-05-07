@@ -16,7 +16,7 @@ header#gnb {
         border-bottom-color: #E8EBED;
         border-bottom-style: solid;
         border-bottom-width: 1px;
-        a{
+        a,#menu-icon{
             display: inline-block;
             height: 100%;
             padding: 0 20px;
@@ -25,6 +25,11 @@ header#gnb {
             color: black;
             font-size: 20px;
             letter-spacing: 1px;
+        }
+        #menu-icon{
+            @media (min-width: 1200px){
+                display: none;
+            }
         }
         .gnb-main-wrapper{
             height: $header-height;

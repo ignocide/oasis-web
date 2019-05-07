@@ -4,7 +4,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 
 import { getStore } from "../store/index";
-import Header from '../components/header';
+import Header from '../components/layout/header';
 import BoardList from '../components/todo/board/BoardList';
 import TaskList from '../components/todo/task/TaskList';
 import withStore from '../components/hoc/withStore';
@@ -13,8 +13,6 @@ import BoardStore from '../store/boardStore';
 import Board from "../vo/todo/board";
 
 import '../style/header.scss';
-import '../style/index.scss';
-import '../style/woofer/index.scss';
 
 interface IProps {
   boards: Board[]

@@ -8,13 +8,17 @@ import PlayerStore from '../../store/woofer/playerStore';
 import PlaylistStore from '../../store/woofer/playlistStore';
 import Playlist from "../../components/woofer/playlist";
 
-import Header from "../../components/header";
+import Header from "../../components/layout/header";
+import Sidebar from "../../components/layout/sidebar";
 import { getStore } from "../../store/index";
+
+import YoutubeSearchInput from "../../components/woofer/youtube/YoutubeSearchForm";
+import SearchedYoutubeVideoList from "../../components/woofer/youtube/SearchedYoutubeVideoList";
+import YoutubeStore from "../../store/woofer/youtubeStore";
 
 import '../../style/header.scss';
 import '../../style/index.scss';
 import '../../style/woofer/index.scss';
-import YoutubeSearchInput from "../../components/woofer/YoutubeSearchForm";
 
 // import withAuth from '../../components/hoc/withAuth'
 
@@ -28,10 +32,12 @@ interface IState {
 @withStore({
   playlistsStore: PlaylistsStore,
   playlistStore: PlaylistStore,
-  playerStore: PlayerStore
+  playerStore: PlayerStore,
+  youtubeStore: YoutubeStore
 })
+
 class WooferPlaylistPage extends React.Component<IProps, IState> {
-  static getInitialProps = async function ({ req, res, query, ...etc }) {
+  static getInitialProps = async function ({ query }) {
     const playlistsStore: PlaylistsStore = getStore('playlistsStore');
     const playlistStore: PlaylistStore = getStore('playlistStore');
     const { playlistId } = query;
@@ -58,12 +64,12 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
         <Header>
           <YoutubeSearchInput />
         </Header>
-        <aside id={"sidebar"}>
-
+        <Sidebar>
           <PlaylistList />
-        </aside>
+        </Sidebar>
         <div id={'main-container'} className="container">
           <Playlist />
+          <SearchedYoutubeVideoList />
         </div>
       </div>
     );

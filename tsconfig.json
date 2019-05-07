@@ -1,25 +1,42 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "jsx": "preserve",
-    "allowJs": true,
+
+      "allowJs": true,
+      "allowSyntheticDefaultImports": true,
+      "jsx": "preserve",
+      "lib": ["dom", "es2017"],
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "noEmit": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "preserveConstEnums": true,
+      "removeComments": false,
+      "skipLibCheck": true,
+      "sourceMap": true,
+      "strict": true,
+      "target": "esnext",
+
+//    "target": "esnext",
+//    "module": "commonjs",
+//    "jsx": "preserve",
+//    "allowJs": true,
     "outDir": "./dist",
     // "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
+//    "allowSyntheticDefaultImports": true,
     //    "noUnusedLocals": true,
     "experimentalDecorators": true,
     //    "noUnusedParameters": true,
-    "removeComments": false,
-    "preserveConstEnums": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
+//    "removeComments": false,
+//    "preserveConstEnums": true,
+//    "sourceMap": true,
+//    "skipLibCheck": true,
     "baseUrl": ".",
-    "lib": [
-      "es2016",
-      "dom"
-    ],
+//    "lib": [
+//      "es2016",
+//      "dom"
+//    ],
     "types": ["node"]
   },
   "include": [

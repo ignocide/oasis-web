@@ -1,6 +1,7 @@
 import { useStaticRendering } from 'mobx-react';
 
 import AuthStore from './auth';
+import AppStore from "./common/appStore";
 
 
 const isServer = typeof window === 'undefined';
@@ -9,6 +10,7 @@ useStaticRendering(isServer);
 
 let storeClasses = {
   auth: AuthStore,
+  appStore: AppStore,
 };
 
 let storeInstances = {};

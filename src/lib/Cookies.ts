@@ -29,7 +29,7 @@ class CookieUtil {
 
   set(key: COOKIE_KEYS, value): void {
     const _key: any = key;
-    console.log(this.isServer())
+
     if (this.isServer()) {
       if (!this.ctx) {
         throw new Error("has no ctx");

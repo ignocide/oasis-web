@@ -31,9 +31,25 @@ aside#sidebar {
     bottom: 0;
     width: 280px;
     background-color: white;
+    z-index:1;
+    transition: transform 0.5s;
+
+    @media (min-width: 1200px){
+        transform: translateX(0) !important;
+    }
+
+    &.open{
+        transform: translateX(0);
+    }
+    &.close {
+        transform: translateX(-100%);
+    }
 
     & + #main-container {
         padding-left: 280px + 80px;
+        @media (max-width: 1200px){
+            padding-left: 80px;
+        }
     }
 
 }

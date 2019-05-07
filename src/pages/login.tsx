@@ -3,7 +3,7 @@ import { Row } from "../components/layout/grid";
 import LoginForm from "../components/loginForm";
 import '../style/index.scss';
 import '../style/header.scss';
-import Header from "../components/header";
+import Header from "../components/layout/header";
 import withStore from "../components/hoc/withStore";
 
 // import firebase from 'firebase';

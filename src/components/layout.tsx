@@ -1,4 +1,4 @@
-import Header from "./header";
+import Header from "./layout/header";
 import '../style/index.scss';
 
 const Layout = ({children}) => (
