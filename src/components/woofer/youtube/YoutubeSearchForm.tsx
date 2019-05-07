@@ -1,12 +1,11 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import PlaylistStore from '../../store/woofer/playlistStore';
-
-import '../../style/woofer/youtube-search-form.scss';
+import '../../../style/woofer/youtube-search-form.scss';
+import YoutubeStore from "../../../store/woofer/youtubeStore";
 
 interface IProps {
-  playlistStore?: PlaylistStore
+  youtubeStore?: YoutubeStore
 }
 
 
@@ -14,7 +13,7 @@ interface IState {
   query: string
 }
 
-@inject('playlistStore')
+@inject('youtubeStore')
 @observer
 class YoutubeSearchInput extends React.Component<IProps, IState> {
   state: IState = {
@@ -35,7 +34,9 @@ class YoutubeSearchInput extends React.Component<IProps, IState> {
   onSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+    const {query} = this.state;
+    const {youtubeStore} = this.props;
+    youtubeStore.search(query)
   };
 
   render() {

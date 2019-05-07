@@ -7,6 +7,7 @@ class MyDocument extends Document {
       <Head>
         <meta name="viewport" content="width=device-width,height=device-height,user-scalable=no,minimal-ui, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
         <link href="https://unpkg.com/ionicons@4.5.5/dist/css/ionicons.min.css" rel="stylesheet" />
+        <script src="https://apis.google.com/js/api.js"></script>
       </Head>
       <body>
       <Main />

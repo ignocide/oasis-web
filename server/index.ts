@@ -72,7 +72,7 @@ app.prepare().then(() => {
   });
 
   server.use(async (ctx: any, next:any) => {
-    const { req, res, session } = ctx;
+    // const { req, res, session } = ctx;
 
     ctx.res.statusCode = 200;
     await next();

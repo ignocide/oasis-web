@@ -85,7 +85,7 @@ class TaskList extends React.Component<IProps> {
       return null;
     }
     return (
-      <div>
+      <>
         <Panel>
           <PanelHeader right={
             <IconButton onClick={this.onClickOpenCreateFormButton} name={'add'}> </IconButton>
@@ -107,7 +107,7 @@ class TaskList extends React.Component<IProps> {
             </Modal>
           }
         </div>
-      </div>
+      </>
     );
   }
 }

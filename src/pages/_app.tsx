@@ -1,6 +1,12 @@
 import App, { Container } from 'next/app';
+import getConfig from 'next/config';
 import React from 'react';
 import { ModalProvider } from "../components/context/Modal";
+import youtube from "../lib/Youtube";
+
+import '../style/index.scss';
+
+const { publicRuntimeConfig } = getConfig();
 
 interface IProps {
   Component: any,
@@ -18,16 +24,23 @@ class OasisApp extends App<IProps> {
   state: any;
   clazz: any[];
 
-  constructor(props) {
-    super(props);
-  }
-
   static async getInitialProps(appContext) {
     const props: any = await App.getInitialProps(appContext);
 
     return {
       ...props,
     };
+  }
+
+  constructor(props) {
+    super(props);
+    this.youtubeInit();
+  }
+
+  youtubeInit() {
+    if (typeof window !== 'undefined') {
+      youtube.init();
+    }
   }
 
   render() {

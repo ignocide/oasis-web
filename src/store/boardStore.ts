@@ -95,5 +95,5 @@ class BoardStore {
   }
 }
 
-export { ITaskCreateForm, ITaskUpdateForm, IBoardCreateForm };
+export { ITaskCreateForm, ITaskUpdateForm, IBoardCreateForm, ITaskUpdateStepForm };
 export default BoardStore;

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as authApi from "../api/server/auth/index";
-import { COOKIE_KEYS, default as cookieUtil } from "../lib/cookies";
+import { COOKIE_KEYS, default as cookieUtil } from "../lib/Cookies";
 import { setToken } from "../api/server/oasis";
 import Router from 'next/router';
 
@@ -81,7 +81,7 @@ class LoginForm extends React.Component<IProps, IState> {
           </PanelBody>
           <PanelFooter>
             <ButtonGroup>
-              <Button shape={'fill'} onClick={this.validate}>{'로그인'}</Button>
+              <Button shape={'fill'} onClick={this.validate} value={'로그인'} />
             </ButtonGroup>
           </PanelFooter>
         </form>
