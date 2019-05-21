@@ -42,9 +42,9 @@ export function initializeStore(key: string, initialData: any = {}) {
   return store;
 }
 
-export function initializeStores(storeInitalValues: any = {}): any {
+export function initializeStores(storeInitialValues: any = {}): any {
   Object.keys(storeClasses).forEach(key => {
-    initializeStore(key, storeInitalValues[key] || {});
+    initializeStore(key, storeInitialValues[key] || {});
   });
 
   return getStores();
