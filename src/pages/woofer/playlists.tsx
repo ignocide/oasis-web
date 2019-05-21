@@ -6,7 +6,7 @@ import withStore from '../../components/hoc/withStore';
 import PlaylistsStore from '../../store/woofer/playlistsStore';
 import PlayerStore from '../../store/woofer/playerStore';
 import PlaylistStore from '../../store/woofer/playlistStore';
-import Playlist from "../../components/woofer/playlist";
+import Playlist from "../../components/woofer/playlist/Playlist";
 
 import Header from "../../components/layout/header";
 import Sidebar from "../../components/layout/sidebar";
@@ -19,6 +19,7 @@ import YoutubeStore from "../../store/woofer/youtubeStore";
 import '../../style/header.scss';
 import '../../style/index.scss';
 import '../../style/woofer/index.scss';
+import Player from "../../components/woofer/player";
 
 // import withAuth from '../../components/hoc/withAuth'
 
@@ -35,7 +36,6 @@ interface IState {
   playerStore: PlayerStore,
   youtubeStore: YoutubeStore
 })
-
 class WooferPlaylistPage extends React.Component<IProps, IState> {
   static getInitialProps = async function ({ query }) {
     const playlistsStore: PlaylistsStore = getStore('playlistsStore');
@@ -45,6 +45,7 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
     if (!playlistsStore.playlists.length) {
       await playlistsStore.fetchPlaylists();
     }
+
     await playlistStore.fetch(playlistId);
 
     return {};
@@ -68,6 +69,7 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
           <PlaylistList />
         </Sidebar>
         <div id={'main-container'} className="container">
+          <Player />
           <Playlist />
           <SearchedYoutubeVideoList />
         </div>

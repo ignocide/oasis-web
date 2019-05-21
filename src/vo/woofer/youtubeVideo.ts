@@ -1,4 +1,4 @@
-interface IYoutubeVIdeo {
+interface IYoutubeVideo {
   id: {
     kind: string,
     videoId: string
@@ -21,7 +21,7 @@ class YoutubeVideo {
   title: string;
   thumbnail: string;
 
-  constructor(video: IYoutubeVIdeo) {
+  constructor(video: IYoutubeVideo) {
     this.kind = video.id.kind;
     this.videoId = video.id.videoId;
     this.title = video.snippet.title;

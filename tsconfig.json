@@ -2,44 +2,49 @@
   "compileOnSave": false,
   "compilerOptions": {
 
-      "allowJs": true,
-      "allowSyntheticDefaultImports": true,
-      "jsx": "preserve",
-      "lib": ["dom", "es2017"],
-      "module": "commonjs",
-      "moduleResolution": "node",
-      "noEmit": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
-      "preserveConstEnums": true,
-      "removeComments": false,
-      "skipLibCheck": true,
-      "sourceMap": true,
-      "strict": true,
-      "target": "esnext",
-
-//    "target": "esnext",
-//    "module": "commonjs",
-//    "jsx": "preserve",
-//    "allowJs": true,
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "lib": ["dom", "es2017"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+//    "strict": true,
+    "target": "esnext",
+    "typeRoots": [
+      "./@types",
+      "./node_modules/@types"
+    ],
+    //    "target": "esnext",
+    //    "module": "commonjs",
+    //    "jsx": "preserve",
+    //    "allowJs": true,
     "outDir": "./dist",
     // "moduleResolution": "node",
-//    "allowSyntheticDefaultImports": true,
+    //    "allowSyntheticDefaultImports": true,
     //    "noUnusedLocals": true,
     "experimentalDecorators": true,
     //    "noUnusedParameters": true,
-//    "removeComments": false,
-//    "preserveConstEnums": true,
-//    "sourceMap": true,
-//    "skipLibCheck": true,
+    //    "removeComments": false,
+    //    "preserveConstEnums": true,
+    //    "sourceMap": true,
+    //    "skipLibCheck": true,
     "baseUrl": ".",
-//    "lib": [
-//      "es2016",
-//      "dom"
-//    ],
-    "types": ["node"]
+    //    "lib": [
+    //      "es2016",
+    //      "dom"
+    //    ],
+    "types": ["jest","node"]
+
   },
   "include": [
+    "test/**/*",
     "src/**/*",
     "server/**/*",
     "script/**/*"
@@ -49,3 +54,40 @@
     "node_modules"
   ]
 }
+
+//{
+//  "compileOnSave": false,
+//  "compilerOptions": {
+//    "module": "commonjs",
+//    "target": "es2017",
+//    "noImplicitAny": true,
+//    "outDir": "./dist",
+//    "baseUrl": "./",
+//    "sourceMap": true,
+//    "experimentalDecorators": true,
+//    "emitDecoratorMetadata": true,
+//    "strictFunctionTypes": true,
+//    "declaration": true,
+//    "typeRoots": [
+//      "./@types",
+//      "./node_modules/@types"
+//    ],
+//    "paths": {
+//      "*": [
+//        "./@types/*",
+//        "*"
+//      ]
+//    },
+//    "lib": [
+//      "es2015"
+//    ]
+//  },
+//  "include": [
+//    "src/**/*"
+//  ],
+//  "exclude": [
+//    "node_modules",
+//    "dist"
+//  ]
+//
+//}

@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import YoutubeSearchForm from './YoutubeSearchForm';
+import SearchedYoutubeVideoList from './SearchedYoutubeVideoList';
 
-describe('YoutubeSearchForm', () => {
+describe('SearchedYoutubeVideoList', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<YoutubeSearchForm />, div);
+    ReactDOM.render(<SearchedYoutubeVideoList />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 });

@@ -23,6 +23,10 @@ app.prepare().then(() => {
     await app.render(ctx.req, ctx.res, '/woofer/playlists', ctx.params);
   });
 
+  router.get('/_error', async (ctx: any) => {
+    await app.render(ctx.req, ctx.res, '/_error');
+  });
+
   // router.get('/p/:id', async ctx => {
   //   const { req, res } = ctx;
   //   const queryParams = { title: ctx.params.id }

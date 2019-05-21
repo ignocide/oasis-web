@@ -5,6 +5,9 @@ class AppStore {
   @observable sidebar: boolean = false;
 
   constructor(isServer: boolean, initialData: any) {
+    if(isServer){
+
+    }
     Object.assign(this, initialData);
   }
 

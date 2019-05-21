@@ -5,6 +5,7 @@ import { ModalProvider } from "../components/context/Modal";
 import youtube from "../lib/Youtube";
 
 import '../style/index.scss';
+import { FloaterRenderInfo } from "../components/common/Floater";
 
 const { publicRuntimeConfig } = getConfig();
 
@@ -35,11 +36,23 @@ class OasisApp extends App<IProps> {
   constructor(props) {
     super(props);
     this.youtubeInit();
+    this.bindFloaterRenderInfo();
   }
 
   youtubeInit() {
     if (typeof window !== 'undefined') {
       youtube.init();
+    }
+  }
+
+  bindFloaterRenderInfo() {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('pointerdown', (event) => {
+        if (!event && !event.target) {
+          return;
+        }
+        window.floaterRenderInfo = new FloaterRenderInfo(event);
+      });
     }
   }
 
@@ -50,6 +63,7 @@ class OasisApp extends App<IProps> {
         <ModalProvider>
           <Component  {...pageProps} />
           <div id="modal-container" />
+          <div id="popper" />
         </ModalProvider>
       </Container>
     );

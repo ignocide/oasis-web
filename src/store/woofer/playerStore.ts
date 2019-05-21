@@ -1,20 +1,25 @@
-import { action, observable } from 'mobx'
-import Video, { IVideo } from "../../vo/woofer/video";
+import { action, observable } from 'mobx';
+import Video from "../../vo/woofer/video";
+import YoutubeVideo from "../../vo/woofer/youtubeVideo";
 
 
-class Player {
-  @observable list: Video[] = [];
+class PlayerStore {
+  @observable queue: Video[] = [];
   @observable currentIndex: number = null;
+  @observable tmpSlot: YoutubeVideo | Video = null;
 
   constructor(isServer: boolean, initialData: any) {
+    if(isServer){
+
+    }
     // Object.assign(this,initialData)
-    this.setList(initialData.list)
+    this.setList(initialData.queue);
   }
 
   @action
-  setList(list = []) {
-    this.list = list.map((video) => new Video(video));
-    if (this.list.length) {
+  setList(queue = []) {
+    this.queue = queue.map((video) => new Video(video));
+    if (this.queue.length) {
       this.currentIndex = 0;
     }
   }
@@ -22,14 +27,20 @@ class Player {
   @observable
   getCurrent() {
     if (this.currentIndex === null) {
-      return null
+      return null;
     }
-    return this.list[this.currentIndex] || null
+    return this.queue[this.currentIndex] || null;
   }
 
   @action
   setCurrentIndex(index: number) {
     this.currentIndex = index;
   }
+
+  @action
+  setTmpPlay(video: YoutubeVideo | Video) {
+    this.tmpSlot = video;
+  }
 }
-export default Player;
+
+export default PlayerStore;

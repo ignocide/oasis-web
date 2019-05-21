@@ -4,18 +4,18 @@ interface IVideo {
   name: string,
   thumbnail: string,
   description: string,
-  ctime: Date,
-  utime: Date,
+  createdAt: string | Date,
+  updatedAt: string | Date,
 }
 
-class Video<IVideo> {
+class Video {
   id: number;
   videoId: string;
   name: string;
   thumbnail: string;
   description: string;
-  ctime: Date;
-  utime: Date;
+  createdAt: Date;
+  updatedAt: Date;
 
   constructor(video: IVideo) {
     this.id = video.id;
@@ -23,10 +23,10 @@ class Video<IVideo> {
     this.name = video.name;
     this.thumbnail = video.thumbnail;
     this.description = video.description;
-    this.ctime = video.ctime;
-    this.utime = video.utime;
+    this.createdAt = new Date(video.createdAt);
+    this.updatedAt = new Date(video.updatedAt);
   }
 }
 
-export { IVideo }
-export default Video
+export { IVideo };
+export default Video;

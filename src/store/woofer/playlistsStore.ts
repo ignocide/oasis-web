@@ -7,6 +7,9 @@ class Playlists {
   @observable playlists: Playlist[] = [];
 
   constructor(isServer: boolean, initialData: any) {
+    if(isServer){
+
+    }
     Object.assign(this, initialData);
   }
 
@@ -27,7 +30,7 @@ class Playlists {
   @action
   async fetchPlaylists() {
     let response: any = await playlistsRepository.fetchList();
-    this.playlists = response.playlists.map((playlist) => new Playlist(playlist));
+    this.playlists = response.playlists.map((playlist: any) => new Playlist(playlist));
   }
 
   @action

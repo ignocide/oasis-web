@@ -25,6 +25,9 @@ class BoardStore {
   @observable tasks: Task[] = [];
 
   constructor(isServer: boolean, initialData: any) {
+    if(isServer){
+
+    }
     Object.assign(this, initialData);
   }
 

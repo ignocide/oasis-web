@@ -1,34 +1,25 @@
-import Video from "./video";
-
-interface IPlaylist {
+export interface IPlaylist {
   id: number,
   name: string,
   isDefault: boolean,
-  createdAt?: Date,
-  updatedAt?: Date,
-  items: Video[],
+  createdAt?: string | null,
+  updatedAt?: string | null,
 }
 
-class Playlist implements IPlaylist {
+class Playlist {
   id: number;
   name: string;
   isDefault: boolean;
-  items: Video[] = [];
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt?: Date | null;
+  updatedAt?: Date | null;
 
   constructor(playlist: IPlaylist) {
     this.id = playlist.id;
     this.name = playlist.name;
     this.isDefault = playlist.isDefault;
-    this.createdAt = playlist.createdAt;
-    this.updatedAt = playlist.updatedAt;
-
-    if(playlist.items){
-      this.items =playlist.items.map((video) => new Video(video))
-    }
+    this.createdAt = playlist.createdAt ? new Date(playlist.createdAt) : null;
+    this.updatedAt = playlist.updatedAt ? new Date(playlist.updatedAt) : null;
   }
 }
 
-export { IPlaylist };
 export default Playlist;

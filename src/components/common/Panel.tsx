@@ -9,8 +9,8 @@ interface IProps {
 
 class Panel extends React.Component<IProps, any> {
 
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -23,20 +23,20 @@ class Panel extends React.Component<IProps, any> {
   }
 }
 
-export const PanelHeader = ({children, right = null}) => {
+export const PanelHeader = ({ children, right = null }) => {
   return <div className={'panel-header'}>
     <h1>{children}</h1>{right}
   </div>;
 };
 
-export const PanelFooter = ({children, right = null}) => {
+export const PanelFooter = ({ children, right = null }) => {
   return <div className={'panel-footer'}>
     {children}{right}
   </div>;
 };
 
-export const PanelBody = ({children, right = null}) => {
-  return <div className={'panel-body'}>
+export const PanelBody = ({ children, className = '', right = null }) => {
+  return <div className={`panel-body${className ? " " + className : ''}`}>
     {children}{right}
   </div>;
 };
@@ -64,7 +64,7 @@ export const PanelBody = ({children, right = null}) => {
 //     }
 // }
 
-export const PanelTable = ({format, data, row = null, className = null, ...props}) => {
+export const PanelTable = ({ format, data, row = null, className = null, ...props }) => {
   const labels = format.map((formatItem, index) =>
     <th key={index} width={formatItem.width} {...formatItem.th}>{formatItem.label}</th>);
   const rows = data.map((dataItem, dataIndex) => {

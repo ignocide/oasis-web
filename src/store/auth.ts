@@ -10,6 +10,9 @@ class Auth {
   @observable user: IUser = null;
 
   constructor(isServer: boolean, initialData: any) {
+    if(isServer){
+
+    }
     this.user = initialData.user;
   }
 

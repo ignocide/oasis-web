@@ -1,7 +1,7 @@
 import Nookies from 'nookies';
 import Cookies from 'js-cookie';
 
-enum COOKIE_KEYS {
+export enum COOKIE_KEYS {
   ACCESS_TOKEN = 'access_token',
   REFRESH_TOKEN = 'refresh_token'
 }
@@ -30,14 +30,18 @@ class CookieUtil {
   set(key: COOKIE_KEYS, value): void {
     const _key: any = key;
 
+    console.log("여기까진 오겠지?",typeof window)
     if (this.isServer()) {
+      console.log("여기까진 오겠지?")
       if (!this.ctx) {
         throw new Error("has no ctx");
         return;
       }
+      console.log("여기까진 오겠지?")
       Nookies.set(this.ctx, _key, value, this.defaultNookieOptions);
     }
     else {
+      console.log("이게 펄스임?")
       Cookies.set(_key, value, this.defaultCookieOptions);
     }
   }
@@ -64,7 +68,7 @@ class CookieUtil {
     }
     const _key: any = key;
     if (this.isServer()) {
-      Nookies.destroy(this.ctx, _key);
+      Nookies.destroy(this.ctx, _key, {});
     }
     else {
       Cookies.remove(_key);
@@ -73,5 +77,4 @@ class CookieUtil {
 }
 
 const cookieUtil = new CookieUtil();
-export { COOKIE_KEYS };
 export default cookieUtil;

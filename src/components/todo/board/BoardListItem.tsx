@@ -77,8 +77,8 @@ class BoardItem extends React.Component<IProps, any> {
         <div onClick={this.onClickBoard}>
           {board.name}
         </div>
-        <IconButton name={'more'} onClick={this.openBox} />
-        <DropBox isOpen={isBoxOpen} floaterRenderInfo={floaterRenderInfo} requestClose={this.closeBox}>
+        <IconButton name={'more'} onClick={this.openBox} ref={'button'}/>
+        <DropBox isOpen={isBoxOpen} parent={this.refs.button} requestClose={this.closeBox}>
           <Menu>
             <MenuItem>{'수정'}</MenuItem>
             <MenuItem onClick={() => this.setRemoveConfirmModal(true)}>{'삭제'}</MenuItem>

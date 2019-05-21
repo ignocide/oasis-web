@@ -2,14 +2,14 @@ import { Component } from 'react';
 import YouTube from 'react-youtube';
 import { inject, observer } from 'mobx-react';
 
-import Playlist from "./playlist";
+import Playlist from "./playlist/playlist";
 import PlayerStore from "../../store/woofer/playerStore";
 
 import '../../style/woofer/player.scss';
 
 
 interface IProps {
-  player?: PlayerStore
+  playerStore?: PlayerStore
 }
 
 
@@ -17,9 +17,9 @@ interface IState {
 
 }
 
-@inject('player')
+@inject('playerStore')
 @observer
-class PlayerComponent extends Component<IProps, IState> {
+class Player extends Component<IProps, IState> {
   opts: any;
   defaultImageStyle: any;
 
@@ -41,27 +41,30 @@ class PlayerComponent extends Component<IProps, IState> {
 
   }
 
+  onStateChange = (e) => {
+    const {data} = e;
+
+
+  }
+
   render() {
 
     let content = null;
-    const {player: playerStore} = this.props;
-    const current = playerStore.getCurrent();
-    if (current) {
-      content = (<YouTube className='woofer-player' opts={this.opts} videoId={current.video_id} />);
+    const { playerStore } = this.props;
+    const current = playerStore.tmpSlot || playerStore.getCurrent();
+    if (!current) {
+      return null;
     }
-    else {
-      content = (<span style={this.defaultImageStyle} />);
-    }
+      content = (<YouTube className='woofer-player' opts={this.opts} videoId={current.videoId} onStateChange={this.onStateChange}/>);
     return (
       <div>
         <div className='player'>
           {content}
           {/*<iframe src='https://www.youtube.com/embed/i8zx49Rk-pA' frameBorder='0' allowFullScreen></iframe>*/}
         </div>
-        <Playlist />
       </div>
     );
   }
 }
 
-export default PlayerComponent;
+export default Player;

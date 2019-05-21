@@ -5,19 +5,15 @@ import qs from 'querystring';
 
 const { publicRuntimeConfig } = getConfig();
 
-interface ITokenResponseForm {
-  access_token: string
-  token_type: string
-  refresh_token: string
-  expires_in: number
-  scope: string
-  id: number
-  jti: number
-}
-
-const instance = axios.create({
-  baseURL: publicRuntimeConfig.serverUrl
-});
+// interface ITokenResponseForm {
+//   access_token: string
+//   token_type: string
+//   refresh_token: string
+//   expires_in: number
+//   scope: string
+//   id: number
+//   jti: number
+// }
 
 export const basicAuthOption = {
   headers: {
@@ -27,9 +23,19 @@ export const basicAuthOption = {
   }
 };
 
+
+const instance = axios.create({
+  baseURL: publicRuntimeConfig.serverUrl,
+  headers: {
+    common: { ...basicAuthOption.headers }
+  }
+});
+
+
 export const isInvalidError = function (statusCode: any, e: any) {
   return statusCode === 400 && e.error === 'invalid_token' && e.error_description === 'Token has expired';
 };
+
 instance.interceptors.response.use(
   response => {
     return response.data;
@@ -38,26 +44,24 @@ instance.interceptors.response.use(
     const status = error.status || (error.response ? error.response.status : null);
     const data = error.response ? error.response.data : null;
     const config = error.config;
-    return new Promise((res, rej) => {
-      if (isInvalidError(status, data)) {
-        const refreshToken = cookieUtil.get(COOKIE_KEYS.REFRESH_TOKEN);
-        instance.post('/uua/oauth/token', qs.stringify({
-          refresh_token: refreshToken,
-          grant_type: 'refresh_token'
-        }), basicAuthOption).then((response: any) => {
-          const { access_token, refresh_token } = response;
-          setToken(access_token);
-          cookieUtil.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
-          cookieUtil.set(COOKIE_KEYS.REFRESH_TOKEN, refresh_token);
-          config.headers.Authorization = `Bearer ${access_token}`;
-          return instance.request(config);
-        });
-      }
-      else {
-        const err = { status, data };
-        return rej(err);
-      }
-    });
+    if (isInvalidError(status, data)) {
+      const refreshToken = cookieUtil.get(COOKIE_KEYS.REFRESH_TOKEN);
+      return instance.post('/uua/oauth/token', qs.stringify({
+        refresh_token: refreshToken,
+        grant_type: 'refresh_token'
+      }), basicAuthOption).then((response: any) => {
+        const { access_token, refresh_token } = response;
+        setToken(access_token);
+        config.headers.Authorization = `Bearer ${access_token}`;
+        cookieUtil.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
+        cookieUtil.set(COOKIE_KEYS.REFRESH_TOKEN, refresh_token);
+        return instance.request(config);
+      });
+    }
+    else {
+      const err = { status, data };
+      return Promise.reject(err);
+    }
   },
 );
 

@@ -1,12 +1,11 @@
 import getConfig from 'next/config';
-import { gapi } from 'gapi';
-import YoutubeVideo from "../vo/woofer/youtubeVideo";
-
+import * as gapi from 'gapi'
 const { publicRuntimeConfig: config } = getConfig();
 
 class Youtube {
   _gapi: gapi = null;
   lastQuery: string = null;
+  nextToken: string = null;
 
   constructor() {
 
@@ -15,9 +14,9 @@ class Youtube {
   init() {
     if (typeof window !== 'undefined') {
       this._gapi = window.gapi;
-      let initGapi = () => {
+      let initGapi: Function = () => {
         // 2. Initialize the JavaScript client library.
-        this._gapi.client.init(config.woofer).then((resp) => {
+        this._gapi.client.init(config.woofer).then(() => {
           return this._gapi.client.load('youtube', 'v3');
         }, function (reason) {
           console.log('Error: ' + reason.result);
@@ -30,14 +29,16 @@ class Youtube {
     }
   }
 
-  searchList(query: string):Promise<any> {
+  searchList(query: string): Promise<any> {
 
     let opts: any = {
       q: query,
       part: 'snippet',
       type: 'video',
       beforeQuery: true,
-      maxResults: 20
+      maxResults: 20,
+      videoSyndicated: true,
+      videoEmbeddable: true
     };
 
     if (query === this.lastQuery) {
@@ -49,6 +50,7 @@ class Youtube {
         // nextToken: response.nextPageToken,
         //   list: response.items,
         let { nextPageToken, items } = response;
+        this.nextToken = nextPageToken;
         res(items);
       });
     });

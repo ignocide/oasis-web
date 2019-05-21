@@ -1,5 +1,6 @@
-import instance, { urlBuilder } from '../oasis';
+import instance from '../oasis';
 import { AxiosInstance } from 'axios';
+import YoutubeVideo from "../../../vo/woofer/youtubeVideo";
 // import { IBoardCreateForm, ITaskCreateForm, ITaskUpdateStepForm } from '../../../store/boardStore';
 //
 // export const fetchPlaylists = () => {
@@ -26,6 +27,7 @@ class PlaylistRepository {
   }
 
   fetch(playlistId: number) {
+    console.log(`/woofer/playlists/${playlistId}`)
     return this.axios.get(`/woofer/playlists/${playlistId}`);
   }
 
@@ -34,11 +36,15 @@ class PlaylistRepository {
   }
 
   create(form: IPlaylistCreateForm) {
-    return this.axios.post('/woofer/playlists',form);
+    return this.axios.post('/woofer/playlists', form);
   }
 
   remove(playlistId: number) {
     return this.axios.delete(`/woofer/playlists/${playlistId}`);
+  }
+
+  addVideo(playlistId: number, video: YoutubeVideo): any {
+    return this.axios.post(`/woofer/playlists/${playlistId}/videos`,video);
   }
 }
 

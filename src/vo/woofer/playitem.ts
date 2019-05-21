@@ -1,12 +1,13 @@
 class PlayItem {
-  id?: number
-  videoId: string
-  name: string
-  thumbnail: string
-  description: string
-  createdAt: Date
-  updatedAt: Date
-  constructor(playitem:any = {}){
+  id?: number;
+  videoId: string;
+  name: string;
+  thumbnail: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+
+  constructor(playitem: any = {}) {
     this.id = playitem.id;
     this.videoId = playitem.videoId;
     this.name = playitem.name;
@@ -17,4 +18,4 @@ class PlayItem {
   }
 }
 
-export default PlayItem
+export default PlayItem;

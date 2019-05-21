@@ -5,6 +5,10 @@
     "module": "commonjs",
     "target": "es2017",
     "lib": ["es2017"],
+    "typeRoots": [
+      "./@types",
+      "./node_modules/@types"
+    ],
     "outDir": ".next/server"
   },
   "include": ["server/**/*.ts"],

@@ -1,5 +1,4 @@
 import { action, observable } from 'mobx'
-import Video, { IVideo } from "../../vo/woofer/video";
 import youtube from "../../lib/Youtube";
 import YoutubeVideo from "../../vo/woofer/youtubeVideo";
 
@@ -9,6 +8,9 @@ class YoutubeStore {
 
   constructor(isServer: boolean, initialData: any) {
     // Object.assign(this,initialData)
+    if(isServer){
+      
+    }
     this.setList(initialData.list)
   }
 

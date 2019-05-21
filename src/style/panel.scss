@@ -23,5 +23,8 @@
     }
     .panel-body{
         padding: 24px;
+        @media (max-width: 1200px){
+            padding: 12px;
+        }
     }
 }

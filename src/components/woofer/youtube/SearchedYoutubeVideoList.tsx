@@ -14,7 +14,6 @@ interface IProps {
 class SearchedYoutubeVideoList extends React.Component<IProps> {
   constructor(props) {
     super(props);
-
   }
 
   render() {
@@ -22,10 +21,10 @@ class SearchedYoutubeVideoList extends React.Component<IProps> {
 
     return (
       <Panel>
-        <PanelHeader>{'유툽 목록 리스트'}</PanelHeader>
-        <PanelBody>
+        <PanelHeader>{'유툽 목록'}</PanelHeader>
+        <PanelBody className={'playlist'}>
           {list.map((item: YoutubeVideo) => {
-            return <SearchedYoutubeVideoItem youtubeVideo={item}/>
+            return <SearchedYoutubeVideoItem youtubeVideo={item} />;
           })}
         </PanelBody>
       </Panel>
