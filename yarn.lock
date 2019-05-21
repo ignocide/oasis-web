@@ -1572,7 +1572,13 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
-"@types/gapi@^0.0.36":
+"@types/gapi.youtube@^3.0.34":
+  version "3.0.34"
+  resolved "https://registry.yarnpkg.com/@types/gapi.youtube/-/gapi.youtube-3.0.34.tgz#70c012396f2bdd328455e231e6fdc774537af498"
+  dependencies:
+    "@types/gapi" "*"
+
+"@types/gapi@*", "@types/gapi@^0.0.36":
   version "0.0.36"
   resolved "https://registry.yarnpkg.com/@types/gapi/-/gapi-0.0.36.tgz#e7fb3d4d4a6fbdbd0a9aef1cbd93d3b115d59a3d"
 

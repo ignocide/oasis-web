@@ -1,5 +1,7 @@
 import getConfig from 'next/config';
-import * as gapi from 'gapi'
+import * as gapi from 'gapi';
+import * as gapiYoutube from 'gapi.youtube';
+
 const { publicRuntimeConfig: config } = getConfig();
 
 class Youtube {
@@ -46,9 +48,12 @@ class Youtube {
     }
 
     return new Promise((res, rej) => {
-      this._gapi.client.youtube.search.list(opts).execute(function (response) {
+      this._gapi.client.youtube.search.list(opts).execute((response) => {
         // nextToken: response.nextPageToken,
         //   list: response.items,
+        if(response.hasAttribute('error')){
+          rej(response.error)
+        }
         let { nextPageToken, items } = response;
         this.nextToken = nextPageToken;
         res(items);
