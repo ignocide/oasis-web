@@ -14,9 +14,10 @@ class Panel extends React.Component<IProps, any> {
   }
 
   render() {
+    const { className = ''} = this.props;
 
     return (
-      <div className={'panel'}>
+      <div className={`${className ? className + ' ': ''}panel`}>
         {this.props.children}
       </div>
     );
