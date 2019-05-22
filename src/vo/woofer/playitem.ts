@@ -1,16 +1,19 @@
-class PlayItem {
+import PlayableVideo from "./PlayableVideo";
+
+class PlayItem extends PlayableVideo{
   id?: number;
   videoId: string;
-  name: string;
+  title: string;
   thumbnail: string;
   description: string;
   createdAt: Date;
   updatedAt: Date;
 
   constructor(playitem: any = {}) {
+    super();
     this.id = playitem.id;
     this.videoId = playitem.videoId;
-    this.name = playitem.name;
+    this.title = playitem.title;
     this.thumbnail = playitem.thumbnail;
     this.description = playitem.description;
     this.createdAt = playitem.createdAt;

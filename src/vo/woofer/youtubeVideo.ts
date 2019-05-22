@@ -1,3 +1,5 @@
+import PlayableVideo from "./PlayableVideo";
+
 interface IYoutubeVideo {
   id: {
     kind: string,
@@ -14,14 +16,11 @@ interface IYoutubeVideo {
   },
 }
 
-class YoutubeVideo {
+class YoutubeVideo extends PlayableVideo{
   kind: string;
-  videoId: string;
-  description: string;
-  title: string;
-  thumbnail: string;
 
   constructor(video: IYoutubeVideo) {
+    super();
     this.kind = video.id.kind;
     this.videoId = video.id.videoId;
     this.title = video.snippet.title;
