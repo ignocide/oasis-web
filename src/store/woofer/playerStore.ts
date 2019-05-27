@@ -32,14 +32,12 @@ class PlayerStore {
     }
     // Object.assign(this,initialData)
     this.setList(initialData.queue);
-    // console.log(initialData)
   }
 
   //init list
   @action
   setList(queue: Video[] = []) {
     this.queue = queue;
-    this.setNextVideo();
   }
 
   @observable
@@ -68,7 +66,6 @@ class PlayerStore {
 
   @action
   setNextVideo(): PlayableVideo {
-    console.log('queue', this.queue, this.queue.length);
     if (!this.queue.length) {
       return null;
     }

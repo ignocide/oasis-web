@@ -3,10 +3,10 @@ import { inject, observer } from 'mobx-react';
 
 import PlaylistStore from '../../../store/woofer/playlistStore';
 
-import '../../../style/woofer/playlist.scss';
 import PlayerStore from "../../store/woofer/playerStore";
 import PlaylistItem from "./PlaylistItem";
-import Panel, { PanelBody } from "../../common/Panel";
+import Panel, { PanelBody, PanelHeader } from "../../common/Panel";
+import '../../../style/woofer/playlist.scss';
 
 interface IProps {
   playlistStore?: PlaylistStore
@@ -30,6 +30,7 @@ class Playlist extends React.Component<IProps, IState> {
     const { playlistStore } = this.props;
     const { videos } = playlistStore;
     return <Panel>
+      <PanelHeader>{'재생 목록'}</PanelHeader>
       <PanelBody className="playlist">
         {videos.map((video) => {
           return <PlaylistItem video={video} key={video.id} />;

@@ -23,9 +23,9 @@ class PlaylistStore {
     let response: any = await playlistsRepository.fetch(playlistId);
     this.videos = response.items.map((video) => new Video(video));
     this.playlist = new Playlist(response);
-    let store:PlayerStore = getStore('playerStore')
-    console.log(store);
-    store.setList(this.videos)
+    let store: PlayerStore = getStore('playerStore');
+    store.setList(this.videos);
+    store.setNextVideo();
     // this.playlist = response.playlists.map((playlist) => new Playlist(playlist))
   }
 
@@ -35,7 +35,10 @@ class PlaylistStore {
     const insertedVideo: IVideo = await playlistsRepository.addVideo(playlistId, youtubeVideo);
     const video = new Video(insertedVideo);
     this.videos = [...this.videos, video];
+    let store: PlayerStore = getStore('playerStore');
+    store.setList(this.videos);
   }
+
 }
 
 export default PlaylistStore;

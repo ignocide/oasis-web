@@ -54,7 +54,6 @@ class Player extends Component<IProps, IState> {
     const { data: youtubeState } = e;
     const { playerStore } = this.props;
     const { videoState } = this.state.player;
-    console.log(youtubeState, YoutubeState[youtubeState], YoutubeState.END);
     if (youtubeState == YoutubeState.END) {
       playerStore.setNextVideo();
     }
