@@ -3,6 +3,8 @@ import Playlist from '../../vo/woofer/playlist';
 import playlistsRepository from '../../api/server/woofer/playlistRepository';
 import YoutubeVideo from "../../vo/woofer/youtubeVideo";
 import { default as Video, IVideo } from "../../vo/woofer/video";
+import { getStore } from "../index";
+import PlayerStore from "./playerStore";
 
 
 class PlaylistStore {
@@ -10,7 +12,7 @@ class PlaylistStore {
   @observable videos?: Video[] = [];
 
   constructor(isServer: boolean, initialData: any = {}) {
-    if(!isServer){
+    if (!isServer) {
     }
     this.playlist = initialData.playlist ? new Playlist(initialData.playlist) : null;
     this.videos = initialData.videos ? initialData.videos.map((video: any) => new Video(video)) : [];
@@ -21,6 +23,9 @@ class PlaylistStore {
     let response: any = await playlistsRepository.fetch(playlistId);
     this.videos = response.items.map((video) => new Video(video));
     this.playlist = new Playlist(response);
+    let store:PlayerStore = getStore('playerStore')
+    console.log(store);
+    store.setList(this.videos)
     // this.playlist = response.playlists.map((playlist) => new Playlist(playlist))
   }
 

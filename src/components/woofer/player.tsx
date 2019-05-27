@@ -1,12 +1,14 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import YouTube from 'react-youtube';
 import { inject, observer } from 'mobx-react';
 
-import Playlist from "./playlist/playlist";
-import PlayerStore from "../../store/woofer/playerStore";
+import PlayerStore, { YoutubeState } from "../../store/woofer/playerStore";
+
+import { Row } from "../layout/grid";
+import Icon from "../common/Icon";
 
 import '../../style/woofer/player.scss';
-
+import Panel, { PanelBody, PanelFooter } from "../common/Panel";
 
 interface IProps {
   playerStore?: PlayerStore
@@ -14,7 +16,9 @@ interface IProps {
 
 
 interface IState {
-
+  player: {
+    videoState: number
+  };
 }
 
 @inject('playerStore')
@@ -29,6 +33,7 @@ class Player extends Component<IProps, IState> {
       height: '100%',
       width: '100%',
       playerVars: {
+        autoplay: 1,
         playsinline: 1,
       },
     };
@@ -38,31 +43,86 @@ class Player extends Component<IProps, IState> {
       backgroundRepeat: 'no-repeat',
       backgroundPosition: 'center',
     };
-
+    this.state = {
+      player: {
+        videoState: YoutubeState.UNSTART
+      }
+    };
   }
 
   onStateChange = (e) => {
-    const {data} = e;
+    const { data: youtubeState } = e;
+    const { playerStore } = this.props;
+    const { videoState } = this.state.player;
+    console.log(youtubeState, YoutubeState[youtubeState], YoutubeState.END);
+    if (youtubeState == YoutubeState.END) {
+      playerStore.setNextVideo();
+    }
+    this.setState({
+      player: {
+        videoState: youtubeState
+      }
+    });
+  };
 
+  pauseVideo = () => {
+    const { internalPlayer } = this.refs.youtubePlayer;
+    internalPlayer.pauseVideo();
+  };
 
-  }
+  playVideo = () => {
+    const { internalPlayer } = this.refs.youtubePlayer;
+    internalPlayer.playVideo();
+  };
+
+  nextVideo = () => {
+    const { playerStore } = this.props;
+    playerStore.setNextVideo();
+  };
 
   render() {
 
-    let content = null;
     const { playerStore } = this.props;
-    const current = playerStore.tmpSlot || playerStore.getCurrent();
+    const { videoState } = this.state.player;
+    const { current } = playerStore;
     if (!current) {
       return null;
     }
-      content = (<YouTube className='woofer-player' opts={this.opts} videoId={current.videoId} onStateChange={this.onStateChange}/>);
+    let content = (
+      <YouTube className='woofer-player' opts={this.opts} videoId={current.videoId} onStateChange={this.onStateChange} ref={'youtubePlayer'} />);
     return (
-      <div>
-        <div className='player'>
-          {content}
-          {/*<iframe src='https://www.youtube.com/embed/i8zx49Rk-pA' frameBorder='0' allowFullScreen></iframe>*/}
-        </div>
-      </div>
+      <Panel className={'youtube-player'}>
+        <PanelBody>
+          <div className='player'>
+            {content}
+            {/*<iframe src='https://www.youtube.com/embed/i8zx49Rk-pA' frameBorder='0' allowFullScreen></iframe>*/}
+          </div>
+        </PanelBody>
+        <PanelFooter>
+
+          <div className={'player-controller'}>
+            <Row>
+              {/*<span className={'player-btn'}>*/}
+              {/*<Icon name={'skip-backward'} />*/}
+              {/*</span>*/}
+              {
+                videoState === YoutubeState.PLAYING ? (
+                  <span className={'player-btn'} onClick={this.pauseVideo}>
+                    <Icon name={'pause'} />
+                  </span>
+                ) : (
+                  <span className={'player-btn'} onClick={this.playVideo}>
+                      <Icon name={'play'} />
+                    </span>
+                )
+              }
+              <span className={'player-btn'} onClick={this.nextVideo}>
+                <Icon name={'skip-forward'} />
+              </span>
+            </Row>
+          </div>
+        </PanelFooter>
+      </Panel>
     );
   }
 }

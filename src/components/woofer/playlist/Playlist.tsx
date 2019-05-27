@@ -5,8 +5,8 @@ import PlaylistStore from '../../../store/woofer/playlistStore';
 
 import '../../../style/woofer/playlist.scss';
 import PlayerStore from "../../store/woofer/playerStore";
-import PlayListItem from "../playlistItem";
 import PlaylistItem from "./PlaylistItem";
+import Panel, { PanelBody } from "../../common/Panel";
 
 interface IProps {
   playlistStore?: PlaylistStore
@@ -29,12 +29,13 @@ class Playlist extends React.Component<IProps, IState> {
   render() {
     const { playlistStore } = this.props;
     const { videos } = playlistStore;
-    console.log(videos.length);
-    return <div className="playlist">
-      {videos.map((video) => {
-        return <PlaylistItem video={video} key={video.id}/>;
-      })}
-    </div>;
+    return <Panel>
+      <PanelBody className="playlist">
+        {videos.map((video) => {
+          return <PlaylistItem video={video} key={video.id} />;
+        })}
+      </PanelBody>
+    </Panel>;
   }
 }
 

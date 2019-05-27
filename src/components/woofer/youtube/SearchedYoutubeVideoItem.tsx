@@ -30,7 +30,9 @@ class SearchedYoutubeVideoItem extends React.Component<IProps, IState> {
 
   addVideoToCurrentPlaylist = () => {
     const { youtubeVideo, playlistStore } = this.props;
-    playlistStore.addVideo(youtubeVideo);
+    playlistStore.addVideo(youtubeVideo).then(() => {
+      this.closeOptionsModal();
+    });
   };
 
   playVideo = () => {

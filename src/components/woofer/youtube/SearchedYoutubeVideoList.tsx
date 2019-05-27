@@ -21,7 +21,7 @@ class SearchedYoutubeVideoList extends React.Component<IProps> {
 
     return (
       <Panel>
-        <PanelHeader>{'유툽 목록'}</PanelHeader>
+        <PanelHeader>{'검색 결과'}</PanelHeader>
         <PanelBody className={'playlist'}>
           {list.map((item: YoutubeVideo) => {
             return <SearchedYoutubeVideoItem youtubeVideo={item} />;

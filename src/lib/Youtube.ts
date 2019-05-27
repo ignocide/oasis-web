@@ -51,7 +51,7 @@ class Youtube {
       this._gapi.client.youtube.search.list(opts).execute((response) => {
         // nextToken: response.nextPageToken,
         //   list: response.items,
-        if(response.hasAttribute('error')){
+        if(response.error){
           return rej(response.error)
         }
         let { nextPageToken, items } = response;

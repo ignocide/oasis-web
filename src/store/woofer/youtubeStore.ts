@@ -9,7 +9,7 @@ class YoutubeStore {
   constructor(isServer: boolean, initialData: any) {
     // Object.assign(this,initialData)
     if(isServer){
-      
+
     }
     this.setList(initialData.list)
   }

@@ -1,35 +1,50 @@
 import { action, observable } from 'mobx';
 import Video from "../../vo/woofer/video";
-import YoutubeVideo from "../../vo/woofer/youtubeVideo";
+import PlayableVideo from "../../vo/woofer/PlayableVideo";
 
+export enum PLAYMODE {
+  RANDOM,
+  REPEAT,
+  FALT
+}
+
+
+export enum YoutubeState {
+  UNSTART = -1,
+  END = 0,
+  PLAYING = 1,
+  STOP = 2,
+  BUFFERING = 3,
+  READY = 5
+}
 
 class PlayerStore {
   @observable queue: Video[] = [];
   @observable currentIndex: number = null;
-  @observable tmpSlot: YoutubeVideo | Video = null;
+  @observable current: PlayableVideo = null;
+  @observable tmpSlot: PlayableVideo = null;
+  history: string[] = [];
+  historySize: number = 100;
 
   constructor(isServer: boolean, initialData: any) {
-    if(isServer){
+    if (isServer) {
 
     }
     // Object.assign(this,initialData)
     this.setList(initialData.queue);
+    // console.log(initialData)
   }
 
+  //init list
   @action
-  setList(queue = []) {
-    this.queue = queue.map((video) => new Video(video));
-    if (this.queue.length) {
-      this.currentIndex = 0;
-    }
+  setList(queue: Video[] = []) {
+    this.queue = queue;
+    this.setNextVideo();
   }
 
   @observable
-  getCurrent() {
-    if (this.currentIndex === null) {
-      return null;
-    }
-    return this.queue[this.currentIndex] || null;
+  getCurrent(): PlayableVideo {
+    return this.current;
   }
 
   @action
@@ -38,8 +53,40 @@ class PlayerStore {
   }
 
   @action
-  setTmpPlay(video: YoutubeVideo | Video) {
-    this.tmpSlot = video;
+  setTmpPlay(video: PlayableVideo) {
+    this.current = video;
+  }
+
+  addHistory(videoId: string) {
+    if (this.history.indexOf(videoId) === -1) {
+      this.history.push(videoId);
+      if (this.history.length > this.historySize) {
+        this.history.shift();
+      }
+    }
+  }
+
+  @action
+  setNextVideo(): PlayableVideo {
+    console.log('queue', this.queue, this.queue.length);
+    if (!this.queue.length) {
+      return null;
+    }
+
+    let unPlayedList = this.queue.filter((video) => {
+      return this.history.indexOf(video.videoId) === -1;
+    });
+
+    // let nextVideo:Video  = unPlayedList[randomIndex];
+    let list: Video [] = unPlayedList;
+    if (!unPlayedList.length) {
+      this.history = [];
+      list = this.queue;
+    }
+    const randomIndex = Math.floor(Math.random() * list.length);
+    const nextVideo = list[randomIndex];
+    this.addHistory(nextVideo.videoId);
+    this.current = nextVideo;
   }
 }
 

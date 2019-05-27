@@ -36,9 +36,9 @@ export const PanelFooter = ({ children, right = null }) => {
   </div>;
 };
 
-export const PanelBody = ({ children, className = '', right = null }) => {
+export const PanelBody = ({ children, className = '' }) => {
   return <div className={`panel-body${className ? " " + className : ''}`}>
-    {children}{right}
+    {children}
   </div>;
 };
 

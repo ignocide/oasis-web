@@ -1,8 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import PlaylistStore from '../../../store/woofer/playlistStore';
-
 import '../../../style/woofer/playlist.scss';
 import PlayerStore from "../../store/woofer/playerStore";
 import Video from "../../../vo/woofer/video";
@@ -12,13 +10,12 @@ import DropBox from "../../common/DropBox";
 import { IconButton } from "../../form/index";
 
 interface IProps {
-  playerStore?: PlaylistStore,
+  playerStore?: PlayerStore,
   video: Video,
 }
 
 
 interface IState {
-  playerStore?: PlayerStore
 }
 
 @inject('playerStore')
@@ -32,7 +29,6 @@ class PlaylistItem extends React.Component<IProps, IState> {
 
   playVideo = () => {
     const { video, playerStore } = this.props;
-    console.log(playerStore)
     playerStore.setTmpPlay(video);
   };
 
@@ -45,8 +41,8 @@ class PlaylistItem extends React.Component<IProps, IState> {
           <img src={video.thumbnail} />
 
         </div>
-        <div className="video-info">
-          <p className="video-name">{video.name}</p>
+        <div className="video-info" onClick={this.playVideo}>
+          <p className="video-name">{video.title}</p>
           <div className="video-description">{video.description}</div>
         </div>
         <div className="video-function">
@@ -54,12 +50,11 @@ class PlaylistItem extends React.Component<IProps, IState> {
         </div>
         <DropBox isOpen={modalState.options} requestClose={this.closeOptionsModal} parent={this.refs.button}>
           <Menu>
-            <MenuItem onClick={this.addVideoToCurrentPlaylist}>{'추가하기'}</MenuItem>
             <MenuItem onClick={this.playVideo}>{'재생하기'}</MenuItem>
           </Menu>
         </DropBox>
       </div>
-    )
+    );
   }
 }
 
