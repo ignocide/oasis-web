@@ -14,15 +14,14 @@
         .playlists-header {
             padding: 15px 20px;
         }
-        li{
+        li {
             padding: 15px 20px;
 
         }
     }
 }
 
-
-.playlist-item{
+.playlist-item {
     background-color: white;
     border-radius: 4px;
     padding: 15px 20px 15px 20px;
@@ -31,21 +30,19 @@
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    &:hover{
+    &:hover {
         text-decoration: none;
         background-color: rgba(0, 0, 0, 0.08);
     }
 
-
-
-    &.board-create-form{
+    &.board-create-form {
         padding: 9px 20px;
-        input.input{
+        input.input {
             width: 100%;
             border: 1px solid transparent;
             border-radius: 0;
             background-color: transparent;
-            &:focus{
+            &:focus {
                 outline: none;
                 border-color: #eee;
             }
