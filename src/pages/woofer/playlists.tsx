@@ -20,6 +20,7 @@ import '../../style/header.scss';
 import '../../style/index.scss';
 import '../../style/woofer/index.scss';
 import Player from "../../components/woofer/player";
+import DownloadStore from "../../store/woofer/downloadStore";
 
 // import withAuth from '../../components/hoc/withAuth'
 
@@ -34,7 +35,8 @@ interface IState {
   playlistsStore: PlaylistsStore,
   playlistStore: PlaylistStore,
   playerStore: PlayerStore,
-  youtubeStore: YoutubeStore
+  youtubeStore: YoutubeStore,
+  downloadStore: DownloadStore
 })
 class WooferPlaylistPage extends React.Component<IProps, IState> {
   static getInitialProps = async function ({ query }) {

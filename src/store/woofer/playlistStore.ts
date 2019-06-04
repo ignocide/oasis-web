@@ -5,6 +5,8 @@ import YoutubeVideo from "../../vo/woofer/youtubeVideo";
 import { default as Video, IVideo } from "../../vo/woofer/video";
 import { getStore } from "../index";
 import PlayerStore from "./playerStore";
+import PlayItem from "../../vo/woofer/playitem";
+import FileDownloader from "../../lib/FileDownloader";
 
 
 class PlaylistStore {
@@ -35,6 +37,18 @@ class PlaylistStore {
     const insertedVideo: IVideo = await playlistsRepository.addVideo(playlistId, youtubeVideo);
     const video = new Video(insertedVideo);
     this.videos = [...this.videos, video];
+    let store: PlayerStore = getStore('playerStore');
+    store.setList(this.videos);
+  }
+
+  @action
+  async removeVideo(Video: PlayItem) {
+    const { id: playlistItemId } = Video;
+    const { id: playlistId } = this.playlist;
+    await playlistsRepository.removeVideo(playlistId, playlistItemId);
+    this.videos = this.videos.filter((video) => {
+      return playlistItemId !== video.id;
+    });
     let store: PlayerStore = getStore('playerStore');
     store.setList(this.videos);
   }

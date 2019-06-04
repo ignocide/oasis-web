@@ -6,6 +6,7 @@ import PlaylistStore from '../../../store/woofer/playlistStore';
 import PlayerStore from "../../store/woofer/playerStore";
 import PlaylistItem from "./PlaylistItem";
 import Panel, { PanelBody, PanelHeader } from "../../common/Panel";
+
 import '../../../style/woofer/playlist.scss';
 
 interface IProps {
