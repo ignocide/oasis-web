@@ -65,7 +65,7 @@ class PlaylistItem extends React.Component<IProps, IState> {
           <div className="video-description">{video.description}</div>
         </div>
         <div className="video-function">
-          <IconButton className={'playlist-add-btn'} name={'more'} onClick={this.openOptionsModal} ref={'button'} />
+          <IconButton className={'playlist-add-btn'} name={'more_vert'} onClick={this.openOptionsModal} ref={'button'} />
           <div className={'video-download-progress'} style={{
             width : `${downloadPercentage}%`
           }}/>

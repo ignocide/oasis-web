@@ -63,9 +63,9 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
     const { playlistStore } = this.props.stores;
 
     return (
-      <div className="main">
+      <div id="main">
         <Header>
-          <YoutubeSearchInput />
+          {/*<YoutubeSearchInput />*/}
         </Header>
         <Sidebar>
           <PlaylistList />

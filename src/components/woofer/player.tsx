@@ -111,12 +111,12 @@ class Player extends Component<IProps, IState> {
                   </span>
                 ) : (
                   <span className={'player-btn'} onClick={this.playVideo}>
-                      <Icon name={'play'} />
+                      <Icon name={'play_arrow'} />
                     </span>
                 )
               }
               <span className={'player-btn'} onClick={this.nextVideo}>
-                <Icon name={'skip-forward'} />
+                <Icon name={'skip_next'} />
               </span>
             </Row>
           </div>

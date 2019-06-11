@@ -1,6 +1,7 @@
 @import 'variables';
 @import 'grid';
 @import 'animation';
+@import 'layout';
 @import 'form';
 
 ul {
@@ -26,76 +27,11 @@ a {
 }
 
 body {
-    background-color: $background-color;
+    background-color: white;
     padding: 0;
     margin: 0;
     font-size: 14px;
     font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
-}
-
-// header {
-
-// }
-
-$header-size: 60px;
-aside#sidebar {
-    position: fixed;
-    left: 0;
-    top: $header-size;
-    bottom: 0;
-    width: 280px;
-    background-color: white;
-    z-index: 1;
-    transition: transform 0.5s;
-
-    @media (min-width: 1200px) {
-        transform: translateX(0) !important;
-    }
-
-    &.open {
-        transform: translateX(0);
-    }
-    &.close {
-        transform: translateX(-100%);
-    }
-
-    & + #main-container {
-        padding-left: 280px + 80px;
-        @media (max-width: 1200px) {
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-    }
-
-}
-
-.main > .container {
-    padding-top: $header-size;
-}
-
-#main-container {
-    // @media (max-width: 1200px){
-    padding-left: 80px;
-    padding-right: 80px;
-    // }
-    text-align: left;
-}
-
-#floater-container {
-    .floater-blur {
-        background-color: transparent;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        width: 100%;
-        height: 100%;
-    }
-    .floater {
-        position: fixed;
-    }
 }
 
 ul {

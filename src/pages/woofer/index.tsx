@@ -35,15 +35,9 @@ enum PAGES {
 })
 class WooferPage extends React.Component<IProps, IState> {
   static getInitialProps = async function ({ req, res, ...etc }) {
-    if (req) {
-      try{
-        const playlistsStore: PlaylistsStore = getStore('playlistsStore');
-        await playlistsStore.fetchPlaylists();
-      } catch(e){
-        console.log(e)
-      }
-    }
-
+    const playlistsStore: PlaylistsStore = getStore('playlistsStore');
+    await playlistsStore.fetchPlaylists();
+    console.log("그렇다고 이렇게하면 두번 불릴꺼 같은데")
     return {};
   };
 

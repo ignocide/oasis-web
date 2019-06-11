@@ -68,7 +68,7 @@ class PlaylistListItem extends React.Component<IProps, any> {
       <div>
         <Link  as={`/woofer/playlists/${playlist.id}`} href={`/woofer/playlists?playlistId=${playlist.id}`}>{playlist.name}</Link>
       </div>
-      <IconButton name={'more'} onClick={this.openBox} ref={'button'}/>
+      <IconButton name={'more_vert'} onClick={this.openBox} ref={'button'}/>
       <DropBox isOpen={isBoxOpen} parent={this.refs.button} requestClose={this.closeBox}>
         <Menu>
           {/*<MenuItem>{'수정'}</MenuItem>*/}

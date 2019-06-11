@@ -1,5 +1,6 @@
 import Layout from '../components/layout';
 import React from 'react';
+import Link from "next/link";
 import { inject, observer } from 'mobx-react';
 import withStore from "../components/hoc/withStore";
 
@@ -21,8 +22,11 @@ class Index extends React.Component<PI, any> {
   render() {
     return (
       <Layout>
-        <h1>{'Batman TV Shows'}</h1>
         <ul>
+          <li>
+            <Link href={'/todo'}>{'todo'}</Link>
+            <Link href={'/woofer'}>{'woofer'}</Link>
+          </li>
 
         </ul>
       </Layout>

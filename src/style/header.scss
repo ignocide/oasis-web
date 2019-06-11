@@ -2,10 +2,6 @@
 
 header#gnb {
     background-color: white;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
     width:100%;
     height: auto;
     z-index:1;
@@ -13,9 +9,9 @@ header#gnb {
     $header-height: 60px;
     .gnb-main{
         height: $header-height;
-        border-bottom-color: #E8EBED;
-        border-bottom-style: solid;
-        border-bottom-width: 1px;
+        //border-bottom-color: #E8EBED;
+        //border-bottom-style: solid;
+        //border-bottom-width: 1px;
         a,#menu-icon{
             display: inline-block;
             height: 100%;
@@ -36,6 +32,7 @@ header#gnb {
             line-height: $header-height;
             display: flex;
             .gnb-main-right,.gnb-main-left{
+                position: relative;
                 display: inline-block;
             }
             .gnb-main-center{
@@ -43,5 +40,32 @@ header#gnb {
             }
 
         }
+
+        .user-menu-wrapper{
+            display: inline-block;
+            height: 100%;
+            padding: 0 20px;
+            line-height: $nav-main-height;
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+            letter-spacing: 1px;
+            .button.btn-icon{
+                vertical-align: middle;
+                height:30px;
+                min-width:30px;
+                i {
+                    font-size: 30px;
+                }
+            }
+        }
     }
+}
+
+.user-menu{
+    position: absolute;
+    right: 0;
+    z-index:1;
+    font-size:initial;
+
 }
