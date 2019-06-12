@@ -38,6 +38,7 @@ class SearchedYoutubeVideoItem extends React.Component<IProps, IState> {
   playVideo = () => {
     const { youtubeVideo, playerStore } = this.props;
     playerStore.setTmpPlay(youtubeVideo);
+    this.closeOptionsModal();
   };
 
   render() {

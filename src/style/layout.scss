@@ -1,6 +1,7 @@
 #main {
     max-width: 1200px;
     margin: 0 auto;
+    padding-bottom: 210px;
     @media (min-width: 1200px) {
     }
     @media (max-width: 1200px) {
@@ -112,4 +113,13 @@
     .floater {
         position: fixed;
     }
+}
+
+.flow-corner {
+    position: fixed !important;
+    bottom: 30px;
+    right: 30px;
+    width: 320px !important;
+    height: 180px !important;
+    z-index: 1;
 }

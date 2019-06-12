@@ -60,7 +60,6 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
   }
 
   render() {
-    const { playlistStore } = this.props.stores;
 
     return (
       <div id="main">
@@ -71,15 +70,9 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
           <PlaylistList />
         </Sidebar>
         <div id={'main-container'} className="container">
-          <div style={{
-            maxWidth: 900,
-            marginLeft: 'auto',
-            marginRight: 'auto'
-          }}>
           <Player />
           <Playlist />
           <SearchedYoutubeVideoList />
-          </div>
         </div>
       </div>
     );

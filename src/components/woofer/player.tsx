@@ -9,6 +9,7 @@ import Icon from "../common/Icon";
 
 import '../../style/woofer/player.scss';
 import Panel, { PanelBody, PanelFooter } from "../common/Panel";
+import Persistentor from "../common/Persistentor";
 
 interface IProps {
   playerStore?: PlayerStore
@@ -92,18 +93,15 @@ class Player extends Component<IProps, IState> {
     return (
       <Panel className={'youtube-player'}>
         <PanelBody>
-          <div className='player'>
+          <Persistentor className='player'>
             {content}
             {/*<iframe src='https://www.youtube.com/embed/i8zx49Rk-pA' frameBorder='0' allowFullScreen></iframe>*/}
-          </div>
+          </Persistentor>
         </PanelBody>
         <PanelFooter>
 
           <div className={'player-controller'}>
             <Row>
-              {/*<span className={'player-btn'}>*/}
-              {/*<Icon name={'skip-backward'} />*/}
-              {/*</span>*/}
               {
                 videoState === YoutubeState.PLAYING ? (
                   <span className={'player-btn'} onClick={this.pauseVideo}>
