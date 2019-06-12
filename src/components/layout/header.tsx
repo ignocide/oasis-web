@@ -51,7 +51,7 @@ const UserButton = ({}) => {
     console.log("onClick logout")
   }
   return <div className={'user-menu-wrapper'}>
-    <IconButton name={'perm_identity'} onClick={() => setIsOpen(!isOpen)} />
+    <IconButton name={'power_settings_new'} onClick={() => setIsOpen(!isOpen)} />
     {
       isOpen && <Menu className={'user-menu'}>
         <MenuItem onClick={logout}>{'로그아웃'}</MenuItem>

@@ -65,9 +65,9 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
     return (
       <div id="main">
         <Header>
-          {/*<YoutubeSearchInput />*/}
         </Header>
         <Sidebar>
+          <YoutubeSearchInput />
           <PlaylistList />
         </Sidebar>
         <div id={'main-container'} className="container">

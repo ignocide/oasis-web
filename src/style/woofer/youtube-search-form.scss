@@ -3,8 +3,20 @@
     line-height: 60px;
     width:100%;
     max-width:600px;
+    padding: 0 15px;
+    position: relative;
+
     input.input{
         width:100%;
-        background-color: #dddddd;
+        padding-left: 50px;
+        //background-color: #dddddd;
+        border-bottom: 1px solid #777;
+    }
+    .search-icon{
+        position: absolute;
+        top: 50%;
+        margin-top: -12px;
+        left: 28px;
+        color: #777;
     }
 }

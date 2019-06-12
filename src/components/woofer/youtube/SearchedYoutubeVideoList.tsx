@@ -19,6 +19,10 @@ class SearchedYoutubeVideoList extends React.Component<IProps> {
   render() {
     const { list } = this.props.youtubeStore;
 
+    if (!list.length) {
+      return null;
+    }
+
     return (
       <Panel>
         <PanelHeader>{'검색 결과'}</PanelHeader>

@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import '../../../style/woofer/youtube-search-form.scss';
 import YoutubeStore from "../../../store/woofer/youtubeStore";
+import Icon from "../../common/Icon";
 
 interface IProps {
   youtubeStore?: YoutubeStore
@@ -34,9 +35,9 @@ class YoutubeSearchInput extends React.Component<IProps, IState> {
   onSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const {query} = this.state;
-    const {youtubeStore} = this.props;
-    youtubeStore.search(query)
+    const { query } = this.state;
+    const { youtubeStore } = this.props;
+    youtubeStore.search(query);
   };
 
   render() {
@@ -45,6 +46,7 @@ class YoutubeSearchInput extends React.Component<IProps, IState> {
     return (
       <div className="youtube-search-form">
         <form onSubmit={this.onSubmit}>
+          <Icon className={'search-icon'} name={'search'} />
           <input className="input" value={query} onChange={this.onChangeHandler} />
         </form>
       </div>
