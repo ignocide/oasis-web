@@ -50,12 +50,12 @@ class Persistentor extends React.Component<any, IState> {
 
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll);
-    // window.addEventListener('resize',this.onScroll)
+    window.addEventListener('resize',this.onScroll)
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
-    // window.removeEventListener('resize',this.onScroll)
+    window.removeEventListener('resize',this.onScroll)
   }
 
   get containerClassName() {
