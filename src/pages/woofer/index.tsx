@@ -9,8 +9,6 @@ import Header from "../../components/layout/header";
 import { getStore } from "../../store/index";
 import PlaylistStore from '../../store/woofer/playlistStore';
 
-import '../../style/header.scss';
-import '../../style/index.scss';
 import '../../style/woofer/index.scss';
 
 interface IProps {
@@ -37,7 +35,6 @@ class WooferPage extends React.Component<IProps, IState> {
   static getInitialProps = async function ({ req, res, ...etc }) {
     const playlistsStore: PlaylistsStore = getStore('playlistsStore');
     await playlistsStore.fetchPlaylists();
-    console.log("그렇다고 이렇게하면 두번 불릴꺼 같은데")
     return {};
   };
 
@@ -49,12 +46,12 @@ class WooferPage extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div className="main">
-        <Header />
-        <aside id={"sidebar"}>
-          <PlaylistList />
-        </aside>
+      <div id="main">
         <div id={'main-container'} className="container">
+          <Header />
+          <aside id={"sidebar"}>
+            <PlaylistList />
+          </aside>
         </div>
       </div>
     );

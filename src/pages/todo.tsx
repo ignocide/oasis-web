@@ -21,12 +21,6 @@ interface IProps {
 interface IState {
 }
 
-enum PAGES {
-  PLAYLISTS,
-  SEARCH,
-  SUBTITLE,
-}
-
 // @withAuth
 @withStore({
   boardListStore: BoardListStore,
@@ -51,11 +45,11 @@ class TodoPage extends React.Component<IProps, IState> {
 
   render() {
     return (
-      <div className="main">
-        <Header />
-        <aside id={"sidebar"}>
-          <BoardList />
-        </aside>
+      <div id="main">
+          <Header />
+          <aside id={"sidebar"}>
+            <BoardList />
+          </aside>
         <div id={'main-container'} className="container">
           <TaskList />
         </div>

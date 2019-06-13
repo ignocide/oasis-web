@@ -42,9 +42,9 @@ class YoutubeSearchInput extends React.Component<IProps, IState> {
 
   render() {
     const { query } = this.state;
-
+    const {className} = this.props;
     return (
-      <div className="youtube-search-form">
+      <div className={`youtube-search-form${className? ' '+ className:''}`}>
         <form onSubmit={this.onSubmit}>
           <Icon className={'search-icon'} name={'search'} />
           <input className="input" value={query} onChange={this.onChangeHandler} />

@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import PlaylistStore from '../../../store/woofer/playlistStore';
 
-import PlayerStore from "../../store/woofer/playerStore";
+import PlayerStore from "../../../store/woofer/playerStore";
 import PlaylistItem from "./PlaylistItem";
 import Panel, { PanelBody, PanelHeader } from "../../common/Panel";
 
@@ -36,6 +36,9 @@ class Playlist extends React.Component<IProps, IState> {
         {videos.map((video) => {
           return <PlaylistItem video={video} key={video.id} />;
         })}
+        {
+          !videos.length && "재생 목록이 없습니다."
+        }
       </PanelBody>
     </Panel>;
   }

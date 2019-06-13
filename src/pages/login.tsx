@@ -32,9 +32,9 @@ class LoginPage extends React.Component<IProps, IState> {
   render() {
 
     return (
-      <div className="main">
-        <Header />
+      <div id="main">
         <div id={'main-container'} className="container">
+          <Header />
           <Row style={{paddingTop: 50, textAlign: 'center'}}>
             <LoginForm />
           </Row>

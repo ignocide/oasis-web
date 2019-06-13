@@ -16,8 +16,6 @@ import YoutubeSearchInput from "../../components/woofer/youtube/YoutubeSearchFor
 import SearchedYoutubeVideoList from "../../components/woofer/youtube/SearchedYoutubeVideoList";
 import YoutubeStore from "../../store/woofer/youtubeStore";
 
-import '../../style/header.scss';
-import '../../style/index.scss';
 import '../../style/woofer/index.scss';
 import Player from "../../components/woofer/player";
 import DownloadStore from "../../store/woofer/downloadStore";
@@ -59,7 +57,7 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
 
   }
 
-  render() {
+  render() { 
 
     return (
       <div id="main">
@@ -70,6 +68,7 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
           <PlaylistList />
         </Sidebar>
         <div id={'main-container'} className="container">
+          <YoutubeSearchInput className={'main'}/>
           <Player />
           <Playlist />
           <SearchedYoutubeVideoList />

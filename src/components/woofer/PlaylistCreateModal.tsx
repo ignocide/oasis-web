@@ -5,7 +5,6 @@ import PlaylistsStore from "../../store/woofer/playlistsStore";
 import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../common/ModalForm";
 import { FieldInput } from "../form/Field";
 import { Button } from "../form/index";
-import withStore from "../hoc/withStore";
 
 interface IProps {
   playlistsStore: PlaylistsStore,
@@ -67,6 +66,12 @@ class PlaylistCreateModal extends React.Component<IProps, IState> {
     });
   };
 
+  onKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      this.onSubmit(e);
+    }
+  };
+
   render() {
     const { playlistCreateForm } = this.state;
     const { requestClose } = this.props;
@@ -74,7 +79,7 @@ class PlaylistCreateModal extends React.Component<IProps, IState> {
       <ModalForm>
         <ModalHeader>{'플레이리스트 추가'}</ModalHeader>
         <ModalBody>
-          <FieldInput name={'name'} label={'플레이리스트 이름'} value={playlistCreateForm.name || ''} onChange={this.onChangeValue} />
+          <FieldInput name={'name'} label={'플레이리스트 이름'} value={playlistCreateForm.name || ''} onChange={this.onChangeValue} onKeyPress={this.onKeyPress} />
         </ModalBody>
         <ModalFooter>
           <Button shape={'text'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
