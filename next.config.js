@@ -1,22 +1,13 @@
 const withSass = require('@zeit/next-sass');
 const withTypescript = require('@zeit/next-typescript');
 const config = require('./config.json');
-const webpack = require('webpack');
+const path = require('path')
+let nextConfig = {};
 
-// function bindEnv(envs) {
-//   Object.keys(envs).forEach((key) => {
-//     process.env[key] = envs[key];
-//   });
-// }
-//
-// bindEnv(config);
 
-const nextConfig = withTypescript(withSass({
+nextConfig = withSass({
+  // cssModules:true,
   webpack(config, options) {
-    // config.plugins.push(new webpack.EnvironmentPlugin(process.env));
-    // // Do not run type checking twice:
-    // if (options.isServer) config.plugins.push(new ForkTsCheckerWebpackPlugin());
-    //
     config.module.rules.push({
       test: /\.(png|jpg|gif|svg|eot|otf|ttf|woff|woff2)$/,
       use: {
@@ -26,9 +17,37 @@ const nextConfig = withTypescript(withSass({
         },
       },
     });
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: {
+        loader: 'sass-resources-loader',
+        options: {
+          resources: [
+            path.resolve(__dirname,'./src/style/variables.scss'),
+            path.resolve(__dirname,'./src/style/spoqa/variables.scss'),
+          ],
+        },
+      },
+    });
     return config;
   },
-}));
+});
+
+nextConfig = withTypescript(nextConfig);
+// const nextConfig = withTypescript(withSass({
+//   webpack(config, options) {
+//     config.module.rules.push({
+//       test: /\.(png|jpg|gif|svg|eot|otf|ttf|woff|woff2)$/,
+//       use: {
+//         loader: 'url-loader',
+//         options: {
+//           limit: 100000,
+//         },
+//       },
+//     });
+//     return config;
+//   },
+// }));
 
 
 nextConfig.distDir = '../.next';
