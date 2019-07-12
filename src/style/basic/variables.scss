@@ -1,0 +1,55 @@
+/* variables */
+
+$mainblue-light: #87b1f3;
+$mainblue: #4c80f1;
+$mainblue-dark: #2c5ae9;
+
+
+$gray-0: #f8fafb;
+$gray-1: #f1f5f5;
+$gray-2: #eaeeef;
+$gray-3: #e1e4e6;
+$gray-4: #ced3d6;
+$gray-5: #a9afb3;
+$gray-6: #878d91;
+$gray-7: #4d5256;
+$gray-8: #363a3c;
+$gray-9: #292a2b;
+
+
+$green-light: #96e8ad;
+$green: #35d48d;
+$green-dark: #1bbf83;
+
+$red-light: #ff8e89;
+$red: #ff5d5d;
+$red-dark: #f24147;
+
+
+
+$text: $gray-7;
+$text-light: $gray-6;
+$text-dark: $gray-0;
+
+$text-primary: $mainblue;
+$text-positive: $green-dark;
+$text-negative: $red-dark;
+
+
+// for inject
+.material-icon{
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    //-webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+
+}

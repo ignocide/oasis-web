@@ -1,0 +1,46 @@
+
+$mark-size: 26px;
+.alert {
+    padding: 16px 24px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    &-info{
+        background-color: $gray-0;
+        border-color: $gray-4;
+        color: $gray-7;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.07);
+    }
+    &-success{
+        background-color: #f1fcf7;
+        border-color: $green;
+        color: $green-dark;
+        box-shadow: 0 1px 1px rgba($green,0.27);
+        padding-left: 24px + $mark-size;
+        .icon {
+            font-size: $mark-size;
+            color: $green;
+            position: absolute;
+            left:18px;
+            top: 50%;
+            margin-top: -1 * $mark-size/2;
+        }
+    }
+    &-danger{
+        background-color: #fff4f4;
+        border-color: $red;
+        color: $red-dark;
+        box-shadow: 0 1px 1px rgba($red,0.3);
+        padding-left: 24px + $mark-size;
+        .icon {
+            font-size: $mark-size;
+            color: $red;
+            position: absolute;
+            top: 50%;
+            left:18px;
+            margin-top: -1 * $mark-size/2;
+        }
+    }
+}

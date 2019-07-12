@@ -1,0 +1,42 @@
+@import './variables';
+@import './grid';
+@import './form';
+@import './modal';
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+
+body {
+    font-family: 'Spoqa Han Sans', 'Spoqa Han Sans JP', 'Sans-serif';
+    color: $gray-7;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+section {
+    padding: 40px 0 50px;
+
+    .section-header,.section-title {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        font-size: 22px;
+        font-weight: 700;
+        border-bottom: 1px solid $gray-3;
+    }
+
+    .section-description {
+        margin-bottom: 40px;
+        font-size: 14px;
+    }
+
+    .section-subtitle{
+        font-size: 18px;
+        font-weight: 700;
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid $gray-3;
+    }
+}
+
+* {
+    word-break: keep-all;
+}

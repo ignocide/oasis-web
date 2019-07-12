@@ -24,7 +24,7 @@ nextConfig = withSass({
         options: {
           resources: [
             path.resolve(__dirname,'./src/style/variables.scss'),
-            path.resolve(__dirname,'./src/style/spoqa/variables.scss'),
+            path.resolve(__dirname,'./src/style/basic/variables.scss'),
           ],
         },
       },
