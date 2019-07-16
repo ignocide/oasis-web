@@ -18,3 +18,22 @@
 
     }
 }
+
+
+.woofer-page{
+    .youtube-search-form{
+        display: block;
+        @media (max-width: 1200px) {
+            display: none;
+        }
+    }
+    #main{
+        .row{
+            .youtube-player{
+                margin: 0;
+            }
+        }
+
+    }
+
+}

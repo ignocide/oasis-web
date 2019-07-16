@@ -2,17 +2,17 @@
 
 header#gnb {
     background-color: white;
-    width:100%;
+    width: 100%;
     height: auto;
-    z-index:1;
+    z-index: 1;
     $nav-main-height: 60px;
     $header-height: 60px;
-    .gnb-main{
+    .gnb-main {
         height: $header-height;
         //border-bottom-color: #E8EBED;
         //border-bottom-style: solid;
         //border-bottom-width: 1px;
-        a,#menu-icon{
+        a, #menu-icon {
             display: inline-block;
             height: 100%;
             padding: 0 20px;
@@ -22,26 +22,28 @@ header#gnb {
             font-size: 20px;
             letter-spacing: 1px;
         }
-        #menu-icon{
-            @media (min-width: 1200px){
+        #menu-icon {
+            @media (min-width: 1200px) {
                 display: none;
             }
         }
-        .gnb-main-wrapper{
+        .gnb-main-wrapper {
             height: $header-height;
             line-height: $header-height;
+            padding: 0;
             display: flex;
-            .gnb-main-right,.gnb-main-left{
+            .gnb-main-right, .gnb-main-left {
                 position: relative;
                 display: inline-block;
+                line-height: 60px;
             }
-            .gnb-main-center{
-                flex:1 auto;
+            .gnb-main-center {
+                flex: 1 auto;
             }
 
         }
 
-        .user-menu-wrapper{
+        .user-menu-wrapper {
             display: inline-block;
             height: 100%;
             padding: 0 20px;
@@ -50,10 +52,11 @@ header#gnb {
             color: black;
             font-size: 20px;
             letter-spacing: 1px;
-            .button.btn-icon{
+            .button.btn-icon {
                 vertical-align: middle;
-                height:30px;
-                min-width:30px;
+                height: 30px;
+                min-width: 30px;
+                color: $mainblue;
                 i {
                     font-size: 30px;
                 }
@@ -62,10 +65,10 @@ header#gnb {
     }
 }
 
-.user-menu{
+.user-menu {
     position: absolute;
     right: 0;
-    z-index:1;
-    font-size:initial;
+    z-index: 1;
+    font-size: initial;
 
 }

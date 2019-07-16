@@ -24,13 +24,13 @@ class SearchedYoutubeVideoList extends React.Component<IProps> {
     }
 
     return (
-      <Panel>
+      <Panel className={'playlist-container'}>
         <PanelHeader>{'검색 결과'}</PanelHeader>
-        <PanelBody className={'playlist'}>
+        <div className={'playlist'}>
           {list.map((item: YoutubeVideo) => {
             return <SearchedYoutubeVideoItem youtubeVideo={item} />;
           })}
-        </PanelBody>
+        </div>
       </Panel>
     );
   }

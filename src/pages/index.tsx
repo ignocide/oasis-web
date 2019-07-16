@@ -27,7 +27,6 @@ class Index extends React.Component<PI, any> {
             <Link href={'/todo'}>{'todo'}</Link>
             <Link href={'/woofer'}>{'woofer'}</Link>
           </li>
-
         </ul>
       </Layout>
     );

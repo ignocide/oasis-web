@@ -10,11 +10,8 @@
 //    }
 //}
 #sidebar {
+    //background-color: $mainblue-light !important;
     .playlists {
-        .playlists-header {
-            padding: 15px 20px;
-        }
-
         .playlist-add-btn {
             width: 20px;
             border-radius: 50% !important;
@@ -35,9 +32,17 @@
     }
 }
 
-.playlist-item {
-    background-color: white;
-    border-radius: 4px;
+.playlists-header{
+    font-weight:bold;
+    &:hover{
+        background-color: transparent !important;
+        cursor: initial;
+    }
+}
+
+.playlist-item,.playlists-header {
+    //background-color: white;
+    //color: white;
     padding: 15px 20px 15px 20px;
     font-size: 14px;
     display: flex;
@@ -49,6 +54,7 @@
         background-color: rgba(0, 0, 0, 0.08);
     }
 }
+
 
 //
 //.board-list{

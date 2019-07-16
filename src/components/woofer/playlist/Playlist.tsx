@@ -30,16 +30,16 @@ class Playlist extends React.Component<IProps, IState> {
   render() {
     const { playlistStore } = this.props;
     const { videos } = playlistStore;
-    return <Panel>
+    return <Panel className={'playlist-container'}>
       <PanelHeader>{'재생 목록'}</PanelHeader>
-      <PanelBody className="playlist">
+      <div className="playlist">
         {videos.map((video) => {
           return <PlaylistItem video={video} key={video.id} />;
         })}
         {
           !videos.length && "재생 목록이 없습니다."
         }
-      </PanelBody>
+      </div>
     </Panel>;
   }
 }

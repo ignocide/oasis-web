@@ -2,20 +2,17 @@
     height: 60px;
     line-height: 60px;
     width:100%;
-    padding: 0 15px;
+    //padding: 0 15px;
     position: relative;
 
-    input.input{
-        width:100%;
-        padding-left: 50px;
-        //background-color: #dddddd;
-        border-bottom: 1px solid #777;
+    input._input{
+        padding-left: 40px;
     }
     .search-icon{
         position: absolute;
         top: 50%;
-        margin-top: -12px;
-        left: 28px;
+        margin-top: -8px;
+        left: 16px;
         color: #777;
     }
     &.main{

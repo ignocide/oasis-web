@@ -1,10 +1,10 @@
 import React from 'react';
-import { Row } from "../components/layout/grid";
 import LoginForm from "../components/loginForm";
-import '../style/index.scss';
-import '../style/header.scss';
 import Header from "../components/layout/header";
 import withStore from "../components/hoc/withStore";
+
+import '../style/index.scss';
+import '../style/login/index.scss';
 
 // import firebase from 'firebase';
 
@@ -22,9 +22,10 @@ interface IState {
 @withStore()
 class LoginPage extends React.Component<IProps, IState> {
 
-  static getInitialProps (){
-    return {}
+  static getInitialProps() {
+    return {};
   }
+
   componentDidMount() {
     // this.initFirebase();
   }
@@ -32,12 +33,12 @@ class LoginPage extends React.Component<IProps, IState> {
   render() {
 
     return (
-      <div id="main">
+      <div id="main" className={'login-page'}>
         <div id={'main-container'} className="container">
           <Header />
-          <Row style={{paddingTop: 50, textAlign: 'center'}}>
+          <div className={'login-form-container'}>
             <LoginForm />
-          </Row>
+          </div>
         </div>
       </div>
     );

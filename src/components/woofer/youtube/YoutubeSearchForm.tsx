@@ -3,7 +3,10 @@ import { inject, observer } from 'mobx-react';
 
 import '../../../style/woofer/youtube-search-form.scss';
 import YoutubeStore from "../../../store/woofer/youtubeStore";
-import Icon from "../../common/Icon";
+// import Icon from "../../common/Icon";
+import Input from "../../basic/Input";
+import cn from 'classnames'
+import Icon from "../../basic/Icon";
 
 interface IProps {
   youtubeStore?: YoutubeStore
@@ -44,10 +47,10 @@ class YoutubeSearchInput extends React.Component<IProps, IState> {
     const { query } = this.state;
     const {className} = this.props;
     return (
-      <div className={`youtube-search-form${className? ' '+ className:''}`}>
+      <div className={cn('youtube-search-form',className)}>
         <form onSubmit={this.onSubmit}>
-          <Icon className={'search-icon'} name={'search'} />
-          <input className="input" value={query} onChange={this.onChangeHandler} />
+          <Icon className={'search-icon'} name={'search'} size={'xs'}/>
+          <Input block value={query} onChange={this.onChangeHandler} />
         </form>
       </div>
     );

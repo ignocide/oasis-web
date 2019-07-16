@@ -36,6 +36,7 @@ class Player extends Component<IProps, IState> {
       playerVars: {
         autoplay: 1,
         playsinline: 1,
+        origin:'http://127.0.0.1:4000'
       },
     };
     this.defaultImageStyle = {

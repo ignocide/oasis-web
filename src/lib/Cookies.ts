@@ -30,18 +30,13 @@ class CookieUtil {
   set(key: COOKIE_KEYS, value): void {
     const _key: any = key;
 
-    console.log("여기까진 오겠지?",typeof window)
     if (this.isServer()) {
-      console.log("여기까진 오겠지?")
       if (!this.ctx) {
-        throw new Error("has no ctx");
         return;
       }
-      console.log("여기까진 오겠지?")
       Nookies.set(this.ctx, _key, value, this.defaultNookieOptions);
     }
     else {
-      console.log("이게 펄스임?")
       Cookies.set(_key, value, this.defaultCookieOptions);
     }
   }
@@ -50,7 +45,6 @@ class CookieUtil {
     const _key: any = key;
     if (this.isServer()) {
       if (!this.ctx) {
-        throw new Error("has no ctx");
         return null;
       }
       let cookies = Nookies.get(this.ctx) || {};
@@ -62,10 +56,10 @@ class CookieUtil {
   }
 
   destroy(key: COOKIE_KEYS): void {
-    if (!this.ctx) {
-      throw new Error("has no ctx");
-      return;
-    }
+    // console.log(this.ctx,this.isServer())
+    // if (!this.ctx) {
+    //   return;
+    // }
     const _key: any = key;
     if (this.isServer()) {
       Nookies.destroy(this.ctx, _key, {});

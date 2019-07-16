@@ -20,6 +20,11 @@ class Auth {
   setUser = (user: IUser) => {
     this.user = user;
   };
+
+  @action
+  logout = () => {
+    this.user = null;
+  }
 }
 
 export default Auth;

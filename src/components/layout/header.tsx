@@ -2,14 +2,18 @@ import React, { useState } from 'react';
 import Link from "next/link";
 import { inject, observer } from "mobx-react";
 import { Menu, MenuItem } from "../common/MenuForm";
-
+import Router from 'next/router';
 import { IconButton } from "../form/index";
 import AppStore from "../../store/common/appStore";
+import AuthStore from "../../store/auth";
+import { setToken } from "../../api/server/oasis";
+import { COOKIE_KEYS, default as cookieUtil } from "../../lib/Cookies";
 
 import '../../style/header.scss';
 
 interface IProps {
   appStore: AppStore
+  auth: AuthStore
 }
 
 @inject('auth', 'appStore')
@@ -22,7 +26,7 @@ class Header extends React.Component<IProps, any> {
   };
 
   render() {
-    const { children = null, auth = null } = this.props;
+    const { children = null, right = null, auth } = this.props;
     return (
       <header id={'gnb'}>
         <div className="gnb-main">
@@ -35,7 +39,8 @@ class Header extends React.Component<IProps, any> {
               {children}
             </div>
             <div className="gnb-main-right">
-              {auth.user ? <UserButton /> : <Link href={'/'}>{"로그인"}</Link>}
+              {right}
+              {auth.user ? <UserButton logout={auth.logout} /> : <Link href={'/login'}>{"로그인"}</Link>}
             </div>
           </div>
         </div>
@@ -44,17 +49,22 @@ class Header extends React.Component<IProps, any> {
   }
 }
 
-
-const UserButton = ({}) => {
+const UserButton = ({ logout }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const logout = () => {
-    console.log("onClick logout")
-  }
+  const onClickLogout = () => {
+    logout();
+    cookieUtil.destroy(COOKIE_KEYS.ACCESS_TOKEN);
+    cookieUtil.destroy(COOKIE_KEYS.REFRESH_TOKEN);
+    setToken(null);
+    Router.push({
+      pathname: '/'
+    });
+  };
   return <div className={'user-menu-wrapper'}>
-    <IconButton name={'power_settings_new'} onClick={() => setIsOpen(!isOpen)} />
+    <IconButton name={'fiber_manual_record'} onClick={() => setIsOpen(!isOpen)} />
     {
       isOpen && <Menu className={'user-menu'}>
-        <MenuItem onClick={logout}>{'로그아웃'}</MenuItem>
+        <MenuItem onClick={onClickLogout}>{'로그아웃'}</MenuItem>
       </Menu>
     }
   </div>;

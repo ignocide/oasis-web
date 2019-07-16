@@ -3,13 +3,18 @@ import * as authApi from "../api/server/auth/index";
 import { COOKIE_KEYS, default as cookieUtil } from "../lib/Cookies";
 import { setToken } from "../api/server/oasis";
 import Router from 'next/router';
+import { inject, observer } from "mobx-react";
 
 import '../style/login-form.scss';
-import Panel, { PanelBody, PanelFooter, PanelHeader } from "./common/Panel";
-import { ButtonGroup, FieldInput } from "./form/Field";
-import { Button } from "./form/index";
+import { Card, CardBody, CardFooter, CardHeader } from "./basic/Card";
+import Button from "./basic/Button";
+import { Col, Row } from "./basic/Grid";
+import { FormLabel } from "./basic/Form";
+import Input from "./basic/Input";
+import AuthStore from "../store/auth";
 
 interface IProps {
+  auth: AuthStore
 }
 
 interface IState {
@@ -19,6 +24,8 @@ interface IState {
   }
 }
 
+@inject('auth', 'appStore')
+@observer
 class LoginForm extends React.Component<IProps, IState> {
   state = {
     loginForm: {
@@ -31,12 +38,22 @@ class LoginForm extends React.Component<IProps, IState> {
     e.stopPropagation();
     e.preventDefault();
     const { loginForm } = this.state;
+    const { auth } = this.props;
     const { access_token, refresh_token } = await authApi.login({
       username: loginForm.username,
       password: loginForm.password
     });
 
+    const decodedToken = await authApi.checkToken({ token: access_token });
+
+    auth.setUser({
+      username: decodedToken.user_name,
+      authorities: decodedToken.authorities,
+      id: decodedToken.id,
+    });
+
     setToken(access_token);
+    // auth.setUser();
     cookieUtil.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
     cookieUtil.set(COOKIE_KEYS.REFRESH_TOKEN, refresh_token);
 
@@ -70,22 +87,30 @@ class LoginForm extends React.Component<IProps, IState> {
     const { username, password } = this.state.loginForm;
 
     return (
-      <Panel>
+      <Card>
         <form id='Login' onSubmit={this.requestLogin}>
-          <PanelHeader>
+          <CardHeader>
             {'로그인'}
-          </PanelHeader>
-          <PanelBody>
-            <FieldInput label={'email'} value={username} type={'text'} onChange={this.onChangeLoginFormValue} name={'username'} />
-            <FieldInput label={'password'} value={password} type={'password'} onChange={this.onChangeLoginFormValue} name={'password'} />
-          </PanelBody>
-          <PanelFooter>
-            <ButtonGroup>
-              <Button shape={'fill'} onClick={this.validate} value={'로그인'} />
-            </ButtonGroup>
-          </PanelFooter>
+          </CardHeader>
+          <CardBody>
+            <Row>
+              <Col formGroup>
+                <FormLabel>{'Email'}</FormLabel>
+                <Input block value={username} type={'text'} onChange={this.onChangeLoginFormValue} name={'username'} />
+              </Col>
+              <Col formGroup>
+                <FormLabel>{'password'}</FormLabel>
+                <Input block value={password} type={'password'} onChange={this.onChangeLoginFormValue} name={'password'} />
+              </Col>
+            </Row>
+            {/*<FieldInput label={'email'} value={username} type={'text'} onChange={this.onChangeLoginFormValue} name={'username'} />*/}
+            {/*<FieldInput label={'password'} value={password} type={'password'} onChange={this.onChangeLoginFormValue} name={'password'} />*/}
+          </CardBody>
+          <CardFooter>
+            <Button shape={'solid'} onClick={this.validate}>{'로그인'}</Button>
+          </CardFooter>
         </form>
-      </Panel>
+      </Card>
     );
   }
 }

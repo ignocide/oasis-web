@@ -10,6 +10,7 @@ import { getStore } from "../../store/index";
 import PlaylistStore from '../../store/woofer/playlistStore';
 
 import '../../style/woofer/index.scss';
+import { Row } from "../../components/basic/Grid";
 
 interface IProps {
   playlists: PlaylistsStore
@@ -47,11 +48,13 @@ class WooferPage extends React.Component<IProps, IState> {
   render() {
     return (
       <div id="main">
+        <Header />
+        <aside id={"sidebar"}>
+          <PlaylistList />
+        </aside>
         <div id={'main-container'} className="container">
-          <Header />
-          <aside id={"sidebar"}>
-            <PlaylistList />
-          </aside>
+          <Row>
+          </Row>
         </div>
       </div>
     );

@@ -2,10 +2,9 @@ import React from "react";
 import { inject, observer } from 'mobx-react';
 
 import PlaylistsStore from "../../store/woofer/playlistsStore";
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../common/ModalForm";
-import { Button } from "../form/index";
 import Playlist from "../../vo/woofer/playlist";
-import Modal from "../common/Modal";
+import Modal, { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../basic/Modal";
+import Button from "../basic/Button";
 
 interface IProps {
   playlistsStore: PlaylistsStore,
@@ -48,8 +47,8 @@ class PlaylistRemoveModal extends React.Component<IProps, IState> {
           <ModalHeader>{'삭제 확인'}</ModalHeader>
           <ModalBody>{`${playlist.name}을(를) 삭제 하시겠습니까?`}</ModalBody>
           <ModalFooter>
-            <Button shape={'text'} className={'red'} onClick={this.onSubmit}>{'삭제'}</Button>
-            <Button shape={'text'} onClick={requestClose}>{'닫기'}</Button>
+            <Button shape={'danger'} className={'red'} onClick={this.onSubmit}>{'삭제'}</Button>
+            <Button onClick={requestClose}>{'닫기'}</Button>
           </ModalFooter>
         </ModalForm>
       </Modal>

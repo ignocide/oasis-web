@@ -34,7 +34,10 @@ class PlaylistList extends React.Component<IProps, IState> {
     const { playlists } = playlistsStore;
     return <div className='playlists'>
       <div className='playlists-header'>
-        {'플레이리스'}<IconButton className={'playlist-add-btn'} name={'add'} onClick={this.openCreateFormModal} />
+        <div>
+          {'재생목록'}
+        </div>
+        <IconButton name={'add'}  onClick={this.openCreateFormModal}/>
       </div>
       {playlists.map((playlist) => <PlaylistListItem playlist={playlist} key={playlist.id} />)}
       {modalState.createForm && <Modal requestClose={this.closeCreateFormModal}>

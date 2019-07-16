@@ -2,9 +2,12 @@ import React from "react";
 import { inject, observer } from 'mobx-react';
 
 import PlaylistsStore from "../../store/woofer/playlistsStore";
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../common/ModalForm";
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../basic/Modal";
 import { FieldInput } from "../form/Field";
-import { Button } from "../form/index";
+import Button from "../basic/Button";
+import { Col, Row } from "../basic/Grid";
+import Input from "../basic/Input";
+import { FormLabel } from "../basic/Form";
 
 interface IProps {
   playlistsStore: PlaylistsStore,
@@ -79,10 +82,15 @@ class PlaylistCreateModal extends React.Component<IProps, IState> {
       <ModalForm>
         <ModalHeader>{'플레이리스트 추가'}</ModalHeader>
         <ModalBody>
-          <FieldInput name={'name'} label={'플레이리스트 이름'} value={playlistCreateForm.name || ''} onChange={this.onChangeValue} onKeyPress={this.onKeyPress} />
+          <Row>
+            <Col>
+              <FormLabel>{'플레이리스트 이름'}</FormLabel>
+              <Input block name={'name'} value={playlistCreateForm.name || ''} onChange={this.onChangeValue} onKeyPress={this.onKeyPress}/>
+            </Col>
+          </Row>
         </ModalBody>
         <ModalFooter>
-          <Button shape={'text'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
+          <Button shape={'primary'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
           <Button shape={'text'} type={"button"} onClick={requestClose}>{'닫기'}</Button>
         </ModalFooter>
       </ModalForm>

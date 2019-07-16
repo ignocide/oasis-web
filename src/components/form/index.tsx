@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from "../common/Icon";
+import Icon from "../basic/Icon";
 
 const Button = ({ className = '', shape = '', color = '', type = 'text', children = null, ...props }) => {
 
@@ -49,7 +49,7 @@ class IconButton extends React.Component<any, any> {
     if (color) {
       classNameList.push(`btn-${color}`);
     }
-    return <button className={classNameList.join(" ")} type={type} {...props}><Icon name={name} /></button>;
+    return <button className={classNameList.join(" ")} type={type} {...props}><Icon name={name} size={'xs'}/></button>;
   };
 
 }

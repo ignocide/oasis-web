@@ -5,6 +5,7 @@ import { ModalProvider } from "../components/context/Modal";
 import youtube from "../lib/Youtube";
 
 import '../style/index.scss';
+import '../style/basic/index.scss';
 import { FloaterRenderInfo } from "../components/common/Floater";
 
 const { publicRuntimeConfig } = getConfig();
