@@ -1,6 +1,6 @@
 import React from 'react';
 import Icon from "../basic/Icon";
-
+import cn from 'classnames'
 const Button = ({ className = '', shape = '', color = '', type = 'text', children = null, ...props }) => {
 
   const classNameList = ['button'];
@@ -34,22 +34,16 @@ const Button = ({ className = '', shape = '', color = '', type = 'text', childre
 
 class IconButton extends React.Component<any, any> {
 
+  get className (){
+    const { className, shape = 'default' } = this.props;
+
+    return cn('button btn-icon',className,`btn-${shape}`)
+  }
   render() {
 
-    const { className = '', type = 'text', shape = '', color = '', name, children = null, ...props } = this.props;
+    const { className = '', type = 'text', shape = 'default', name, children = null, ...props } = this.props;
 
-    const classNameList = ['button btn-icon'];
-
-    if (className) {
-      classNameList.push(className);
-    }
-    if (shape) {
-      classNameList.push(`btn-${shape}`);
-    }
-    if (color) {
-      classNameList.push(`btn-${color}`);
-    }
-    return <button className={classNameList.join(" ")} type={type} {...props}><Icon name={name} size={'xs'}/></button>;
+    return <button className={this.className} type={type} {...props}><Icon name={name} size={'xs'}/></button>;
   };
 
 }

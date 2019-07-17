@@ -4,11 +4,12 @@ import BoardStore from '../../../store/boardStore';
 import Task, { STEP } from "../../../vo/todo/task";
 import Modal from '../../common/Modal';
 import TaskDetailModal from "./TaskDetailModal";
-import Panel, { PanelHeader, PanelTable } from "../../common/Panel";
 import { IconButton } from "../../form";
 import TaskCreateModal from "./TaskCreateModal";
 
 import '../../../style/todo/board-list.scss';
+import { Card, CardBody, CardHeader } from "../../basic/Card";
+import { Table } from "../../basic/Table";
 
 interface IProps {
   boardStore: BoardStore
@@ -86,27 +87,29 @@ class TaskList extends React.Component<IProps> {
     }
     return (
       <>
-        <Panel>
-          <PanelHeader right={
-            <IconButton onClick={this.onClickOpenCreateFormButton} name={'add'}> </IconButton>
-          }>{board.name}</PanelHeader>
-          <PanelTable
-            format={this.format}
-            data={tasks}
-          />
-          {/* {JSON.stringify(tasks)} */}
-        </Panel>
+      <Card>
+        <CardHeader>{board.name}
+          <IconButton onClick={this.onClickOpenCreateFormButton} name={'add'}> </IconButton>
+        </CardHeader>
+        <CardBody>
+        </CardBody>
+        <Table
+          format={this.format}
+          data={tasks}
+        />
+        {/* {JSON.stringify(tasks)} */}
+      </Card>
 
-        <div>
-          {selectedTask && <Modal requestClose={this.closeModal}>
-            <TaskDetailModal task={selectedTask} requestClose={this.closeModal} />
-          </Modal>}
-          {
-            taskCreateModal && <Modal requestClose={this.closeModal}>
-              <TaskCreateModal requestClose={this.closeModal} />
-            </Modal>
-          }
-        </div>
+      <div>
+        {selectedTask && <Modal requestClose={this.closeModal}>
+          <TaskDetailModal task={selectedTask} requestClose={this.closeModal} />
+        </Modal>}
+        {
+          taskCreateModal && <Modal requestClose={this.closeModal}>
+            <TaskCreateModal requestClose={this.closeModal} />
+          </Modal>
+        }
+      </div>
       </>
     );
   }

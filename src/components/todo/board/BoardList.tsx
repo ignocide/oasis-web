@@ -6,7 +6,7 @@ import BoardListStore from '../../../store/boardListStore';
 
 import Icon from "../../common/Icon";
 import Modal from '../../common/Modal';
-import { Button } from "../../form";
+import { Button, IconButton } from "../../form";
 
 import '../../../style/todo/board-list.scss';
 
@@ -50,7 +50,7 @@ class BoardList extends React.Component<IProps, IState> {
     return (
       <div className="board-list">
         <div className={'board-list-header'}>
-          {'프로젝트'}<Button className={'board-add-btn'} shape={'span'} onClick={this.onClickRequestCreateBoardButton}><Icon name={'add'} /></Button>
+          {'프로젝트'}<IconButton name={'add'} className={'board-add-btn'} onClick={this.onClickRequestCreateBoardButton}></IconButton>
         </div>
         <ul>
           {boards.map((board) => <BoardListItem key={board.id} board={board} />)}

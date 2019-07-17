@@ -31,6 +31,7 @@ class Row extends React.Component<any, any> {
 interface IColProps {
   noGutter?: boolean,
   className?: string,
+  formGroup?: boolean,
   size?: number,
   xs?: number,
   sm?: number,
@@ -43,18 +44,11 @@ class Col extends React.Component<IColProps, any> {
   get className() {
     const { className = null } = this.props;
     let { size = 12, xs, sm, md, lg,formGroup } = this.props;
-    let classes = ['column'];
 
     lg = lg || size;
     md = md || lg;
     sm = sm || md;
     xs = xs || sm;
-
-    if (className) {
-      classes.push(className);
-    }
-    classes = [...classes]
-
 
     return cn('column',`col-xs-${xs}`,`col-sm-${sm}`,`col-md-${md}`,`col-lg-${lg}`,className,{'form-group':formGroup});
   }

@@ -11,6 +11,7 @@ import withStore from '../components/hoc/withStore';
 import BoardListStore from '../store/boardListStore';
 import BoardStore from '../store/boardStore';
 import Board from "../vo/todo/board";
+import Sidebar from "../components/layout/sidebar";
 
 import '../style/header.scss';
 
@@ -46,10 +47,10 @@ class TodoPage extends React.Component<IProps, IState> {
   render() {
     return (
       <div id="main">
-          <Header />
-          <aside id={"sidebar"}>
-            <BoardList />
-          </aside>
+        <Header />
+        <Sidebar>
+          <BoardList />
+        </Sidebar>
         <div id={'main-container'} className="container">
           <TaskList />
         </div>

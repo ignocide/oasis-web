@@ -1,5 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
+import { FormLabel } from "./Form";
 
 class Input extends React.Component<any, any> {
   //
@@ -14,7 +15,7 @@ class Input extends React.Component<any, any> {
       style['::before'] = {
         "content": prefix
       };
-      console.log(style)
+      console.log(style);
     }
 
     return style;
@@ -26,8 +27,13 @@ class Input extends React.Component<any, any> {
   }
 
   render() {
-    const { prefix, suffix, children, className, ...props } = this.props;
-    return <input className={this.className} style={this.style} {...props} />;
+    const { prefix, suffix, children, className, label, ...props } = this.props;
+    return (
+      <>
+      {label ? <FormLabel>{label}</FormLabel> : null}
+      <input className={this.className} style={this.style} {...props} />
+      </>
+    );
   }
 }
 

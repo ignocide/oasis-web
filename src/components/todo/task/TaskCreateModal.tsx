@@ -1,11 +1,14 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
-import { FieldInput, FieldTextArea } from "../../form/Field";
-import { Button } from "../../form";
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../common/ModalForm";
+import Button from "../../basic/Button";
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../basic/Modal";
 
 import '../../../style/todo/task-detail-modal.scss';
+import Input from "../../basic/Input";
+import { Col, Row } from "../../basic/Grid";
+import Textarea from "../../basic/Textarea";
+import { FormLabel } from "../../basic/Form";
 
 interface IProps {
   boardStore: BoardStore,
@@ -74,11 +77,19 @@ class TaskCreateModal extends React.Component<IProps, IState> {
         <form>
           <ModalHeader>{'할일 추가'}</ModalHeader>
           <ModalBody>
-            <FieldInput name={'name'} label={'제목'} value={taskCreateForm.name || ''} onChange={this.onChangeValue} />
-            <FieldTextArea name={'detail'} label={'상세내용'} value={taskCreateForm.detail || ''} onChange={this.onChangeValue} rows={7} />
+            <Row>
+              <Col size={12} formGroup>
+                <Input block name={'name'} label={'제목'} value={taskCreateForm.name || ''} onChange={this.onChangeValue} />
+              </Col>
+            </Row>
+            <Row>
+              <Col size={12} formGroup>
+                <Textarea name={'detail'} label={'상세내용'} value={taskCreateForm.detail || ''} onChange={this.onChangeValue} rows={7} />
+              </Col>
+            </Row>
           </ModalBody>
           <ModalFooter>
-            <Button type={'submit'} shape={'text'} onClick={this.createTask}>{'추가'}</Button>
+            <Button type={'submit'} shape={'solid'} onClick={this.createTask}>{'추가'}</Button>
             <Button shape={'text'} onClick={closeModal}>{'취소'}</Button>
           </ModalFooter>
         </form>

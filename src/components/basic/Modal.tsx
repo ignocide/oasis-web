@@ -188,7 +188,7 @@ export const ModalHeader = ({ className,children, right = null, ...props }) => {
   </div>;
 };
 
-export const ModalBody = ({className, children, ...props }) => {
+export const ModalBody = ({className = null, children, ...props }) => {
   return <div className={cn('_modal-body',className)} {...props}>
     {children}
   </div>;

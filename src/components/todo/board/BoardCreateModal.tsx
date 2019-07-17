@@ -1,12 +1,13 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
-import { FieldInput } from "../../form/Field";
-import { Button } from "../../form";
 
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../common/ModalForm";
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../basic/Modal";
 
 import '../../../style/todo/board-item.scss';
+import { Col, Row } from "../../basic/Grid";
+import Input from "../../basic/Input";
+import Button from "../../basic/Button";
 
 interface IProps {
   boardStore: BoardStore,
@@ -85,10 +86,14 @@ class BoardItem extends React.Component<IProps, IState> {
       <ModalForm>
         <ModalHeader>{'프로젝트 추가'}</ModalHeader>
         <ModalBody>
-          <FieldInput name={'name'} label={'프로젝트명'} value={boardCreateForm.name || ''} onChange={this.onChangeValue} />
+          <Row>
+            <Col>
+              <Input block name={'name'} label={'프로젝트명'} value={boardCreateForm.name || ''} onChange={this.onChangeValue} />
+            </Col>
+          </Row>
         </ModalBody>
         <ModalFooter>
-          <Button shape={'text'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
+          <Button shape={'solid'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
         </ModalFooter>
       </ModalForm>
     );

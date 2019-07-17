@@ -2,11 +2,14 @@ import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
 import Task from "../../../vo/todo/task";
-import { FieldInput, FieldTextArea } from "../../form/Field";
-import { Button } from "../../form";
 import Modal, { modalController } from "../../common/Modal";
 
 import '../../../style/todo/task-detail-modal.scss';
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../basic/Modal";
+import Input from "../../basic/Input";
+import { Col, Row } from "../../basic/Grid";
+import Textarea from "../../basic/Textarea";
+import Button from "../../basic/Button";
 
 interface IProps {
   boardStore: BoardStore,
@@ -85,24 +88,31 @@ class TaskDetailModal extends React.Component<IProps> {
     const { taskForm, modalState } = this.state;
     const { requestClose } = this.props;
     return (
-      <div className="task-detail-modal modal">
+      <ModalForm className={'task-detail-modal'}>
         <form>
-          <div className={'modal-header'}>{'Task 상세'}</div>
-          <div className={'modal-body'}>
-            <FieldInput name={'name'} label={'제목'} value={taskForm.name || ''} onChange={this.onChangeValue} />
-            <FieldTextArea name={'detail'} label={'상세내용'} value={taskForm.detail || ''} onChange={this.onChangeValue} rows={7} />
-            <FieldInput name={'updatedAt'} label={'마지막 수정'} value={taskForm.updatedAt || ''} disabled={true} />
-          </div>
-          <div className={'modal-footer'}>
-            <Button type={"submit"} className={'primary'} shape={'text'} onClick={this.onSubmit}> {'확인'}</Button>
-            <Button shape={'text'} className={'red'} onClick={this.onClickDelete}>{'삭제'}</Button>
+          <ModalHeader>{'Task 상세'}</ModalHeader>
+          <ModalBody>
+            <Row>
+              <Col formGroup>
+                <Input block name={'name'} label={'제목'} value={taskForm.name || ''} onChange={this.onChangeValue} />
+              </Col>
+              <Col formGroup>
+                <Textarea name={'detail'} label={'상세내용'} value={taskForm.detail || ''} onChange={this.onChangeValue} rows={7} />
+              </Col>
+              <Col >
+                <Input block type={'datetime-local'} name={'updatedAt'} label={'마지막 수정'} value={taskForm.updatedAt || ''} disabled={true} />
+              </Col>
+            </Row>
+          </ModalBody>
+          <ModalFooter>
+            <Button type={"submit"} className={'primary'} shape={'solid'} onClick={this.onSubmit}> {'확인'}</Button>
+            <Button shape={'danger'} className={'red'} onClick={this.onClickDelete}>{'삭제'}</Button>
             <Button shape={'text'} onClick={requestClose}>{'취소'}</Button>
-          </div>
+          </ModalFooter>
         </form>
         {modalState.deleteConfirm && <Modal requestClose={() => this.setDeleteConfirmModal(false)}>
-
         </Modal>}
-      </div>
+      </ModalForm>
     );
   }
 }

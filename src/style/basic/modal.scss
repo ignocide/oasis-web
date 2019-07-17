@@ -28,6 +28,9 @@
             // top: 50%;
             text-align: left;
             display: inline-block;
+            &>div._modal{
+                margin: 0 auto;
+            }
             // transform: translate(-50%,-50%);
 
         }
@@ -37,7 +40,7 @@
 
 ._modal {
     min-width: 500px;
-    max-width: 90%;
+    //max-width: 90%;
     background-color: white;
     overflow: hidden;
     position: relative;
