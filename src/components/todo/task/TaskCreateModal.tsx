@@ -11,7 +11,7 @@ import Textarea from "../../basic/Textarea";
 import { FormLabel } from "../../basic/Form";
 
 interface IProps {
-  boardStore: BoardStore,
+  boardStore?: BoardStore,
   closeModal: () => void
 }
 

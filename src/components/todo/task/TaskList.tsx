@@ -21,7 +21,7 @@ interface IState {
 
 @inject('boardStore')
 @observer
-class TaskList extends React.Component<IProps> {
+class TaskList extends React.Component<IProps, IState> {
 
   state = {
     selectedTask: null,
@@ -106,7 +106,7 @@ class TaskList extends React.Component<IProps> {
         </Modal>}
         {
           taskCreateModal && <Modal requestClose={this.closeModal}>
-            <TaskCreateModal requestClose={this.closeModal} />
+            <TaskCreateModal closeModal={this.closeModal} />
           </Modal>
         }
       </div>
@@ -123,9 +123,9 @@ const TaskCheckBox = ({ ...props }) => {
 
       <svg xmlns="http://www.w3.org/2000/svg" xlinkHref="http://www.w3.org/1999/xlink" className="task-checkbox-icon" viewBox="0 0 25 25">
         {/* <path className="todo__box" d="M21 12.7v5c0 1.3-1 2.3-2.3 2.3H8.3C7 20 6 19 6 17.7V7.3C6 6 7 5 8.3 5h10.4C20 5 21 6 21 7.3v5.4"></path> */}
-        <path className="task-checkbox-box" d="M21 12.7v5c0 1.3-1 2.3-2.3 2.3H8.3C7 20 6 19 6 17.7V7.3C6 6 7 5 8.3 5h10.4C20 5 21 6 21 7.3v5.4"></path>
-        <path className="task-checkbox-check" d="M10 13 l 2 2 l 5 -5"></path>
-        <circle className="task-checkbox-circle" cx="13.5" cy="12.5" r="10"></circle>
+        <path className="task-checkbox-box" d="M21 12.7v5c0 1.3-1 2.3-2.3 2.3H8.3C7 20 6 19 6 17.7V7.3C6 6 7 5 8.3 5h10.4C20 5 21 6 21 7.3v5.4" />
+        <path className="task-checkbox-check" d="M10 13 l 2 2 l 5 -5" />
+        <circle className="task-checkbox-circle" cx="13.5" cy="12.5" r="10" />
       </svg>
       {/* <div class="todo__text">Not so important task</div> */}
     </label>
