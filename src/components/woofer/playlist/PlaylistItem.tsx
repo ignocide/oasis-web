@@ -1,7 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import '../../../style/woofer/playlist.scss';
 import PlayerStore from "../../store/woofer/playerStore";
 import Video from "../../../vo/woofer/video";
 import { modalController } from "../../common/Modal";

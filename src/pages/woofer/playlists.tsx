@@ -6,20 +6,19 @@ import withStore from '../../components/hoc/withStore';
 import PlaylistsStore from '../../store/woofer/playlistsStore';
 import PlayerStore from '../../store/woofer/playerStore';
 import PlaylistStore from '../../store/woofer/playlistStore';
-import Playlist from "../../components/woofer/playlist/Playlist";
 
 import Header from "../../components/layout/header";
 import Sidebar from "../../components/layout/sidebar";
 import { getStore } from "../../store/index";
 
 import YoutubeSearchInput from "../../components/woofer/youtube/YoutubeSearchForm";
-import SearchedYoutubeVideoList from "../../components/woofer/youtube/SearchedYoutubeVideoList";
 import YoutubeStore from "../../store/woofer/youtubeStore";
 
 import '../../style/woofer/index.scss';
 import Player from "../../components/woofer/player";
 import DownloadStore from "../../store/woofer/downloadStore";
-import { Row } from "../../components/basic/Grid";
+import { Col, Row } from "../../components/basic/Grid";
+import MediaLists from "../../components/woofer/MediaLists/index";
 
 // import withAuth from '../../components/hoc/withAuth'
 
@@ -70,10 +69,15 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
         </Sidebar>
         <div id={'main-container'} className="container">
           <Row>
-            <Player />
+            <Col>
+              <Player />
+            </Col>
             {/**/}
-            <Playlist />
-            <SearchedYoutubeVideoList />
+            <Col>
+              <MediaLists />
+            </Col>
+            {/*<Playlist />*/}
+            {/*<SearchedYoutubeVideoList />*/}
           </Row>
         </div>
       </div>

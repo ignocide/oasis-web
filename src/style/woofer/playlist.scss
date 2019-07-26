@@ -1,5 +1,6 @@
- .playlist-container{
-    box-shadow: none !important; .playlist {
+.playlist-container {
+    box-shadow: none !important;
+    .playlist {
         background-color: white;
         //border: 1px solid #E8EBED;
         .video {
@@ -8,7 +9,7 @@
             display: flex;
             min-height: 70px;
             align-items: center;
-            &+.video{
+            & + .video {
                 border-top: 1px solid $gray-2;
             }
             &-thumbnail {

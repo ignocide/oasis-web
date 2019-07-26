@@ -31,7 +31,6 @@ class Playlist extends React.Component<IProps, IState> {
     const { playlistStore } = this.props;
     const { videos } = playlistStore;
     return <Panel className={'playlist-container'}>
-      <PanelHeader>{'재생 목록'}</PanelHeader>
       <div className="playlist">
         {videos.map((video) => {
           return <PlaylistItem video={video} key={video.id} />;

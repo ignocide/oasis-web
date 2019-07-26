@@ -93,12 +93,12 @@ class Player extends Component<IProps, IState> {
       <YouTube className='woofer-player' opts={this.opts} videoId={current.videoId} onStateChange={this.onStateChange} ref={'youtubePlayer'} />);
     return (
       <Panel className={'youtube-player'}>
-        <PanelBody>
+        <div>
           <Persistentor className='player'>
             {content}
             {/*<iframe src='https://www.youtube.com/embed/i8zx49Rk-pA' frameBorder='0' allowFullScreen></iframe>*/}
           </Persistentor>
-        </PanelBody>
+        </div>
         <PanelFooter>
 
           <div className={'player-controller'}>
