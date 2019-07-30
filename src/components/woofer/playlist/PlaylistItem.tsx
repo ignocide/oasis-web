@@ -1,7 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import PlayerStore from "../../store/woofer/playerStore";
 import Video from "../../../vo/woofer/video";
 import { modalController } from "../../common/Modal";
 import { Menu, MenuItem } from "../../common/MenuForm";
@@ -9,6 +8,7 @@ import DropBox from "../../common/DropBox";
 import { IconButton } from "../../form/index";
 import PlaylistStore from "../../../store/woofer/playlistStore";
 import DownloadStore from "../../../store/woofer/downloadStore";
+import PlayerStore from "../../../store/woofer/playerStore";
 
 interface IProps {
   playerStore?: PlayerStore,
@@ -21,7 +21,7 @@ interface IProps {
 interface IState {
 }
 
-@inject('playerStore','playlistStore','downloadStore')
+@inject('playerStore', 'playlistStore', 'downloadStore')
 @observer
 class PlaylistItem extends React.Component<IProps, IState> {
   constructor(props) {
@@ -44,16 +44,14 @@ class PlaylistItem extends React.Component<IProps, IState> {
   };
 
   downloadVideoAsMp3 = () => {
-    const { video,downloadStore } = this.props;
+    const { video, downloadStore } = this.props;
     downloadStore.downloadVideoAsMp3(video);
     this.closeOptionsModal();
   };
 
   render() {
-    const { video,downloadStore } = this.props;
+    const { video } = this.props;
     const { modalState } = this.state;
-    const {downloadInfos} = downloadStore;
-    const  downloadPercentage = downloadInfos[video.videoId] || 0;
     return (
       <div className={`video`} key={video.id}>
         <div className="video-thumbnail">
@@ -65,10 +63,6 @@ class PlaylistItem extends React.Component<IProps, IState> {
         </div>
         <div className="video-function">
           <IconButton className={'playlist-add-btn'} name={'more_vert'} onClick={this.openOptionsModal} ref={'button'} />
-          <div className={'video-download-progress'} style={{
-            width : `${downloadPercentage}%`
-          }}/>
-
         </div>
         <DropBox isOpen={modalState.options} requestClose={this.closeOptionsModal} parent={this.refs.button}>
           <Menu>

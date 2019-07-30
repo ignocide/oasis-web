@@ -18,7 +18,9 @@ import '../../style/woofer/index.scss';
 import Player from "../../components/woofer/player";
 import DownloadStore from "../../store/woofer/downloadStore";
 import { Col, Row } from "../../components/basic/Grid";
-import MediaLists from "../../components/woofer/MediaLists/index";
+import MediaLists from "../../components/woofer/mediaLists/index";
+import YoutubeDownloader from "../../components/woofer/sidebar/downloader";
+import DownloadManager from "../../components/woofer/DownloadManager";
 
 // import withAuth from '../../components/hoc/withAuth'
 
@@ -66,6 +68,7 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
         <Sidebar>
           <YoutubeSearchInput />
           <PlaylistList />
+          <YoutubeDownloader />
         </Sidebar>
         <div id={'main-container'} className="container">
           <Row>
@@ -76,10 +79,12 @@ class WooferPlaylistPage extends React.Component<IProps, IState> {
             <Col>
               <MediaLists />
             </Col>
+
             {/*<Playlist />*/}
             {/*<SearchedYoutubeVideoList />*/}
           </Row>
         </div>
+        <DownloadManager/>
       </div>
     );
   }

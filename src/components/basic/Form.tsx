@@ -21,7 +21,7 @@ const RadioGroup = ({ children = null, align = 'column', className, ...props }) 
 };
 
 
-const FormLabel = ({ children, className, ...props }) => {
+const FormLabel = ({ children, className = null, ...props }) => {
   return <div className={cn('label-control', className)} {...props}>
     {children}
   </div>;

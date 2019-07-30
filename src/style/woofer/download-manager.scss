@@ -1,0 +1,66 @@
+.download-manager {
+    @media (max-width: 750px) {
+        display: none;
+    }
+    width: 280px;
+    border: 1px solid #eee;
+    //background-color: black;
+    position: fixed;
+    left: 20px;
+    //bottom: 0;
+    max-height: 500px;
+    top: 100%;
+    transform: translateY(-55px);
+    transition: transform 0.2s;
+    background-color: white;
+    &.open{
+        transform: translateY(-100%);
+    }
+    .download-item {
+        position: relative;
+        padding: 15px 80px 15px 20px;
+        font-size: 14px;
+        justify-content: space-between;
+        align-items: center;
+        flex-basis: 0.000000001px;
+        text-align: start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 50px;
+
+        .download-percentage {
+            position: absolute;
+            right: 20px;
+        }
+        & + .download-item {
+            border-top: 1px solid #eee;
+        }
+        .download-progress-background{
+            background-color: $mainblue-light;
+            transition: width 0.2s, opacity 0.2s;
+            position: absolute;
+
+            height: 100%;
+            left: 0;
+            top: 0;
+            display: inline-block;
+            opacity: 0.1;
+        }
+        &.download-done{
+            .download-progress-background{
+                opacity:0.2;
+            }
+        }
+    }
+    .download-manager-header {
+        padding: 15px 20px 15px 20px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #eee;
+        font-weight: bold;
+
+    }
+}

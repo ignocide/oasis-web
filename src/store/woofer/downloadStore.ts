@@ -15,10 +15,13 @@ class DownloadStore {
   }
 
   @action
-  updateDownloadInfo(videoId: string, percentage: number) {
+  updateDownloadInfo(video: PlayItem, percentage: number) {
     this.downloadInfos = {
       ...this.downloadInfos,
-      [videoId]: percentage
+      [video.videoId]: {
+        video,
+        progress: percentage
+      }
     };
   }
 
@@ -28,13 +31,16 @@ class DownloadStore {
     const response = await playlistsRepository.downloadVideoAsMp3(videoId, (progressEvent) => {
       const { loaded, total } = progressEvent;
       const percentage = Math.floor((loaded / total) * 100);
-      console.log(loaded,total,progressEvent,loaded / total,percentage)
-      this.updateDownloadInfo(videoId, percentage);
+      this.updateDownloadInfo(video, percentage);
     });
 
     FileDownloader.fromBlob(response, `${video.title}.mp3`);
   }
 
+  @action
+  removeInfoByVideoId(videoId: string){
+    delete this.downloadInfos[videoId];
+  }
 }
 
 export default DownloadStore;
