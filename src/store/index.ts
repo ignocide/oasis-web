@@ -8,12 +8,12 @@ const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
 
 
-let storeClasses = {
+let storeClasses:any = {
   auth: AuthStore,
   appStore: AppStore,
 };
 
-let storeInstances = {};
+let storeInstances: any = {};
 
 function getStoreClass(key: string) {
   return storeClasses[key];
@@ -76,7 +76,7 @@ export function insertClasses(stores: any = {}): any {
   });
 }
 
-export function setStore(key: string, storeClass: { new(...args: any[]) }) {
+export function setStore(key: string, storeClass: { new(...args: any[]):any }): any {
   // Always make a new store if server, otherwise state is shared between requests
   let store = null;
   if (isServer) {

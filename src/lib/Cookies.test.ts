@@ -9,8 +9,8 @@ beforeAll(() => {
 
 describe('lib/cookies', () => {
   test('isServer()', () => {
-    console.log("window", !!window, cookies.isServer());
-    expect(cookies.isServer()).toEqual(false);
+    //test is on server
+    expect(cookies.isServer()).toEqual(true);
   });
 
   test('setCtx()', () => {

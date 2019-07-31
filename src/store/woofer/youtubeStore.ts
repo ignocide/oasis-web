@@ -16,7 +16,7 @@ class YoutubeStore {
   }
 
   @action
-  setList(list = []):void {
+  setList(list:any[] = []):void {
     this.list = list.map((video) => new YoutubeVideo(video));
   }
   //

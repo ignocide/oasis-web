@@ -25,7 +25,7 @@ class BoardStore {
   @observable tasks: Task[] = [];
 
   constructor(isServer: boolean, initialData: any) {
-    if(isServer){
+    if (isServer) {
 
     }
     Object.assign(this, initialData);
@@ -48,7 +48,7 @@ class BoardStore {
     const result: any = await boardRepository.fetchBoard(boardId);
     const { board, tasks } = result;
     this.board = new Board(board);
-    this.tasks = tasks.map((task) => new Task(task));
+    this.tasks = tasks.map((task: Task) => new Task(task));
   }
 
   @action

@@ -1,6 +1,5 @@
 import getConfig from 'next/config';
 import * as gapi from 'gapi';
-import * as gapiYoutube from 'gapi.youtube';
 
 const { publicRuntimeConfig: config } = getConfig();
 
@@ -20,14 +19,13 @@ class Youtube {
         // 2. Initialize the JavaScript client library.
         this._gapi.client.init(config.woofer).then(() => {
           return this._gapi.client.load('youtube', 'v3');
-        }, function (reason) {
+        }, function (reason: any) {
           console.log('Error: ' + reason.result);
         });
       };
 
       // 1. Load the JavaScript client library.
       this._gapi.load('client', initGapi);
-      console.log("!");
     }
   }
 
@@ -48,11 +46,11 @@ class Youtube {
     }
 
     return new Promise((res, rej) => {
-      this._gapi.client.youtube.search.list(opts).execute((response) => {
+      this._gapi.client.youtube.search.list(opts).execute((response: any) => {
         // nextToken: response.nextPageToken,
         //   list: response.items,
-        if(response.error){
-          return rej(response.error)
+        if (response.error) {
+          return rej(response.error);
         }
         let { nextPageToken, items } = response;
         this.nextToken = nextPageToken;

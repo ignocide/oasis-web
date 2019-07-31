@@ -51,7 +51,7 @@ class PlaylistRepository {
     return this.axios.delete(`/woofer/playlists/${playlistId}/videos/${playlistItemId}`);
   }
 
-  downloadVideoAsMp3(videoId: string,onDownloadProgress: Function): any {
+  downloadVideoAsMp3(videoId: string,onDownloadProgress: (progressEvent: any) => void): any {
     return this.axios.get(`/woofer/youtube/${videoId}/mp3`, {
       responseType: 'arraybuffer',
       onDownloadProgress: onDownloadProgress

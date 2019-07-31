@@ -23,7 +23,7 @@ class PlaylistStore {
   @action
   async fetch(playlistId: number) {
     let response: any = await playlistsRepository.fetch(playlistId);
-    this.videos = response.items.map((video) => new Video(video));
+    this.videos = response.items.map((video: IVideo) => new Video(video));
     this.playlist = new Playlist(response);
     let store: PlayerStore = getStore('playerStore');
     store.setList(this.videos);

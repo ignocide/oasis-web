@@ -1,3 +1,5 @@
+/* global gapi */
+
 import Nookies from 'nookies';
 import Cookies from 'js-cookie';
 
