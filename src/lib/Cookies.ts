@@ -27,7 +27,7 @@ class CookieUtil {
     this.ctx = ctx;
   }
 
-  set(key: COOKIE_KEYS, value): void {
+  set(key: COOKIE_KEYS, value: any): void {
     const _key: any = key;
 
     if (this.isServer()) {

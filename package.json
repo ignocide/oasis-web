@@ -75,6 +75,11 @@
     "@zeit/next-typescript": "^1.1.1"
   },
   "jest": {
+    "preset": "ts-jest/presets/js-with-ts",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    },
     "transform": {
       "^.+\\.ts$": "ts-jest"
     },
@@ -86,7 +91,8 @@
     ],
     "globals": {
       "ts-jest": {
-        "diagnostics": true
+        "diagnostics": true,
+        "tsConfig": "tsconfig.jest.json"
       }
     },
     "setupFiles": [
@@ -95,6 +101,7 @@
     "collectCoverage": true,
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx,js}"
-    ]
+    ],
+    "testPathIgnorePatterns": ["./.next/", "./node_modules/"]
   }
 }

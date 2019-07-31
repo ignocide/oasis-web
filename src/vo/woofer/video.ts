@@ -27,7 +27,6 @@ class Video extends PlayableVideo{
     this.description = video.description;
     this.createdAt = new Date(video.createdAt);
     this.updatedAt = new Date(video.updatedAt);
-    console.log(this)
   }
 }
 
