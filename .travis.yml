@@ -4,6 +4,8 @@ node_js:
   - 10.13.0
 before_install:
   - npm install jest -g
+before_script:
+  - npm run fetch:config
 #branches:
 #  only:
 #    - master
