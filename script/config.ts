@@ -3,8 +3,6 @@ import * as path from 'path';
 import * as fs from 'fs';
 
 const env = process.env.NODE_ENV === 'production' ? 'production' : 'dev';
-const config = require('../configServerConfig.json');
-const configClient = new ConfigClient(config);
 
 const isTravisTest = process.env.TRAVIS_TEST === 'true';
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
@@ -18,6 +16,8 @@ const initConfig = async () => {
     fs.writeFileSync(filePath, JSON.stringify(travisTestCofnig));
   }
   else {
+    const config = require('../configServerConfig.json');
+    const configClient = new ConfigClient(config);
     console.log('start fetching config env: ', env);
 
     const fileName = isProduction ? 'config.prov.json' : 'config.json';
