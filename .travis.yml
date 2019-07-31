@@ -1,0 +1,10 @@
+os: osx
+language: node_js
+node_js:
+  - 10.13.0
+before_install:
+  - npm install jest -g
+#branches:
+#  only:
+#    - master
+cahe: yarn
