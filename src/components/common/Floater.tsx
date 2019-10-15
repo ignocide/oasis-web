@@ -34,6 +34,7 @@ class Floater extends React.Component<IProps, IState> {
   };
 
   el: HTMLElement;
+  childEl: any;
   modalRoot: HTMLElement;
   duration: number = 225;
 
@@ -48,6 +49,7 @@ class Floater extends React.Component<IProps, IState> {
 
   componentDidMount() {
     this.modalRoot.appendChild(this.el);
+    console.log(this.self);
     document.body.style['overflow-y'] = 'hidden';
     this.changeOpenState(true);
   }
@@ -80,13 +82,48 @@ class Floater extends React.Component<IProps, IState> {
 
   get floaterStyle() {
     const { parentPosition, mouseClickedPosition } = this.props.floaterRenderInfo;
-    let originX = mouseClickedPosition.x - parentPosition.left;
-    let originY = mouseClickedPosition.y - parentPosition.top;
-    return {
-      left: `${parentPosition.left}px`,
-      top: `${parentPosition.top}px`,
-      transformOrigin: `${originX}px ${originY}px`
-    };
+    // debugger
+    let style = {};
+    if (!this.childEl) {
+      style.visiable = false;
+    } else {
+      // console.log(parentPosition,mouseClickedPosition,window.innerWidth)
+      // console.log(this.childEl.offsetWidth)
+
+
+      let left = null;
+      let top = null;
+      let originX = null;
+      let originY = null;
+      //@todo 왼쪽의 여백이 부족할 경우 계산, 지금은 오른쪽 여백으로만 계산 한다.
+      console.log(window.innerWidth, parentPosition, mouseClickedPosition, this.childEl.offsetWidth);
+      if (window.innerWidth - parentPosition.left < this.childEl.offsetWidth) {
+        left = parentPosition.right - this.childEl.offsetWidth;
+        originX = this.childEl.offsetWidth - (mouseClickedPosition.x - parentPosition.left);
+
+      } else {
+        left = parentPosition.left;
+        originX = mouseClickedPosition.x - parentPosition.left;
+      }
+
+
+      if(window.innerHeight - parentPosition.top < this.childEl.offsetHeight){
+        top = parentPosition.bottom - this.childEl.offsetHeight;
+        originY = this.childEl.offsetHeight - (mouseClickedPosition.y - parentPosition.top);
+      } else {
+        top = parentPosition.top;
+        originY = mouseClickedPosition.y - parentPosition.top;
+      }
+      // let originX = mouseClickedPosition.x - parentPosition.left;
+      // let originY = mouseClickedPosition.y - parentPosition.top;
+      style = {
+        left: `${left}px`,
+        top: `${top}px`,
+        transformOrigin: `${originX}px ${originY}px`
+      };
+    }
+
+    return style;
   }
 
   render() {
@@ -96,7 +133,10 @@ class Floater extends React.Component<IProps, IState> {
     return ReactDOM.createPortal(
       <div className={'floater-blur'} onClick={this.requestClose}>
         <CSSTransition in={isOpen} timeout={this.duration} classNames="popup">
-          <div className="floater" onClick={this.prevent} style={this.floaterStyle}>{children}</div>
+          <div className="floater" onClick={this.prevent} style={this.floaterStyle} ref={(ref) => {
+            this.childEl = ref;
+            console.log(this.childEl);
+          }}>{children}</div>
         </CSSTransition>
       </div>,
       this.el,
@@ -138,5 +178,5 @@ class FloaterRenderInfo implements IFloaterRenderInfo {
   }
 }
 
-export { IFloaterRenderInfo,FloaterRenderInfo };
+export { IFloaterRenderInfo, FloaterRenderInfo };
 export default Floater;

@@ -19,3 +19,11 @@ setConfig({
   publicRuntimeConfig: config
 });
 // Make sure you can use "publicRuntimeConfig" within tests.
+module.exports = {
+  globals: {
+    'ts-jest': {
+      "tsConfig": "tsconfig.test.json",
+      diagnostics: false
+    }
+  }
+};

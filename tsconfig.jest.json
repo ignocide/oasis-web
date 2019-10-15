@@ -10,6 +10,10 @@
     "target": "es5"
   },
   "globals": {
-    "window": true
+    "window": true,
+  },
+  "diagnostics": {
+    "importHelpers": true,
+    "pathRegex": "/\.(spec|test)\.ts$/"
   }
 }

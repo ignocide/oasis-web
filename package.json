@@ -99,6 +99,7 @@
       "./jest.setup.ts"
     ],
     "collectCoverage": true,
+    "coverageReporters": ["json", "html"],
     "collectCoverageFrom": [
       "src/**/*.{ts,tsx,js}"
     ],
