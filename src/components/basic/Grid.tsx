@@ -43,18 +43,18 @@ class Col extends React.Component<IColProps, any> {
 
   get className() {
     const { className = null } = this.props;
-    let { size = 12, xs, sm, md, lg,formGroup } = this.props;
+    let { size = 12, xs, sm, md, lg, formGroup, noGutter } = this.props;
 
     lg = lg || size;
     md = md || lg;
     sm = sm || md;
     xs = xs || sm;
 
-    return cn('column',`col-xs-${xs}`,`col-sm-${sm}`,`col-md-${md}`,`col-lg-${lg}`,className,{'form-group':formGroup});
+    return cn('column', `col-xs-${xs}`, `col-sm-${sm}`, `col-md-${md}`, `col-lg-${lg}`, className, { 'form-group': formGroup }, { 'no-gutter': noGutter });
   }
 
   render() {
-    const { children, className, size = 12, xs, sm, md, lg,formGroup,...props } = this.props;
+    const { children, className, size = 12, xs, sm, md, lg, formGroup, noGutter, ...props } = this.props;
 
     return <div className={this.className} {...props}>
       {children}
