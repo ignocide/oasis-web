@@ -7,13 +7,13 @@ const env = process.env.NODE_ENV === 'production' ? 'production' : 'dev';
 const isTravisTest = process.env.TRAVIS_TEST === 'true';
 const isProduction = process.env.NODE_ENV === 'production' ? true : false;
 
-const travisTestCofnig = { "basicToken": "basicToken", "serverUrl": "http://localhost:8080" };
+const travisTestConfig = { "basicToken": "basicToken", "serverUrl": "http://localhost:8080" };
 const initConfig = async () => {
   if (isTravisTest) {
     console.log("this job working on travis test env");
 
     const filePath = path.join(__dirname, '..', 'config.json');
-    fs.writeFileSync(filePath, JSON.stringify(travisTestCofnig));
+    fs.writeFileSync(filePath, JSON.stringify(travisTestConfig));
   }
   else {
     const config = require('../configServerConfig.json');
