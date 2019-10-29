@@ -1,0 +1,109 @@
+.weather-widget{
+
+    .location{
+        padding: 20px;
+    }
+    .weather-info{
+        padding: 0 20px;
+
+        i.weather-icon{
+            height:200px;
+            width:100%;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            &.weather-icon-sun{
+                background-image: url('../icons/sun.svg');
+                animation-name: spin;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+            &.weather-icon-moon{
+                background-image: url('../icons/moon.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            &.weather-icon-sun-cloud{
+                background-image: url('../icons/sun-cloud.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            &.weather-icon-moon-cloud{
+                background-image: url('../icons/moon-cloud.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            &.weather-icon-sun-cloud-rain{
+                background-image: url('../icons/sun-cloud-rain.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            &.weather-icon-moon-cloud-rain{
+                background-image: url('../icons/moon-cloud-rain.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            &.weather-icon-snow{
+                background-image: url('../icons/snow.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            &.weather-icon-rain{
+                background-image: url('../icons/rain.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+            &.weather-icon-thunder{
+                background-image: url('../icons/thunder.svg');
+                animation-name: swing;
+                animation-duration: 5000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: ease-in-out;
+            }
+        }
+        .weather-text{
+            height:200px;
+            line-height: 200px;
+            text-align: center;
+            font-size: 25px;
+        }
+    }
+}
+
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+@keyframes swing {
+    0% {
+        transform: translateX(-5px);
+    }
+    50%{
+        transform: translateX(5px);
+    }
+    100% {
+        transform: translateX(-5px);
+    }
+}
