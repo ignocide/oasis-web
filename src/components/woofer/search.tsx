@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import SearchStore from "../../store/woofer/playlistsStore";
 import PlaylistsStore from "../../store/woofer/playlistsStore";
-import Playlist from 'src/vo/woofer/playlist';
+import Playlist from 'src/vo/woofer/Playlist';
 
 import '../../style/woofer/playlists.scss';
 
@@ -23,9 +23,9 @@ class Search extends React.Component<IProps, IState> {
   state = {};
 
   render() {
-    const {playlists: playlistsStore} = this.props;
+    const { playlists: playlistsStore } = this.props;
 
-    const {playlists} = playlistsStore;
+    const { playlists } = playlistsStore;
     return <div className="playlists">
       <div>
         {playlists.map((playlist: Playlist) => {

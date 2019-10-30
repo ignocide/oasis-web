@@ -13,7 +13,10 @@ import '../../style/woofer/index.scss';
 import { Row } from "../../components/basic/Grid";
 
 interface IProps {
-  playlists: PlaylistsStore
+  playlists: PlaylistsStore,
+  playlistsStore: PlaylistsStore,
+  playlistStore: PlaylistStore,
+  playerStore: PlayerStore
 }
 
 interface IState {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import Video from "../../../vo/woofer/video";
+import Video from "../../../vo/woofer/Video";
 import { modalController } from "../../common/Modal";
 import { Menu, MenuItem } from "../../common/MenuForm";
 import DropBox from "../../common/DropBox";

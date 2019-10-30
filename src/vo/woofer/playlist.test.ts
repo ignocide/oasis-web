@@ -16,4 +16,18 @@ describe('vo/woofer/Playlist', () => {
     expect(playlist.createdAt).toEqual(new Date(mock.createdAt));
     expect(playlist.updatedAt).toEqual(new Date(mock.updatedAt));
   });
+
+  test('constructor2', () => {
+    let mock = {
+      id: 7,
+      name: '추가된 플레이리스트',
+      isDefault: true,
+    };
+    let playlist = new Playlist(mock);
+
+    expect(playlist.id).toEqual(mock.id);
+    expect(playlist.name).toEqual(mock.name);
+    expect(playlist.createdAt).toBeNull();
+    expect(playlist.updatedAt).toBeNull();
+  });
 });

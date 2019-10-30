@@ -1,12 +1,11 @@
 import { action, observable } from 'mobx';
-import Playlist from '../../vo/woofer/playlist';
 import playlistsRepository from '../../api/server/woofer/playlistRepository';
-import YoutubeVideo from "../../vo/woofer/youtubeVideo";
-import { default as Video, IVideo } from "../../vo/woofer/video";
 import { getStore } from "../index";
 import PlayerStore from "./playerStore";
-import PlayItem from "../../vo/woofer/playitem";
-import FileDownloader from "../../lib/FileDownloader";
+import Playlist from '../../vo/woofer/Playlist';
+import Video, { IVideo } from "../../vo/woofer/Video";
+import YoutubeVideo from "../../vo/woofer/YoutubeVideo";
+import PlaylistItem from "../../vo/woofer/PlaylistItem";
 
 
 class PlaylistStore {
@@ -42,7 +41,7 @@ class PlaylistStore {
   }
 
   @action
-  async removeVideo(Video: PlayItem) {
+  async removeVideo(Video: PlaylistItem) {
     const { id: playlistItemId } = Video;
     const { id: playlistId } = this.playlist;
     await playlistsRepository.removeVideo(playlistId, playlistItemId);

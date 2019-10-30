@@ -65,6 +65,7 @@ class OasisApp extends App<IProps> {
           <Component  {...pageProps} />
           <div id="modal-container" />
           <div id="popper" />
+          <div id="toastr-container" />
         </ModalProvider>
       </Container>
     );

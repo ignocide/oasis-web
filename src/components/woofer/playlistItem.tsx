@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import '../../style/woofer/playitem.scss';
-import PlayItem from "../../vo/woofer/playitem";
+import PlayItem from "../../vo/woofer/PlaylistItem";
 
 interface IProps {
-  playitem: PlayItem
+  playlistItem: PlayItem
 }
 
 interface IState {
@@ -14,12 +14,12 @@ class PlayListItem extends Component<IProps, IState> {
   state = {};
 
   render() {
-    const {playitem} = this.props;
+    const { playlistItem } = this.props;
     return <div className="playitem">
-      <img src={playitem.thumbnail} />
+      <img src={playlistItem.thumbnail} />
       <div className="playitem-info">
-        <p className="'playitem-title">{playitem.name}</p>
-        <div className="'playitem-description">{playitem.description}</div>
+        <p className="'playitem-title">{playlistItem.name}</p>
+        <div className="'playitem-description">{playlistItem.description}</div>
         <div className="playitem-right">
           <button className="playitem-func">
 

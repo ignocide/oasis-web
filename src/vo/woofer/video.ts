@@ -1,17 +1,14 @@
-import PlayableVideo from "./PlayableVideo";
+import PlayableVideo,{IPlayableVideo} from "./PlayableVideo";
 
-interface IVideo {
+interface IVideo extends IPlayableVideo {
   id: number,
-  videoId: string,
-  title: string,
-  thumbnail: string,
-  description: string,
   createdAt: string | Date,
   updatedAt: string | Date,
 }
 
-class Video extends PlayableVideo{
+class Video extends PlayableVideo {
   id: number;
+  videoId: string;
   title: string;
   thumbnail: string;
   description: string;
@@ -19,10 +16,10 @@ class Video extends PlayableVideo{
   updatedAt: Date;
 
   constructor(video: IVideo) {
-    super();
+    super(video);
     this.id = video.id;
     this.videoId = video.videoId;
-    this.title = video.title;
+    this.title = video.title || video.name;
     this.thumbnail = video.thumbnail;
     this.description = video.description;
     this.createdAt = new Date(video.createdAt);

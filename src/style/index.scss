@@ -26,8 +26,12 @@ a {
     }
 }
 
+html{
+    min-height: 100vh;
+}
 body {
     background-color: white;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
     font-size: 14px;

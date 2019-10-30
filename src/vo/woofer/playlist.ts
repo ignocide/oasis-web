@@ -2,16 +2,16 @@ export interface IPlaylist {
   id: number,
   name: string,
   isDefault: boolean,
-  createdAt?: string | null,
-  updatedAt?: string | null,
+  createdAt?: string,
+  updatedAt?: string,
 }
 
 class Playlist {
   id: number;
   name: string;
   isDefault: boolean;
-  createdAt?: Date | null;
-  updatedAt?: Date | null;
+  createdAt: Date | null;
+  updatedAt: Date | null;
 
   constructor(playlist: IPlaylist) {
     this.id = playlist.id;

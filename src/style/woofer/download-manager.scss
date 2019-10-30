@@ -1,5 +1,5 @@
 .download-manager {
-    @media (max-width: 750px) {
+    @media (max-width: $xs-screen) {
         display: none;
     }
     width: 280px;

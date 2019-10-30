@@ -1,6 +1,6 @@
 import instance from '../oasis';
 import { AxiosInstance } from 'axios';
-import YoutubeVideo from "../../../vo/woofer/youtubeVideo";
+import YoutubeVideo from "../../../vo/woofer/YoutubeVideo";
 // import { IBoardCreateForm, ITaskCreateForm, ITaskUpdateStepForm } from '../../../store/boardStore';
 //
 // export const fetchPlaylists = () => {
@@ -15,6 +15,7 @@ import YoutubeVideo from "../../../vo/woofer/youtubeVideo";
 // export const fetchPlaylist = (playListFetchParams: IPlayListFetchParams) => {
 //   return instance.get(urlBuilder('/woofer/playlist/:playlistId', playListFetchParams));
 // };
+
 export interface IPlaylistCreateForm {
   name: string
 }

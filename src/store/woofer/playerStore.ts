@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import Video from "../../vo/woofer/video";
+import Video from "../../vo/woofer/Video";
 import PlayableVideo from "../../vo/woofer/PlayableVideo";
 
 export enum PLAYMODE {

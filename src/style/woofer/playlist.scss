@@ -1,3 +1,5 @@
+@import '../basic/grid';
+
 .playlist-container {
     box-shadow: none !important;
     .playlist {
@@ -17,7 +19,7 @@
                 width: 94px;
                 //display: inline-block;
                 display: none;
-                @media (max-width: 750px) {
+                @media (max-width: $xs-screen) {
                     height: 50px;
                     width: 68px;
                 }
@@ -28,7 +30,7 @@
             &-info {
                 cursor: pointer;
                 padding: 0 15px;
-                @media (max-width: 750px) {
+                @media (max-width: $xs-screen) {
                     padding: 0 5px;
                 }
                 flex: 1;
@@ -44,7 +46,7 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     font-weight: bold;
-                    @media (max-width: 750px) {
+                    @media (max-width: $xs-screen) {
                         font-weight: normal;
                         padding: 0 5px;
                         white-space: normal;
@@ -70,7 +72,7 @@
                 width: 50px;
                 height: 50px;
                 line-height: 50px;
-                @media (max-width: 750px) {
+                @media (max-width: $xs-screen) {
                     width: 30px;
                     height: 30px;
                     line-height: 30px;
