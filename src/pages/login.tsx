@@ -4,7 +4,7 @@ import Header from "../components/layout/header";
 import withStore from "../components/hoc/withStore";
 import { inject, observer } from 'mobx-react';
 import ToastrStore from '../store/common/ToastrStore'
-import ToastrMessage from '../vo/common/ToastrMessage'
+import ToastrMessage from '../vo/common/toastrMessage'
 import '../style/index.scss';
 import '../style/login/index.scss';
 

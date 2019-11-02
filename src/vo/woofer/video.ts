@@ -1,4 +1,4 @@
-import PlayableVideo,{IPlayableVideo} from "./PlayableVideo";
+import PlayableVideo, { IPlayableVideo } from "./PlayableVideo";
 
 interface IVideo extends IPlayableVideo {
   id: number,

@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import Playlist from '../../vo/woofer/Playlist';
+import Playlist from '../../vo/woofer/playlist';
 import playlistsRepository, { IPlaylistCreateForm } from '../../api/server/woofer/playlistRepository';
 
 
@@ -7,7 +7,7 @@ class Playlists {
   @observable playlists: Playlist[] = [];
 
   constructor(isServer: boolean, initialData: any) {
-    if(isServer){
+    if (isServer) {
 
     }
     Object.assign(this, initialData);

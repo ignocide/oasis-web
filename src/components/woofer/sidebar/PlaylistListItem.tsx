@@ -2,7 +2,7 @@ import React from 'react';
 import { inject } from "mobx-react";
 import Link from "next/link";
 
-import Playlist from "../../../vo/woofer/Playlist";
+import Playlist from "../../../vo/woofer/playlist";
 import { IconButton } from "../../form/index";
 import DropBox from "../../common/DropBox";
 import { Menu, MenuItem } from "../../common/MenuForm";
@@ -66,16 +66,16 @@ class PlaylistListItem extends React.Component<IProps, any> {
 
     return <li className="playlist-item">
       <div>
-        <Link  as={`/woofer/playlists/${playlist.id}`} href={`/woofer/playlists?playlistId=${playlist.id}`}>{playlist.name}</Link>
+        <Link as={`/woofer/playlists/${playlist.id}`} href={`/woofer/playlists?playlistId=${playlist.id}`}>{playlist.name}</Link>
       </div>
-      <IconButton name={'more_vert'} onClick={this.openBox} ref={'button'}/>
+      <IconButton name={'more_vert'} onClick={this.openBox} ref={'button'} />
       <DropBox isOpen={isBoxOpen} parent={this.refs.button} requestClose={this.closeBox}>
         <Menu>
           {/*<MenuItem>{'수정'}</MenuItem>*/}
           <MenuItem onClick={this.openRemoveConfirmModal}>{'삭제'}</MenuItem>
         </Menu>
         {modalState.removeConfirm &&
-        <PlaylistRemoveModal playlist={playlist} requestClose={this.closeRemoveConfirmModal} />}
+          <PlaylistRemoveModal playlist={playlist} requestClose={this.closeRemoveConfirmModal} />}
       </DropBox>
     </li>;
   }

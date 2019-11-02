@@ -13,7 +13,7 @@ class SimpleLocation {
   location: ICoords;
 
   constructor(simpleLocation: ISimpleLocation | any = {}) {
-    this.full_address = simpleLocation.full_address;
+    this.full_address = simpleLocation.full_address || null;
     this.location = simpleLocation.location || {};
   }
 }

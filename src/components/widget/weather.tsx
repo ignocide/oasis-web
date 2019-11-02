@@ -4,7 +4,7 @@ import Icon from "../basic/Icon";
 import { Col, Row } from "../basic/Grid";
 
 import '../../style/widget/weather.scss';
-import { WeatherEN } from "../../vo/weather";
+import { WeatherEN } from "../../vo/weatherInfo";
 
 
 const getIcon = (weatherType: WeatherEN, sunrise: Date, sunset: Date) => {
@@ -47,7 +47,7 @@ const getIcon = (weatherType: WeatherEN, sunrise: Date, sunset: Date) => {
       icon = 'thunder';
       break;
     }
-    default : {
+    default: {
       icon = '';
     }
   }

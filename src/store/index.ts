@@ -2,14 +2,14 @@ import { useStaticRendering } from 'mobx-react';
 
 import AuthStore from './auth';
 import AppStore from "./common/appStore";
-import ToastrStore from "./common/ToastrStore";
+import ToastrStore from "./common/toastrStore";
 
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
 
 
-let storeClasses:any = {
+let storeClasses: any = {
   auth: AuthStore,
   appStore: AppStore,
   toastrStore: ToastrStore,
@@ -78,7 +78,7 @@ export function insertClasses(stores: any = {}): any {
   });
 }
 
-export function setStore(key: string, storeClass: { new(...args: any[]):any }): any {
+export function setStore(key: string, storeClass: { new(...args: any[]): any }): any {
   // Always make a new store if server, otherwise state is shared between requests
   let store = null;
   if (isServer) {

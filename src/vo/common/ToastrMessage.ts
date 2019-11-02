@@ -27,7 +27,6 @@ class ToastrMessage {
     this.message = toastrMessage.message;
     this.duration = toastrMessage.duration;
     this.type = toastrMessage.type;
-    console.log("this",this)
   }
 }
 

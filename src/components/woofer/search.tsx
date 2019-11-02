@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import SearchStore from "../../store/woofer/playlistsStore";
 import PlaylistsStore from "../../store/woofer/playlistsStore";
-import Playlist from 'src/vo/woofer/Playlist';
+import Playlist from 'src/vo/woofer/playlist';
 
 import '../../style/woofer/playlists.scss';
 

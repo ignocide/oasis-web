@@ -2,7 +2,7 @@ import React from 'react';
 import Link from "next/link";
 import { inject, observer } from 'mobx-react';
 import withStore from "../components/hoc/withStore";
-import Header from "../components/layout/header";
+import Header from "../components/layout/Header";
 import { Col, Row } from "../components/basic/Grid";
 
 import '../style/home.scss';
@@ -74,7 +74,7 @@ class Index extends React.Component<IProps, any> {
             </Col>
             <Col size={4}>
               <div className={'card'}>
-                <ClockWidget/>
+                <ClockWidget />
               </div>
             </Col>
             <Col size={4}>

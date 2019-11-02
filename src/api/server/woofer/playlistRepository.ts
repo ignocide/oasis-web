@@ -1,6 +1,6 @@
 import instance from '../oasis';
 import { AxiosInstance } from 'axios';
-import YoutubeVideo from "../../../vo/woofer/YoutubeVideo";
+import YoutubeVideo from "../../../vo/woofer/youtubeVideo";
 // import { IBoardCreateForm, ITaskCreateForm, ITaskUpdateStepForm } from '../../../store/boardStore';
 //
 // export const fetchPlaylists = () => {
@@ -45,14 +45,14 @@ class PlaylistRepository {
   }
 
   addVideo(playlistId: number, video: YoutubeVideo): any {
-    return this.axios.post(`/woofer/playlists/${playlistId}/videos`,video);
+    return this.axios.post(`/woofer/playlists/${playlistId}/videos`, video);
   }
 
   removeVideo(playlistId: number, playlistItemId: number): any {
     return this.axios.delete(`/woofer/playlists/${playlistId}/videos/${playlistItemId}`);
   }
 
-  downloadVideoAsMp3(videoId: string,onDownloadProgress: (progressEvent: any) => void): any {
+  downloadVideoAsMp3(videoId: string, onDownloadProgress: (progressEvent: any) => void): any {
     return this.axios.get(`/woofer/youtube/${videoId}/mp3`, {
       responseType: 'arraybuffer',
       onDownloadProgress: onDownloadProgress

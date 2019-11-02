@@ -1,6 +1,6 @@
-import Header from "./layout/header";
+import Header from "./layout/Header";
 
-const Layout = ({children}) => (
+const Layout = ({ children }) => (
   <div id="main">
     <div id={'main-container'} className="container">
       <Header />

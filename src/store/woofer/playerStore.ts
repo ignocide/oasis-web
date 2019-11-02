@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
-import Video from "../../vo/woofer/Video";
-import PlayableVideo from "../../vo/woofer/PlayableVideo";
+import Video from "../../vo/woofer/video";
+import PlayableVideo from "../../vo/woofer/playableVideo";
 
 export enum PLAYMODE {
   RANDOM,
@@ -75,7 +75,7 @@ class PlayerStore {
     });
 
     // let nextVideo:Video  = unPlayedList[randomIndex];
-    let list: Video [] = unPlayedList;
+    let list: Video[] = unPlayedList;
     if (!unPlayedList.length) {
       this.history = [];
       list = this.queue;

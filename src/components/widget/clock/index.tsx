@@ -1,5 +1,5 @@
 import React from 'react';
-import Number from './number';
+import Number from './Number';
 import '../../../style/widget/clock.scss';
 
 class ClockWidget extends React.Component {

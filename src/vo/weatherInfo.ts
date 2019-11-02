@@ -44,20 +44,20 @@ class WeatherInfo {
 
   constructor(info: IWeatherInfo | any = {}) {
 
-    this.weather = info.weather;
-    this.weatherType = info.weatherType;
-    this.time = new Date(info.time);
-    this.visibility = info.visibility;
-    this.sunrise = new Date(info.sunrise);
-    this.sunset = new Date(info.sunset);
-    this.measureLocation = info.measureLocation;
+    this.weather = info.weather || null;
+    this.weatherType = info.weatherType || null;
+    this.time = info.time ? new Date(info.time) : null;
+    this.visibility = info.visibility || null;
+    this.sunrise = info.sunrise ? new Date(info.sunrise) : null;
+    this.sunset = info.sunset ? new Date(info.sunset) : null;
+    this.measureLocation = info.measureLocation || null;
     this.temp = info.temp || {
       current: '-',
       min: '-',
       max: '-'
     };
-    this.pressure = info.pressure;
-    this.wind = info.wind;
+    this.pressure = info.pressure || null;
+    this.wind = info.wind || null;
 
   }
 }

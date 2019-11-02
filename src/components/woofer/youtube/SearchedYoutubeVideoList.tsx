@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 import '../../../style/woofer/youtube-search-form.scss';
 import YoutubeStore from "../../../store/woofer/youtubeStore";
 import Panel, { PanelHeader } from "../../common/Panel";
-import YoutubeVideo from "../../../vo/woofer/YoutubeVideo";
+import YoutubeVideo from "../../../vo/woofer/youtubeVideo";
 import SearchedYoutubeVideoItem from "./SearchedYoutubeVideoItem";
 
 interface IProps {

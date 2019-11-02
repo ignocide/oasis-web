@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import '../../style/woofer/playitem.scss';
-import PlayItem from "../../vo/woofer/PlaylistItem";
+import PlayItem from "../../vo/woofer/playlistItem";
 
 interface IProps {
   playlistItem: PlayItem

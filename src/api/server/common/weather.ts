@@ -1,6 +1,6 @@
 import instance from '../oasis';
 import { AxiosInstance } from 'axios';
-import { IWeatherInfo, default as WeatherInfo } from "../../../vo/weather";
+import { IWeatherInfo, default as WeatherInfo } from "../../../vo/weatherInfo";
 import { ISimpleLocation, default as SimpleLocation } from "../../../vo/location";
 
 interface IWeatherResponse {
