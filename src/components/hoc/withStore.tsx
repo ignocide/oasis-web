@@ -4,7 +4,7 @@ import { getStores, initializeStores, insertClasses, insertStores } from '../../
 
 import * as authApi from "../../api/auth/index";
 import { setToken } from '../../api';
-import cookieUtil, { COOKIE_KEYS } from '../../lib/Cookies';
+import cookieUtil, { COOKIE_KEYS } from '../../lib/cookies';
 import AuthStore from '../../store/auth';
 
 interface IState {

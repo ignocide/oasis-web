@@ -7,7 +7,7 @@ import { IconButton } from "../form/index";
 import AppStore from "../../store/common/appStore";
 import AuthStore from "../../store/auth";
 import { setToken } from "../../api";
-import { COOKIE_KEYS, default as cookieUtil } from "../../lib/Cookies";
+import { COOKIE_KEYS, default as cookieUtil } from "../../lib/cookies";
 
 import '../../style/header.scss';
 

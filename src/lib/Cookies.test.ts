@@ -1,4 +1,4 @@
-import cookies from './Cookies';
+import cookies from './cookies';
 import { Context } from 'koa';
 import { createMockContext } from '@shopify/jest-koa-mocks';
 
