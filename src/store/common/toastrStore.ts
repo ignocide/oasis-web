@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import ToastrMessage from '../../vo/common/toastrMessage';
+import ToastrMessage from '../../dto/common/toastrMessage';
 
 class ToastrStore {
   @observable messages: ToastrMessage[] = [];

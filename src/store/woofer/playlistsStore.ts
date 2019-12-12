@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import Playlist from '../../vo/woofer/playlist';
+import Playlist from '../../dto/woofer/playlist';
 import playlistsRepository, { IPlaylistCreateForm } from '../../api/woofer/playlistRepository';
 
 

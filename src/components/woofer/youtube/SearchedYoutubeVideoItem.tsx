@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import YoutubeVideo from "../../../vo/woofer/youtubeVideo";
+import YoutubeVideo from "../../../dto/woofer/youtubeVideo";
 import { IconButton } from "../../form/index";
 import { modalController } from "../../common/Modal";
 import DropBox from "../../common/DropBox";

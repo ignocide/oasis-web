@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx'
 import youtube from "../../lib/Youtube";
-import YoutubeVideo from "../../vo/woofer/youtubeVideo";
+import YoutubeVideo from "../../dto/woofer/youtubeVideo";
 
 
 class YoutubeStore {

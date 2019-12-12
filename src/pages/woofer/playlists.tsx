@@ -7,8 +7,8 @@ import PlaylistsStore from '../../store/woofer/playlistsStore';
 import PlayerStore from '../../store/woofer/playerStore';
 import PlaylistStore from '../../store/woofer/playlistStore';
 
-import Header from "../../components/layout/header";
-import Sidebar from "../../components/layout/sidebar";
+import Header from "../../components/layout/Header";
+import Sidebar from "../../components/layout/Sidebar";
 import { getStore } from "../../store/index";
 
 import YoutubeSearchInput from "../../components/woofer/youtube/YoutubeSearchForm";

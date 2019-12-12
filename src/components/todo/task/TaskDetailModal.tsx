@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
-import Task from "../../../vo/todo/task";
+import Task from "../../../dto/todo/task";
 import Modal, { modalController } from "../../common/Modal";
 
 import '../../../style/todo/task-detail-modal.scss';

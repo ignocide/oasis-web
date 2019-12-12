@@ -5,7 +5,7 @@ import withStore from '../../components/hoc/withStore';
 import { inject, observer } from 'mobx-react';
 import PlaylistsStore from '../../store/woofer/playlistsStore';
 import PlayerStore from '../../store/woofer/playerStore';
-import Header from "../../components/layout/header";
+import Header from "../../components/layout/Header";
 import { getStore } from "../../store/index";
 import PlaylistStore from '../../store/woofer/playlistStore';
 

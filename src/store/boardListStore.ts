@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import Board, { IBoard } from '../vo/todo/board';
+import Board, { IBoard } from '../dto/todo/board';
 import boardRepository from '../api/todo/boardRepository';
 
 class BoardListStore {

@@ -4,7 +4,7 @@ import Icon from "../basic/Icon";
 import { Col, Row } from "../basic/Grid";
 
 import '../../style/widget/weather.scss';
-import { WeatherEN } from "../../vo/weatherInfo";
+import { WeatherEN } from "../../dto/weatherInfo";
 
 
 const getIcon = (weatherType: WeatherEN, sunrise: Date, sunset: Date) => {

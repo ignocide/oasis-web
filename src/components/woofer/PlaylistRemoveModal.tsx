@@ -2,7 +2,7 @@ import React from "react";
 import { inject, observer } from 'mobx-react';
 
 import PlaylistsStore from "../../store/woofer/PlaylistsStore";
-import Playlist from "../../vo/woofer/playlist";
+import Playlist from "../../dto/woofer/playlist";
 import Modal, { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../basic/Modal";
 import Button from "../basic/Button";
 

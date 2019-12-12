@@ -2,7 +2,7 @@ import React from 'react';
 import { inject } from "mobx-react";
 import Link from "next/link";
 
-import Playlist from "../../../vo/woofer/playlist";
+import Playlist from "../../../dto/woofer/playlist";
 import { IconButton } from "../../form/index";
 import DropBox from "../../common/DropBox";
 import { Menu, MenuItem } from "../../common/MenuForm";

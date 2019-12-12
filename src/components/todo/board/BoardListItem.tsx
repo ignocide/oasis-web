@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
 
-import Board from "../../../vo/todo/board";
+import Board from "../../../dto/todo/board";
 
 import { Button, IconButton } from "../../form/index";
 import { Menu, MenuItem } from "../../common/MenuForm";

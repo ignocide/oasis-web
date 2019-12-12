@@ -2,10 +2,10 @@ import { action, observable } from 'mobx';
 import playlistsRepository from '../../api/woofer/playlistRepository';
 import { getStore } from "../index";
 import PlayerStore from "./playerStore";
-import Playlist from '../../vo/woofer/playlist';
-import Video, { IVideo } from "../../vo/woofer/video";
-import YoutubeVideo from "../../vo/woofer/youtubeVideo";
-import PlaylistItem from "../../vo/woofer/playlistItem";
+import Playlist from '../../dto/woofer/playlist';
+import Video, { IVideo } from "../../dto/woofer/video";
+import YoutubeVideo from "../../dto/woofer/youtubeVideo";
+import PlaylistItem from "../../dto/woofer/playlistItem";
 
 
 class PlaylistStore {

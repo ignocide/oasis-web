@@ -7,7 +7,7 @@ import { Col, Row } from "../components/basic/Grid";
 
 import '../style/home.scss';
 import AppStore from "../store/common/appStore";
-import WeatherWidget from "../components/widget/weather";
+import WeatherWidget from "../components/widget/WeatherWidget";
 import ClockWidget from "../components/widget/clock/index";
 
 interface IProps {

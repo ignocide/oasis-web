@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 import weatherRepository from '../../api/common/weatherRepository';
-import WeatherInfo from "../../vo/weatherInfo";
-import SimpleLocation from "../../vo/location";
+import WeatherInfo from "../../dto/weatherInfo";
+import SimpleLocation from "../../dto/location";
 
 
 class AppStore {

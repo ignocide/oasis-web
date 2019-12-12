@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react';
 
 import PlayerStore, { YoutubeState } from "../../store/woofer/playerStore";
 
-import { Row } from "../layout/grid";
+import { Row } from "../layout/Grid";
 import Icon from "../common/Icon";
 
 import '../../style/woofer/player.scss';

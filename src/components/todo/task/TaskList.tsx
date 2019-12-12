@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
-import Task, { STEP } from "../../../vo/todo/task";
+import Task, { STEP } from "../../../dto/todo/task";
 import Modal from '../../common/Modal';
 import TaskDetailModal from "./TaskDetailModal";
 import { IconButton } from "../../form";

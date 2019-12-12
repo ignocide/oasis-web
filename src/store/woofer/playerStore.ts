@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
-import Video from "../../vo/woofer/video";
-import PlayableVideo from "../../vo/woofer/playableVideo";
+import Video from "../../dto/woofer/video";
+import PlayableVideo from "../../dto/woofer/playableVideo";
 
 export enum PLAYMODE {
   RANDOM,

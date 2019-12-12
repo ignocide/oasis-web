@@ -1,8 +1,8 @@
 import { action, observable } from 'mobx';
-import Board from '../vo/todo/board';
+import Board from '../dto/todo/board';
 import { getStore } from './index';
 import boardRepository from '../api/todo/boardRepository';
-import Task, { ITask, STEP } from '../vo/todo/task';
+import Task, { ITask, STEP } from '../dto/todo/task';
 
 interface ITaskCreateForm {
   name: string;
