@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import playlistsRepository from '../../api/server/woofer/playlistRepository';
+import playlistsRepository from '../../api/woofer/playlistRepository';
 import PlayItem from "../../vo/woofer/playlistItem";
 import FileDownloader from "../../lib/FileDownloader";
 

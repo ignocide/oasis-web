@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 import axios from 'axios';
-import cookieUtil, { COOKIE_KEYS } from "../../lib/Cookies";
+import cookieUtil, { COOKIE_KEYS } from "../lib/Cookies";
 import qs from 'querystring';
 
 const { publicRuntimeConfig } = getConfig();

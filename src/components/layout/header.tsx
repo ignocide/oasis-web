@@ -6,7 +6,7 @@ import Router from 'next/router';
 import { IconButton } from "../form/index";
 import AppStore from "../../store/common/appStore";
 import AuthStore from "../../store/auth";
-import { setToken } from "../../api/server/oasis";
+import { setToken } from "../../api";
 import { COOKIE_KEYS, default as cookieUtil } from "../../lib/Cookies";
 
 import '../../style/header.scss';

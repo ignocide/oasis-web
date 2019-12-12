@@ -1,4 +1,4 @@
-import oasis, { basicAuthOption, isInvalidError, setToken, urlBuilder } from './oasis';
+import oasis, { basicAuthOption, isInvalidError, setToken, urlBuilder } from '.';
 import { AxiosInstance } from 'axios';
 import getConfig from 'next/config';
 

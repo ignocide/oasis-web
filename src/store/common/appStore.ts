@@ -1,5 +1,5 @@
 import { action, observable } from 'mobx';
-import weatherRepository from '../../api/server/common/weather';
+import weatherRepository from '../../api/common/weatherRepository';
 import WeatherInfo from "../../vo/weatherInfo";
 import SimpleLocation from "../../vo/location";
 

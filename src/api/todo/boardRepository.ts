@@ -1,6 +1,6 @@
-import instance from '../oasis';
+import instance from '..';
 import { AxiosInstance } from 'axios';
-import { IBoardCreateForm, ITaskCreateForm, ITaskUpdateStepForm } from '../../../store/boardStore';
+import { IBoardCreateForm, ITaskCreateForm, ITaskUpdateStepForm } from '../../store/boardStore';
 
 class BoardRepository {
   axios: AxiosInstance;

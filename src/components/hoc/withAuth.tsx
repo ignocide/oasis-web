@@ -1,9 +1,8 @@
 import React from 'react';
-import { stackStore } from '../../store/index';
 import withStore from './withStore';
 import AuthStore from '../../store/auth';
 import { inject } from 'mobx-react';
-import { setToken } from '../../api/server';
+import { setToken } from '../../api';
 
 interface IProps {
   withAuthProps: {

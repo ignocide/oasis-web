@@ -1,8 +1,8 @@
 import getConfig from 'next/config';
-import axios, { basicAuthOption, isInvalidError, setToken } from '../oasis';
+import axios, { basicAuthOption, isInvalidError, setToken } from '..';
 import primaryAxios from 'axios';
 import qs from 'querystring';
-import cookieUtil, { COOKIE_KEYS } from "../../../lib/Cookies";
+import cookieUtil, { COOKIE_KEYS } from "../../lib/Cookies";
 
 const { publicRuntimeConfig } = getConfig();
 

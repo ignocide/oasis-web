@@ -1,7 +1,7 @@
 import React from 'react';
-import * as authApi from "../api/server/auth/index";
+import * as authApi from "../api/auth/index";
 import { COOKIE_KEYS, default as cookieUtil } from "../lib/Cookies";
-import { setToken } from "../api/server/oasis";
+import { setToken } from "../api";
 import Router from 'next/router';
 import { inject, observer } from "mobx-react";
 

@@ -2,8 +2,8 @@ import React from 'react';
 import { Provider } from 'mobx-react';
 import { getStores, initializeStores, insertClasses, insertStores } from '../../store/index';
 
-import * as authApi from "../../api/server/auth/index";
-import { setToken } from '../../api/server/oasis';
+import * as authApi from "../../api/auth/index";
+import { setToken } from '../../api';
 import cookieUtil, { COOKIE_KEYS } from '../../lib/Cookies';
 import AuthStore from '../../store/auth';
 
@@ -15,7 +15,7 @@ function withStore(additionalStores: any = {}) {
   return function (WrappedComponent) {
     class _withStore extends React.Component<any, IState> {
       constructor(props) {
-        super();
+        super(props);
         const isServer = typeof window === 'undefined';
         // let storeMap = props.stores
         let stores = null;

@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
 import Board, { IBoard } from '../vo/todo/board';
-import boardRepository from '../api/server/todo/boardRepository';
+import boardRepository from '../api/todo/boardRepository';
 
 class BoardListStore {
   @observable boards: Board[] = [];
