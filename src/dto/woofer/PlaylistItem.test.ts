@@ -2,16 +2,16 @@ import PlaylistItem from './PlaylistItem';
 
 describe('vo/woofer/PlaylistItem', () => {
   test('constructor', () => {
-    let mock = {
+    const mock = {
       id: 7,
       videoId: 'abcd',
       title: 'title',
       thumbnail: 'thumbnail',
       description: 'description',
-      createdAt: "2019-04-16T08:08:43.000Z",
-      updatedAt: "2019-04-16T08:08:43.000Z",
+      createdAt: '2019-04-16T08:08:43.000Z',
+      updatedAt: '2019-04-16T08:08:43.000Z',
     };
-    let playItem = new PlaylistItem(mock);
+    const playItem = new PlaylistItem(mock);
 
     expect(playItem.id).toEqual(mock.id);
     expect(playItem.videoId).toEqual(mock.videoId);

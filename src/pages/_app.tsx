@@ -1,25 +1,25 @@
 import App, { Container } from 'next/app';
 import getConfig from 'next/config';
 import React from 'react';
-import { ModalProvider } from "../components/context/Modal";
-import youtube from "../lib/youtube";
+import { ModalProvider } from '../components/context/Modal';
+import youtube from '../lib/youtube';
 
 import '../style/index.scss';
 import '../style/basic/index.scss';
-import { FloaterRenderInfo } from "../components/common/Floater";
+import { FloaterRenderInfo } from '../components/common/Floater';
 
 const { publicRuntimeConfig } = getConfig();
 
 interface IProps {
-  Component: any,
-  pageProps: any,
-  stores: any
+  Component: any;
+  pageProps: any;
+  stores: any;
 }
 
 interface DecodedToken {
-  user_name: string,
-  authorities: string[],
-  id: number,
+  user_name: string;
+  authorities: string[];
+  id: number;
 }
 
 class OasisApp extends App<IProps> {

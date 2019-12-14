@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface IState {
-  shown: boolean,
+  shown: boolean;
   size: {
-    width: number,
-    height: number
-  }
+    width: number;
+    height: number;
+  };
 }
 
 class Persistentor extends React.Component<any, IState> {
@@ -50,18 +50,18 @@ class Persistentor extends React.Component<any, IState> {
 
   componentDidMount() {
     window.addEventListener('scroll', this.onScroll);
-    window.addEventListener('resize',this.onScroll)
+    window.addEventListener('resize',this.onScroll);
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll);
-    window.removeEventListener('resize',this.onScroll)
+    window.removeEventListener('resize',this.onScroll);
   }
 
   get containerClassName() {
     const { shown } = this.state;
 
-    return shown ? '' : 'flow-corner'
+    return shown ? '' : 'flow-corner';
   }
 
   get containerStyle() {

@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import PlaylistsStore from "../../store/woofer/playlistsStore";
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../basic/Modal";
-import { FieldInput } from "../form/Field";
-import Button from "../basic/Button";
-import { Col, Row } from "../basic/Grid";
-import Input from "../basic/Input";
-import { FormLabel } from "../basic/Form";
+import PlaylistsStore from '../../store/woofer/playlistsStore';
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from '../basic/Modal';
+import { FieldInput } from '../form/Field';
+import Button from '../basic/Button';
+import { Col, Row } from '../basic/Grid';
+import Input from '../basic/Input';
+import { FormLabel } from '../basic/Form';
 
 interface IProps {
-  playlistsStore: PlaylistsStore,
-  requestClose: () => void
+  playlistsStore: PlaylistsStore;
+  requestClose: () => void;
 }
 
 interface IState {
-  playlistCreateForm: any
+  playlistCreateForm: any;
 }
 
 @inject('playlistsStore')
@@ -61,8 +61,8 @@ class PlaylistCreateModal extends React.Component<IProps, IState> {
   };
 
   onChangeValue = (e) => {
-    let { name, value } = e.target;
-    let { playlistCreateForm } = this.state;
+    const { name, value } = e.target;
+    const { playlistCreateForm } = this.state;
     playlistCreateForm[name] = value;
     this.setState({
       playlistCreateForm
@@ -90,8 +90,8 @@ class PlaylistCreateModal extends React.Component<IProps, IState> {
           </Row>
         </ModalBody>
         <ModalFooter>
-          <Button shape={'primary'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
-          <Button shape={'text'} type={"button"} onClick={requestClose}>{'닫기'}</Button>
+          <Button shape={'primary'} type={'submit'} onClick={this.onSubmit}>{'추가'}</Button>
+          <Button shape={'text'} type={'button'} onClick={requestClose}>{'닫기'}</Button>
         </ModalFooter>
       </ModalForm>
     );

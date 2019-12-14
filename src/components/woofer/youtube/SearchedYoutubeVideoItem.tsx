@@ -1,18 +1,18 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import YoutubeVideo from "../../../dto/woofer/youtubeVideo";
-import { IconButton } from "../../form/index";
-import { modalController } from "../../common/Modal";
-import DropBox from "../../common/DropBox";
-import { Menu, MenuItem } from "../../common/MenuForm";
-import PlayerStore from "../../../store/woofer/playerStore";
+import YoutubeVideo from '../../../dto/woofer/youtubeVideo';
+import { IconButton } from '../../form/index';
+import { modalController } from '../../common/Modal';
+import DropBox from '../../common/DropBox';
+import { Menu, MenuItem } from '../../common/MenuForm';
+import PlayerStore from '../../../store/woofer/playerStore';
 
 import '../../../style/woofer/youtube-search-form.scss';
 
 interface IProps {
-  youtubeVideo: YoutubeVideo,
-  playerStore?: PlayerStore
+  youtubeVideo: YoutubeVideo;
+  playerStore?: PlayerStore;
 }
 
 interface IState {

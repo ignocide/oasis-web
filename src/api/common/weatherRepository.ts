@@ -1,16 +1,16 @@
 import instance from '..';
 import { AxiosInstance } from 'axios';
-import { IWeatherInfo, default as WeatherInfo } from "../../dto/weatherInfo";
-import { ISimpleLocation, default as SimpleLocation } from "../../dto/location";
+import { IWeatherInfo, default as WeatherInfo } from '../../dto/weatherInfo';
+import { ISimpleLocation, default as SimpleLocation } from '../../dto/location';
 
 interface IWeatherResponse {
-  weather: IWeatherInfo | WeatherInfo,
-  location: ISimpleLocation | SimpleLocation
+  weather: IWeatherInfo | WeatherInfo;
+  location: ISimpleLocation | SimpleLocation;
 }
 
 interface IWeatherAndLocation {
-  weather: WeatherInfo,
-  location: SimpleLocation
+  weather: WeatherInfo;
+  location: SimpleLocation;
 }
 
 class WeatherRepository {
@@ -21,7 +21,7 @@ class WeatherRepository {
   }
 
   async fetchByLocation(lat: number, lng: number): Promise<IWeatherAndLocation> {
-    const result: any = await instance.get(`/life/weather/location`, {
+    const result: any = await instance.get('/life/weather/location', {
       params: {
         lat, lng
       }
@@ -30,11 +30,11 @@ class WeatherRepository {
     return {
       weather: new WeatherInfo(result.weather),
       location: new SimpleLocation(result.location)
-    }
+    };
   }
 
 
 }
 
-export { IWeatherResponse, IWeatherAndLocation }
+export { IWeatherResponse, IWeatherAndLocation };
 export default new WeatherRepository();

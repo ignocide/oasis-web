@@ -8,10 +8,10 @@ import { IconButton } from '../../form/index';
 import PlaylistCreateModal from '../PlaylistCreateModal';
 
 import '../../../style/woofer/playlist-list.scss';
-import YoutubeDownloadModal from "../YoutubeDownloadModal";
+import YoutubeDownloadModal from '../YoutubeDownloadModal';
 
 interface IProps {
-  playlists: PlaylistsStore
+  playlists: PlaylistsStore;
 }
 
 

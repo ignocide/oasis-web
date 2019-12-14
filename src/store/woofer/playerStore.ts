@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
-import Video from "../../dto/woofer/video";
-import PlayableVideo from "../../dto/woofer/playableVideo";
+import Video from '../../dto/woofer/video';
+import PlayableVideo from '../../dto/woofer/playableVideo';
 
 export enum PLAYMODE {
   RANDOM,
@@ -24,7 +24,7 @@ class PlayerStore {
   @observable current: PlayableVideo = null;
   @observable tmpSlot: PlayableVideo = null;
   history: string[] = [];
-  historySize: number = 100;
+  historySize = 100;
 
   constructor(isServer: boolean, initialData: any) {
     if (isServer) {
@@ -70,7 +70,7 @@ class PlayerStore {
       return null;
     }
 
-    let unPlayedList = this.queue.filter((video) => {
+    const unPlayedList = this.queue.filter((video) => {
       return this.history.indexOf(video.videoId) === -1;
     });
 

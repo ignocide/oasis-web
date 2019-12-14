@@ -9,12 +9,12 @@ class Button extends React.Component<any, any> {
       classes.push(className);
     }
     if(block){
-      classes.push('btn-block')
+      classes.push('btn-block');
     }
     if(lg){
-      classes.push('btn-lg')
+      classes.push('btn-lg');
     }
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   render() {
@@ -27,4 +27,4 @@ class Button extends React.Component<any, any> {
 }
 
 
-export default Button
+export default Button;

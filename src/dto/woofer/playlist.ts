@@ -1,9 +1,9 @@
 export interface IPlaylist {
-  id: number,
-  name: string,
-  isDefault: boolean,
-  createdAt?: string,
-  updatedAt?: string,
+  id: number;
+  name: string;
+  isDefault: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 class Playlist {

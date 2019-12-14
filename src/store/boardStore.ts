@@ -13,11 +13,10 @@ interface IBoardCreateForm {
   name: string;
 }
 
-interface ITaskUpdateForm extends ITask {
-}
+type ITaskUpdateForm = ITask
 
 interface ITaskUpdateStepForm {
-  step: STEP
+  step: STEP;
 }
 
 class BoardStore {

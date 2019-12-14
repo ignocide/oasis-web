@@ -1,4 +1,4 @@
-import PlayableVideo from "./PlayableVideo";
+import PlayableVideo from './PlayableVideo';
 
 class PlayItem extends PlayableVideo {
   id?: number;

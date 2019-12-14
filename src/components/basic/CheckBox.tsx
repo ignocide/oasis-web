@@ -15,7 +15,7 @@ class Checkbox extends React.Component<any, any> {
         <input type={'checkbox'} className={this.className} {...props} />
         {label}
       </label>
-    </div>
+    </div>;
   }
 }
 

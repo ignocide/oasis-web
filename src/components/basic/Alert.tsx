@@ -6,11 +6,11 @@ import '../../style/basic/alert.scss';
 const Alert = ({ type = 'info', children, ...props }) => {
   let mark = null;
   if(type === 'success'){
-    mark = <Icon name={'check_circle_outline'}/>
+    mark = <Icon name={'check_circle_outline'}/>;
   }else if(type === 'danger'){
-    mark = <Icon name={'error_outline'}/>
+    mark = <Icon name={'error_outline'}/>;
   }
-  return <div className={cn(`alert`, `alert-${type}`)} {...props}>
+  return <div className={cn('alert', `alert-${type}`)} {...props}>
     {mark}{children}
   </div>;
 };

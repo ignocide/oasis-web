@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import PlaylistsStore from "../../store/woofer/playlistsStore";
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../basic/Modal";
-import { FieldInput } from "../form/Field";
-import Button from "../basic/Button";
-import { Col, Row } from "../basic/Grid";
-import Input from "../basic/Input";
-import { FormLabel } from "../basic/Form";
-import DownloadStore from "../../store/woofer/downloadStore";
+import PlaylistsStore from '../../store/woofer/playlistsStore';
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from '../basic/Modal';
+import { FieldInput } from '../form/Field';
+import Button from '../basic/Button';
+import { Col, Row } from '../basic/Grid';
+import Input from '../basic/Input';
+import { FormLabel } from '../basic/Form';
+import DownloadStore from '../../store/woofer/downloadStore';
 import youtubeUtil from '../../utils/youtube';
 
 interface IProps {
-  downloadStore: DownloadStore,
-  requestClose: () => void
+  downloadStore: DownloadStore;
+  requestClose: () => void;
 }
 
 interface IState {
-  youtubeDownloadForm: any
+  youtubeDownloadForm: any;
 }
 
 @inject('downloadStore')
@@ -72,8 +72,8 @@ class YoutubeDownloadModal extends React.Component<IProps, IState> {
   };
 
   onChangeValue = (e) => {
-    let { name, value } = e.target;
-    let { youtubeDownloadForm } = this.state;
+    const { name, value } = e.target;
+    const { youtubeDownloadForm } = this.state;
     youtubeDownloadForm[name] = value;
     this.setState({
       youtubeDownloadForm
@@ -101,8 +101,8 @@ class YoutubeDownloadModal extends React.Component<IProps, IState> {
           </Row>
         </ModalBody>
         <ModalFooter>
-          <Button shape={'primary'} type={"submit"} onClick={this.onSubmit}>{'다운로드'}</Button>
-          <Button shape={'text'} type={"button"} onClick={requestClose}>{'닫기'}</Button>
+          <Button shape={'primary'} type={'submit'} onClick={this.onSubmit}>{'다운로드'}</Button>
+          <Button shape={'text'} type={'button'} onClick={requestClose}>{'닫기'}</Button>
         </ModalFooter>
       </ModalForm>
     );

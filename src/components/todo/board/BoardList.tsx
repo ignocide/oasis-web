@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardListItem from './BoardListItem';
 import BoardCreateModal from './BoardCreateModal';
 import BoardListStore from '../../../store/boardListStore';
 
-import Icon from "../../common/Icon";
+import Icon from '../../common/Icon';
 import Modal from '../../common/Modal';
-import { Button, IconButton } from "../../form";
+import { Button, IconButton } from '../../form';
 
 import '../../../style/todo/board-list.scss';
 
 interface IProps {
-  boardListStore: BoardListStore
+  boardListStore: BoardListStore;
 }
 
 interface IState {
-  createBoardModal: boolean
+  createBoardModal: boolean;
 }
 
 

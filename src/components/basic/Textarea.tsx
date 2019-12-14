@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { FormLabel } from "./Form";
+import { FormLabel } from './Form';
 
 class Textarea extends React.Component<any, any> {
   //
@@ -34,8 +34,8 @@ class Textarea extends React.Component<any, any> {
     const { prefix, suffix, children, className, label, ...props } = this.props;
     return (
       <>
-      {label ? <FormLabel>{label}</FormLabel> : null}
-      <textarea className={this.className} {...props} />
+        {label ? <FormLabel>{label}</FormLabel> : null}
+        <textarea className={this.className} {...props} />
       </>
     );
   }

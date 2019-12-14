@@ -1,19 +1,19 @@
 import React from 'react';
-import { inject } from "mobx-react";
-import Link from "next/link";
+import { inject } from 'mobx-react';
+import Link from 'next/link';
 
-import Playlist from "../../../dto/woofer/playlist";
-import { IconButton } from "../../form/index";
-import DropBox from "../../common/DropBox";
-import { Menu, MenuItem } from "../../common/MenuForm";
-import { FloaterRenderInfo } from "../../common/Floater";
-import { modalController } from "../../common/Modal";
-import PlaylistRemoveModal from "../PlaylistRemoveModal";
-import PlaylistStore from "../../../store/woofer/playlistStore";
+import Playlist from '../../../dto/woofer/playlist';
+import { IconButton } from '../../form/index';
+import DropBox from '../../common/DropBox';
+import { Menu, MenuItem } from '../../common/MenuForm';
+import { FloaterRenderInfo } from '../../common/Floater';
+import { modalController } from '../../common/Modal';
+import PlaylistRemoveModal from '../PlaylistRemoveModal';
+import PlaylistStore from '../../../store/woofer/playlistStore';
 
 interface IProps {
-  playlist: Playlist,
-  playlistStore: PlaylistStore,
+  playlist: Playlist;
+  playlistStore: PlaylistStore;
 }
 
 

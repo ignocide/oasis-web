@@ -2,7 +2,7 @@ import WeatherInfo from './weatherInfo';
 
 describe('vo/weather ', () => {
   test('constructor', () => {
-    const time = new Date() + ""
+    const time = new Date() + '';
     const mock = {
       weather: '맑음',
       weatherType: 'Clear',
@@ -10,7 +10,7 @@ describe('vo/weather ', () => {
       visibility: '1000m',
       sunrise: time,
       sunset: time,
-      measureLocation: "의정부시",
+      measureLocation: '의정부시',
       temp: {
         current: '100',
         min: '100',
@@ -25,10 +25,10 @@ describe('vo/weather ', () => {
 
     expect(weatherInfo.weather).toEqual(mock.weather);
     expect(weatherInfo.weatherType).toEqual(mock.weatherType);
-    expect(weatherInfo.time + "").toEqual(time);
+    expect(weatherInfo.time + '').toEqual(time);
     expect(weatherInfo.visibility).toEqual(mock.visibility);
-    expect(weatherInfo.sunrise + "").toEqual(time);
-    expect(weatherInfo.sunset + "").toEqual(time);
+    expect(weatherInfo.sunrise + '').toEqual(time);
+    expect(weatherInfo.sunset + '').toEqual(time);
     expect(weatherInfo.measureLocation).toEqual(mock.measureLocation);
     expect(weatherInfo.temp.current).toEqual(mock.temp.current);
     expect(weatherInfo.temp.min).toEqual(mock.temp.min);

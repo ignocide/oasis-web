@@ -1,6 +1,6 @@
-import { action, observable } from 'mobx'
-import youtube from "../../lib/youtube";
-import YoutubeVideo from "../../dto/woofer/youtubeVideo";
+import { action, observable } from 'mobx';
+import youtube from '../../lib/youtube';
+import YoutubeVideo from '../../dto/woofer/youtubeVideo';
 
 
 class YoutubeStore {
@@ -12,7 +12,7 @@ class YoutubeStore {
     if (isServer) {
 
     }
-    this.setList(initialData.list)
+    this.setList(initialData.list);
   }
 
   @action
@@ -22,12 +22,11 @@ class YoutubeStore {
   //
   @action
   async search(query: string): Promise<void> {
-    let list: any[] = await youtube.searchList(query);
+    const list: any[] = await youtube.searchList(query);
     this.setList(list);
     this.searchCallbacks.forEach(cb => {
-      console.log(cb);
       cb();
-    })
+    });
   }
 
   setSearchCallback(cb: Function): void {

@@ -2,17 +2,17 @@ import React from 'react';
 import Icon from './Icon';
 
 interface IProps {
-  onSelect: Function,
-  onChange: Function,
-  placeholder?: string,
-  value: string,
-  options: any[],
-  className?: string,
+  onSelect: Function;
+  onChange: Function;
+  placeholder?: string;
+  value: string;
+  options: any[];
+  className?: string;
 }
 
 interface IState {
-  isOpenOptions: boolean,
-  value: null,
+  isOpenOptions: boolean;
+  value: null;
 }
 
 class Dropdown extends React.Component<IProps, IState> {

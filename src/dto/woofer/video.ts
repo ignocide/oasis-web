@@ -1,9 +1,9 @@
-import PlayableVideo, { IPlayableVideo } from "./PlayableVideo";
+import PlayableVideo, { IPlayableVideo } from './PlayableVideo';
 
 interface IVideo extends IPlayableVideo {
-  id: number,
-  createdAt: string | Date,
-  updatedAt: string | Date,
+  id: number;
+  createdAt: string | Date;
+  updatedAt: string | Date;
 }
 
 class Video extends PlayableVideo {

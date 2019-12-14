@@ -22,7 +22,7 @@ setConfig({
 module.exports = {
   globals: {
     'ts-jest': {
-      "tsConfig": "tsconfig.test.json",
+      'tsConfig': 'tsconfig.test.json',
       diagnostics: false
     }
   }

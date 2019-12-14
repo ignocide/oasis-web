@@ -3,20 +3,20 @@ import React from 'react';
 // import withStore from '../components/hoc/withStore';
 import { inject, observer } from 'mobx-react';
 
-import { getStore } from "../store/index";
+import { getStore } from '../store/index';
 import Header from '../components/layout/Header';
 import BoardList from '../components/todo/board/BoardList';
 import TaskList from '../components/todo/task/TaskList';
 import withStore from '../components/hoc/withStore';
 import BoardListStore from '../store/boardListStore';
 import BoardStore from '../store/boardStore';
-import Board from "../dto/todo/board";
-import Sidebar from "../components/layout/Sidebar";
+import Board from '../dto/todo/board';
+import Sidebar from '../components/layout/Sidebar';
 
 import '../style/header.scss';
 
 interface IProps {
-  boards: Board[]
+  boards: Board[];
 }
 
 interface IState {

@@ -2,14 +2,14 @@ import YoutubeVideo from './youtubeVideo';
 
 describe('vo/woofer/youtubeVideo', () => {
   test('constructor', () => {
-    let mock = {
+    const mock = {
       id: {
         kind: 'video',
         videoId: 'abc-video'
       },
       snippet: {
         title: '치즈 - 어떻게 생각해',
-        description: "어떻게 생각해",
+        description: '어떻게 생각해',
         thumbnails: {
           high: {
             url: 'https://host.domain'
@@ -18,7 +18,7 @@ describe('vo/woofer/youtubeVideo', () => {
       }
     };
 
-    let youtubeVideo = new YoutubeVideo(mock);
+    const youtubeVideo = new YoutubeVideo(mock);
 
 
     expect(youtubeVideo.kind).toEqual(mock.id.kind);

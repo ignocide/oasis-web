@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition } from 'react-transition-group';
 import { ModalConsumer } from '../context/Modal';
 import '../../style/modal.scss';
 
 
 interface IProps {
-  children: any,
-  requestClose: () => void,
-  modalContext?: any,
+  children: any;
+  requestClose: () => void;
+  modalContext?: any;
 
 }
 
@@ -22,7 +22,7 @@ class Modal extends React.Component<IProps, any> {
 
   el: HTMLElement;
   modalRoot: HTMLElement;
-  duration: number = 225;
+  duration = 225;
   modalKey: number = null;
 
   state = {
@@ -113,9 +113,9 @@ export const modalController = (_this: any, key: string) => {
 
   let functionName = key;
   functionName = functionName.replace(functionName.charAt(0), functionName.charAt(0).toUpperCase());
-  let setFunctionName = `set${functionName}Modal`;
-  let openFunctionName = `open${functionName}Modal`;
-  let closeFunctionName = `close${functionName}Modal`;
+  const setFunctionName = `set${functionName}Modal`;
+  const openFunctionName = `open${functionName}Modal`;
+  const closeFunctionName = `close${functionName}Modal`;
 
   // _this[functionName] =  (bool: boolean) => {
   //   _this.setState({

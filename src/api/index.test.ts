@@ -23,7 +23,7 @@ describe('api/oasis', () => {
   });
 
   test('isInvalidError', () => {
-    let mock = {
+    const mock = {
       statusCode: 400,
       error: 'invalid_token',
       error_description: 'Token has expired'
@@ -49,6 +49,6 @@ describe('api/oasis', () => {
     expect(urlBuilder('/users/:userId/items/:itemId',{
       userId: 1,
       itemId: 2,
-    })).toEqual('/users/1/items/2')
-  })
+    })).toEqual('/users/1/items/2');
+  });
 });

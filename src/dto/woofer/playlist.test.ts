@@ -2,14 +2,14 @@ import Playlist from './playlist';
 
 describe('vo/woofer/Playlist', () => {
   test('constructor', () => {
-    let mock = {
+    const mock = {
       id: 7,
       name: '추가된 플레이리스트',
       isDefault: true,
-      createdAt: "2019-04-16T08:08:43.000Z",
-      updatedAt: "2019-04-16T08:08:43.000Z",
+      createdAt: '2019-04-16T08:08:43.000Z',
+      updatedAt: '2019-04-16T08:08:43.000Z',
     };
-    let playlist = new Playlist(mock);
+    const playlist = new Playlist(mock);
 
     expect(playlist.id).toEqual(mock.id);
     expect(playlist.name).toEqual(mock.name);
@@ -18,12 +18,12 @@ describe('vo/woofer/Playlist', () => {
   });
 
   test('constructor2', () => {
-    let mock = {
+    const mock = {
       id: 7,
       name: '추가된 플레이리스트',
       isDefault: true,
     };
-    let playlist = new Playlist(mock);
+    const playlist = new Playlist(mock);
 
     expect(playlist.id).toEqual(mock.id);
     expect(playlist.name).toEqual(mock.name);

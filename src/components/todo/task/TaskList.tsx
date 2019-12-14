@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
-import Task, { STEP } from "../../../dto/todo/task";
+import Task, { STEP } from '../../../dto/todo/task';
 import Modal from '../../common/Modal';
-import TaskDetailModal from "./TaskDetailModal";
-import { IconButton } from "../../form";
-import TaskCreateModal from "./TaskCreateModal";
+import TaskDetailModal from './TaskDetailModal';
+import { IconButton } from '../../form';
+import TaskCreateModal from './TaskCreateModal';
 
 import '../../../style/todo/board-list.scss';
-import { Card, CardBody, CardHeader } from "../../basic/Card";
-import { Table } from "../../basic/Table";
+import { Card, CardBody, CardHeader } from '../../basic/Card';
+import { Table } from '../../basic/Table';
 
 interface IProps {
-  boardStore: BoardStore
+  boardStore: BoardStore;
 }
 
 interface IState {
-  selectedTask?: Task
+  selectedTask?: Task;
 }
 
 @inject('boardStore')
@@ -87,29 +87,29 @@ class TaskList extends React.Component<IProps, IState> {
     }
     return (
       <>
-      <Card>
-        <CardHeader>{board.name}
-          <IconButton onClick={this.onClickOpenCreateFormButton} name={'add'}> </IconButton>
-        </CardHeader>
-        <CardBody>
-        </CardBody>
-        <Table
-          format={this.format}
-          data={tasks}
-        />
-        {/* {JSON.stringify(tasks)} */}
-      </Card>
+        <Card>
+          <CardHeader>{board.name}
+            <IconButton onClick={this.onClickOpenCreateFormButton} name={'add'}> </IconButton>
+          </CardHeader>
+          <CardBody>
+          </CardBody>
+          <Table
+            format={this.format}
+            data={tasks}
+          />
+          {/* {JSON.stringify(tasks)} */}
+        </Card>
 
-      <div>
-        {selectedTask && <Modal requestClose={this.closeModal}>
-          <TaskDetailModal task={selectedTask} requestClose={this.closeModal} />
-        </Modal>}
-        {
-          taskCreateModal && <Modal requestClose={this.closeModal}>
-            <TaskCreateModal closeModal={this.closeModal} />
-          </Modal>
-        }
-      </div>
+        <div>
+          {selectedTask && <Modal requestClose={this.closeModal}>
+            <TaskDetailModal task={selectedTask} requestClose={this.closeModal} />
+          </Modal>}
+          {
+            taskCreateModal && <Modal requestClose={this.closeModal}>
+              <TaskCreateModal closeModal={this.closeModal} />
+            </Modal>
+          }
+        </div>
       </>
     );
   }

@@ -1,18 +1,18 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import Floater from "./Floater";
+import Floater from './Floater';
 
 // https://github.com/FezVrasta/popper.js#installation
 interface IProps {
-  isOpen: boolean
+  isOpen: boolean;
   // parent: any,
-  event: any,
-  requestClose: Function,
+  event: any;
+  requestClose: Function;
   // floaterRenderInfo: IFloaterRenderInfo
 }
 
 interface IState {
-  beforeIsOpen: boolean
+  beforeIsOpen: boolean;
 }
 
 class DropBox extends React.Component<IProps, IState> {
@@ -32,7 +32,7 @@ class DropBox extends React.Component<IProps, IState> {
     //닫았다가 열었을 경우
     if (isOpen && !beforeIsOpen) {
       const node: Element = findDOMNode(parent);
-      let rect = node.getBoundingClientRect();
+      const rect = node.getBoundingClientRect();
       parentPosition = {
         top: rect.top,
         left: rect.left,
@@ -67,7 +67,7 @@ class DropBox extends React.Component<IProps, IState> {
     }
 
     return <Floater requestClose={requestClose} floaterRenderInfo={this.floaterRenderInfo}>{children}</Floater>;
-  };
+  }
 }
 
 export default DropBox;

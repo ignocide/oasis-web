@@ -6,10 +6,10 @@ import { setToken } from '../../api';
 
 interface IProps {
   withAuthProps: {
-    user?: any,
-    token?: string,
-  },
-  auth: AuthStore
+    user?: any;
+    token?: string;
+  };
+  auth: AuthStore;
 }
 
 function withAuth(WrappedComponent: any) {
@@ -38,7 +38,7 @@ function withAuth(WrappedComponent: any) {
         token = req.session.token;
         setToken(token);
       }
-      let appProps = WrappedComponent.getInitialProps(ctx);
+      const appProps = WrappedComponent.getInitialProps(ctx);
       return {
         ...appProps,
         withAuthProps: {
@@ -52,7 +52,7 @@ function withAuth(WrappedComponent: any) {
       // Notice that we pass through any additional props
       return <WrappedComponent  {...this.props} />;
     }
-  };
+  }
 
   return withStore(AuthStore)(_withAuth);
 }

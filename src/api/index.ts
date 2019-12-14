@@ -1,6 +1,6 @@
 import getConfig from 'next/config';
 import axios from 'axios';
-import cookieUtil, { COOKIE_KEYS } from "../lib/cookies";
+import cookieUtil, { COOKIE_KEYS } from '../lib/cookies';
 import qs from 'querystring';
 
 const { publicRuntimeConfig } = getConfig();
@@ -66,7 +66,7 @@ instance.interceptors.response.use(
 );
 
 export const setToken = (accessToken?: string) => {
-  if (!!accessToken) {
+  if (accessToken) {
     instance.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
   }
   else {

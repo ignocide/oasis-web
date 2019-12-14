@@ -69,13 +69,13 @@ app.prepare().then(() => {
   });
 
 
-  server.use(async (ctx: any, next:any) => {
+  server.use(async (ctx: any, next: any) => {
     //@ts-ignore
     ctx.req.session = ctx.session;
     await next();
   });
 
-  server.use(async (ctx: any, next:any) => {
+  server.use(async (ctx: any, next: any) => {
     // const { req, res, session } = ctx;
 
     ctx.res.statusCode = 200;

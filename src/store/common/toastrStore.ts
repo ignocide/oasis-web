@@ -3,7 +3,7 @@ import ToastrMessage from '../../dto/common/toastrMessage';
 
 class ToastrStore {
   @observable messages: ToastrMessage[] = [];
-  @observable isCunsumming: boolean = false;
+  @observable isCunsumming = false;
 
   constructor(isServer: boolean, initialData: any = {}) {
     if (!isServer) {
@@ -20,7 +20,7 @@ class ToastrStore {
 
   @action
   run(): void {
-    console.log("here is run")
+    console.log('here is run');
     const isServer = typeof window === 'undefined';
 
     if (isServer) {
@@ -29,15 +29,15 @@ class ToastrStore {
     if (this.isCunsumming || this.messages.length === 0) {
       return;
     }
-    const message = this.messages[0]
+    const message = this.messages[0];
     const toastrContainer = document.getElementById('toastr-container');
     const messageElement = document.createElement('div');
-    messageElement.className = 'toastr-node'
-    var text = document.createTextNode(message.message);
+    messageElement.className = 'toastr-node';
+    const text = document.createTextNode(message.message);
 
     messageElement.appendChild(text);
-    console.log(toastrContainer, messageElement, message)
-    toastrContainer.appendChild(messageElement)
+    console.log(toastrContainer, messageElement, message);
+    toastrContainer.appendChild(messageElement);
     // const toastrConatiner = ReactDOM.findDOMNode('toastr-container')
     // const
   }

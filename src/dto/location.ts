@@ -1,11 +1,11 @@
 interface ISimpleLocation {
-  full_address: string,
-  location: ICoords,
+  full_address: string;
+  location: ICoords;
 }
 
 interface ICoords {
-  lat: number,
-  lng: number,
+  lat: number;
+  lng: number;
 }
 
 class SimpleLocation {

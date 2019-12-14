@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import Link from "next/link";
-import { inject, observer } from "mobx-react";
-import { Menu, MenuItem } from "../common/MenuForm";
+import Link from 'next/link';
+import { inject, observer } from 'mobx-react';
+import { Menu, MenuItem } from '../common/MenuForm';
 import Router from 'next/router';
-import { IconButton } from "../form/index";
-import AppStore from "../../store/common/appStore";
-import AuthStore from "../../store/auth";
-import { setToken } from "../../api";
-import { COOKIE_KEYS, default as cookieUtil } from "../../lib/cookies";
+import { IconButton } from '../form/index';
+import AppStore from '../../store/common/appStore';
+import AuthStore from '../../store/auth';
+import { setToken } from '../../api';
+import { COOKIE_KEYS, default as cookieUtil } from '../../lib/cookies';
 
 import '../../style/header.scss';
 
 interface IProps {
-  appStore: AppStore
-  auth: AuthStore
+  appStore: AppStore;
+  auth: AuthStore;
 }
 
 @inject('auth', 'appStore')
@@ -33,14 +33,14 @@ class Header extends React.Component<IProps, any> {
           <div className="gnb-main-wrapper container">
             <div className="gnb-main-left">
               <IconButton name={'menu'} id={'menu-icon'} onClick={this.toggleSidebar} />
-              <Link href={'/'}>{"OASIS"}</Link>
+              <Link href={'/'}>{'OASIS'}</Link>
             </div>
             <div className="gnb-main-center">
               {children}
             </div>
             <div className="gnb-main-right">
               {right}
-              {auth.user ? <UserButton logout={auth.logout} /> : <Link href={'/login'}>{"로그인"}</Link>}
+              {auth.user ? <UserButton logout={auth.logout} /> : <Link href={'/login'}>{'로그인'}</Link>}
             </div>
           </div>
         </div>

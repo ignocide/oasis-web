@@ -1,9 +1,9 @@
-import React from "react";
-import cn from "classnames";
+import React from 'react';
+import cn from 'classnames';
 
 const Container = ({ children, className, ...props }) => {
   return (
-    <div className={`container${className ? " " + className : ""}`} {...props}>
+    <div className={`container${className ? ' ' + className : ''}`} {...props}>
       {children}
     </div>
   );
@@ -12,11 +12,11 @@ const Container = ({ children, className, ...props }) => {
 class Row extends React.Component<any, any> {
   get className() {
     const { className = null } = this.props;
-    const classes = ["row"];
+    const classes = ['row'];
     if (className) {
       classes.push(className);
     }
-    return classes.join(" ");
+    return classes.join(' ');
   }
 
   render() {
@@ -52,14 +52,14 @@ class Col extends React.Component<IColProps, any> {
     xs = xs || sm;
 
     return cn(
-      "column",
+      'column',
       `col-xs-${xs}`,
       `col-sm-${sm}`,
       `col-md-${md}`,
       `col-lg-${lg}`,
       className,
-      { "form-group": formGroup },
-      { "no-gutter": noGutter }
+      { 'form-group': formGroup },
+      { 'no-gutter': noGutter }
     );
   }
 

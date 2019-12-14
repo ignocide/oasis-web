@@ -23,14 +23,14 @@ class ClockWidget extends React.Component {
   };
 
   render() {
-    let { ...props } = this.props;
-    let { date } = this.state;
-    let year = this.mask('xxxx', date.getFullYear());
-    let month = this.mask('xx', date.getMonth() + 1);
-    let day = this.mask('xx', date.getDate());
-    let hour = this.mask('xx', date.getHours());
-    let min = this.mask('xx', date.getMinutes());
-    let sec = this.mask('xx', date.getSeconds());
+    const { ...props } = this.props;
+    const { date } = this.state;
+    const year = this.mask('xxxx', date.getFullYear());
+    const month = this.mask('xx', date.getMonth() + 1);
+    const day = this.mask('xx', date.getDate());
+    const hour = this.mask('xx', date.getHours());
+    const min = this.mask('xx', date.getMinutes());
+    const sec = this.mask('xx', date.getSeconds());
 
     return (
       <div className='clock' {...props}>

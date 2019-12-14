@@ -1,17 +1,17 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import cn from 'classnames';
-import SearchedYoutubeVideoList from "../youtube/SearchedYoutubeVideoList";
-import PlaylistStore from "../../../store/woofer/playlistStore";
-import Playlist from "../playlist/Playlist";
+import SearchedYoutubeVideoList from '../youtube/SearchedYoutubeVideoList';
+import PlaylistStore from '../../../store/woofer/playlistStore';
+import Playlist from '../playlist/Playlist';
 import '../../../style/woofer/media-lists.scss';
 
 interface IProps {
-  playlistStore?: PlaylistStore
+  playlistStore?: PlaylistStore;
 }
 
 interface IState {
-  currentTab: null
+  currentTab: null;
 }
 
 @inject('youtubeStore')
@@ -23,8 +23,8 @@ class MediaLists extends React.Component<IProps, IState> {
   };
 
   TABS = {
-    PLAYLIST: "playlist_tab",
-    SEARCHED_YOUTUBE_LIST: "youtube_search_list"
+    PLAYLIST: 'playlist_tab',
+    SEARCHED_YOUTUBE_LIST: 'youtube_search_list'
   };
 
   constructor(props) {
@@ -48,7 +48,7 @@ class MediaLists extends React.Component<IProps, IState> {
   youtubeSearchCallback = () => {
     this.changeTab(this.TABS.SEARCHED_YOUTUBE_LIST);
     if(document){
-      let searchedListForm = document.getElementById('media-lists-container');
+      const searchedListForm = document.getElementById('media-lists-container');
       if(searchedListForm){
         searchedListForm.scrollIntoView(true);
       }
@@ -61,18 +61,18 @@ class MediaLists extends React.Component<IProps, IState> {
 
     let listComponent = null;
     switch (currentTab) {
-      case this.TABS.PLAYLIST: {
-        listComponent = <Playlist key={'playlist'} />;
-        break;
-      }
-      case this.TABS.SEARCHED_YOUTUBE_LIST: {
-        listComponent = <SearchedYoutubeVideoList key={'searched-youtube-list'} />;
-        break;
-      }
-      default: {
-        listComponent = <Playlist key={'playlist'} />;
-        break;
-      }
+    case this.TABS.PLAYLIST: {
+      listComponent = <Playlist key={'playlist'} />;
+      break;
+    }
+    case this.TABS.SEARCHED_YOUTUBE_LIST: {
+      listComponent = <SearchedYoutubeVideoList key={'searched-youtube-list'} />;
+      break;
+    }
+    default: {
+      listComponent = <Playlist key={'playlist'} />;
+      break;
+    }
     }
 
     return listComponent;

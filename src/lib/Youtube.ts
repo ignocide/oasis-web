@@ -15,7 +15,7 @@ class Youtube {
   init() {
     if (typeof window !== 'undefined') {
       this._gapi = window.gapi;
-      let initGapi: Function = () => {
+      const initGapi: Function = () => {
         // 2. Initialize the JavaScript client library.
         this._gapi.client.init(config.woofer).then(() => {
           return this._gapi.client.load('youtube', 'v3');
@@ -31,7 +31,7 @@ class Youtube {
 
   searchList(query: string): Promise<any> {
 
-    let opts: any = {
+    const opts: any = {
       q: query,
       part: 'snippet',
       type: 'video',
@@ -52,7 +52,7 @@ class Youtube {
         if (response.error) {
           return rej(response.error);
         }
-        let { nextPageToken, items } = response;
+        const { nextPageToken, items } = response;
         this.nextToken = nextPageToken;
         return res(items);
       });

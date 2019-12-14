@@ -1,6 +1,6 @@
 import instance from '..';
 import { AxiosInstance } from 'axios';
-import YoutubeVideo from "../../dto/woofer/youtubeVideo";
+import YoutubeVideo from '../../dto/woofer/youtubeVideo';
 // import { IBoardCreateForm, ITaskCreateForm, ITaskUpdateStepForm } from '../../../store/boardStore';
 //
 // export const fetchPlaylists = () => {
@@ -17,7 +17,7 @@ import YoutubeVideo from "../../dto/woofer/youtubeVideo";
 // };
 
 export interface IPlaylistCreateForm {
-  name: string
+  name: string;
 }
 
 class PlaylistRepository {
@@ -28,7 +28,7 @@ class PlaylistRepository {
   }
 
   fetch(playlistId: number) {
-    console.log(`/woofer/playlists/${playlistId}`)
+    console.log(`/woofer/playlists/${playlistId}`);
     return this.axios.get(`/woofer/playlists/${playlistId}`);
   }
 

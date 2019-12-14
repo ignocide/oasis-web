@@ -49,7 +49,7 @@ class CookieUtil {
       if (!this.ctx) {
         return null;
       }
-      let cookies = Nookies.get(this.ctx) || {};
+      const cookies = Nookies.get(this.ctx) || {};
       return cookies[_key] || null;
     }
     else {

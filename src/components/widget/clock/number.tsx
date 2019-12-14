@@ -42,9 +42,9 @@ class Number extends React.Component {
   };
 
   render() {
-    let { number } = this.props;
-    let after = number;
-    let { before, run } = this.state;
+    const { number } = this.props;
+    const after = number;
+    const { before, run } = this.state;
 
     return <div className='number'>
       <span className='before-top' id={run ? 'fold' : ''} onAnimationEnd={this.endAnimation}><span className={'number-mask'}>{before}</span></span>

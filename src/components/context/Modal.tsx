@@ -9,11 +9,11 @@ const { Provider, Consumer } = Context;
 
 // Provider 에서 state 를 사용하기 위해서 컴포넌트를 새로 만들어줍니다.
 class ModalProvider extends React.Component<any, any> {
-  static nextKey: number = 0;
+  static nextKey = 0;
 
 
   generateKey = () => {
-    let key = ModalProvider.nextKey;
+    const key = ModalProvider.nextKey;
     ModalProvider.nextKey++;
     return key;
   };
@@ -23,8 +23,8 @@ class ModalProvider extends React.Component<any, any> {
   };
 
   push = () => {
-    let { stack } = this.state;
-    let key = this.generateKey();
+    const { stack } = this.state;
+    const key = this.generateKey();
     stack.push(key);
 
     this.setState({

@@ -9,7 +9,7 @@ class BoardRepository {
     this.axios = instance;
   }
 
-  fetchBoards():Promise<any> {
+  fetchBoards(): Promise<any> {
     return instance.get('/todo/board');
   }
 

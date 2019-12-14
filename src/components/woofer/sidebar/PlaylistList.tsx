@@ -10,7 +10,7 @@ import PlaylistCreateModal from '../PlaylistCreateModal';
 import '../../../style/woofer/playlist-list.scss';
 
 interface IProps {
-  playlists: PlaylistsStore
+  playlists: PlaylistsStore;
 }
 
 

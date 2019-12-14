@@ -3,11 +3,11 @@ import { inject, observer } from 'mobx-react';
 import cn from 'classnames';
 
 import '../../style/woofer/download-manager.scss';
-import DownloadStore from "../../store/woofer/downloadStore";
-import { IconButton } from "../form/index";
+import DownloadStore from '../../store/woofer/downloadStore';
+import { IconButton } from '../form/index';
 
 interface IProps {
-  downloadStore?: DownloadStore
+  downloadStore?: DownloadStore;
 }
 
 @inject('downloadStore')
@@ -24,7 +24,7 @@ class DownloadManager extends React.Component<IProps, any> {
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
-    })
+    });
   }
 
   render() {
@@ -44,7 +44,7 @@ class DownloadManager extends React.Component<IProps, any> {
           videoIds.map((videoId) => {
             const {video,progress }= downloadInfos[videoId];
             return <div className={cn('download-item',{'download-done': progress === 100})} key={video.videoId}>
-                {video.title}
+              {video.title}
               <span className={'download-percentage'}>{`${progress}%`}</span>
               <div className={'download-progress-background'} style={{width: `${progress}%`}}/>
             </div>;

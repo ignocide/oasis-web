@@ -15,7 +15,7 @@ class Radio extends React.Component<any, any> {
         <input type={'radio'} className={this.className} {...props} />
         {label}
       </label>
-    </div>
+    </div>;
   }
 }
 

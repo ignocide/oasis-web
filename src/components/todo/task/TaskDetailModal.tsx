@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
-import Task from "../../../dto/todo/task";
-import Modal, { modalController } from "../../common/Modal";
+import Task from '../../../dto/todo/task';
+import Modal, { modalController } from '../../common/Modal';
 
 import '../../../style/todo/task-detail-modal.scss';
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../basic/Modal";
-import Input from "../../basic/Input";
-import { Col, Row } from "../../basic/Grid";
-import Textarea from "../../basic/Textarea";
-import Button from "../../basic/Button";
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from '../../basic/Modal';
+import Input from '../../basic/Input';
+import { Col, Row } from '../../basic/Grid';
+import Textarea from '../../basic/Textarea';
+import Button from '../../basic/Button';
 
 interface IProps {
-  boardStore: BoardStore,
-  requestClose: Function
+  boardStore: BoardStore;
+  requestClose: Function;
 }
 
 interface IState {
-  taskForm: Task
+  taskForm: Task;
 }
 
 @inject('boardStore')
@@ -48,8 +48,8 @@ class TaskDetailModal extends React.Component<IProps> {
   };
 
   onChangeValue = (e) => {
-    let { name, value } = e.target;
-    let { taskForm } = this.state;
+    const { name, value } = e.target;
+    const { taskForm } = this.state;
     taskForm[name] = value;
     this.setState({
       taskForm
@@ -105,7 +105,7 @@ class TaskDetailModal extends React.Component<IProps> {
             </Row>
           </ModalBody>
           <ModalFooter>
-            <Button type={"submit"} className={'primary'} shape={'solid'} onClick={this.onSubmit}> {'확인'}</Button>
+            <Button type={'submit'} className={'primary'} shape={'solid'} onClick={this.onSubmit}> {'확인'}</Button>
             <Button shape={'danger'} className={'red'} onClick={this.onClickDelete}>{'삭제'}</Button>
             <Button shape={'text'} onClick={requestClose}>{'취소'}</Button>
           </ModalFooter>

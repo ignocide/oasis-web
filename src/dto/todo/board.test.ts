@@ -2,7 +2,7 @@ import Board from './board';
 
 describe('vo/todo/board', () => {
   test('constructor', () => {
-    let mock = {
+    const mock = {
       id: 1,
       userId: 1,
       deleted: false,
@@ -11,7 +11,7 @@ describe('vo/todo/board', () => {
       updatedAt: new Date()
     };
 
-    let board = new Board(mock);
+    const board = new Board(mock);
 
 
     expect(board.id).toEqual(mock.id);

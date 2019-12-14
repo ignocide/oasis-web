@@ -1,12 +1,12 @@
-const withSass = require('@zeit/next-sass')
-const withTypescript = require('@zeit/next-typescript')
-const config = require('./config.json')
-const path = require('path')
-let nextConfig = {}
+const withSass = require('@zeit/next-sass');
+const withTypescript = require('@zeit/next-typescript');
+const config = require('./config.json');
+const path = require('path');
+let nextConfig = {};
 
 nextConfig = withSass({
   // cssModules:true,
-  webpack (config, options) {
+  webpack(config, options) {
     config.module.rules.push({
       test: /\.(png|jpg|gif|svg|eot|otf|ttf|woff|woff2)$/,
       use: {
@@ -15,7 +15,7 @@ nextConfig = withSass({
           limit: 100000
         }
       }
-    })
+    });
     config.module.rules.push({
       test: /\.scss$/,
       use: {
@@ -27,13 +27,13 @@ nextConfig = withSass({
           ]
         }
       }
-    })
-    return config
+    });
+    return config;
   }
-})
+});
 
-nextConfig = withTypescript(nextConfig)
-nextConfig.distDir = '../.next'
-nextConfig.publicRuntimeConfig = config
+nextConfig = withTypescript(nextConfig);
+nextConfig.distDir = '../.next';
+nextConfig.publicRuntimeConfig = config;
 
-module.exports = nextConfig
+module.exports = nextConfig;

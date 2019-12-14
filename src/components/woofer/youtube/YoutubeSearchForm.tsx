@@ -2,19 +2,19 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 
 import '../../../style/woofer/youtube-search-form.scss';
-import YoutubeStore from "../../../store/woofer/youtubeStore";
+import YoutubeStore from '../../../store/woofer/youtubeStore';
 // import Icon from "../../common/Icon";
-import Input from "../../basic/Input";
-import cn from 'classnames'
-import Icon from "../../basic/Icon";
+import Input from '../../basic/Input';
+import cn from 'classnames';
+import Icon from '../../basic/Icon';
 
 interface IProps {
-  youtubeStore?: YoutubeStore
+  youtubeStore?: YoutubeStore;
 }
 
 
 interface IState {
-  query: string
+  query: string;
 }
 
 @inject('youtubeStore')

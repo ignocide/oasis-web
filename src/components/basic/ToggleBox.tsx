@@ -14,7 +14,7 @@ class ToggleBox extends React.Component<any, any> {
       <label>
         <input type={'checkbox'} className={this.className} {...props} />
       </label>
-    </div>
+    </div>;
   }
 }
 

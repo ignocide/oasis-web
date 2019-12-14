@@ -9,20 +9,20 @@ enum WeatherEN {
 }
 
 interface IWeatherInfo {
-  weather: string,
-  weatherType: WeatherEN,
-  time: string,
-  visibility: string,
-  sunrise: string,
-  sunset: string,
-  measureLocation: string,
+  weather: string;
+  weatherType: WeatherEN;
+  time: string;
+  visibility: string;
+  sunrise: string;
+  sunset: string;
+  measureLocation: string;
   temp: {
-    current: string,
-    min: string,
-    max: string
-  },
-  pressure: string,
-  wind: string
+    current: string;
+    min: string;
+    max: string;
+  };
+  pressure: string;
+  wind: string;
 }
 
 
@@ -35,9 +35,9 @@ class WeatherInfo {
   sunset: Date;
   measureLocation: string;
   temp: {
-    current: string
-    min: string
-    max: string
+    current: string;
+    min: string;
+    max: string;
   };
   pressure: string;
   wind: string;
@@ -62,5 +62,5 @@ class WeatherInfo {
   }
 }
 
-export { IWeatherInfo, WeatherEN }
+export { IWeatherInfo, WeatherEN };
 export default WeatherInfo;

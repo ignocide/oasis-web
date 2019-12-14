@@ -37,10 +37,10 @@ declare namespace gapi {
 
   type LoadCallback = (...args: any[]) => void;
   type LoadConfig = {
-    callback: LoadCallback,
-    onerror?: Function,
-    timeout?: number,
-    ontimeout?: Function,
+    callback: LoadCallback;
+    onerror?: Function;
+    timeout?: number;
+    ontimeout?: Function;
   };
   type CallbackOrConfig = LoadConfig | LoadCallback;
 
@@ -158,7 +158,7 @@ declare namespace gapi.client {
     /**
      * The scopes to request, as a space-delimited string.
      */
-    scope?: string,
+    scope?: string;
 
     hosted_domain?: string;
   }): Promise<void>;
@@ -315,7 +315,7 @@ declare namespace gapi.client {
          * is the raw batch ID-response map as a string. It contains all responses to all requests in the batch.
          */
         rawBatchResponse: any
-      ) => any
+      ) => any;
     }): void;
     /**
      * Executes all requests in the batch. The supplied callback is executed on success or failure.

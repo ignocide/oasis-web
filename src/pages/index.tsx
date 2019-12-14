@@ -1,17 +1,17 @@
 import React from 'react';
-import Link from "next/link";
+import Link from 'next/link';
 import { inject, observer } from 'mobx-react';
-import withStore from "../components/hoc/withStore";
-import Header from "../components/layout/Header";
-import { Col, Row } from "../components/basic/Grid";
+import withStore from '../components/hoc/withStore';
+import Header from '../components/layout/Header';
+import { Col, Row } from '../components/basic/Grid';
 
 import '../style/home.scss';
-import AppStore from "../store/common/appStore";
-import WeatherWidget from "../components/widget/WeatherWidget";
-import ClockWidget from "../components/widget/clock/index";
+import AppStore from '../store/common/appStore';
+import WeatherWidget from '../components/widget/WeatherWidget';
+import ClockWidget from '../components/widget/clock/index';
 
 interface IProps {
-  appStore: AppStore
+  appStore: AppStore;
 }
 
 @withStore()
@@ -32,7 +32,7 @@ class Index extends React.Component<IProps, any> {
   componentDidMount() {
     const { appStore } = this.props;
     console.log(this.props);
-    if ("geolocation" in navigator) {
+    if ('geolocation' in navigator) {
       /* 지오로케이션 사용 가능 */
       console.log(navigator.geolocation);
       navigator.geolocation.getCurrentPosition((position) => {

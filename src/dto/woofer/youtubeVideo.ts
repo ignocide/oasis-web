@@ -1,19 +1,19 @@
-import PlayableVideo from "./PlayableVideo";
+import PlayableVideo from './PlayableVideo';
 
 interface IYoutubeVideo {
   id: {
-    kind: string,
-    videoId: string
-  },
+    kind: string;
+    videoId: string;
+  };
   snippet: {
-    title: string,
-    description: string,
+    title: string;
+    description: string;
     thumbnails: {
       high: {
-        url: string,
-      }
-    }
-  },
+        url: string;
+      };
+    };
+  };
 }
 
 class YoutubeVideo extends PlayableVideo{

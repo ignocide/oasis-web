@@ -2,13 +2,13 @@ import React from 'react';
 import { Provider } from 'mobx-react';
 import { getStores, initializeStores, insertClasses, insertStores } from '../../store/index';
 
-import * as authApi from "../../api/auth/index";
+import * as authApi from '../../api/auth/index';
 import { setToken } from '../../api';
 import cookieUtil, { COOKIE_KEYS } from '../../lib/cookies';
 import AuthStore from '../../store/auth';
 
 interface IState {
-  stores: any
+  stores: any;
 }
 
 function withStore(additionalStores: any = {}) {
@@ -83,7 +83,7 @@ function withStore(additionalStores: any = {}) {
           <WrappedComponent  {...props} />
         </Provider>;
       }
-    };
+    }
 
     return _withStore;
 

@@ -1,5 +1,7 @@
+import React from 'react';
+
 const Icon = ({className = '', name, ...props}) => {
-  return <i className={["material-icons",className].join(" ")} {...props}>{name}</i>;
+  return <i className={['material-icons',className].join(' ')} {...props}>{name}</i>;
 };
 
 export default Icon;

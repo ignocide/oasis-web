@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
-import Button from "../../basic/Button";
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../basic/Modal";
+import Button from '../../basic/Button';
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from '../../basic/Modal';
 
 import '../../../style/todo/task-detail-modal.scss';
-import Input from "../../basic/Input";
-import { Col, Row } from "../../basic/Grid";
-import Textarea from "../../basic/Textarea";
-import { FormLabel } from "../../basic/Form";
+import Input from '../../basic/Input';
+import { Col, Row } from '../../basic/Grid';
+import Textarea from '../../basic/Textarea';
+import { FormLabel } from '../../basic/Form';
 
 interface IProps {
-  boardStore?: BoardStore,
-  closeModal: () => void
+  boardStore?: BoardStore;
+  closeModal: () => void;
 }
 
 interface IState {
-  taskCreateForm: ITaskCreateForm
+  taskCreateForm: ITaskCreateForm;
 }
 
 @inject('boardStore')

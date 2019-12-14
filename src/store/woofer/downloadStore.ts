@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 import playlistsRepository from '../../api/woofer/playlistRepository';
-import PlayItem from "../../dto/woofer/playlistItem";
-import FileDownloader from "../../lib/fileDownloader";
+import PlayItem from '../../dto/woofer/playlistItem';
+import FileDownloader from '../../lib/fileDownloader';
 
 
 class DownloadStore {

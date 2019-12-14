@@ -1,27 +1,27 @@
 import React from 'react';
-import * as authApi from "../api/auth/index";
-import { COOKIE_KEYS, default as cookieUtil } from "../lib/cookies";
-import { setToken } from "../api";
+import * as authApi from '../api/auth/index';
+import { COOKIE_KEYS, default as cookieUtil } from '../lib/cookies';
+import { setToken } from '../api';
 import Router from 'next/router';
-import { inject, observer } from "mobx-react";
+import { inject, observer } from 'mobx-react';
 
 import '../style/login-form.scss';
-import { Card, CardBody, CardFooter, CardHeader } from "./basic/Card";
-import Button from "./basic/Button";
-import { Col, Row } from "./basic/Grid";
-import { FormLabel } from "./basic/Form";
-import Input from "./basic/Input";
-import AuthStore from "../store/auth";
+import { Card, CardBody, CardFooter, CardHeader } from './basic/Card';
+import Button from './basic/Button';
+import { Col, Row } from './basic/Grid';
+import { FormLabel } from './basic/Form';
+import Input from './basic/Input';
+import AuthStore from '../store/auth';
 
 interface IProps {
-  auth: AuthStore
+  auth: AuthStore;
 }
 
 interface IState {
   loginForm: {
-    username: string,
-    password: string,
-  }
+    username: string;
+    password: string;
+  };
 }
 
 @inject('auth', 'appStore')

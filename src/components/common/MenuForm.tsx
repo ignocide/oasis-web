@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../style/common/menu.scss'
+import '../../style/common/menu.scss';
 
 const Menu = ({children, className = null, ...props}) => {
   return (
-    <div className={`menu-container ${className ? " " + className : ''}`} {...props}>
+    <div className={`menu-container ${className ? ' ' + className : ''}`} {...props}>
       <ul>{children}</ul>
     </div>
   );
@@ -11,7 +11,7 @@ const Menu = ({children, className = null, ...props}) => {
 
 const MenuItem = ({children, className = null, ...props}) => {
   return (
-    <li className={`menu${className ? " " + className : ''}`} {...props}>{children}</li>
+    <li className={`menu${className ? ' ' + className : ''}`} {...props}>{children}</li>
   );
 };
 

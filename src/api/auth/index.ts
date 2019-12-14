@@ -2,13 +2,13 @@ import getConfig from 'next/config';
 import axios, { basicAuthOption, isInvalidError, setToken } from '..';
 import primaryAxios from 'axios';
 import qs from 'querystring';
-import cookieUtil, { COOKIE_KEYS } from "../../lib/cookies";
+import cookieUtil, { COOKIE_KEYS } from '../../lib/cookies';
 
 const { publicRuntimeConfig } = getConfig();
 
 interface ISignUpForm {
-  username: string,
-  password: string
+  username: string;
+  password: string;
 }
 
 export const signUp = (signUpForm: ISignUpForm) => {
@@ -16,8 +16,8 @@ export const signUp = (signUpForm: ISignUpForm) => {
 };
 
 interface ILoginForm {
-  username: string,
-  password: string
+  username: string;
+  password: string;
 }
 
 export const login = (loginForm: ILoginForm) => {
@@ -28,7 +28,7 @@ export const login = (loginForm: ILoginForm) => {
 };
 
 interface IRefreshTokenForm {
-  refresh_token: string
+  refresh_token: string;
 }
 
 export const refresh = (refreshTokenForm: IRefreshTokenForm): Promise<any> => {
@@ -39,7 +39,7 @@ export const refresh = (refreshTokenForm: IRefreshTokenForm): Promise<any> => {
 };
 
 interface ICheckTokenForm {
-  token: string
+  token: string;
 }
 
 export const checkToken = (checkTokenForm: ICheckTokenForm): Promise<any> => {

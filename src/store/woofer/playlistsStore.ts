@@ -29,22 +29,22 @@ class Playlists {
   // }
   @action
   async fetchPlaylists() {
-    let response: any = await playlistsRepository.fetchList();
+    const response: any = await playlistsRepository.fetchList();
     this.playlists = response.playlists.map((playlist: any) => new Playlist(playlist));
   }
 
   @action
   async create(form: IPlaylistCreateForm) {
-    let response: any = await playlistsRepository.create(form);
-    this.playlists = [...this.playlists, new Playlist(response)]
+    const response: any = await playlistsRepository.create(form);
+    this.playlists = [...this.playlists, new Playlist(response)];
   }
 
   @action
   async remove(playlistId: number) {
     await playlistsRepository.remove(playlistId);
     this.playlists = this.playlists.filter((playlist) => {
-      return Number(playlist.id) !== playlistId
-    })
+      return Number(playlist.id) !== playlistId;
+    });
   }
 }
 

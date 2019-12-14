@@ -1,11 +1,11 @@
 import { action, observable } from 'mobx';
 import playlistsRepository from '../../api/woofer/playlistRepository';
-import { getStore } from "../index";
-import PlayerStore from "./playerStore";
+import { getStore } from '../index';
+import PlayerStore from './playerStore';
 import Playlist from '../../dto/woofer/playlist';
-import Video, { IVideo } from "../../dto/woofer/video";
-import YoutubeVideo from "../../dto/woofer/youtubeVideo";
-import PlaylistItem from "../../dto/woofer/playlistItem";
+import Video, { IVideo } from '../../dto/woofer/video';
+import YoutubeVideo from '../../dto/woofer/youtubeVideo';
+import PlaylistItem from '../../dto/woofer/playlistItem';
 
 
 class PlaylistStore {
@@ -21,10 +21,10 @@ class PlaylistStore {
 
   @action
   async fetch(playlistId: number) {
-    let response: any = await playlistsRepository.fetch(playlistId);
+    const response: any = await playlistsRepository.fetch(playlistId);
     this.videos = response.items.map((video: IVideo) => new Video(video));
     this.playlist = new Playlist(response);
-    let store: PlayerStore = getStore('playerStore');
+    const store: PlayerStore = getStore('playerStore');
     store.setList(this.videos);
     store.setNextVideo();
     // this.playlist = response.playlists.map((playlist) => new Playlist(playlist))
@@ -36,7 +36,7 @@ class PlaylistStore {
     const insertedVideo: IVideo = await playlistsRepository.addVideo(playlistId, youtubeVideo);
     const video = new Video(insertedVideo);
     this.videos = [...this.videos, video];
-    let store: PlayerStore = getStore('playerStore');
+    const store: PlayerStore = getStore('playerStore');
     store.setList(this.videos);
   }
 
@@ -48,7 +48,7 @@ class PlaylistStore {
     this.videos = this.videos.filter((video) => {
       return playlistItemId !== video.id;
     });
-    let store: PlayerStore = getStore('playerStore');
+    const store: PlayerStore = getStore('playerStore');
     store.setList(this.videos);
   }
 

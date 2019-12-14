@@ -8,5 +8,5 @@ describe('store/woofer/playerStore', () => {
 
   test('setList', () => {
 
-  })
+  });
 });

@@ -1,6 +1,6 @@
 const Box = () => {
 
-}
+};
 
 
-export default Box
+export default Box;

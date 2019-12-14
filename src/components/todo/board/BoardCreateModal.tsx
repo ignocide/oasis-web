@@ -1,21 +1,21 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
 
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from "../../basic/Modal";
+import { ModalBody, ModalFooter, ModalForm, ModalHeader } from '../../basic/Modal';
 
 import '../../../style/todo/board-item.scss';
-import { Col, Row } from "../../basic/Grid";
-import Input from "../../basic/Input";
-import Button from "../../basic/Button";
+import { Col, Row } from '../../basic/Grid';
+import Input from '../../basic/Input';
+import Button from '../../basic/Button';
 
 interface IProps {
-  boardStore: BoardStore,
-  requestClose: () => void
+  boardStore: BoardStore;
+  requestClose: () => void;
 }
 
 interface IState {
-  boardCreateForm: ITaskCreateForm
+  boardCreateForm: ITaskCreateForm;
 }
 
 @inject('boardStore')
@@ -71,8 +71,8 @@ class BoardItem extends React.Component<IProps, IState> {
   };
 
   onChangeValue = (e) => {
-    let { name, value } = e.target;
-    let { boardCreateForm } = this.state;
+    const { name, value } = e.target;
+    const { boardCreateForm } = this.state;
     boardCreateForm[name] = value;
     this.setState({
       boardCreateForm
@@ -93,7 +93,7 @@ class BoardItem extends React.Component<IProps, IState> {
           </Row>
         </ModalBody>
         <ModalFooter>
-          <Button shape={'solid'} type={"submit"} onClick={this.onSubmit}>{'추가'}</Button>
+          <Button shape={'solid'} type={'submit'} onClick={this.onSubmit}>{'추가'}</Button>
         </ModalFooter>
       </ModalForm>
     );

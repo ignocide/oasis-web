@@ -1,23 +1,23 @@
-import React from "react";
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import Board from "../../../dto/todo/board";
+import Board from '../../../dto/todo/board';
 
-import { Button, IconButton } from "../../form/index";
-import { Menu, MenuItem } from "../../common/MenuForm";
-import { FloaterRenderInfo } from "../../common/Floater";
-import DropBox from "../../common/DropBox";
-import Modal from "../../common/Modal";
-import { ModalFooter, ModalForm, ModalHeader } from "../../common/ModalForm";
-import BoardListStore from "../../../store/boardListStore";
-import BoardStore from "../../../store/boardStore";
+import { Button, IconButton } from '../../form/index';
+import { Menu, MenuItem } from '../../common/MenuForm';
+import { FloaterRenderInfo } from '../../common/Floater';
+import DropBox from '../../common/DropBox';
+import Modal from '../../common/Modal';
+import { ModalFooter, ModalForm, ModalHeader } from '../../common/ModalForm';
+import BoardListStore from '../../../store/boardListStore';
+import BoardStore from '../../../store/boardStore';
 
 import '../../../style/todo/board-item.scss';
 
 interface IProps {
-  boardListStore: BoardListStore,
-  boardStore: BoardStore,
-  board: Board
+  boardListStore: BoardListStore;
+  boardStore: BoardStore;
+  board: Board;
 }
 
 @inject('boardListStore', 'boardStore')

@@ -28,7 +28,7 @@ class Fade extends React.Component<any, any> {
     this.setState({
       inn: false
     });
-    console.log("work");
+    console.log('work');
   }
 
   // render() {
@@ -59,10 +59,10 @@ class Fade extends React.Component<any, any> {
     return (
       <CSSTransition in={inn} className={'example'} timeout={500}>
         <div>
-              {children}
+          {children}
         </div>
       </CSSTransition>
     );
   }
-};
+}
 export default Fade;

@@ -1,23 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CSSTransition } from "react-transition-group";
+import { CSSTransition } from 'react-transition-group';
 
 interface IProps {
-  children: any,
-  requestClose: () => void,
-  floaterRenderInfo: IFloaterRenderInfo
+  children: any;
+  requestClose: () => void;
+  floaterRenderInfo: IFloaterRenderInfo;
 }
 
 interface IState {
   position: {
-    top: number,
-    bottom: number,
-    left: number,
-    right: number,
-    x: number,
-    y: number
-  },
-  isOpen: boolean
+    top: number;
+    bottom: number;
+    left: number;
+    right: number;
+    x: number;
+    y: number;
+  };
+  isOpen: boolean;
 }
 
 class Floater extends React.Component<IProps, IState> {
@@ -36,7 +36,7 @@ class Floater extends React.Component<IProps, IState> {
   el: HTMLElement;
   childEl: any;
   modalRoot: HTMLElement;
-  duration: number = 225;
+  duration = 225;
 
   constructor(props) {
     super(props);
@@ -147,15 +147,15 @@ class Floater extends React.Component<IProps, IState> {
 
 interface IFloaterRenderInfo {
   parentPosition: {
-    top: number,
-    left: number,
-    bottom: number,
-    right: number,
-  },
+    top: number;
+    left: number;
+    bottom: number;
+    right: number;
+  };
   mouseClickedPosition: {
-    x: number,
-    y: number,
-  }
+    x: number;
+    y: number;
+  };
 }
 
 

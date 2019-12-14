@@ -1,20 +1,20 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 
-import Video from "../../../dto/woofer/video";
-import { modalController } from "../../common/Modal";
-import { Menu, MenuItem } from "../../common/MenuForm";
-import DropBox from "../../common/DropBox";
-import { IconButton } from "../../form/index";
-import PlaylistStore from "../../../store/woofer/playlistStore";
-import DownloadStore from "../../../store/woofer/downloadStore";
-import PlayerStore from "../../../store/woofer/playerStore";
+import Video from '../../../dto/woofer/video';
+import { modalController } from '../../common/Modal';
+import { Menu, MenuItem } from '../../common/MenuForm';
+import DropBox from '../../common/DropBox';
+import { IconButton } from '../../form/index';
+import PlaylistStore from '../../../store/woofer/playlistStore';
+import DownloadStore from '../../../store/woofer/downloadStore';
+import PlayerStore from '../../../store/woofer/playerStore';
 
 interface IProps {
-  playerStore?: PlayerStore,
-  playlistStore?: PlaylistStore,
-  downloadStore?: DownloadStore,
-  video: Video,
+  playerStore?: PlayerStore;
+  playlistStore?: PlaylistStore;
+  downloadStore?: DownloadStore;
+  video: Video;
 }
 
 
@@ -53,7 +53,7 @@ class PlaylistItem extends React.Component<IProps, IState> {
     const { video } = this.props;
     const { modalState } = this.state;
     return (
-      <div className={`video`} key={video.id}>
+      <div className={'video'} key={video.id}>
         <div className="video-thumbnail">
           <img src={video.thumbnail} />
         </div>

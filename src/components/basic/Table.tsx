@@ -22,7 +22,7 @@ const TableInformation = ({ children, className, ...props }) => {
 class TablePagination extends React.Component<any, any> {
   static defaultProps = {
     onClickPage:function(page){
-      console.log(page)
+      console.log(page);
     }
   }
   shownLength = 7;
@@ -30,16 +30,16 @@ class TablePagination extends React.Component<any, any> {
   get pages() {
     const { totalCount, currentPage, pageSize } = this.props;
 
-    let totalPage = Math.floor(totalCount / pageSize);
-    let startPage = Math.floor(currentPage / this.shownLength) * this.shownLength + 1;
-    let endPage = startPage + this.shownLength - 1;
+    const totalPage = Math.floor(totalCount / pageSize);
+    const startPage = Math.floor(currentPage / this.shownLength) * this.shownLength + 1;
+    const endPage = startPage + this.shownLength - 1;
     let prevPage = startPage - 1;
     prevPage = prevPage < 0 ? 0 : prevPage;
 
     let nextPage = startPage + this.shownLength;
     nextPage = nextPage > totalPage ? totalPage : nextPage;
 
-    let shownPages = [];
+    const shownPages = [];
     for (let targetPage = startPage; targetPage <= endPage; targetPage++) {
       shownPages.push(targetPage);
     }
@@ -109,12 +109,12 @@ const Table = ({ format, data, row = null, className = null, ...props }) => {
   return (
     <table className={`_table-container${className ? ' ' + className : ''}`} {...props}>
       <thead>
-      <tr>
-        {labels}
-      </tr>
+        <tr>
+          {labels}
+        </tr>
       </thead>
       <tbody>
-      {rows}
+        {rows}
       </tbody>
     </table>
   );

@@ -1,7 +1,7 @@
 import { action, observable } from 'mobx';
 import weatherRepository from '../../api/common/weatherRepository';
-import WeatherInfo from "../../dto/weatherInfo";
-import SimpleLocation from "../../dto/location";
+import WeatherInfo from '../../dto/weatherInfo';
+import SimpleLocation from '../../dto/location';
 
 
 class AppStore {
@@ -10,7 +10,7 @@ class AppStore {
   @observable location: SimpleLocation = null;
 
   //app state settings
-  @observable sidebar: boolean = false;
+  @observable sidebar = false;
 
   constructor(isServer: boolean, initialData: any) {
     if (isServer) {
@@ -22,7 +22,7 @@ class AppStore {
   @action
   toggleSidebar() {
     this.sidebar = !this.sidebar;
-  };
+  }
 
   @action
   async fetchLocationAndWeather(lat: number, lng: number): Promise<void> {

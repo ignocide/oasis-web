@@ -8,5 +8,5 @@ beforeAll(() => {
 describe('playlistStore', () => {
   test('constructor', () => {
     expect(playlistStore.playlist).toEqual(null);
-  })
-})
+  });
+});

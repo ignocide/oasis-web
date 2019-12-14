@@ -1,9 +1,9 @@
 import { action, observable } from 'mobx';
 
 interface IUser {
-  username: string,
-  authorities: string[],
-  id: number
+  username: string;
+  authorities: string[];
+  id: number;
 }
 
 class Auth {

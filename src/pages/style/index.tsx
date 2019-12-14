@@ -1,8 +1,8 @@
 import Layout from '../../components/layout';
 import React from 'react';
-import withStore from "../../components/hoc/withStore";
-import { Col, Container, Row } from "../../components/basic/Grid";
-import Button from "../../components/basic/Button";
+import withStore from '../../components/hoc/withStore';
+import { Col, Container, Row } from '../../components/basic/Grid';
+import Button from '../../components/basic/Button';
 import {
   ButtonGroup,
   CheckboxGroup,
@@ -11,20 +11,20 @@ import {
   FormStatic,
   InputGroup,
   RadioGroup
-} from "../../components/basic/Form";
-import Dropdown from "../../components/basic/Dropdown";
+} from '../../components/basic/Form';
+import Dropdown from '../../components/basic/Dropdown';
 import '../../style/basic/index.scss';
 import '../../style/styleDemo/index.scss';
-import Alert from "../../components/basic/Alert";
-import Input from "../../components/basic/Input";
-import Select from "../../components/basic/Select";
-import Checkbox from "../../components/basic/CheckBox";
-import Radio from "../../components/basic/Radio";
-import ToggleBox from "../../components/basic/ToggleBox";
-import { Card, CardBody, CardFooter, CardHeader } from "../../components/basic/Card";
-import Textarea from "../../components/basic/Textarea";
-import { Table, TableFilters, TableHeader, TableInformation, TablePagination } from "../../components/basic/Table";
-import Modal, { modalController, ModalFooter, ModalForm,ModalBody, ModalHeader } from "../../components/basic/Modal";
+import Alert from '../../components/basic/Alert';
+import Input from '../../components/basic/Input';
+import Select from '../../components/basic/Select';
+import Checkbox from '../../components/basic/CheckBox';
+import Radio from '../../components/basic/Radio';
+import ToggleBox from '../../components/basic/ToggleBox';
+import { Card, CardBody, CardFooter, CardHeader } from '../../components/basic/Card';
+import Textarea from '../../components/basic/Textarea';
+import { Table, TableFilters, TableHeader, TableInformation, TablePagination } from '../../components/basic/Table';
+import Modal, { modalController, ModalFooter, ModalForm,ModalBody, ModalHeader } from '../../components/basic/Modal';
 
 @withStore({})
 class StylePage extends React.Component<any, any> {
@@ -444,7 +444,7 @@ class StylePage extends React.Component<any, any> {
                 <InputGroup>
                   <Input name={'normal-input'} />
                   <Button shape={'primary'}>
-                    {"button"}
+                    {'button'}
                   </Button>
                 </InputGroup>
               </Col>
@@ -454,7 +454,7 @@ class StylePage extends React.Component<any, any> {
                   <Input name={'normal-input'} />
                   <Select placeholder={'Dropdown'} options={this.dropdownOptions} onChange={this.onChangeDropdownValue} value={dropdownValue} />
                   <Button shape={'solid'}>
-                    {"button"}
+                    {'button'}
                   </Button>
                 </InputGroup>
               </Col>
@@ -655,7 +655,7 @@ class StylePage extends React.Component<any, any> {
           </div>
           <Card>
             <TableHeader>
-              {"Table title"}
+              {'Table title'}
             </TableHeader>
             <TableFilters>
               <InputGroup>
@@ -698,7 +698,7 @@ class StylePage extends React.Component<any, any> {
                 <ModalFooter>
                   <Button shape={'solid'} onClick={this.closeModalModal}>{'submit'}</Button>
                 </ModalFooter>
-                </ModalForm>
+              </ModalForm>
             </Modal>
             : null}
         </section>
