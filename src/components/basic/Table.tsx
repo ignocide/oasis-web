@@ -19,13 +19,6 @@ const TableInformation = ({ children, className, ...props }) => {
   </div>;
 };
 
-// const TablePagination = ({ totalCount, pageSize,currentPage, className, ...props }) => {
-//   return <div className={cn('_table-pagination', className)} {...props}>
-//     <span className={'page-prev'} onClick={}></span>
-//     <span className={'page-number'}></span>
-//     <span className={'page-next'}></span>
-//   </div>;
-// };
 class TablePagination extends React.Component<any, any> {
   static defaultProps = {
     onClickPage:function(page){
@@ -50,23 +43,6 @@ class TablePagination extends React.Component<any, any> {
     for (let targetPage = startPage; targetPage <= endPage; targetPage++) {
       shownPages.push(targetPage);
     }
-
-    console.log(shownPages, startPage, endPage);
-    // const totalPage = Math.floor(totalCount/pageSize);
-    // let startPage = (currentPage - Math.floor(this.shownLength/2));
-    // startPage = startPage < 0 ? 0 : startPage;
-    // let endPage = startPage + this.shownLength;
-    // endPage = endPage > totalPage ? endPage: endPage;
-
-    // for(let targetPage = startPage;targetPage< endPage; targetPage++){
-    //   shownPages.push(targetPage)
-    // }
-    //
-    // let prevPage = currentPgae -1;
-    // prevPage = prevPage < 0 ? 0 : prevPage;
-    //
-    // let nextPage = currentPgae -1;
-    // nextPage = nextPage < 0 ? 0 : nextPage;
 
     return {
       prevPage,

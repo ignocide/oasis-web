@@ -16,7 +16,7 @@ class ToastrMessage {
   type: TOASTR_TYPES;
 
   constructor(toastrMessage: ToastrMessage | string) {
-    if (typeof toastrMessage === 'string') {
+    if (typeof toastrMessage === "string") {
       toastrMessage = {
         message: toastrMessage,
         duration: 2000,
@@ -30,4 +30,4 @@ class ToastrMessage {
   }
 }
 
-export default ToastrMessage
+export default ToastrMessage;

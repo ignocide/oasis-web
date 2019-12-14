@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Icon from './Icon';
-
-
-// [
-//   {
-//     name : 'Dropdown header 1'
-//     options: [
-//
-//     ]
-//   }
-// ]
 
 interface IProps {
   onSelect: Function,
-  placeholder: string,
+  onChange: Function,
+  placeholder?: string,
   value: string,
+  options: any[],
+  className?: string,
 }
 
 interface IState {
@@ -30,7 +23,8 @@ class Dropdown extends React.Component<IProps, IState> {
   };
 
   state = {
-    isOpenOptions: false
+    isOpenOptions: false,
+    value: null,
   };
 
   get containerClassName() {
@@ -53,7 +47,7 @@ class Dropdown extends React.Component<IProps, IState> {
 
     const label = searchedOption ? searchedOption.label : null;
 
-    return label;
+    return label; 
 
   };
 
@@ -81,26 +75,18 @@ class Dropdown extends React.Component<IProps, IState> {
   };
 
   render() {
-    const { onChange, value, children, className, placeholder, options = [], ...props } = this.props;
+    const { onChange, onSelect, value, children, className, placeholder, options = [], ...props } = this.props;
     const { isOpenOptions } = this.state;
     return <div className={this.containerClassName}>
       <button className={'btn btn-default'} {...props} onClick={this.toggleOptions}>
         {this.value}
-        <Icon className={'dropbox-arrow icon-xs'} name={'expand_more'} />
+        <Icon className={'dropbox-arrow'} size={'xs'} name={'expand_more'} />
       </button>
       {isOpenOptions ? <DropboxMenuList options={options} onSelect={this.onSelect} /> : null}
     </div>;
   }
 }
 
-
-// const DropboxMenuList = () => {
-//   useEffect(() => {
-//
-//   })
-//   return <div className={'dropbox-menu-list'}>
-//   </div>
-// }
 class DropboxMenuList extends React.Component<any, any> {
 
   get options() {
@@ -126,10 +112,5 @@ const DropboxMenuItem = ({ label, ...props }) => {
 
 };
 
-const DropboxMenuHeader = () => {
-  return <div className={'dropbox-menu-header'}>
-
-  </div>;
-};
 
 export default Dropdown;

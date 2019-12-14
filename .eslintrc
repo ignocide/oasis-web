@@ -1,5 +1,13 @@
 {
-  "extends": "react-app",
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:import/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -19,6 +27,7 @@
     "no-const-assign": "warn",
     "no-this-before-super": "warn",
     "no-undef": "warn",
+    "quotes": [1, "single"],
     "no-unreachable": "warn",
     "no-unused-vars": "warn",
     "constructor-super": "warn",
