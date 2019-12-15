@@ -3,8 +3,8 @@ import cn from 'classnames';
 import '../../style/panel.scss';
 
 interface IProps {
-	children: any;
-	className?: string;
+  children: any;
+  className?: string;
 }
 
 class Panel extends React.Component<IProps, any> {
@@ -65,7 +65,6 @@ export const PanelTable = ({ format, data, row = null, className = null, ...prop
           } else if (typeof formatItem.render === 'function') {
             value = formatItem.render(dataItem);
           }
-          // console.log(formatItem.render, value, dataItem)
           return (
             <td key={`${dataIndex}_${index}`} {...formatItem.td}>
               {value}

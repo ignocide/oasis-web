@@ -1,16 +1,14 @@
 import { useStaticRendering } from 'mobx-react';
 
-import AuthStore from './auth';
+import AuthStore from './common/authStore';
 import AppStore from './common/appStore';
 import ToastrStore from './common/toastrStore';
-
 
 const isServer = typeof window === 'undefined';
 useStaticRendering(isServer);
 
-
 const storeClasses: any = {
-  auth: AuthStore,
+  authStore: AuthStore,
   appStore: AppStore,
   toastrStore: ToastrStore,
 };
@@ -45,7 +43,7 @@ export function initializeStore(key: string, initialData: any = {}) {
 }
 
 export function initializeStores(storeInitialValues: any = {}): any {
-  Object.keys(storeClasses).forEach(key => {
+  Object.keys(storeClasses).forEach((key) => {
     initializeStore(key, storeInitialValues[key] || {});
   });
 
@@ -78,7 +76,7 @@ export function insertClasses(stores: any = {}): any {
   });
 }
 
-export function setStore(key: string, storeClass: { new(...args: any[]): any }): any {
+export function setStore(key: string, storeClass: { new (...args: any[]): any }): any {
   // Always make a new store if server, otherwise state is shared between requests
   let store = null;
   if (isServer) {
@@ -91,7 +89,6 @@ export function setStore(key: string, storeClass: { new(...args: any[]): any }):
   }
   return store;
 }
-
 
 export function getStores() {
   return storeInstances;

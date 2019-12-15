@@ -9,58 +9,33 @@ const defaultStyle = {
 };
 
 const transitionStyles = {
-  entering: {opacity: 0},
-  entered: {opacity: 1},
+  entering: { opacity: 0 },
+  entered: { opacity: 1 },
 };
 
 class Fade extends React.Component<any, any> {
   state = {
-    inn: false
+    inn: false,
   };
 
   componentDidMount() {
     this.setState({
-      inn: true
+      inn: true,
     });
   }
 
   componentWillUnmount() {
     this.setState({
-      inn: false
+      inn: false,
     });
-    console.log('work');
   }
 
-  // render() {
-  //   const {inn} = this.state;
-  //   const {children} = this.props;
-  //   return (
-  //     <Transition
-  //       mountOnEnter
-  //       unmountOnExit
-  //       timeout={duration}>
-  //       {state => {
-  //         console.log(state);
-  //         return (
-  //           <div style={{
-  //             ...defaultStyle,
-  //             ...transitionStyles[state]
-  //           }}>
-  //             {children}
-  //           </div>
-  //         );
-  //       }}
-  //     </Transition>
-  //   );
-  // }
   render() {
-    const {inn} = this.state;
-    const {children} = this.props;
+    const { inn } = this.state;
+    const { children } = this.props;
     return (
       <CSSTransition in={inn} className={'example'} timeout={500}>
-        <div>
-          {children}
-        </div>
+        <div>{children}</div>
       </CSSTransition>
     );
   }

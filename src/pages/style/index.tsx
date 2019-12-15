@@ -136,7 +136,6 @@ class StylePage extends React.Component<any, any> {
   render() {
     const { dropdownValue } = this.state;
     // const { modal } = this.state.modalState;
-    console.log(this.state);
     return (
       <Layout>
         <section>

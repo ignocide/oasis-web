@@ -15,23 +15,20 @@ interface IProps {
 }
 
 @withStore()
-@inject('auth', 'appStore')
+@inject('appStore')
 @observer
 class Index extends React.Component<IProps, any> {
+  static getInitialProps = async function() {
+    return {};
+  };
 
   state = {
     weather: {},
     location: {},
   };
-  static getInitialProps = async function () {
-
-
-    return {};
-  };
 
   componentDidMount() {
     const { appStore } = this.props;
-    console.log(this.props);
     if ('geolocation' in navigator) {
       /* 지오로케이션 사용 가능 */
       console.log(navigator.geolocation);
@@ -78,17 +75,13 @@ class Index extends React.Component<IProps, any> {
               </div>
             </Col>
             <Col size={4}>
-              <div className={'card'}>
-                {'날씨'}
-              </div>
+              <div className={'card'}>{'날씨'}</div>
             </Col>
           </Row>
         </div>
       </div>
     );
   }
-
 }
-
 
 export default Index;

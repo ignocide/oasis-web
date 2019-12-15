@@ -21,16 +21,14 @@ interface IState {
 }
 
 class Floater extends React.Component<IProps, IState> {
-
   static defaultProps = {
-    requestClose: function () {
-    },
-    parent: null
+    requestClose: function() {},
+    parent: null,
   };
 
   state = {
     isOpen: false,
-    position: {}
+    position: {},
   };
 
   el: HTMLElement;
@@ -44,12 +42,10 @@ class Floater extends React.Component<IProps, IState> {
 
     this.el = document.createElement('div');
     this.el.setAttribute('id', 'modal');
-
   }
 
   componentDidMount() {
     this.modalRoot.appendChild(this.el);
-    console.log(this.self);
     document.body.style['overflow-y'] = 'hidden';
     this.changeOpenState(true);
   }
@@ -60,15 +56,18 @@ class Floater extends React.Component<IProps, IState> {
   }
 
   changeOpenState = (bool: boolean, callback: () => void) => {
-    this.setState({
-      isOpen: bool
-    }, () => {
-      if (callback) {
-        setTimeout(() => {
-          callback();
-        }, this.duration);
-      }
-    });
+    this.setState(
+      {
+        isOpen: bool,
+      },
+      () => {
+        if (callback) {
+          setTimeout(() => {
+            callback();
+          }, this.duration);
+        }
+      },
+    );
   };
 
   requestClose = (e) => {
@@ -90,24 +89,20 @@ class Floater extends React.Component<IProps, IState> {
       // console.log(parentPosition,mouseClickedPosition,window.innerWidth)
       // console.log(this.childEl.offsetWidth)
 
-
       let left = null;
       let top = null;
       let originX = null;
       let originY = null;
       //@todo 왼쪽의 여백이 부족할 경우 계산, 지금은 오른쪽 여백으로만 계산 한다.
-      console.log(window.innerWidth, parentPosition, mouseClickedPosition, this.childEl.offsetWidth);
       if (window.innerWidth - parentPosition.left < this.childEl.offsetWidth) {
         left = parentPosition.right - this.childEl.offsetWidth;
         originX = this.childEl.offsetWidth - (mouseClickedPosition.x - parentPosition.left);
-
       } else {
         left = parentPosition.left;
         originX = mouseClickedPosition.x - parentPosition.left;
       }
 
-
-      if(window.innerHeight - parentPosition.top < this.childEl.offsetHeight){
+      if (window.innerHeight - parentPosition.top < this.childEl.offsetHeight) {
         top = parentPosition.bottom - this.childEl.offsetHeight;
         originY = this.childEl.offsetHeight - (mouseClickedPosition.y - parentPosition.top);
       } else {
@@ -119,7 +114,7 @@ class Floater extends React.Component<IProps, IState> {
       style = {
         left: `${left}px`,
         top: `${top}px`,
-        transformOrigin: `${originX}px ${originY}px`
+        transformOrigin: `${originX}px ${originY}px`,
       };
     }
 
@@ -133,17 +128,22 @@ class Floater extends React.Component<IProps, IState> {
     return ReactDOM.createPortal(
       <div className={'floater-blur'} onClick={this.requestClose}>
         <CSSTransition in={isOpen} timeout={this.duration} classNames="popup">
-          <div className="floater" onClick={this.prevent} style={this.floaterStyle} ref={(ref) => {
-            this.childEl = ref;
-            console.log(this.childEl);
-          }}>{children}</div>
+          <div
+            className="floater"
+            onClick={this.prevent}
+            style={this.floaterStyle}
+            ref={(ref) => {
+              this.childEl = ref;
+            }}
+          >
+            {children}
+          </div>
         </CSSTransition>
       </div>,
       this.el,
     );
   }
 }
-
 
 interface IFloaterRenderInfo {
   parentPosition: {
@@ -157,7 +157,6 @@ interface IFloaterRenderInfo {
     y: number;
   };
 }
-
 
 class FloaterRenderInfo implements IFloaterRenderInfo {
   parentPosition: { top: number; left: number; bottom: number; right: number };
@@ -173,7 +172,7 @@ class FloaterRenderInfo implements IFloaterRenderInfo {
       top: rect.top,
       left: rect.left,
       bottom: rect.bottom,
-      right: rect.right
+      right: rect.right,
     };
   }
 }

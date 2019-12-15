@@ -11,7 +11,6 @@ class ToastrStore {
     this.messages = (initialData.messages || []).map((message: any) => new ToastrMessage(message));
   }
 
-
   @action
   alert(message: ToastrMessage) {
     this.messages.push(message);
@@ -36,7 +35,6 @@ class ToastrStore {
     const text = document.createTextNode(message.message);
 
     messageElement.appendChild(text);
-    console.log(toastrContainer, messageElement, message);
     toastrContainer.appendChild(messageElement);
     // const toastrConatiner = ReactDOM.findDOMNode('toastr-container')
     // const
