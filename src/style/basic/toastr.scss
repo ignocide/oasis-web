@@ -1,0 +1,30 @@
+#toastr-container{
+  position: fixed;
+  bottom: 0;
+  .toastr-node{
+    position: relative;
+    margin: 20px 30px;
+    color: #fff;
+    display: flex;
+    padding: 14px 20px 10px;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    // font-size: 20px;
+    align-items: center;
+    font-weight: 400;
+    border-radius: 4px;
+    background-color: rgb(50, 50, 50);
+
+    .toastr-node-timebar{
+      position: absolute;
+      transform: scaleX(1);
+      transition: transform 100ms;
+      transform-origin: left;
+      left: 0;
+      top: 0;
+      background-color: rgb(252, 146, 158);
+      height: 4px;
+      width: 100%;
+    }
+  }
+}

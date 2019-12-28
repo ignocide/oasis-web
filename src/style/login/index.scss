@@ -1,10 +1,37 @@
-.login-page{
-    .login-form-container{
-        margin-top: 50px;
+// .login-page{
+//     .login-form-container{
+//         margin-top: 50px;
 
-        width:500px;
-        max-width:90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
+//         width:500px;
+//         max-width:90%;
+//         margin-left: auto;
+//         margin-right: auto;
+//     }
+// }
+
+#login-page{
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+ &:before{
+    content: '';
+    display: block;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    height: 24px;
+ }
+ &:after{
+    content: '';
+    display: block;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+    height: 24px;
+
+ }
 }

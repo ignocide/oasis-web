@@ -82,7 +82,7 @@ class LoginForm extends React.Component<IProps, IState> {
 		const { username, password } = this.state.loginForm;
 
 		return (
-			<Card>
+			<Card className={'login-form-card'}>
 				<form id="Login" onSubmit={this.requestLogin}>
 					<CardHeader>{'로그인'}</CardHeader>
 					<CardBody>

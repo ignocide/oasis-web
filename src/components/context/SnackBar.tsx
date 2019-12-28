@@ -8,12 +8,12 @@ const Context: any = React.createContext({}); // Context 를 만듭니다.
 const { Provider, Consumer } = Context;
 
 // Provider 에서 state 를 사용하기 위해서 컴포넌트를 새로 만들어줍니다.
-class ModalProvider extends React.Component<any, any> {
+class SnackBarProvider extends React.Component<any, any> {
   static nextKey = 0;
 
   generateKey = () => {
-    const key = ModalProvider.nextKey;
-    ModalProvider.nextKey++;
+    const key = SnackBarProvider.nextKey;
+    SnackBarProvider.nextKey++;
     return key;
   };
 
@@ -68,14 +68,14 @@ class ModalProvider extends React.Component<any, any> {
 }
 
 
-const ModalConsumer = (WrappedClass) => {
+const SnackBarConsumer = (WrappedClass) => {
   return class extends React.Component<any, any> {
     render() {
       const { ...props } = this.props;
       return (
         <Consumer>
           {(value) => {
-            return <WrappedClass {...props} modalContext={value} />;
+            return <WrappedClass {...props} snackBarContext={value} />;
           }}
         </Consumer>
       );
@@ -84,6 +84,6 @@ const ModalConsumer = (WrappedClass) => {
 };
 
 export {
-  ModalProvider,
-  ModalConsumer,
+  SnackBarProvider,
+  SnackBarConsumer,
 };

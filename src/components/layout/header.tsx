@@ -47,7 +47,7 @@ class Header extends React.Component<IProps, any> {
 }
 
 const UserButton = ({ logout }) => {
-  const [ isOpen, setIsOpen ] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const onClickLogout = () => {
     logout();
     cookieUtil.destroy(COOKIE_KEYS.ACCESS_TOKEN);

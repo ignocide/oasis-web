@@ -5,7 +5,6 @@ import withStore from '../components/hoc/withStore';
 import { inject, observer } from 'mobx-react';
 import ToastrStore from '../store/common/ToastrStore';
 import ToastrMessage from '../dto/common/toastrMessage';
-import '../style/index.scss';
 import '../style/login/index.scss';
 
 // import firebase from 'firebase';
@@ -33,16 +32,17 @@ class LoginPage extends React.Component<IProps, IState> {
 
   componentDidMount() {
     // this.initFirebase();
-    this.props.toastrStore.alert(new ToastrMessage('message'));
+    this.props.toastrStore.alert(new ToastrMessage('토스트 메세지'))
+    this.props.toastrStore.alert(new ToastrMessage('토스트 메세지'));
+
   }
 
   render() {
 
     return (
-      <div id="main" className={'login-page'}>
+      <div id={"main"}>
         <div id={'main-container'} className="container">
-          <Header />
-          <div className={'login-form-container'}>
+          <div id={'login-page'}>
             <LoginForm />
           </div>
         </div>
