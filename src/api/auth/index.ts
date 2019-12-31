@@ -6,7 +6,7 @@ import cookieUtil, { COOKIE_KEYS } from '../../lib/cookies';
 
 const { publicRuntimeConfig } = getConfig();
 
-interface ISignUpForm {
+export interface ISignUpForm {
   username: string;
   password: string;
 }
@@ -15,7 +15,7 @@ export const signUp = (signUpForm: ISignUpForm) => {
   return axios.post('/uua/user', signUpForm);
 };
 
-interface ILoginForm {
+export interface ILoginForm {
   username: string;
   password: string;
 }

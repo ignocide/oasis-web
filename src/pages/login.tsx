@@ -31,10 +31,6 @@ class LoginPage extends React.Component<IProps, IState> {
   }
 
   componentDidMount() {
-    // this.initFirebase();
-    this.props.toastrStore.alert(new ToastrMessage('토스트 메세지'))
-    this.props.toastrStore.alert(new ToastrMessage('토스트 메세지'));
-
   }
 
   render() {

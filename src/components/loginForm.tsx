@@ -24,7 +24,7 @@ interface IState {
 	};
 }
 
-@inject('authStore', 'appStore')
+@inject('authStore', 'appStore', 'toastrStore')
 @observer
 class LoginForm extends React.Component<IProps, IState> {
 	state = {
@@ -39,22 +39,11 @@ class LoginForm extends React.Component<IProps, IState> {
 		e.preventDefault();
 		const { loginForm } = this.state;
 		const { authStore } = this.props;
-		const { access_token, refresh_token } = await authApi.login({
+		await authStore.login({
 			username: loginForm.username,
 			password: loginForm.password
 		});
 
-		const decodedToken = await authApi.checkToken({ token: access_token });
-
-		authStore.setUser({
-			username: decodedToken.user_name,
-			authorities: decodedToken.authorities,
-			id: decodedToken.id
-		});
-
-		setToken(access_token);
-		cookieUtil.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
-		cookieUtil.set(COOKIE_KEYS.REFRESH_TOKEN, refresh_token);
 
 		Router.push({
 			pathname: '/'
