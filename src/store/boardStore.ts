@@ -1,8 +1,8 @@
 import { action, observable } from 'mobx';
-import Board from '../dto/todo/board';
+import Board from '../dto/todo/boardDto';
 import { getStore } from './index';
 import boardRepository from '../api/todo/boardRepository';
-import Task, { ITask, STEP } from '../dto/todo/task';
+import Task, { ITask, STEP } from '../dto/todo/taskDto';
 
 interface ITaskCreateForm {
 	name: string;
@@ -59,7 +59,7 @@ class BoardStore {
 	async createTask(taskCreateFrom: ITaskCreateForm) {
 		const boardId: number = this.board.id;
 		const result: any = await boardRepository.createTask(boardId, taskCreateFrom);
-		this.setTasks([ new Task(result), ...this.tasks ]);
+		this.setTasks([new Task(result), ...this.tasks]);
 	}
 
 	@action

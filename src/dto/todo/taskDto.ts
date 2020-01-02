@@ -15,7 +15,7 @@ enum STEP {
 }
 
 
-class Task implements ITask {
+class TaskDto implements ITask {
   id: number;
   boardId: number;
   detail: string;
@@ -37,5 +37,5 @@ class Task implements ITask {
   }
 }
 
-export { ITask,STEP };
-export default Task;
+export { ITask, STEP };
+export default TaskDto;

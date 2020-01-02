@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
-import Task from '../../../dto/todo/task';
+import Task from '../../../dto/todo/taskDto';
 import Modal, { modalController } from '../../common/Modal';
 
 import '../../../style/todo/task-detail-modal.scss';
@@ -56,22 +56,22 @@ class TaskDetailModal extends React.Component<IProps> {
     });
   };
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
     e.stopPropagation();
     const { taskForm } = this.state;
     const { boardStore, requestClose } = this.props;
-    boardStore.updateTask(taskForm).then(() => {
-      requestClose();
-    });
+    await boardStore.updateTask(taskForm)
+    requestClose();
   };
 
-  deleteTask = (e) => {
+  deleteTask = async (e) => {
     const { taskForm } = this.state;
     const { boardStore, requestClose } = this.props;
-    boardStore.deleteTask(taskForm.boardId, taskForm.id).then(() => {
-      requestClose();
-    });
+    await boardStore.deleteTask(taskForm.boardId, taskForm.id)
+    // .then(() => {
+    requestClose();
+    // });
   };
 
   onClickDelete = (e) => {
@@ -87,33 +87,46 @@ class TaskDetailModal extends React.Component<IProps> {
   render() {
     const { taskForm, modalState } = this.state;
     const { requestClose } = this.props;
-    return (
-      <ModalForm className={'task-detail-modal'}>
-        <form>
-          <ModalHeader>{'Task 상세'}</ModalHeader>
+    return <>
+      <Modal requestClose={requestClose}>
+        <ModalForm className={'task-detail-modal'}>
+          <form>
+            <ModalHeader>{'Task 상세'}</ModalHeader>
+            <ModalBody>
+              <Row>
+                <Col formGroup>
+                  <Input block name={'name'} label={'제목'} value={taskForm.name || ''} onChange={this.onChangeValue} />
+                </Col>
+                <Col formGroup>
+                  <Textarea name={'detail'} label={'상세내용'} value={taskForm.detail || ''} onChange={this.onChangeValue} rows={7} />
+                </Col>
+                <Col >
+                  <Input block type={'datetime-local'} name={'updatedAt'} label={'마지막 수정'} value={taskForm.updatedAt || ''} disabled={true} />
+                </Col>
+              </Row>
+            </ModalBody>
+            <ModalFooter>
+              <Button type={'submit'} className={'primary'} shape={'solid'} onClick={this.onSubmit}> {'확인'}</Button>
+              <Button shape={'danger'} className={'red'} onClick={this.onClickDelete}>{'삭제'}</Button>
+              <Button shape={'text'} onClick={requestClose}>{'취소'}</Button>
+            </ModalFooter>
+          </form>
+        </ModalForm>
+      </Modal>
+      {modalState.deleteConfirm && <Modal requestClose={() => this.setDeleteConfirmModal(false)}>
+        <ModalForm>
+          <ModalHeader>{'프로젝트 삭제'}</ModalHeader>
           <ModalBody>
-            <Row>
-              <Col formGroup>
-                <Input block name={'name'} label={'제목'} value={taskForm.name || ''} onChange={this.onChangeValue} />
-              </Col>
-              <Col formGroup>
-                <Textarea name={'detail'} label={'상세내용'} value={taskForm.detail || ''} onChange={this.onChangeValue} rows={7} />
-              </Col>
-              <Col >
-                <Input block type={'datetime-local'} name={'updatedAt'} label={'마지막 수정'} value={taskForm.updatedAt || ''} disabled={true} />
-              </Col>
-            </Row>
+            {'프로젝트를 삭제합니까?'}
           </ModalBody>
           <ModalFooter>
-            <Button type={'submit'} className={'primary'} shape={'solid'} onClick={this.onSubmit}> {'확인'}</Button>
-            <Button shape={'danger'} className={'red'} onClick={this.onClickDelete}>{'삭제'}</Button>
-            <Button shape={'text'} onClick={requestClose}>{'취소'}</Button>
+            <Button shape={'danger'} type={'submit'} onClick={this.deleteTask}>
+              {'삭제'}
+            </Button>
           </ModalFooter>
-        </form>
-        {modalState.deleteConfirm && <Modal requestClose={() => this.setDeleteConfirmModal(false)}>
-        </Modal>}
-      </ModalForm>
-    );
+        </ModalForm>
+      </Modal>}
+    </>
   }
 }
 

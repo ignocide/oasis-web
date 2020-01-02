@@ -3,6 +3,7 @@ import getConfig from 'next/config';
 import React from 'react';
 import { ModalProvider } from '../components/context/Modal';
 import youtube from '../lib/youtube';
+// import 'react-app-polyfill/ie9';
 
 import '../style/index.scss';
 import '../style/basic/index.scss';

@@ -83,8 +83,7 @@ class BoardItem extends React.Component<IProps, IState> {
 	};
 
 	render() {
-		const { task } = this.props;
-		const { boardCreateForm, modalOpen } = this.state;
+		const { boardCreateForm } = this.state;
 		return (
 			<ModalForm>
 				<ModalHeader>{'프로젝트 추가'}</ModalHeader>

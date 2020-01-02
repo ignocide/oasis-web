@@ -1,13 +1,12 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
-import Task, { STEP } from '../../../dto/todo/task';
+import Task, { STEP } from '../../../dto/todo/taskDto';
 import Modal from '../../common/Modal';
 import TaskDetailModal from './TaskDetailModal';
 import { IconButton } from '../../form';
 import TaskCreateModal from './TaskCreateModal';
 
-import '../../../style/todo/board-list.scss';
 import { Card, CardBody, CardHeader } from '../../basic/Card';
 import { Table } from '../../basic/Table';
 
@@ -82,9 +81,11 @@ class TaskList extends React.Component<IProps, IState> {
     const { boardStore } = this.props;
     const { tasks, board } = boardStore;
     const { taskCreateModal, selectedTask } = this.state;
+
     if (!board) {
       return null;
     }
+
     return (
       <>
         <Card>
@@ -99,17 +100,14 @@ class TaskList extends React.Component<IProps, IState> {
           />
           {/* {JSON.stringify(tasks)} */}
         </Card>
-
-        <div>
-          {selectedTask && <Modal requestClose={this.closeModal}>
-            <TaskDetailModal task={selectedTask} requestClose={this.closeModal} />
-          </Modal>}
-          {
-            taskCreateModal && <Modal requestClose={this.closeModal}>
-              <TaskCreateModal closeModal={this.closeModal} />
-            </Modal>
-          }
-        </div>
+        {selectedTask && <Modal requestClose={this.closeModal}>
+          <TaskDetailModal task={selectedTask} requestClose={this.closeModal} />
+        </Modal>}
+        {
+          taskCreateModal && <Modal requestClose={this.closeModal}>
+            <TaskCreateModal closeModal={this.closeModal} />
+          </Modal>
+        }
       </>
     );
   }

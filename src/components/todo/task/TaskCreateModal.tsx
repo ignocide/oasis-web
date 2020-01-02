@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore, { ITaskCreateForm } from '../../../store/boardStore';
 import Button from '../../basic/Button';
-import { ModalBody, ModalFooter, ModalForm, ModalHeader } from '../../basic/Modal';
+import Modal, { ModalBody, ModalFooter, ModalForm, ModalHeader } from '../../basic/Modal';
 
 import '../../../style/todo/task-detail-modal.scss';
 import Input from '../../basic/Input';
@@ -73,27 +73,30 @@ class TaskCreateModal extends React.Component<IProps, IState> {
     const { taskCreateForm } = this.state;
     const { closeModal } = this.props;
     return (
-      <ModalForm>
-        <form>
-          <ModalHeader>{'할일 추가'}</ModalHeader>
-          <ModalBody>
-            <Row>
-              <Col size={12} formGroup>
-                <Input block name={'name'} label={'제목'} value={taskCreateForm.name || ''} onChange={this.onChangeValue} />
-              </Col>
-            </Row>
-            <Row>
-              <Col size={12} formGroup>
-                <Textarea name={'detail'} label={'상세내용'} value={taskCreateForm.detail || ''} onChange={this.onChangeValue} rows={7} />
-              </Col>
-            </Row>
-          </ModalBody>
-          <ModalFooter>
-            <Button type={'submit'} shape={'solid'} onClick={this.createTask}>{'추가'}</Button>
-            <Button shape={'text'} onClick={closeModal}>{'취소'}</Button>
-          </ModalFooter>
-        </form>
-      </ModalForm>
+      <Modal requestClose={closeModal}>
+        <ModalForm>
+          <form>
+            <ModalHeader>{'할일 추가'}</ModalHeader>
+            <ModalBody>
+              <Row>
+                <Col size={12} formGroup>
+                  <Input block name={'name'} label={'제목'} value={taskCreateForm.name || ''} onChange={this.onChangeValue} />
+                </Col>
+              </Row>
+              <Row>
+                <Col size={12} formGroup>
+                  <Textarea name={'detail'} label={'상세내용'} value={taskCreateForm.detail || ''} onChange={this.onChangeValue} rows={7} />
+                </Col>
+              </Row>
+            </ModalBody>
+            <ModalFooter>
+              <Button type={'submit'} shape={'solid'} onClick={this.createTask}>{'추가'}</Button>
+              <Button shape={'text'} onClick={closeModal}>{'취소'}</Button>
+            </ModalFooter>
+          </form>
+        </ModalForm>
+      </Modal>
+
     );
   }
 }

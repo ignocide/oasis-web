@@ -7,7 +7,7 @@ interface IBoard {
   updatedAt: Date;
 }
 
-class Board implements IBoard {
+class BoardDto implements IBoard {
   id: number;
   userId: number;
   deleted: boolean;
@@ -26,4 +26,4 @@ class Board implements IBoard {
 }
 
 export { IBoard };
-export default Board;
+export default BoardDto;

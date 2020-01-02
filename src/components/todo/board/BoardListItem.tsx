@@ -77,7 +77,7 @@ class BoardItem extends React.Component<IProps, any> {
         <div onClick={this.onClickBoard}>
           {board.name}
         </div>
-        <IconButton name={'more_vert'} onClick={this.openBox} ref={'button'}/>
+        <IconButton name={'more_vert'} onClick={this.openBox} ref={'button'} />
         <DropBox isOpen={isBoxOpen} parent={this.refs.button} requestClose={this.closeBox}>
           <Menu>
             <MenuItem>{'수정'}</MenuItem>
@@ -85,7 +85,7 @@ class BoardItem extends React.Component<IProps, any> {
           </Menu>
         </DropBox>
         {isRemoveConfirmModalOpen &&
-        <TaskRemoveModal requestClose={() => this.setRemoveConfirmModal(false)} onClickRemove={this.onClickRemoveConfirm} />}
+          <TaskRemoveModal requestClose={() => this.setRemoveConfirmModal(false)} onClickRemove={this.onClickRemoveConfirm} />}
       </li>
     );
   }

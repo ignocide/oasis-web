@@ -1,0 +1,37 @@
+.board-detail{
+  h1.board-name{
+    span.board-edit-funcs{
+      margin-left: 20px;
+
+      .icon{
+        cursor: pointer;
+      }
+      .icon + .icon{
+        margin-left: 10px;
+      }
+    }
+  }
+
+  table.task-list-table{
+    border-bottom: 0;
+    thead{
+      .add-task-btn{ 
+        &:hover{
+          cursor: pointer;
+          color: $mainblue;
+        }
+
+      }
+    }
+    td{
+      border-bottom: 0;
+    }
+    .task-func{
+      .icon{
+        &:hover{
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

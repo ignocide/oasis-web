@@ -3,15 +3,16 @@ import { inject, observer } from 'mobx-react';
 import BoardListItem from './BoardListItem';
 import BoardCreateModal from './BoardCreateModal';
 import BoardListStore from '../../../store/boardListStore';
+import BoardStore from '../../../store/boardStore';
+import cn from 'classnames';
 
 import Icon from '../../common/Icon';
 import Modal from '../../common/Modal';
-import { Button, IconButton } from '../../form';
-
-import '../../../style/todo/board-list.scss';
+import Button from '../../basic/Button';
 
 interface IProps {
   boardListStore: BoardListStore;
+  boardStore: BoardStore;
 }
 
 interface IState {
@@ -19,7 +20,7 @@ interface IState {
 }
 
 
-@inject('boardListStore')
+@inject('boardListStore', 'boardStore')
 @observer
 class BoardList extends React.Component<IProps, IState> {
 
@@ -31,7 +32,10 @@ class BoardList extends React.Component<IProps, IState> {
 
   }
 
-  onClickRequestCreateBoardButton = () => {
+  onClickRequestCreateBoardButton = (e: MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+
     this.setState({
       createBoardModal: true
     });
@@ -42,18 +46,27 @@ class BoardList extends React.Component<IProps, IState> {
     });
   };
 
+  onClickBoard = (board) => {
+    const { boardStore } = this.props;
+    boardStore.fetchBoard(board.id);
+  };
+
 
   render() {
-    const {boardListStore} = this.props;
-    const {boards} = boardListStore;
-    const {createBoardModal} = this.state;
+    const { boardListStore, boardStore } = this.props;
+    const { boards } = boardListStore;
+    const { board: currentBoard } = boardStore
+    const currentBoardId = currentBoard ? currentBoard.id : null;
+    const { createBoardModal } = this.state;
     return (
       <div className="board-list">
-        <div className={'board-list-header'}>
-          {'프로젝트'}<IconButton name={'add'} className={'board-add-btn'} onClick={this.onClickRequestCreateBoardButton}></IconButton>
-        </div>
-        <ul>
-          {boards.map((board) => <BoardListItem key={board.id} board={board} />)}
+        {/* <ul className="sidebar-header">
+          <li>{'프로젝트 추가하기'}<IconButton name={'add'} className={'board-add-btn'} onClick={this.onClickRequestCreateBoardButton}></IconButton></li>
+        </ul> */}
+        <Button shape={'solid'} size={'sm'} onClick={this.onClickRequestCreateBoardButton}>{'프로젝트 추가하기'}</Button>
+        <ul className="sidebar-list">
+          {/* {boards.map((board) => <BoardListItem key={board.id} board={board} />)} */}
+          {boards.map(board => <li className={cn({ 'active': currentBoardId === board.id })} key={board.id} onClick={() => this.onClickBoard(board)}>{board.name}</li>)}
         </ul>
         {createBoardModal && <Modal requestClose={this.closeCreateBoardModal}>
           <BoardCreateModal requestClose={this.closeCreateBoardModal} />
