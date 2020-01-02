@@ -8,9 +8,6 @@ const Sidebar = ({ className = '', appStore, children, ...props }) => {
 
   return (
     <aside id={'sidebar'} className={`${isOpen ? 'open' : 'close'} ${className}`} {...props}>
-      <div className={'sidebar-header'}>
-        <IconButton name={'menu'} id={'menu-icon'} onClick={() => appStore.toggleSidebar()} />
-      </div>
       {children}
     </aside>
   );

@@ -5,8 +5,7 @@ import Floater from './Floater';
 // https://github.com/FezVrasta/popper.js#installation
 interface IProps {
   isOpen: boolean;
-  // parent: any,
-  event: any;
+  parent?: any,
   requestClose: Function;
   // floaterRenderInfo: IFloaterRenderInfo
 }
@@ -62,7 +61,7 @@ class DropBox extends React.Component<IProps, IState> {
 
   render() {
     const { isOpen, children, requestClose } = this.props;
-    if(!isOpen){
+    if (!isOpen) {
       return null;
     }
 
