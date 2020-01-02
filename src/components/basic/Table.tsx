@@ -21,7 +21,7 @@ const TableInformation = ({ children, className, ...props }) => {
 
 class TablePagination extends React.Component<any, any> {
   static defaultProps = {
-    onClickPage:function(page){
+    onClickPage: function (page) {
       console.log(page);
     }
   }
@@ -66,7 +66,7 @@ class TablePagination extends React.Component<any, any> {
     return <div className={cn('_table-pagination', className)} {...props}>
       <span className={'page-prev'} onClick={() => this.onClickPage(prevPage)}>{'Prev'}</span>
       {shownPages.map((page) => {
-        return <span key={page} className={cn('page-number',{selected: currentPage === page})} onClick={() => this.onClickPage(page)}>{page}</span>;
+        return <span key={page} className={cn('page-number', { selected: currentPage === page })} onClick={() => this.onClickPage(page)}>{page}</span>;
       })}
       <span className={'page-next'} onClick={() => this.onClickPage(nextPage)}>{'Next'}</span>
     </div>;
@@ -107,7 +107,7 @@ const Table = ({ format, data, row = null, className = null, ...props }) => {
     );
   });
   return (
-    <table className={`_table-container${className ? ' ' + className : ''}`} {...props}>
+    <table className={cn("_table-container", className)} {...props}>
       <thead>
         <tr>
           {labels}
