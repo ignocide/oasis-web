@@ -176,26 +176,26 @@ const closeModal = function (key: string) {
 };
 
 
-export const ModalForm = ({ className,children, ...props }) => {
-  return <div className={cn('_modal',className)} {...props}>
+export const ModalForm = ({ className = null, children, ...props }) => {
+  return <div className={cn('_modal', className)} {...props}>
     {children}
   </div>;
 };
 
-export const ModalHeader = ({ className,children, right = null, ...props }) => {
-  return <div className={cn('_modal-header',className)} {...props}>
+export const ModalHeader = ({ className = null, children, right = null, ...props }) => {
+  return <div className={cn('_modal-header', className)} {...props}>
     <h4>{children}{right}</h4>
   </div>;
 };
 
-export const ModalBody = ({className = null, children, ...props }) => {
-  return <div className={cn('_modal-body',className)} {...props}>
+export const ModalBody = ({ className = null, children, ...props }) => {
+  return <div className={cn('_modal-body', className)} {...props}>
     {children}
   </div>;
 };
 
-export const ModalFooter = ({ className,children, ...props }) => {
-  return <div className={cn('_modal-footer',className)} {...props}>
+export const ModalFooter = ({ className = null, children, ...props }) => {
+  return <div className={cn('_modal-footer', className)} {...props}>
     {children}
   </div>;
 };
