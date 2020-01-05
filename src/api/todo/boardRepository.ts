@@ -1,7 +1,25 @@
 import instance from '..';
-import { AxiosInstance } from 'axios';
+import { AxiosInstance, AxiosResponse } from 'axios';
 import { IBoardCreateForm, ITaskCreateForm, ITaskUpdateStepForm } from '../../store/boardStore';
+import { IBoard } from '~dto/todo/boardDto';
+import { ITask } from '~dto/todo/taskDto';
 
+
+export interface ICreateBoardResponse extends IBoard {
+
+}
+
+export interface ICreateTaskResponse extends ITask {
+
+}
+
+export interface IUpdatedTaskReponse extends ITask {
+
+}
+export interface IFetchBoardReponse {
+  board: IBoard,
+  tasks: ITask[]
+}
 class BoardRepository {
   axios: AxiosInstance;
 
@@ -13,39 +31,47 @@ class BoardRepository {
     return instance.get('/todo/board');
   }
 
-  createBoard(form: IBoardCreateForm) {
-    return instance.post('/todo/board', form);
+  async createBoard(form: IBoardCreateForm): Promise<ICreateBoardResponse> {
+    const response: AxiosResponse<ICreateBoardResponse> = await instance.post('/todo/board', form);
+
+    return response.data;
   }
 
-  fetchBoard(boardId: number) {
-    return instance.get(`/todo/board/${boardId}`, {
+  async fetchBoard(boardId: number): Promise<IFetchBoardReponse> {
+    const response: AxiosResponse<IFetchBoardReponse> = await instance.get(`/todo/board/${boardId}`, {
       params: {
         sort: 'createdAt,asc'
       }
     });
+
+    return response.data;
   }
 
-  removeBoard(boardId: number) {
-    return instance.delete(`/todo/board/${boardId}`);
+  async removeBoard(boardId: number): Promise<void> {
+    await instance.delete(`/todo/board/${boardId}`);
   }
 
-  createTask(boardId: number, form: ITaskCreateForm) {
-    return instance.post(`/todo/board/${boardId}/task`, form);
+  async createTask(boardId: number, form: ITaskCreateForm): Promise<ICreateTaskResponse> {
+    const response: AxiosResponse<ICreateTaskResponse> = await instance.post(`/todo/board/${boardId}/task`, form);
+
+    return response.data;
   }
 
-  updateTask(boardId: number, taskId: number, form: ITaskCreateForm) {
-    return instance.put(`/todo/board/${boardId}/task/${taskId}`, form);
+  async updateTask(boardId: number, taskId: number, form: ITaskCreateForm): Promise<IUpdatedTaskReponse> {
+    const response: AxiosResponse<IUpdatedTaskReponse> = await instance.put(`/todo/board/${boardId}/task/${taskId}`, form);
+
+    return response.data;
   }
 
-  deleteTask(boardId: number, taskId: number) {
-    return instance.delete(`/todo/board/${boardId}/task/${taskId}`);
+  async deleteTask(boardId: number, taskId: number): Promise<void> {
+    await instance.delete(`/todo/board/${boardId}/task/${taskId}`);
   }
 
-  updateTaskStep(boardId: number, taskId: number, form: ITaskUpdateStepForm) {
-    return instance.put(`/todo/board/${boardId}/task/${taskId}/step`, form);
+  async updateTaskStep(boardId: number, taskId: number, form: ITaskUpdateStepForm): Promise<IUpdatedTaskReponse> {
+    const response: AxiosResponse<IUpdatedTaskReponse> = await instance.put(`/todo/board/${boardId}/task/${taskId}/step`, form);
+
+    return response.data;
   }
-
-
 }
 
 export default new BoardRepository();

@@ -37,20 +37,17 @@ export const isInvalidError = function (statusCode: any, e: any) {
 };
 
 instance.interceptors.response.use(
-  response => {
-    return response.data;
-  },
-  (error) => {
+  error => {
     const status = error.status || (error.response ? error.response.status : null);
     const data = error.response ? error.response.data : null;
     const config = error.config;
     if (isInvalidError(status, data)) {
       const refreshToken = cookieUtil.get(COOKIE_KEYS.REFRESH_TOKEN);
-      return instance.post('/uua/oauth/token', qs.stringify({
+      return axios.post('/uua/oauth/token', qs.stringify({
         refresh_token: refreshToken,
         grant_type: 'refresh_token'
       }), basicAuthOption).then((response: any) => {
-        const { access_token, refresh_token } = response;
+        const { access_token, refresh_token } = response.data;
         setToken(access_token);
         config.headers.Authorization = `Bearer ${access_token}`;
         cookieUtil.set(COOKIE_KEYS.ACCESS_TOKEN, access_token);
@@ -73,6 +70,7 @@ export const setToken = (accessToken?: string) => {
     instance.defaults.headers.common['Authorization'] = `Basic ${publicRuntimeConfig.basicToken}`;
   }
 };
+
 const urlReg = new RegExp('(:.+?((?=\\/)|$))', 'g');
 
 export const urlBuilder = function (url: string, params: any = {}) {

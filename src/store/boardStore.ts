@@ -1,8 +1,8 @@
 import { action, observable } from 'mobx';
-import Board from '../dto/todo/boardDto';
+import Board, { IBoard } from '../dto/todo/boardDto';
 import { getStore } from './index';
-import boardRepository from '../api/todo/boardRepository';
-import Task, { ITask, STEP } from '../dto/todo/taskDto';
+import boardRepository, { IFetchBoardReponse } from 'src/api/todo/boardRepository';
+import Task, { ITask, STEP } from 'src/dto/todo/taskDto';
 
 interface ITaskCreateForm {
 	name: string;
@@ -36,14 +36,14 @@ class BoardStore {
 
 	@action
 	async createBoard(boardCreateForm: IBoardCreateForm) {
-		const createdBoard: any = await boardRepository.createBoard(boardCreateForm);
+		const createdBoard: IBoard = await boardRepository.createBoard(boardCreateForm);
 		const boardListStore: any = getStore('boardListStore');
 		boardListStore.addBoard(createdBoard);
 	}
 
 	@action
 	async fetchBoard(boardId: number) {
-		const result: any = await boardRepository.fetchBoard(boardId);
+		const result: IFetchBoardReponse = await boardRepository.fetchBoard(boardId);
 		const { board, tasks } = result;
 		this.board = new Board(board);
 		this.tasks = tasks.map((task: Task) => new Task(task));
@@ -66,7 +66,7 @@ class BoardStore {
 	async updateTask(taskUpdateForm: ITaskUpdateForm) {
 		const boardId: number = taskUpdateForm.boardId;
 		const taskId: number = taskUpdateForm.id;
-		const updatedTask: any = await boardRepository.updateTask(boardId, taskId, taskUpdateForm);
+		const updatedTask: ITask = await boardRepository.updateTask(boardId, taskId, taskUpdateForm);
 		this.tasks = this.tasks.map((task) => {
 			if (Number(task.id) === Number(updatedTask.id)) {
 				return new Task(updatedTask);
@@ -79,7 +79,7 @@ class BoardStore {
 	async updateTaskStep(task: Task, taskUpdateStepForm: ITaskUpdateStepForm) {
 		const boardId: number = task.boardId;
 		const taskId: number = task.id;
-		const updatedTask: any = await boardRepository.updateTaskStep(boardId, taskId, taskUpdateStepForm);
+		const updatedTask: ITask = await boardRepository.updateTaskStep(boardId, taskId, taskUpdateStepForm);
 		this.tasks = this.tasks.map((task) => {
 			if (Number(task.id) === Number(updatedTask.id)) {
 				return updatedTask;
