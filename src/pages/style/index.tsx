@@ -1,30 +1,25 @@
-import Layout from '../../components/layout';
 import React from 'react';
-import withStore from '../../components/hoc/withStore';
-import { Col, Container, Row } from '../../components/basic/Grid';
-import Button from '../../components/basic/Button';
+import Layout from '~components/layout';
+import withStore from '~components/hoc/withStore';
+import { Col, Container, Row } from '~components/basic/Grid';
+import Button from '~components/basic/Button';
 import {
-  ButtonGroup,
-  CheckboxGroup,
-  FormDescription,
-  FormLabel,
-  FormStatic,
-  InputGroup,
-  RadioGroup
-} from '../../components/basic/Form';
-import Dropdown from '../../components/basic/Dropdown';
+  ButtonGroup, CheckboxGroup, FormDescription, FormLabel, FormStatic,
+  InputGroup, RadioGroup
+} from '~components/basic/Form';
+import Dropdown from '~components/basic/Dropdown';
 import '../../style/basic/index.scss';
 import '../../style/styleDemo/index.scss';
-import Alert from '../../components/basic/Alert';
-import Input from '../../components/basic/Input';
-import Select from '../../components/basic/Select';
-import Checkbox from '../../components/basic/CheckBox';
-import Radio from '../../components/basic/Radio';
-import ToggleBox from '../../components/basic/ToggleBox';
-import { Card, CardBody, CardFooter, CardHeader } from '../../components/basic/Card';
-import Textarea from '../../components/basic/Textarea';
-import { Table, TableFilters, TableHeader, TableInformation, TablePagination } from '../../components/basic/Table';
-import Modal, { modalController, ModalFooter, ModalForm,ModalBody, ModalHeader } from '../../components/basic/Modal';
+import Alert from '~components/basic/Alert';
+import Input from '~components/basic/Input';
+import Select from '~components/basic/Select';
+import Checkbox from '~components/basic/CheckBox';
+import Radio from '~components/basic/Radio';
+import ToggleBox from '~components/basic/ToggleBox';
+import { Card, CardBody, CardFooter, CardHeader } from '~components/basic/Card';
+import { Table, TableFilters, TableHeader, TableInformation, TablePagination } from '~components/basic/Table';
+import Modal, { modalController, ModalFooter, ModalForm, ModalBody, ModalHeader } from '~components/basic/Modal';
+import Textarea from '~components/basic/Textarea';
 
 @withStore({})
 class StylePage extends React.Component<any, any> {

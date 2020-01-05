@@ -4,7 +4,10 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "preserve",
-    "lib": ["dom", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
@@ -14,12 +17,17 @@
     "removeComments": false,
     "skipLibCheck": true,
     "sourceMap": true,
-//    "strict": true,
+    //    "strict": true,
     "target": "esnext",
     "typeRoots": [
       "./@types",
       "./node_modules/@types"
     ],
+    "paths": {
+      "~*": [
+        "src/*"
+      ]
+    },
     //    "target": "esnext",
     //    "module": "commonjs",
     //    "jsx": "preserve",
@@ -39,8 +47,10 @@
     //      "es2016",
     //      "dom"
     //    ],
-    "types": ["jest","node"]
-
+    "types": [
+      "jest",
+      "node"
+    ]
   },
   "include": [
     "test/**/*",

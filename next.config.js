@@ -2,9 +2,23 @@ const withSass = require('@zeit/next-sass');
 const withTypescript = require('@zeit/next-typescript');
 const config = require('./config.json');
 const path = require('path');
-let nextConfig = {};
+const fs = require('fs')
 
-nextConfig = withSass({
+const getAlias = () => {
+  const srcRoot = path.resolve(__dirname, 'src');
+  let names = fs.readdirSync(srcRoot);
+  let alias = {};
+  for (let name of names) {
+    let route = path.resolve(srcRoot, name);
+
+    if (fs.statSync(route).isDirectory()) {
+      alias[`~${name}`] = route
+    }
+  }
+
+  return alias;
+};
+let nextConfig = withSass({
   // cssModules:true,
   webpack(config, options) {
     config.module.rules.push({
@@ -28,6 +42,9 @@ nextConfig = withSass({
         }
       }
     });
+    // // console.log(config.resolve)
+    const additionalAlias = getAlias();
+    Object.assign(config.resolve.alias, additionalAlias)
     return config;
   }
 });
@@ -35,5 +52,4 @@ nextConfig = withSass({
 nextConfig = withTypescript(nextConfig);
 nextConfig.distDir = '../.next';
 nextConfig.publicRuntimeConfig = config;
-
 module.exports = nextConfig;
