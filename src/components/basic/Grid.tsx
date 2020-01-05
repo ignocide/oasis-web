@@ -1,29 +1,20 @@
 import React from 'react';
 import cn from 'classnames';
 
-const Container = ({ children, className, ...props }) => {
+const Container = ({ children, className = '', ...props }) => {
   return (
-    <div className={`container${className ? ' ' + className : ''}`} {...props}>
+    <div className={cn('container', className)} {...props}>
       {children}
     </div>
   );
 };
 
 class Row extends React.Component<any, any> {
-  get className() {
-    const { className = null } = this.props;
-    const classes = ['row'];
-    if (className) {
-      classes.push(className);
-    }
-    return classes.join(' ');
-  }
-
   render() {
     const { children, className, ...props } = this.props;
 
     return (
-      <div className={this.className} {...props}>
+      <div className={cn('row', className)} {...props}>
         {children}
       </div>
     );

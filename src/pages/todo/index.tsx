@@ -15,6 +15,7 @@ import Sidebar from '../../components/layout/Sidebar';
 
 import '../../style/header.scss';
 import BoardDetail from '../../components/todo/board/BoardDetail';
+import { Row, Container } from '../../components/basic/Grid';
 
 interface IProps {
   boards: Board[];
@@ -52,9 +53,11 @@ class TodoPage extends React.Component<IProps, IState> {
         <Sidebar>
           <BoardList />
         </Sidebar>
-        <div id={'main-container'} className="container">
-          <BoardDetail />
-        </div>
+        <Container id={'main-container'} >
+          <Row>
+            <BoardDetail />
+          </Row>
+        </Container>
       </div>
     );
   }
