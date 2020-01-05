@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import BoardStore from '../../../store/boardStore';
-import Task from '../../../dto/todo/task';
+import Task from '../../../dto/todo/taskDto';
 
 import '../../../style/todo/task-item.scss';
 
@@ -24,7 +24,7 @@ class BoardItem extends React.Component<IProps> {
   };
 
   render() {
-    const {task} = this.props;
+    const { task } = this.props;
     return (
       <li className="task-item" onClick={this.onClickTask}>
         {task.name}

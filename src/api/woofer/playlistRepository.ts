@@ -28,7 +28,6 @@ class PlaylistRepository {
   }
 
   fetch(playlistId: number) {
-    console.log(`/woofer/playlists/${playlistId}`);
     return this.axios.get(`/woofer/playlists/${playlistId}`);
   }
 

@@ -1,4 +1,4 @@
-import Board from './board';
+import Board from './boardDto';
 
 describe('vo/todo/board', () => {
   test('constructor', () => {

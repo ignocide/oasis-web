@@ -1,4 +1,4 @@
-import Task from './task';
+import Task from './taskDto';
 
 describe('vo/todo/task', () => {
   test('constructor', () => {
