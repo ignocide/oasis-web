@@ -37,6 +37,9 @@ export const isInvalidError = function (statusCode: any, e: any) {
 };
 
 instance.interceptors.response.use(
+  response => {
+    return response
+  },
   error => {
     const status = error.status || (error.response ? error.response.status : null);
     const data = error.response ? error.response.data : null;
