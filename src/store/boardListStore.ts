@@ -1,6 +1,6 @@
 import { action, observable } from 'mobx';
 import Board, { IBoard } from '../dto/todo/boardDto';
-import boardRepository from '../api/todo/boardRepository';
+import boardRepository, { IFetchBoardListResponse } from '../api/todo/boardRepository';
 
 class BoardListStore {
   @observable boards: Board[] = [];
@@ -30,8 +30,8 @@ class BoardListStore {
 
   @action
   async fetchBoards(): Promise<void> {
-    const result: any = await boardRepository.fetchBoards();
-    const list: any[] = result.list;
+    const result: IFetchBoardListResponse = await boardRepository.fetchBoards();
+    const list: IBoard[] = result.list;
     this.setBoards(list);
   }
 

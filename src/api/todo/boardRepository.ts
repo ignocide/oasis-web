@@ -16,10 +16,18 @@ export interface ICreateTaskResponse extends ITask {
 export interface IUpdatedTaskReponse extends ITask {
 
 }
-export interface IFetchBoardReponse {
-  board: IBoard,
+export interface IFetchBoardResponse {
+  board: IBoard;
   tasks: ITask[]
 }
+
+export interface IUpdateBoardResponse extends IBoard {
+
+}
+export interface IFetchBoardListResponse {
+  list: IBoard[];
+}
+
 class BoardRepository {
   axios: AxiosInstance;
 
@@ -27,8 +35,9 @@ class BoardRepository {
     this.axios = instance;
   }
 
-  fetchBoards(): Promise<any> {
-    return instance.get('/todo/board');
+  async fetchBoards(): Promise<IFetchBoardListResponse> {
+    const response: AxiosResponse<IFetchBoardListResponse> = await instance.get('/todo/board');
+    return response.data;
   }
 
   async createBoard(form: IBoardCreateForm): Promise<ICreateBoardResponse> {
@@ -37,8 +46,13 @@ class BoardRepository {
     return response.data;
   }
 
-  async fetchBoard(boardId: number): Promise<IFetchBoardReponse> {
-    const response: AxiosResponse<IFetchBoardReponse> = await instance.get(`/todo/board/${boardId}`, {
+  async updateBoard(boardId: number, form: IBoardUpdateForm): Promise<IUpdateBoardResponse> {
+    const response: AxiosResponse<IUpdateBoardResponse> = await instance.put(`/todo/board/${boardId}`, form);
+
+    return response.data;
+  }
+  async fetchBoard(boardId: number): Promise<IFetchBoardResponse> {
+    const response: AxiosResponse<IFetchBoardResponse> = await instance.get(`/todo/board/${boardId}`, {
       params: {
         sort: 'createdAt,asc'
       }

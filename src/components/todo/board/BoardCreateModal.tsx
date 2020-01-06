@@ -58,7 +58,7 @@ class BoardItem extends React.Component<IProps, IState> {
 		});
 	};
 
-	onSubmit = (e) => {
+	onSubmit = async (e) => {
 		e.preventDefault();
 		e.stopPropagation();
 		if (!this.isValidation()) {
@@ -68,9 +68,8 @@ class BoardItem extends React.Component<IProps, IState> {
 		const { boardCreateForm } = this.state;
 		const { boardStore, requestClose } = this.props;
 
-		boardStore.createBoard(boardCreateForm).then(() => {
-			requestClose();
-		});
+		await boardStore.createBoard(boardCreateForm);
+		requestClose();
 	};
 
 	onChangeValue = (e) => {

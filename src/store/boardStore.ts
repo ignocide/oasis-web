@@ -1,15 +1,20 @@
 import { action, observable } from 'mobx';
 import Board, { IBoard } from '../dto/todo/boardDto';
 import { getStore } from './index';
-import boardRepository, { IFetchBoardReponse } from 'src/api/todo/boardRepository';
-import Task, { ITask, STEP } from 'src/dto/todo/taskDto';
+import boardRepository, { IFetchBoardResponse, IUpdateBoardResponse } from '~api/todo/boardRepository';
+import Task, { ITask, STEP } from '~dto/todo/taskDto';
+import BoardListStore from './boardListStore';
 
 interface ITaskCreateForm {
 	name: string;
 	detail?: string;
 }
 
-interface IBoardCreateForm {
+export interface IBoardCreateForm {
+	name: string;
+}
+
+export interface IBoardUpdateForm {
 	name: string;
 }
 
@@ -37,13 +42,13 @@ class BoardStore {
 	@action
 	async createBoard(boardCreateForm: IBoardCreateForm) {
 		const createdBoard: IBoard = await boardRepository.createBoard(boardCreateForm);
-		const boardListStore: any = getStore('boardListStore');
+		const boardListStore: BoardListStore = getStore('boardListStore');
 		boardListStore.addBoard(createdBoard);
 	}
 
 	@action
 	async fetchBoard(boardId: number) {
-		const result: IFetchBoardReponse = await boardRepository.fetchBoard(boardId);
+		const result: IFetchBoardResponse = await boardRepository.fetchBoard(boardId);
 		const { board, tasks } = result;
 		this.board = new Board(board);
 		this.tasks = tasks.map((task: Task) => new Task(task));
@@ -53,6 +58,14 @@ class BoardStore {
 	async clearBoard() {
 		this.board = null;
 		this.tasks = [];
+	}
+
+	@action
+	async updateBoard(boardId: number, form: IBoardUpdateForm): Promise<void> {
+		const result: IUpdateBoardResponse = await boardRepository.updateBoard(boardId, form)
+		const boardListStore: BoardListStore = getStore('boardListStore');
+		boardListStore.fetchBoards();
+		this.board = new Board(result);
 	}
 
 	@action

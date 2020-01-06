@@ -14,6 +14,7 @@ import { modalController } from '../../../components/basic/Modal';
 import Button from '../../../components/basic/Button';
 
 import '../../../style/todo/board-detail.scss';
+import BoardUpdateModal from './BoardUpdateModal';
 
 interface IProps {
   boardListStore: BoardListStore;
@@ -33,6 +34,7 @@ class BoardDetail extends React.Component<IProps, IState> {
 
     modalController(this, 'createTask');
     modalController(this, 'removeBoardConfirm');
+    modalController(this, 'updateBoard');
 
 
   }
@@ -83,7 +85,6 @@ class BoardDetail extends React.Component<IProps, IState> {
   closeModal = () => {
     this.setState({
       selectedTask: null,
-      taskCreateModal: false
     });
   };
 
@@ -91,13 +92,15 @@ class BoardDetail extends React.Component<IProps, IState> {
     const { boardStore } = this.props;
     const { board, tasks } = boardStore;
     const { selectedTask } = this.state;
-    const { createTask, removeBoardConfirm } = this.state.modalState;
+    const { modalState } = this.state;
     if (!board) {
       return null;
     }
     return (
       <div className="board-detail">
-        <h1 className={'board-name'}>{board.name}<span className={'board-edit-funcs'}><Icon name={'edit'} /><Icon name={'delete'} onClick={() => this.setRemoveBoardConfirmModal(true)} /></span></h1>
+        <h1 className={'board-name'}>{board.name}<span className={'board-edit-funcs'}>
+          <Icon name={'edit'} onClick={() => this.setUpdateBoardModal(true)} />
+          <Icon name={'delete'} onClick={() => this.setRemoveBoardConfirmModal(true)} /></span></h1>
 
         <Table
           className={'task-list-table'}
@@ -105,8 +108,9 @@ class BoardDetail extends React.Component<IProps, IState> {
           data={tasks}
         />
         {selectedTask ? <TaskDetailModal task={selectedTask} requestClose={this.closeModal} /> : null}
-        {createTask ? <TaskCreateModal closeModal={() => this.setCreateTaskModal(false)} /> : null}
-        {removeBoardConfirm ? <BoardRemoveModal requestClose={() => this.setRemoveBoardConfirmModal(false)} board={board} /> : null}
+        {modalState.createTask ? <TaskCreateModal closeModal={() => this.setCreateTaskModal(false)} /> : null}
+        {modalState.removeBoardConfirm ? <BoardRemoveModal requestClose={() => this.setRemoveBoardConfirmModal(false)} board={board} /> : null}
+        {modalState.updateBoard ? <BoardUpdateModal requestClose={() => this.setUpdateBoardModal(false)} /> : null}
       </div>
     );
   }
