@@ -9,6 +9,8 @@ import '../style/home.scss';
 import AppStore from '../store/common/appStore';
 import WeatherWidget from '../components/widget/WeatherWidget';
 import ClockWidget from '../components/widget/clock/index';
+import { getStore } from '~store';
+import Article from '~components/news/Article';
 
 interface IProps {
   appStore: AppStore;
@@ -18,7 +20,10 @@ interface IProps {
 @inject('appStore')
 @observer
 class Index extends React.Component<IProps, any> {
-  static getInitialProps = async function() {
+  static getInitialProps = async function () {
+    const appStore: AppStore = getStore('appStore');
+
+    await appStore.fetchNews();
     return {};
   };
 
@@ -52,8 +57,8 @@ class Index extends React.Component<IProps, any> {
   // }
 
   render() {
-    const { location, weather } = this.props.appStore;
-    console.log(location, weather);
+    const { location, weather, news } = this.props.appStore;
+    console.log(location, weather, news);
     return (
       <div id="main">
         <Header>
@@ -66,17 +71,20 @@ class Index extends React.Component<IProps, any> {
         </Header>
         <div id={'main-container'} className="container">
           <Row>
-            <Col size={4}>
-              <WeatherWidget />
+            <Col size={8}>
+              {news.map((article) => {
+                return <Article article={article} />;
+              })}
             </Col>
             <Col size={4}>
               <div className={'card'}>
                 <ClockWidget />
               </div>
             </Col>
-            <Col size={4}>
+            {/* <Col size={4}>
+            <WeatherWidget />
               <div className={'card'}>{'날씨'}</div>
-            </Col>
+            </Col> */}
           </Row>
         </div>
       </div>

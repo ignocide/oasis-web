@@ -21,7 +21,7 @@ import { Table, TableFilters, TableHeader, TableInformation, TablePagination } f
 import Modal, { modalController, ModalFooter, ModalForm, ModalBody, ModalHeader } from '~components/basic/Modal';
 import Textarea from '~components/basic/Textarea';
 
-@withStore({})
+@withStore()
 class StylePage extends React.Component<any, any> {
   static getInitialProps = async function () {
     return {};

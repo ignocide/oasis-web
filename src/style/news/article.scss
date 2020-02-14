@@ -1,0 +1,20 @@
+.article{
+  padding: 10px 20px;
+  &:hover{
+    cursor: pointer;
+  }
+  .article-title{
+    font-weight: bold;
+  } 
+  .article-description{
+    margin-bottom: 5px;
+  }
+  .aritlce-pub-date{
+    font-size: 0.7em;
+    color: $gray-3;
+  }
+
+  & + .article{
+    margin-top: 10px;
+  }
+}

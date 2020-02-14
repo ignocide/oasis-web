@@ -5,18 +5,18 @@ import { getStores, initializeStores, insertClasses, insertStores } from '../../
 import * as authApi from '../../api/auth/index';
 import { setToken } from '../../api';
 import cookieUtil, { COOKIE_KEYS } from '../../lib/cookies';
-
+import { NextComponentClass } from 'next'
 interface IState {
   stores: any;
 }
 
-function withStore(additionalStores: any = {}) {
-  return function(WrappedComponent) {
+function withStore(additionalStores?: any) {
+  return function (WrappedComponent: NextComponentClass) {
     class _withStore extends React.Component<any, IState> {
       static async getInitialProps(ctx) {
         const { req } = ctx;
 
-        insertStores(additionalStores);
+        insertStores(additionalStores || {});
         // insertStores({
         //     boardListStore: BoardListStore,
         //     boardStore: BoardStore
